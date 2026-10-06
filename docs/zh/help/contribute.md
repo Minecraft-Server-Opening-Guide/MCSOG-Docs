@@ -4,7 +4,7 @@ slug: contribute
 updated: 2026-10-06
 ---
 
-本站由玩家社区维护，欢迎补充教程、修正错误、完善翻译。
+本站由玩家社区维护，欢迎补充教程、修正错误、完善翻译。所有内容都在公开仓库 [MCSOG-Docs](https://github.com/Minecraft-Server-Opening-Guide/MCSOG-Docs) 里。
 
 ## 可以贡献什么
 
@@ -12,6 +12,22 @@ updated: 2026-10-06
 - **修正**：命令过时、路径写错、版本不匹配、错别字
 - **翻译**：把中文教程翻成英文，或修正现有译文
 - **资源条目**：补全下载信息（版本、大小、校验和、官方主页）
+
+## 提交流程
+
+:::step 新建分支
+Fork [MCSOG-Docs](https://github.com/Minecraft-Server-Opening-Guide/MCSOG-Docs) 后新建分支，按[编辑指南](/help/guide)里的目录与命名添加文件。
+:::
+
+:::step 本地起站自检
+运行 `php -S 127.0.0.1:8080 -t public tools/dev-router.php`，
+然后请求 `/api/content?type=tutorials&lang=zh` 确认条目出现；
+改英文内容时把 `lang` 换成 `en`。
+:::
+
+:::step 提交 Pull Request
+在 PR 里说明**改动范围**与**自检结果**。合并进 `main` 后：30 分钟内同步进主仓库，2 小时内上线。
+:::
 
 ## 写作规范
 
@@ -25,6 +41,10 @@ updated: 2026-10-06
 
 :::step 中英同步
 新增中文教程时尽量同时提供英文文件（同 slug）。暂不提供也可以，页面会回退中文并标注。
+:::
+
+:::step 版本与命令以官方为准
+版本号、命令、下载地址要能核对，并给出官方来源链接；上游变化后请及时更新或下线过期内容。
 :::
 
 :::danger
@@ -47,6 +67,6 @@ updated: 2026-10-06
 
 ## 贡献榜
 
- 感谢每一位为项目做出贡献的朋友(排名不分先后)
+感谢每一位为项目做出贡献的朋友（排名不分先后）
 
- EXE_autumnwind DF7C5612 XiaoZhang_Ent xiaoli Moutuan1 QxMO Ender_Drate CH雪狐
+EXE_autumnwind DF7C5612 XiaoZhang_Ent xiaoli Moutuan1 QxMO Ender_Drate CH雪狐
