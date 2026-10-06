@@ -75,6 +75,21 @@ MCSOG-Docs/
 
 其余为标准 Markdown：标题（自动生成右侧目录）、列表、表格、任务列表、行内代码、带语言标注的代码围栏。
 
+### 同步规则
+
+本仓库与主仓库之间每 30 分钟自动双向同步一次，规则如下：
+
+| 情况 | 结果 |
+| --- | --- |
+| 只有一边改了文件 | 改动会同步到另一边 |
+| **两边都改了同一个文件** | 判为冲突，不覆盖任何一方，另一方的版本会存进主仓库的 `docs/_conflicts/` 等管理员处理 |
+| 一边新增了文件 | 复制到另一边 |
+| 一边删除了文件 | 同步删除另一边（删除前会先备份到 `docs/_deleted/`） |
+| `docs/ad/`、`help/`、`news/` | **不参与同步** |
+
+也就是说：你在这里改的内容会进入正式站点；你删除的文件也会被真正删除。
+如果同一个文件在你改的同时主仓库也改了，管理员会收到冲突记录并在站内处理，不会静默丢掉任何一方。
+
 ### 贡献流程
 
 1. Fork 本仓库
@@ -161,6 +176,21 @@ Do not run the server as root.
 ````
 
 Everything else is standard Markdown: headings (which build the table of contents), lists, tables, task lists, inline code and fenced code blocks with a language tag.
+
+### Sync rules
+
+This repository and the main repository sync both ways every 30 minutes:
+
+| Case | Result |
+| --- | --- |
+| Only one side changed a file | The change is copied to the other side |
+| **Both sides changed the same file** | Treated as a conflict. Neither side is overwritten; the other version is stored in `docs/_conflicts/` in the main repository for an administrator to resolve |
+| A file was added on one side | Copied to the other side |
+| A file was deleted on one side | Deleted on the other side too (a copy is kept in `docs/_deleted/` first) |
+| `docs/ad/`, `help/`, `news/` | **Not synced** |
+
+So changes you make here reach the live site, and files you delete are really deleted.
+If the main repository changed the same file at the same time, an administrator gets a conflict record in the site and resolves it; nothing is silently lost.
 
 ### Contributing
 
