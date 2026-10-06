@@ -52,6 +52,35 @@ MCSOG-Docs/
 - 版本号、命令、下载地址必须以**官方来源**为准，并给出可核对的链接
 - 引用第三方内容请注明来源与许可证
 
+### 正文扩展语法
+
+除了标准 Markdown，本站还支持四种自定义块，用于排版步骤与提示。它们在渲染时会转成带样式的组件：
+
+| 语法 | 作用 |
+| --- | --- |
+| `:::step 标题` … `:::` | 步骤块。连续多个会自动合并成带序号的步骤条 |
+| `:::note` … `:::` | 提示框，适合补充说明 |
+| `:::warn` … `:::` | 警告框，适合容易踩坑的地方 |
+| `:::danger` … `:::` | 危险框，适合不可逆操作（删库、覆盖配置等） |
+
+写法示例：
+
+````markdown
+:::step 安装依赖
+运行 `apt install openjdk-21-jre-headless`。
+:::
+
+:::step 启动服务
+把 jar 放到 `/opt/mc` 后执行启动脚本。
+:::
+
+:::warn
+不要用 root 直接跑服务端。
+:::
+````
+
+其余为标准 Markdown：标题（自动生成右侧目录）、列表、表格、任务列表、行内代码、带语言标注的代码围栏。
+
 ### 贡献流程
 
 1. Fork 本仓库
@@ -116,6 +145,35 @@ MCSOG-Docs/
 - Keep Chinese and English **in sync**: when you edit `docs/zh/...`, update `docs/en/...` too
 - Version numbers, commands and download URLs must match **official sources**, with a link to check
 - When quoting third-party material, credit the source and its licence
+
+### Content extensions
+
+Besides standard Markdown, the site supports four custom blocks for steps and callouts. They are rendered as styled components:
+
+| Syntax | Purpose |
+| --- | --- |
+| `:::step Title` ... `:::` | Step block. Consecutive blocks merge into a numbered step list |
+| `:::note` ... `:::` | Note box, for side notes |
+| `:::warn` ... `:::` | Warning box, for common pitfalls |
+| `:::danger` ... `:::` | Danger box, for irreversible operations |
+
+Example:
+
+````markdown
+:::step Install the runtime
+Run `apt install openjdk-21-jre-headless`.
+:::
+
+:::step Start the service
+Put the jar in `/opt/mc` and run the start script.
+:::
+
+:::warn
+Do not run the server as root.
+:::
+````
+
+Everything else is standard Markdown: headings (which build the table of contents), lists, tables, task lists, inline code and fenced code blocks with a language tag.
 
 ### Contributing
 
