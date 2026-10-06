@@ -1,4 +1,4 @@
-﻿# MCSOG-Docs
+# MCSOG-Docs
 
 [中文](#中文) | [English](#english)
 
