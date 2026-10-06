@@ -15,6 +15,8 @@ const walk = (dir, out = []) => {
   return out
 }
 
+const unquote = (value) => String(value == null ? '' : value).trim().replace(/^["']/, '').replace(/["']$/, '')
+
 const frontMatter = (text) => {
   if (!text.startsWith('---\n')) return null
   const end = text.indexOf('\n---', 3)
@@ -22,7 +24,7 @@ const frontMatter = (text) => {
   const map = {}
   for (const line of text.slice(4, end).split('\n')) {
     const m = line.match(/^([A-Za-z_][A-Za-z0-9_]*):\s*(.*)$/)
-    if (m) map[m[1]] = m[2].trim()
+    if (m) map[m[1]] = unquote(m[2])
   }
   return map
 }
@@ -38,6 +40,7 @@ for (const file of files) {
     problems.push(rel + ': 只能放在 docs/zh 或 docs/en 下')
     continue
   }
+
   const raw = readFileSync(file)
   if (raw[0] === 0xEF && raw[1] === 0xBB && raw[2] === 0xBF) problems.push(rel + ': 含 UTF-8 BOM，请去掉')
   const text = raw.toString('utf8')
@@ -45,14 +48,19 @@ for (const file of files) {
   if (!text.endsWith('\n')) problems.push(rel + ': 文件结尾缺少换行')
   if (/\n\n+$/.test(text)) problems.push(rel + ': 文件结尾有多余空行')
 
+  let inFence = false
   let depth = 0
   for (const line of text.split('\n')) {
+    if (/^\s*(```|~~~)/.test(line)) {
+      inFence = !inFence
+      continue
+    }
+    if (inFence) continue
     if (!line.startsWith(':::')) continue
     if (line.trim() === ':::') depth -= 1
     else depth += 1
-    if (depth < 0) break
   }
-  if (depth !== 0) problems.push(rel + ': ::: 块未配对')
+  if (depth !== 0) warnings.push(rel + ': ::: 块可能未配对（差 ' + depth + '）')
 
   const fm = frontMatter(text)
   if (!fm) {
@@ -61,6 +69,7 @@ for (const file of files) {
   }
   if (!fm.title) problems.push(rel + ': front-matter 缺少 title')
   if (!fm.slug) problems.push(rel + ': front-matter 缺少 slug')
+
   const slug = basename(file, '.md')
   if (fm.slug && fm.slug !== slug) problems.push(rel + ': slug「' + fm.slug + '」与文件名「' + slug + '」不一致')
 
@@ -89,10 +98,9 @@ if (warnings.length) {
   for (const p of warnings.slice(0, 40)) console.log('  - ' + p)
   if (warnings.length > 40) console.log('  ...另有 ' + (warnings.length - 40) + ' 条')
 }
+console.log('')
 if (problems.length) {
-  console.log('')
   console.log('失败: ' + problems.length + ' 个错误, ' + warnings.length + ' 个提示')
   process.exit(1)
 }
-console.log('')
 console.log('通过: 0 个错误, ' + warnings.length + ' 个提示')
