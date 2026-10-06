@@ -23,13 +23,9 @@ MCSOG-Docs/
     │   │   ├── ops/       运维与安全
     │   │   └── faq/       常见问题
     │   ├── wiki/          版本百科（版本时间线、核心对比、指令等）
-    │   ├── news/          更新公告
-    │   └── help/          帮助页（隐私政策、服务条款等）
     └── en/                英文文档（目录结构与 zh 一一对应）
         ├── tutorials/
         ├── wiki/
-        ├── news/
-        └── help/
 ```
 
 ### 路径约定
@@ -39,8 +35,6 @@ MCSOG-Docs/
 | `docs/zh/tutorials/<分类>/<slug>.md` | 中文教程正文，分类为 `java` / `bedrock` / `ops` / `faq` |
 | `docs/en/tutorials/<分类>/<slug>.md` | 英文教程正文，路径与中文**一一对应** |
 | `docs/zh/wiki/<名称>.md` | 中文百科条目 |
-| `docs/zh/news/<名称>.md` | 中文更新公告 |
-| `docs/zh/help/<名称>.md` | 中文帮助页 |
 
 ### 写作规范
 
@@ -115,13 +109,9 @@ MCSOG-Docs/
     │   │   ├── ops/       operations and security
     │   │   └── faq/       frequently asked questions
     │   ├── wiki/          wiki (version timeline, core comparison, commands)
-    │   ├── news/          release notes
-    │   └── help/          help pages (privacy policy, terms of service)
     └── en/                English (mirrors the zh tree one to one)
         ├── tutorials/
         ├── wiki/
-        ├── news/
-        └── help/
 ```
 
 ### Path conventions
