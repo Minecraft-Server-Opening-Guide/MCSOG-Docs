@@ -25,11 +25,11 @@ MCSOG-Docs/
     │   ├── wiki/          版本百科（版本时间线、核心对比、指令等）
     │   ├── news/          更新公告
     │   └── help/          帮助页（隐私政策、服务条款等）
-    ├── en/                英文文档（目录结构与 zh 一一对应）
-    │   ├── tutorials/
-    │   ├── wiki/
-    │   ├── news/
-    │   └── help/
+    └── en/                英文文档（目录结构与 zh 一一对应）
+        ├── tutorials/
+        ├── wiki/
+        ├── news/
+        └── help/
 ```
 
 ### 路径约定
@@ -118,11 +118,11 @@ MCSOG-Docs/
     │   ├── wiki/          wiki (version timeline, core comparison, commands)
     │   ├── news/          release notes
     │   └── help/          help pages (privacy policy, terms of service)
-    ├── en/                English (mirrors the zh tree one to one)
-    │   ├── tutorials/
-    │   ├── wiki/
-    │   ├── news/
-    │   └── help/
+    └── en/                English (mirrors the zh tree one to one)
+        ├── tutorials/
+        ├── wiki/
+        ├── news/
+        └── help/
 ```
 
 ### Path conventions
