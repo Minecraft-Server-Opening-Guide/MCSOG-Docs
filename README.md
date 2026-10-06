@@ -90,7 +90,6 @@ MCSOG-Docs/
    - **30 分钟内**同步进主仓库
    - **2 小时内**部署到线上站点
 
-
 ### 许可证
 
 文档内容采用 **CC BY-SA 4.0**，其中的代码示例采用 **MIT**。
@@ -132,8 +131,6 @@ MCSOG-Docs/
 | `docs/zh/tutorials/<category>/<slug>.md` | Chinese tutorial, category is `java` / `bedrock` / `ops` / `faq` |
 | `docs/en/tutorials/<category>/<slug>.md` | English tutorial, mirrors the Chinese path exactly |
 | `docs/zh/wiki/<name>.md` | Chinese wiki entry |
-| `docs/zh/news/<name>.md` | Chinese release note |
-| `docs/zh/help/<name>.md` | Chinese help page |
 
 ### Writing rules
 
@@ -183,7 +180,6 @@ Everything else is standard Markdown: headings (which build the table of content
 4. After the maintainers merge it into `main`, it takes effect automatically:
    - synced into the main repository **within 30 minutes**
    - deployed to the live site **within 2 hours**
-
 
 ### Licence
 
