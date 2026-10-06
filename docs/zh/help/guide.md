@@ -72,13 +72,8 @@ draft: false
 Fork [MCSOG-Docs](https://github.com/Minecraft-Server-Opening-Guide/MCSOG-Docs) 后新建一个分支，按上面的目录与命名添加文件。
 :::
 
-:::step 本地起站自检
-运行 `php -S 127.0.0.1:8080 -t public tools/dev-router.php`，
-然后请求 `/api/content?type=tutorials&lang=zh` 确认条目出现。
-:::
-
 :::step 提交 Pull Request
-在 PR 里说明**改动范围**与**自检结果**。
+在 PR 里说明**改动范围**。
 :::
 
 :::note

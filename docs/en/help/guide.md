@@ -72,13 +72,8 @@ Standard Markdown works as well: headings (which build the table of contents), l
 Fork [MCSOG-Docs](https://github.com/Minecraft-Server-Opening-Guide/MCSOG-Docs) and create a branch, then add files following the layout above.
 :::
 
-:::step Verify locally
-Start the site with `php -S 127.0.0.1:8080 -t public tools/dev-router.php`,
-then request `/api/content?type=tutorials&lang=en` and confirm your entry appears.
-:::
-
 :::step Open a pull request
-Describe the **scope of the change** and **the result of your verification**.
+Describe the **scope of the change**.
 :::
 
 :::note

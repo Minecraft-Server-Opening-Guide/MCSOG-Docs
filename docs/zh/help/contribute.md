@@ -19,14 +19,8 @@ updated: 2026-10-06
 Fork [MCSOG-Docs](https://github.com/Minecraft-Server-Opening-Guide/MCSOG-Docs) 后新建分支，按[编辑指南](/help/guide)里的目录与命名添加文件。
 :::
 
-:::step 本地起站自检
-运行 `php -S 127.0.0.1:8080 -t public tools/dev-router.php`，
-然后请求 `/api/content?type=tutorials&lang=zh` 确认条目出现；
-改英文内容时把 `lang` 换成 `en`。
-:::
-
 :::step 提交 Pull Request
-在 PR 里说明**改动范围**与**自检结果**。合并进 `main` 后：30 分钟内同步进主仓库，2 小时内上线。
+在 PR 里说明**改动范围**。合并进 `main` 后：30 分钟内同步进主仓库，2 小时内上线。
 :::
 
 ## 写作规范

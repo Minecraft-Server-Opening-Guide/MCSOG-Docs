@@ -19,14 +19,8 @@ This site is maintained by the community. Contributions of guides, fixes and tra
 Fork [MCSOG-Docs](https://github.com/Minecraft-Server-Opening-Guide/MCSOG-Docs) and create a branch, then add files following the layout in the [editing guide](/help/guide).
 :::
 
-:::step Verify locally
-Start the site with `php -S 127.0.0.1:8080 -t public tools/dev-router.php`,
-then request `/api/content?type=tutorials&lang=en` and confirm your entry appears;
-use `lang=zh` when you changed the Chinese content.
-:::
-
 :::step Open a pull request
-Describe the **scope of the change** and **the result of your verification**. Once merged into `main`: into the main repository within 30 minutes, live within 2 hours.
+Describe the **scope of the change**. Once merged into `main`: into the main repository within 30 minutes, live within 2 hours.
 :::
 
 ## Writing rules
