@@ -30,7 +30,6 @@ MCSOG-Docs/
     │   ├── wiki/
     │   ├── news/
     │   └── help/
-    └── ad/                广告位配置（由站点侧自动维护，请勿手改）
 ```
 
 ### 路径约定
@@ -62,7 +61,6 @@ MCSOG-Docs/
    - **30 分钟内**同步进主仓库
    - **2 小时内**部署到线上站点
 
-> 本仓库与主仓库之间由自动化脚本双向同步。请**不要**在 PR 中改动 `docs/ad/`。
 
 ### 许可证
 
@@ -96,7 +94,6 @@ MCSOG-Docs/
     │   ├── wiki/
     │   ├── news/
     │   └── help/
-    └── ad/                ad slot configuration (maintained automatically, do not edit)
 ```
 
 ### Path conventions
@@ -129,8 +126,6 @@ MCSOG-Docs/
    - synced into the main repository **within 30 minutes**
    - deployed to the live site **within 2 hours**
 
-> This repository is kept in two-way sync with the main repository by an automated script.
-> Please do **not** touch `docs/ad/` in a pull request.
 
 ### Licence
 
