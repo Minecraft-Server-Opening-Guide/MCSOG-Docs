@@ -271,3 +271,5 @@ Java 版长期使用 `1.x.y` 的形式：
 - 核心与加载器的版本约束：见 [服务端核心对比](/wiki/compare#mcsog-h-%E6%A0%B8%E5%BF%83%E5%AF%B9%E7%85%A7) 与 [服务端选择](/tutorials/java/core)
 
 > 指令与版本细节以对应服务端与游戏的官方文档为准。
+
+<!-- sync-verify-1791350841 -->
