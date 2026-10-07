@@ -25,7 +25,7 @@ MCSOG-Docs/
     │   ├── wiki/          版本百科（版本时间线、核心对比、指令等）
     └── en/                英文文档（目录结构与 zh 一一对应）
         ├── tutorials/
-        ├── wiki/
+        └── wiki/
 ```
 
 ### 路径约定
@@ -126,7 +126,7 @@ MCSOG-Docs/
     │   ├── wiki/          wiki (version timeline, core comparison, commands)
     └── en/                English (mirrors the zh tree one to one)
         ├── tutorials/
-        ├── wiki/
+        └── wiki/
 ```
 
 ### Path conventions
