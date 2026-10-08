@@ -98,7 +98,7 @@ That is not laziness. Hard-coding one release's screens and commands into a tuto
 
 ## 6. How It Relates to Carpet
 
-In one line: **the same technical toolbox, but a different problem**.
+**The same technical toolbox, but a different problem**.
 
 | | Carpet | Syncmatica |
 | --- | --- | --- |

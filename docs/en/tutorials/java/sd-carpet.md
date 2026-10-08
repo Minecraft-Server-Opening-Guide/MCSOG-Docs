@@ -38,7 +38,7 @@ Three habits are worth keeping:
 2. **write down every rule you change** (in the server rules or an operations note), and re-check them item by item when you change cores or upgrade versions;
 3. for any rule that **changes vanilla behaviour**, leave it off on a live server and enable it only in single-player testing or a specific scenario.
 
-The rule names and English descriptions below are quoted from Carpet's official source, each with a Chinese explanation.
+The rule names below come from Carpet's official source, each with an explanation.
 
 ## 3. Example Rules
 
