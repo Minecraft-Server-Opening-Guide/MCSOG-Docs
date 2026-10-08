@@ -44,36 +44,36 @@ draft: false
 
 ### 性能与实体类
 
-| 规则 | 官方描述（原文） | 中文说明 |
-| --- | --- | --- |
-| `optimizedTNT` | TNT causes less lag when exploding in the same spot and in liquids | 同一位置、液体中的 TNT 爆炸造成更少卡顿 |
-| `maxEntityCollisions` | Customizable maximal entity collision limits, 0 for no limits | 自定义实体碰撞上限，0 表示不限制 |
-| `lagFreeSpawning` | Spawning requires much less CPU and Memory | 刷怪只占用少得多的 CPU 与内存 |
-| `fastRedstoneDust` | Lag optimizations for redstone dust | 针对红石粉的卡顿优化 |
-| `movableBlockEntities` | Pistons can push block entities, like hoppers, chests etc. | 活塞可以推动方块实体，例如漏斗、箱子等 |
+| 规则 | 中文说明 |
+| --- | --- |
+| `optimizedTNT` | 同一位置、液体中的 TNT 爆炸造成更少卡顿 |
+| `maxEntityCollisions` | 自定义实体碰撞上限，0 表示不限制 |
+| `lagFreeSpawning` | 刷怪只占用少得多的 CPU 与内存 |
+| `fastRedstoneDust` | 针对红石粉的卡顿优化 |
+| `movableBlockEntities` | 活塞可以推动方块实体，例如漏斗、箱子等 |
 
 ### 行为改变类（正式开服默认不要开）
 
-| 规则 | 官方描述（原文） | 中文说明 |
-| --- | --- | --- |
-| `tntDoNotUpdate` | TNT doesn't update when placed against a power source | TNT 靠着电源放置时不会被更新 |
-| `explosionNoBlockDamage` | Explosions won't destroy blocks | 爆炸不破坏方块 |
-| `antiCheatDisabled` | Prevents players from rubberbanding when moving too fast | 防止玩家因移动过快被回拉 |
-| `updateSuppressionBlock` | Placing an activator rail on top of a barrier block will fill the neighbor updater stack when the rail turns o… | 在屏障方块上放激活铁轨，铁轨转向时会填满邻居更新栈 |
-| `stackableShulkerBoxes` | Empty shulker boxes can stack when thrown on the ground. | 空潜影盒丢在地上时可以堆叠 |
+| 规则 | 中文说明 |
+| --- | --- |
+| `tntDoNotUpdate` | TNT 靠着电源放置时不会被更新 |
+| `explosionNoBlockDamage` | 爆炸不破坏方块 |
+| `antiCheatDisabled` | 防止玩家因移动过快被回拉 |
+| `updateSuppressionBlock` | 在屏障方块上放激活铁轨，铁轨转向时会填满邻居更新栈 |
+| `stackableShulkerBoxes` | 空潜影盒丢在地上时可以堆叠 |
 
 `updateSuppressionBlock` 是更新抑制（社区俗称"切门"）的官方可控入口，与它配合的防崩规则见第六节。
 
 ### 计数与调试类
 
-| 规则 | 官方描述（原文） | 中文说明 |
-| --- | --- | --- |
-| `hopperCounters` | hoppers pointing to wool will count items passing through them | 指向羊毛的漏斗会统计通过的物品数量 |
-| `commandTick` | Enables `/tick` command to control game clocks | 启用 `/tick` 指令来控制游戏时钟 |
+| 规则 | 中文说明 |
+| --- | --- |
+| `hopperCounters` | 指向羊毛的漏斗会统计通过的物品数量 |
+| `commandTick` | 启用 `/tick` 指令来控制游戏时钟 |
 
-### 另有名称、无官方描述引用
+### 另有名称、未附描述
 
-以下规则确实存在，但这里不引用它们的官方描述，因此只列名字；具体行为请以你所用版本的源码或游戏内 `/carpet` 输出为准：
+以下规则确实存在，但这里只列名字；具体行为请以你所用版本的源码或游戏内 `/carpet` 输出为准：
 
 `creativeNoClip`、`renewableSponges`、`persistentParrots`、`flippinCactus`、`xpNoCooldown`、`smoothClientAnimations`、`tntPrimerMomentumRemoved`、`commandPlayer`。
 
@@ -83,7 +83,7 @@ Carpet 本体只做主规则集，功能扩展靠附属包。以下仓库地址�
 
 | 名称 | 仓库 | 支持版本 | 版本条目数 | 定位 |
 | --- | --- | --- | --- | --- |
-| Carpet Extra | `gnembon/carpet-extra` | 1.14.4–26.2 | 87 | 官方描述：Extra Features for Carpet Mod；新发射器行为、新的获取方式等 |
+| Carpet Extra | `gnembon/carpet-extra` | 1.14.4–26.2 | 87 | 新发射器行为、新的获取方式等 |
 | Carpet TIS Addition | `TISUnion/Carpet-TIS-Addition` | 1.14.4–26.3 | 141 | Fabric Carpet 扩展包 |
 | Carpet AMS Addition | `Minecraft-AMS/Carpet-AMS-Addition` | 1.16.4–26.3 | 49 | 官网 `https://carpet.mcams.club` |
 | Carpet Org Addition | `fcsailboat/Carpet-Org-Addition` | 1.19.4–26.3 | 34 | Carpet 扩展包 |
@@ -144,4 +144,4 @@ Carpet 本体只做主规则集，功能扩展靠附属包。以下仓库地址�
 
 ---
 
-> 本篇的规则名与官方描述取自 Carpet 官方源码，附属包的仓库地址、支持版本与版本条目数取自 Modrinth 官方数据；规则是否存在、行为如何，请以你所用版本的游戏内 `/carpet` 输出为准。
+> 本篇的规则名取自 Carpet 官方源码，附属包的仓库地址、支持版本与版本条目数取自 Modrinth 官方数据；规则是否存在、行为如何，请以你所用版本的游戏内 `/carpet` 输出为准。

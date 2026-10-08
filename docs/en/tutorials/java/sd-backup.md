@@ -51,11 +51,9 @@ For a technical server a practical combination is **one scheduled full backup pl
 
 ## 3. `Ledger`: Find Out What Actually Happened
 
-`Ledger` is a server-side logging mod (loaders: `fabric`, `quilt`; supported versions `1.17-rc1` to `26.3`; one line: A serverside logging mod). Its official description reads:
+`Ledger` is a server-side logging mod (loaders: `fabric`, `quilt`; supported versions `1.17-rc1` to `26.3`).
 
-> Ledger is a comprehensive logging system for Fabric servers. It provides essential tracking for hundreds of in game events.
-
-On the plugin side the best-known equivalent is **CoreProtect** (loaders: `bukkit`, `folia`, `paper`, `purpur`, `spigot`; versions `1.14.1` to `26.2`; officially a fast, efficient data logging and anti-griefing tool that can roll back and restore damage). Think of `Ledger` as **the CoreProtect counterpart in the Fabric ecosystem**: it also records block and container activity and lets you look it up by time and position — except that CoreProtect runs on the plugin side and can roll damage back itself, while `Ledger` only records and queries.
+On the plugin side the best-known equivalent is **CoreProtect** (loaders: `bukkit`, `folia`, `paper`, `purpur`, `spigot`; versions `1.14.1` to `26.2`; a data logging and anti-griefing tool that can roll back and restore damage). Think of `Ledger` as **the CoreProtect counterpart in the Fabric ecosystem**: it also records block and container activity and lets you look it up by time and position — except that CoreProtect runs on the plugin side and can roll damage back itself, while `Ledger` only records and queries.
 
 It answers a different question from backups, and the two are not interchangeable:
 
@@ -131,4 +129,4 @@ The bigger the machines, the more backups belong in your process: risk control f
 
 ---
 
-> Plugin directory names, mod version ranges and official descriptions in this article come from the official MCDR plugin catalogue and Modrinth data; the features and configuration of each plugin are whatever its own documentation says.
+> Plugin directory names and mod version ranges in this article come from the official MCDR plugin catalogue and Modrinth data; the features and configuration of each plugin are whatever its own documentation says.

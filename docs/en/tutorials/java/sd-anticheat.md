@@ -13,7 +13,7 @@ draft: false
 
 Anti-cheat is a plus on an ordinary survival server, but on a technical server it is often a net loss. The reason is not that anti-cheat is badly made: it is that **the normal way technical players play keeps triggering anti-cheat checks**.
 
-There is a more direct fact as well: official Carpet already ships the `antiCheatDisabled` rule, described officially as Prevents players from rubberbanding when moving too fast. The fact that the rule system provides that switch shows what a technical server actually needs is to **turn off vanilla's own rubberbanding check for fast movement**, not to add another layer of detection on top.
+There is a more direct fact as well: official Carpet already ships the `antiCheatDisabled` rule, which stops players being rubberbanded for moving too fast. The fact that the rule system provides that switch shows what a technical server actually needs is to **turn off vanilla's own rubberbanding check for fast movement**, not to add another layer of detection on top.
 
 This article covers the conclusion and the alternatives: why the conflict is structural, where false positives come from, and what to install instead. [Anti-Cheat and Grief Prevention](/tutorials/java/anticheat) covers the general two-layer defence and how to configure it, and none of that is repeated here.
 
@@ -21,9 +21,9 @@ This article covers the conclusion and the alternatives: why the conflict is str
 
 Start with the single most persuasive fact.
 
-| Rule | Official description | What it means |
-| --- | --- | --- |
-| `antiCheatDisabled` | Prevents players from rubberbanding when moving too fast | With it enabled, players are no longer rubber-banded for moving too fast |
+| Rule | What it means |
+| --- | --- |
+| `antiCheatDisabled` | With it enabled, players are no longer rubber-banded for moving too fast |
 
 Read that rule closely:
 
@@ -68,9 +68,9 @@ The more useful question is the reverse one: **what are you actually trying to p
 | What you want to stop | What to use | Notes |
 | --- | --- | --- |
 | Strangers causing trouble | Whitelist and permissions | Putting the barrier in front of the door is far cheaper than judging behaviour afterwards |
-| Griefing and theft | `ledger` logging and rollback | Official description: Ledger is a comprehensive logging system for Fabric servers. It provides essential tracking for hundreds of in game events — in one line, a server-side logging mod — the Fabric-side counterpart to CoreProtect on the plugin side |
+| Griefing and theft | `ledger` logging and rollback | A server-side logging mod — the Fabric-side counterpart to CoreProtect on the plugin side |
 | The worst case | Scheduled and offsite backups | Being able to roll the whole world back is the last line of defence |
-| Block-eating players and auto bedrock-breaking | `playerOperationLimiter` | Official description: per game tick a player may place 2 blocks or instantly break 1 block, and only one of the two operations per tick, for preventing human bulldozers and player auto bedrock-breaking mods |
+| Block-eating players and auto bedrock-breaking | `playerOperationLimiter` | Per game tick a player may place 2 blocks or instantly break 1 block, and only one of the two operations per tick, for preventing human bulldozers and player auto bedrock-breaking mods |
 
 A few notes:
 
@@ -106,4 +106,4 @@ The general two-layer defence and how to configure it is in [Anti-Cheat and Grie
 
 ---
 
-> The rule names and official descriptions quoted here come from the official Carpet source; the mod summaries come from the Modrinth project page for `ledger` and the official Plusls Carpet Addition (plusls-carpet-addition) documentation of `playerOperationLimiter`. No specific anti-cheat product, implementation or threshold is discussed, and nothing already covered by [Anti-Cheat and Grief Prevention](/tutorials/java/anticheat) is repeated.
+> The rule names quoted here come from the official Carpet source; the mod summaries come from the Modrinth project page for `ledger` and the official Plusls Carpet Addition (plusls-carpet-addition) documentation of `playerOperationLimiter`. No specific anti-cheat product, implementation or threshold is discussed, and nothing already covered by [Anti-Cheat and Grief Prevention](/tutorials/java/anticheat) is repeated.

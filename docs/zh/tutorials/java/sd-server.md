@@ -33,7 +33,7 @@ draft: false
 
 ### MCDR 独立在服务端进程之外
 
-`MCDR`（MCDReforged）是一个 Python 写的服务端管理器，官方描述是：A rewritten version of MCDaemon, a python tool to control your Minecraft server。
+`MCDR`（MCDReforged）是一个 Python 写的服务端管理器。
 
 关键在于**它跑在服务端进程之外**：
 
@@ -66,10 +66,10 @@ Paper 系一类的插件端能把 TPS 优化得很好，插件生态也成熟，
 
 多线程端的思路是把区块或实体处理拆到多个线程上：
 
-| mod | 官方一句话 | 生电视角的问题 |
-| --- | --- | --- |
-| `c2me-fabric` | A Fabric mod designed to improve the chunk performance of Minecraft. | 区块处理并行化，时序与原版不同 |
-| `async` | Async — Minecraft Entity Multi-Threading Mod；improves entity performance by processing entities in parallel across multiple CPU cores and threads | 实体并行处理，机器依赖的更新顺序会变 |
+| mod | 生电视角的问题 |
+| --- | --- |
+| `c2me-fabric` | 区块处理并行化，时序与原版不同 |
+| `async` | 实体并行处理，机器依赖的更新顺序会变 |
 
 红石与生电机器**大量依赖更新顺序与时序**。多线程加速的是吞吐量，代价是把"同一 tick 内谁先谁后"这件事变得不可预测——机器可能偶尔对、偶尔错，这比稳定地慢更难排查。
 
@@ -83,7 +83,7 @@ Paper 系一类的插件端能把 TPS 优化得很好，插件生态也成熟，
 
 - 生电玩家的正常玩法本身就会持续触发反作弊判定——高速移动、大量实体、机器与自动化产生的异常行为，都会被当成可疑；
 - 反作弊通常要求装在**插件端或优化端**上，而这两类核心本身就会改原版行为，与生电目标直接冲突；
-- 原版那套针对快速移动的检测与回拉，Carpet 自己就有开关：`antiCheatDisabled`，官方描述为 Prevents players from rubberbanding when moving too fast（防止玩家因移动过快被回拉）。
+- 原版那套针对快速移动的检测与回拉，Carpet 自己就有开关：`antiCheatDisabled`（防止玩家因移动过快被回拉）。
 
 你真正需要的是**白名单与权限、操作记录与回溯、定期与异地备份**这类替代方案，而不是再加一层会误判的判定。完整论证见 [为什么不推荐反作弊](/tutorials/java/sd-anticheat)，日志与回滚手段见 [反作弊与防破坏](/tutorials/java/anticheat)。
 
@@ -93,9 +93,7 @@ Paper 系一类的插件端能把 TPS 优化得很好，插件生态也成熟，
 
 ### 它是什么
 
-它的同步协议官方描述原文是：
-
-> PCA 同步协议是一个用于在服务端和客户端之间同步 Entity，BlockEntity 的协议，目前被 MasaGadget 用于实现多人游戏容器预览。
+PCA 同步协议是一个用于在服务端和客户端之间同步 Entity，BlockEntity 的协议，目前被 MasaGadget 用于实现多人游戏容器预览。
 
 拆开看三层含义：
 
@@ -118,8 +116,8 @@ Paper 系一类的插件端能把 TPS 优化得很好，插件生态也成熟，
 | --- | --- |
 | `plusls/plusls-carpet-addition`（原始项目） | 2022 年停止更新 |
 | `Nyan-Work/plusls-carpet-addition`（其中一个 fork） | 2024 年停止更新 |
-| `pca-protocol` | 现可用。Modrinth，`fabric`，1.14.4–26.3，作者 fallen-breath。官方描述：A fork of plusls-carpet-addition, provides PCA protocol support to the server. That's everything it does |
-| `pca-protocol-plugin` | 现可用。Modrinth，`bukkit` / `paper` / `purpur` / `spigot`，1.17–1.21.8。官方描述：Add PCA protocol support for the spigot and its optimized/branch server |
+| `pca-protocol` | 现可用。Modrinth，`fabric`，1.14.4–26.3，作者 fallen-breath。|
+| `pca-protocol-plugin` | 现可用。Modrinth，`bukkit` / `paper` / `purpur` / `spigot`，1.17–1.21.8。|
 
 也就是说：原始项目与其 fork 都已停更，**现在能用的是只保留协议功能的两个精简 fork**——`pca-protocol` 给 Fabric 服务端，`pca-protocol-plugin` 给 Spigot 系服务端。
 

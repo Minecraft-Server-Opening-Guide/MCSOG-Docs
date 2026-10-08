@@ -29,16 +29,16 @@ draft: false
 
 Carpet 是 Fabric 服务端 mod，提供规则系统，用 `/carpet <规则名> <值>` 开关原版细节行为。它的规则数量不小，生电服真正要关心的通常是下面这些：
 
-| 规则 | 官方描述（原文） | 性质 |
-| --- | --- | --- |
-| `optimizedTNT` | TNT causes less lag when exploding in the same spot and in liquids | 纯优化 |
-| `lagFreeSpawning` | Spawning requires much less CPU and Memory | 纯优化 |
-| `fastRedstoneDust` | Lag optimizations for redstone dust | 纯优化，但牵涉红石，改完要复验机器 |
-| `maxEntityCollisions` | Customizable maximal entity collision limits, 0 for no limits | 上限类调参，会改变实体挤在一起时的表现 |
-| `movableBlockEntities` | Pistons can push block entities, like hoppers, chests etc. | **改变原版行为**：给了原本没有的能力 |
-| `commandTick` | Enables `/tick` command to control game clocks | 调试入口，不是优化项 |
-| `tntDoNotUpdate` | TNT doesn't update when placed against a power source | **改变原版行为**，只在测试用 |
-| `explosionNoBlockDamage` | Explosions won't destroy blocks | **改变原版行为**，只在测试用 |
+| 规则 | 性质 |
+| --- | --- |
+| `optimizedTNT` | 纯优化 |
+| `lagFreeSpawning` | 纯优化 |
+| `fastRedstoneDust` | 纯优化，但牵涉红石，改完要复验机器 |
+| `maxEntityCollisions` | 上限类调参，会改变实体挤在一起时的表现 |
+| `movableBlockEntities` | **改变原版行为**：给了原本没有的能力 |
+| `commandTick` | 调试入口，不是优化项 |
+| `tntDoNotUpdate` | **改变原版行为**，只在测试用 |
+| `explosionNoBlockDamage` | **改变原版行为**，只在测试用 |
 
 按性质分档处理：
 
@@ -58,13 +58,13 @@ Carpet 是 Fabric 服务端 mod，提供规则系统，用 `/carpet <规则名> 
 
 优化 mod 的配置项大多是**给不同子系统准备的**，所以要先知道每个 mod 负责哪一块，再决定动谁：
 
-| mod | 负责的方向 | 官方一句话 |
-| --- | --- | --- |
-| `ferrite-core` | 内存占用 | Memory usage optimizations |
-| `modernfix` | 多合一：性能、内存、同时修 bug | All-in-one mod that improves performance, reduces memory usage, and fixes many bugs |
-| `c2me-fabric` | 区块性能 | A Fabric mod designed to improve the chunk performance of Minecraft. |
-| `async` | 实体多线程 | Async — Minecraft Entity Multi-Threading Mod；improves entity performance by processing entities in parallel across multiple CPU cores and threads |
-| `spark` | 测量工具（profiler），不是优化 mod | 性能分析工具 |
+| mod | 负责的方向 |
+| --- | --- |
+| `ferrite-core` | 内存占用 |
+| `modernfix` | 多合一：性能、内存、同时修 bug |
+| `c2me-fabric` | 区块性能 |
+| `async` | 实体多线程 |
+| `spark` | 测量工具（profiler），不是优化 mod |
 
 **本篇刻意不写任何具体配置字段名与默认值**：这些 mod 的选项在版本之间会变，抄来的字段名可能已经不存在，照抄默认值更可能直接把行为改掉。要调就在各 mod 自己的官方说明里查。
 
@@ -121,4 +121,4 @@ Carpet 是 Fabric 服务端 mod，提供规则系统，用 `/carpet <规则名> 
 
 ---
 
-> 本篇的规则名、规则官方描述与 mod 支持版本均取自 Carpet 官方源码、Modrinth 官方数据与各 mod 官方 README；具体配置项以各 mod 当前版本的官方说明为准。
+> 本篇的规则名与 mod 支持版本均取自 Carpet 官方源码、Modrinth 官方数据与各 mod 官方 README；具体配置项以各 mod 当前版本的官方说明为准。

@@ -39,13 +39,13 @@ So the question is never "can it be built", but "can you clean up after it fails
 
 ## 2. The Official Rules That Relate Directly to World Eaters
 
-Carpet toggles fine-grained vanilla behaviour with `/carpet <rule> <value>`. Only the three rules below relate directly to world eaters; the official descriptions are quoted verbatim:
+Carpet toggles fine-grained vanilla behaviour with `/carpet <rule> <value>`. Only the three rules below relate directly to world eaters:
 
-| Rule | Official description | Effect on vanilla behaviour |
-| --- | --- | --- |
-| `optimizedTNT` | TNT causes less lag when exploding in the same spot and in liquids | Does not change the blast itself; it only makes explosions in the same spot and in liquids cheaper |
-| `tntDoNotUpdate` | TNT doesn't update when placed against a power source | **Changes vanilla behaviour**: TNT placed against a power source no longer updates |
-| `explosionNoBlockDamage` | Explosions won't destroy blocks | **Changes vanilla behaviour**: explosions stop destroying blocks |
+| Rule | Effect on vanilla behaviour |
+| --- | --- |
+| `optimizedTNT` | Does not change the blast itself; it only makes explosions in the same spot and in liquids cheaper |
+| `tntDoNotUpdate` | **Changes vanilla behaviour**: TNT placed against a power source no longer updates |
+| `explosionNoBlockDamage` | **Changes vanilla behaviour**: explosions stop destroying blocks |
 
 How to use them:
 
@@ -60,7 +60,7 @@ How to use them:
 
 **"Qiemen" (cutting doors) is the community nickname for update suppression as a class of operations.** It is not one block or one machine; it is a whole family of techniques that exploit update suppression.
 
-Official Carpet exposes a controllable entry point for it: the rule is named `updateSuppressionBlock`, and its official description says that **placing an activator rail on top of a barrier block will fill the neighbour updater stack when the rail turns over.**
+Official Carpet exposes a controllable entry point for it: the rule is named `updateSuppressionBlock`, : **placing an activator rail on top of a barrier block fills the neighbour updater stack when the rail turns over.**
 
 Two things to remember:
 
@@ -141,4 +141,4 @@ Before a machine moves earth, make sure you can get your world back: see [Protec
 
 ---
 
-> Every rule name, official description, mod name and version range quoted here follows the official Carpet, Carpet AMS Addition and Carpet TIS Addition sources, and the Modrinth project pages of the listed mods; construction details and machine designs are outside the scope of this article.
+> Every rule name, mod name and version range quoted here follows the official Carpet, Carpet AMS Addition and Carpet TIS Addition sources, and the Modrinth project pages of the listed mods; construction details and machine designs are outside the scope of this article.

@@ -39,13 +39,13 @@ draft: false
 
 ## 二、与世吞直接相关的官方规则
 
-Carpet 用 `/carpet <规则名> <值>` 开关原版细节行为。与世吞直接相关的只有下面三条，官方描述照抄如下：
+Carpet 用 `/carpet <规则名> <值>` 开关原版细节行为。与世吞直接相关的只有下面三条：
 
-| 规则 | 官方描述 | 对原版行为的影响 |
-| --- | --- | --- |
-| `optimizedTNT` | TNT causes less lag when exploding in the same spot and in liquids | 不改变爆炸效果本身，只是让同位置与液体中的爆炸更省资源 |
-| `tntDoNotUpdate` | TNT doesn't update when placed against a power source | **改变原版行为**：TNT 靠着电源放置时不再被更新 |
-| `explosionNoBlockDamage` | Explosions won't destroy blocks | **改变原版行为**：爆炸不再破坏方块 |
+| 规则 | 对原版行为的影响 |
+| --- | --- |
+| `optimizedTNT` | 不改变爆炸效果本身，只是让同位置与液体中的爆炸更省资源 |
+| `tntDoNotUpdate` | **改变原版行为**：TNT 靠着电源放置时不再被更新 |
+| `explosionNoBlockDamage` | **改变原版行为**：爆炸不再破坏方块 |
 
 使用口径：
 
@@ -60,7 +60,7 @@ Carpet 用 `/carpet <规则名> <值>` 开关原版细节行为。与世吞直�
 
 **"切门"是社区对"更新抑制（update suppression）"这一类操作的俗称。**它指的不是某个方块、某个机器，而是一整类利用更新抑制现象的技巧。
 
-官方 Carpet 给了它一个可控入口，规则名是 `updateSuppressionBlock`，官方描述的含义是：**在屏障方块上放激活铁轨，铁轨转向时会填满邻居更新栈。**
+官方 Carpet 给了它一个可控入口，规则名是 `updateSuppressionBlock`：**在屏障方块上放激活铁轨，铁轨转向时会填满邻居更新栈。**
 
 这里有两个必须记住的点：
 
@@ -141,4 +141,4 @@ Carpet 用 `/carpet <规则名> <值>` 开关原版细节行为。与世吞直�
 
 ---
 
-> 本篇引用的规则名、官方描述、mod 名称与版本区间，均以 Carpet 及 Carpet AMS Addition、Carpet TIS Addition 的官方源码与说明，以及相关项目在 Modrinth 的官方条目为准；具体造法与机器设计不在本篇范围内。
+> 本篇引用的规则名、mod 名称与版本区间，均以 Carpet 及 Carpet AMS Addition、Carpet TIS Addition 的官方源码与说明，以及相关项目在 Modrinth 的官方条目为准；具体造法与机器设计不在本篇范围内。

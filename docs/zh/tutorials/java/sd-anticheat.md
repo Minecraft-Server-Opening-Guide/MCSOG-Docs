@@ -13,7 +13,7 @@ draft: false
 
 反作弊在普通生存服上是加分项，在生电服上却常常是负收益。原因不是"反作弊不好用"，而是**生电玩家的正常玩法本身就会持续触发反作弊判定**。
 
-还有一个更直接的事实：官方 Carpet 自己就提供了 `antiCheatDisabled` 这条规则，官方描述是 Prevents players from rubberbanding when moving too fast。官方在规则系统里给出这个开关，说明生电服真正需要的是**关掉原版那套针对快速移动的回拉检测**，而不是再加一层判定。
+还有一个更直接的事实：官方 Carpet 自己就提供了 `antiCheatDisabled` 这条规则（作用是防止玩家因移动过快被回拉）。官方在规则系统里给出这个开关，说明生电服真正需要的是**关掉原版那套针对快速移动的回拉检测**，而不是再加一层判定。
 
 这篇只谈结论与替代方案：为什么冲突、误判从哪来、以及不加反作弊的话你该做什么。[反作弊与防破坏](/tutorials/java/anticheat) 讲的是通用的两层防护与配置方法，本篇不重复那些内容。
 
@@ -21,9 +21,9 @@ draft: false
 
 先把最有说服力的一条事实摆出来。
 
-| 规则 | 官方描述 | 含义 |
-| --- | --- | --- |
-| `antiCheatDisabled` | Prevents players from rubberbanding when moving too fast | 关掉它，玩家因移动过快被回拉的现象就不再发生 |
+| 规则 | 含义 |
+| --- | --- |
+| `antiCheatDisabled` | 关掉它，玩家因移动过快被回拉的现象就不再发生 |
 
 这条规则值得逐句读：
 
@@ -68,9 +68,9 @@ draft: false
 | 想防的事 | 该用的手段 | 说明 |
 | --- | --- | --- |
 | 陌生人乱来 | 白名单与权限 | 把门槛放在进服之前，比事后判定便宜得多 |
-| 破坏与偷窃 | `ledger` 记录与回溯 | 官方描述：Ledger is a comprehensive logging system for Fabric servers. It provides essential tracking for hundreds of in game events；一句话，它是服务端侧的记录 mod，对标插件端的 CoreProtect |
+| 破坏与偷窃 | `ledger` 记录与回溯 | 它是服务端侧的记录 mod，对标插件端的 CoreProtect |
 | 最坏情况 | 定期与异地备份 | 出事能整体回档，这是最后一道防线 |
-| 人肉盾构机、自动破基岩一类 | `playerOperationLimiter` | 官方描述：每 gt 玩家可以放置 2 个方块，秒破 1 个方块，这两个操作每 gt 只能做一种，用于防人肉盾构机和玩家自动破基岩 mod |
+| 人肉盾构机、自动破基岩一类 | `playerOperationLimiter` | 每 gt 玩家可以放置 2 个方块，秒破 1 个方块，这两个操作每 gt 只能做一种，用于防人肉盾构机和玩家自动破基岩 mod |
 
 几点补充：
 
@@ -106,4 +106,4 @@ draft: false
 
 ---
 
-> 本篇引用的规则名与官方描述来自 Carpet 官方源码，mod 定位与官方描述来自 `ledger` 的 Modrinth 官方条目，以及 Plusls Carpet Addition（plusls-carpet-addition）官方说明中的 `playerOperationLimiter`；本篇不涉及任何具体反作弊产品的实现与阈值，也不复述 [反作弊与防破坏](/tutorials/java/anticheat) 已有的内容。
+> 本篇引用的规则名来自 Carpet 官方源码，mod 定位来自 `ledger` 的 Modrinth 官方条目，以及 Plusls Carpet Addition（plusls-carpet-addition）官方说明中的 `playerOperationLimiter`；本篇不涉及任何具体反作弊产品的实现与阈值，也不复述 [反作弊与防破坏](/tutorials/java/anticheat) 已有的内容。

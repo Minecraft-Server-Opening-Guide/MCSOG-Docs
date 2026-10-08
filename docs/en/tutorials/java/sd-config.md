@@ -29,16 +29,16 @@ The first layer is where people get caught out: **Carpet rule names all sound li
 
 Carpet is a Fabric server mod that provides a rule system; `/carpet <rule> <value>` toggles individual vanilla details on and off. The rule set is large, but a technical server usually cares about these:
 
-| Rule | Official description (verbatim) | Nature |
-| --- | --- | --- |
-| `optimizedTNT` | TNT causes less lag when exploding in the same spot and in liquids | Pure optimisation |
-| `lagFreeSpawning` | Spawning requires much less CPU and Memory | Pure optimisation |
-| `fastRedstoneDust` | Lag optimizations for redstone dust | Pure optimisation, but it touches redstone, so re-verify machines |
-| `maxEntityCollisions` | Customizable maximal entity collision limits, 0 for no limits | A limit to tune; it changes how entities behave when packed together |
-| `movableBlockEntities` | Pistons can push block entities, like hoppers, chests etc. | **Changes vanilla behaviour**: it grants an ability vanilla does not have |
-| `commandTick` | Enables `/tick` command to control game clocks | A debugging entry point, not an optimisation |
-| `tntDoNotUpdate` | TNT doesn't update when placed against a power source | **Changes vanilla behaviour**, testing only |
-| `explosionNoBlockDamage` | Explosions won't destroy blocks | **Changes vanilla behaviour**, testing only |
+| Rule | Nature |
+| --- | --- |
+| `optimizedTNT` | Pure optimisation |
+| `lagFreeSpawning` | Pure optimisation |
+| `fastRedstoneDust` | Pure optimisation, but it touches redstone, so re-verify machines |
+| `maxEntityCollisions` | A limit to tune; it changes how entities behave when packed together |
+| `movableBlockEntities` | **Changes vanilla behaviour**: it grants an ability vanilla does not have |
+| `commandTick` | A debugging entry point, not an optimisation |
+| `tntDoNotUpdate` | **Changes vanilla behaviour**, testing only |
+| `explosionNoBlockDamage` | **Changes vanilla behaviour**, testing only |
 
 Handle them in tiers:
 
@@ -58,13 +58,13 @@ Players cannot tell whether a broken machine is their own fault or the result of
 
 Most options in performance mods belong to different subsystems, so first know which area each mod owns, then decide what to touch:
 
-| Mod | Area | Official one-liner |
-| --- | --- | --- |
-| `ferrite-core` | Memory usage | Memory usage optimizations |
-| `modernfix` | All-in-one: performance, memory, and many bug fixes | All-in-one mod that improves performance, reduces memory usage, and fixes many bugs |
-| `c2me-fabric` | Chunk performance | A Fabric mod designed to improve the chunk performance of Minecraft. |
-| `async` | Entity multi-threading | Async — Minecraft Entity Multi-Threading Mod; improves entity performance by processing entities in parallel across multiple CPU cores and threads |
-| `spark` | A measurement tool (profiler), not an optimisation mod | A profiler (performance analysis tool) |
+| Mod | Area |
+| --- | --- |
+| `ferrite-core` | Memory usage |
+| `modernfix` | All-in-one: performance, memory, and many bug fixes |
+| `c2me-fabric` | Chunk performance |
+| `async` | Entity multi-threading |
+| `spark` | A measurement tool (profiler), not an optimisation mod |
 
 **This article deliberately names no configuration fields and no defaults.** These options change between versions, a field name copied from an old guide may no longer exist, and copying an old default can change behaviour outright. Look any option up in that mod's own documentation.
 
@@ -121,4 +121,4 @@ The full rule list and the add-on packs (including crash and update-suppression 
 
 ---
 
-> Rule names, official rule descriptions and mod version ranges in this article come from Carpet's official source, official Modrinth data and the official READMEs of the mods; for configuration, follow each mod's documentation for the version you run.
+> Rule names and mod version ranges in this article come from Carpet's official source, official Modrinth data and the official READMEs of the mods; for configuration, follow each mod's documentation for the version you run.

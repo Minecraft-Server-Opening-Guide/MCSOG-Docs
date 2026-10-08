@@ -19,20 +19,20 @@ For the configuration side of optimisation, see [Performance Optimisation](/tuto
 
 ## 1. All Ten Mods at a Glance
 
-Loaders, supported versions and downloads below come from the official Modrinth project entries; the one-line description is the project description or a direct translation of it.
+Loaders, supported versions and downloads below come from the official Modrinth project entries.
 
-| Mod | Loaders | Supported versions | Downloads (approx.) | Official one-liner |
-| --- | --- | --- | --- | --- |
-| `lithium` | fabric, neoforge, quilt | 1.16.2–26.3 | 133.7 million | General server/client performance optimisation |
-| `ferrite-core` | fabric, forge, neoforge, quilt | 1.16.5–26.3 | 157.4 million | Memory usage optimizations |
-| `krypton` | fabric | 1.16.2–26.3 | 43.04 million | A mod to optimize the Minecraft networking stack |
-| `c2me-fabric` | fabric | 1.17.1–26.4-snapshot-3 | 39.18 million | A Fabric mod designed to improve the chunk performance of Minecraft. |
-| `modernfix` | fabric, forge, neoforge | 1.16.4–26.1.2 | 80.23 million | All-in-one mod that improves performance, reduces memory usage, and fixes many bugs |
-| `memoryleakfix` | fabric, forge, quilt | 1.14.4–1.20.4 | 38.02 million | Fixes memory leaks |
-| `starlight` | fabric | 1.17–1.20.4 | 16.06 million | A rewrite of the lighting engine (Fabric) |
-| `async` | fabric, neoforge, quilt | (no fixed range on the official entry) | 717 thousand | improves entity performance by processing entities in parallel across multiple CPU cores and threads |
-| `spark` | fabric, forge, neoforge, quilt | 1.16.5–26.3 | 23.17 million | A performance profiling tool (profiler) |
-| `chunky` | bukkit, fabric, folia, forge | 1.13.2–26.3 | 18.88 million | Chunk pre-generation |
+| Mod | Loaders | Supported versions | Downloads (approx.) |
+| --- | --- | --- | --- |
+| `lithium` | fabric, neoforge, quilt | 1.16.2–26.3 | 133.7 million |
+| `ferrite-core` | fabric, forge, neoforge, quilt | 1.16.5–26.3 | 157.4 million |
+| `krypton` | fabric | 1.16.2–26.3 | 43.04 million |
+| `c2me-fabric` | fabric | 1.17.1–26.4-snapshot-3 | 39.18 million |
+| `modernfix` | fabric, forge, neoforge | 1.16.4–26.1.2 | 80.23 million |
+| `memoryleakfix` | fabric, forge, quilt | 1.14.4–1.20.4 | 38.02 million |
+| `starlight` | fabric | 1.17–1.20.4 | 16.06 million |
+| `async` | fabric, neoforge, quilt | (no fixed range on the official entry) | 717 thousand |
+| `spark` | fabric, forge, neoforge, quilt | 1.16.5–26.3 | 23.17 million |
+| `chunky` | bukkit, fabric, folia, forge | 1.13.2–26.3 | 18.88 million |
 
 Two things to keep in mind when reading that table:
 
@@ -43,12 +43,12 @@ Two things to keep in mind when reading that table:
 
 This group is behaviour-independent: it optimises memory usage, the startup path, your ability to observe the server, and chunk generation — not the game's logic or its ordering. On a technical server it is the cheapest group by far.
 
-| Mod | Official one-liner | Why it is safe |
-| --- | --- | --- |
-| `ferrite-core` | Memory usage optimizations | It works at the memory-usage layer and does not intervene in tick logic |
-| `modernfix` | All-in-one mod that improves performance, reduces memory usage, and fixes many bugs | It covers performance, memory and bug fixes rather than rewriting one mechanism |
-| `spark` | A performance profiling tool (profiler) | It only observes; it does not modify game behaviour |
-| `chunky` | Chunk pre-generation | Chunks are generated ahead of time instead of while players explore |
+| Mod | Why it is safe |
+| --- | --- |
+| `ferrite-core` | It works at the memory-usage layer and does not intervene in tick logic |
+| `modernfix` | It covers performance, memory and bug fixes rather than rewriting one mechanism |
+| `spark` | It only observes; it does not modify game behaviour |
+| `chunky` | Chunks are generated ahead of time instead of while players explore |
 
 A few notes:
 
@@ -84,19 +84,19 @@ So the correct use of `starlight` is: **only consider it if you are deliberately
 
 This is the group a technical server should actually stop and think about. What they have in common is that they **change when events happen or in what order**, and a machine's correctness often rests on exactly that order.
 
-| Mod | Official one-liner | Where the risk is |
-| --- | --- | --- |
-| `lithium` | General server/client performance optimisation | Wide coverage: it touches logic paths such as mob spawning, AI and block behaviour. "General optimisation" is not the same as "harmless for you" |
-| `krypton` | A mod to optimize the Minecraft networking stack | It rewrites the networking stack. The official README states plainly that **the author gives no guarantee about its stability or its compatibility with other mods** |
-| `c2me-fabric` | A Fabric mod designed to improve the chunk performance of Minecraft. | Chunk processing becomes multi-threaded, so the timing is no longer single-threaded timing |
-| `async` | improves entity performance by processing entities in parallel across multiple CPU cores and threads | Entity processing is parallelised across CPU cores and threads, so the order in which entities are handled changes |
+| Mod | Where the risk is |
+| --- | --- |
+| `lithium` | Wide coverage: it touches logic paths such as mob spawning, AI and block behaviour. "General optimisation" is not the same as "harmless for you" |
+| `krypton` | It rewrites the networking stack. The official README states plainly that **the author gives no guarantee about its stability or its compatibility with other mods** |
+| `c2me-fabric` | Chunk processing becomes multi-threaded, so the timing is no longer single-threaded timing |
+| `async` | Entity processing is parallelised across CPU cores and threads, so the order in which entities are handled changes |
 
 One by one:
 
 - **`lithium`** is the most frequently recommended mod in this group and therefore the easiest to trust too far. It is described as a general optimisation, but "tries not to change behaviour" and "never changes behaviour" are two different claims. **Test it on your machines before you commit** — especially devices that are sensitive to spawning, AI or block updates.
 - **`krypton`** takes the clearest position of the four: its official README states outright that no guarantee is given about stability or compatibility with other mods. That does not make it unusable; it means that if something breaks, the author is not going to be your safety net. On a public server that is a real trade-off.
-- **`c2me-fabric`** is described as improving chunk performance, which means parallelising chunk work. Threading changes when chunks load, generate and unload, and **chunk-loaded areas and the parts of a machine that span chunk borders are exactly what breaks first**.
-- **`async`** improves entity performance by processing entities in parallel across multiple CPU cores and threads. Parallel entity handling means ticks no longer begin strictly in sequence, and machines that depend on entity order or on collision timing are the most fragile kind there is.
+- **`c2me-fabric`** parallelises chunk work. Threading changes when chunks load, generate and unload, and **chunk-loaded areas and the parts of a machine that span chunk borders are exactly what breaks first**.
+- **`async`** processes entities in parallel across multiple CPU cores and threads. Parallel entity handling means ticks no longer begin strictly in sequence, and machines that depend on entity order or on collision timing are the most fragile kind there is.
 
 The summary of this section: **the gains from these four are real, and so is the risk of a machine quietly breaking — which is why the only safe method is to test on your machines first.**
 

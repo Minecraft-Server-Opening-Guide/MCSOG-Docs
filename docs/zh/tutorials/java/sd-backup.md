@@ -51,11 +51,9 @@ MCDR 官方插件目录里**确实存在**的备份类插件目录名，可以�
 
 ## 三、`Ledger`：先查清"发生了什么"
 
-`Ledger` 是服务端日志 mod（loaders：`fabric`、`quilt`；支持版本 `1.17-rc1` 至 `26.3`；一句话：A serverside logging mod）。它的官方描述原文是：
+`Ledger` 是服务端日志 mod（loaders：`fabric`、`quilt`；支持版本 `1.17-rc1` 至 `26.3`）。
 
-> Ledger is a comprehensive logging system for Fabric servers. It provides essential tracking for hundreds of in game events.
-
-在插件端，同类工具里最出名的是 **CoreProtect**（loaders：`bukkit`、`folia`、`paper`、`purpur`、`spigot`；支持版本 `1.14.1` 至 `26.2`；官方定位是数据记录与防破坏工具，支持回滚与恢复）。`Ledger` 可以理解为 Fabric 生态里**对标 CoreProtect 的那一套**：同样记录方块与容器的操作、同样能按时间与位置回查；区别是 CoreProtect 跑在插件端且自带回滚，而 `Ledger` 只负责记录与查询。
+在插件端，同类工具里最出名的是 **CoreProtect**（loaders：`bukkit`、`folia`、`paper`、`purpur`、`spigot`；支持版本 `1.14.1` 至 `26.2`；它是插件端的数据记录与防破坏工具，支持回滚与恢复）。`Ledger` 可以理解为 Fabric 生态里**对标 CoreProtect 的那一套**：同样记录方块与容器的操作、同样能按时间与位置回查；区别是 CoreProtect 跑在插件端且自带回滚，而 `Ledger` 只负责记录与查询。
 
 它和备份回答的是两个不同的问题，不能互相替代：
 
@@ -131,4 +129,4 @@ MCDR 官方插件目录里**确实存在**的备份类插件目录名，可以�
 
 ---
 
-> 本篇的插件目录名、mod 支持版本与官方描述均取自 MCDR 官方插件目录与 Modrinth 官方数据；各插件的具体功能与配置以其自身说明为准。
+> 本篇的插件目录名与 mod 支持版本均取自 MCDR 官方插件目录与 Modrinth 官方数据；各插件的具体功能与配置以其自身说明为准。

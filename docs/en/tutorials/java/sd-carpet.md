@@ -44,36 +44,36 @@ The rule names and English descriptions below are quoted from Carpet's official 
 
 ### Performance and entities
 
-| Rule | Official description (verbatim) | Explanation |
-| --- | --- | --- |
-| `optimizedTNT` | TNT causes less lag when exploding in the same spot and in liquids | TNT exploding in the same spot and in liquids causes less lag |
-| `maxEntityCollisions` | Customizable maximal entity collision limits, 0 for no limits | Customisable cap on entity collisions; 0 means no limit |
-| `lagFreeSpawning` | Spawning requires much less CPU and Memory | Mob spawning uses far less CPU and memory |
-| `fastRedstoneDust` | Lag optimizations for redstone dust | Lag optimisations aimed at redstone dust |
-| `movableBlockEntities` | Pistons can push block entities, like hoppers, chests etc. | Pistons can push block entities such as hoppers and chests |
+| Rule | Explanation |
+| --- | --- |
+| `optimizedTNT` | TNT exploding in the same spot and in liquids causes less lag |
+| `maxEntityCollisions` | Customisable cap on entity collisions; 0 means no limit |
+| `lagFreeSpawning` | Mob spawning uses far less CPU and memory |
+| `fastRedstoneDust` | Lag optimisations aimed at redstone dust |
+| `movableBlockEntities` | Pistons can push block entities such as hoppers and chests |
 
 ### Behaviour changes (leave these off on a live server by default)
 
-| Rule | Official description (verbatim) | Explanation |
-| --- | --- | --- |
-| `tntDoNotUpdate` | TNT doesn't update when placed against a power source | TNT placed against a power source is not updated |
-| `explosionNoBlockDamage` | Explosions won't destroy blocks | Explosions do not destroy blocks |
-| `antiCheatDisabled` | Prevents players from rubberbanding when moving too fast | Stops players being rubberbanded for moving too fast |
-| `updateSuppressionBlock` | Placing an activator rail on top of a barrier block will fill the neighbor updater stack when the rail turns o… | Placing an activator rail on top of a barrier block fills the neighbour update stack when the rail turns |
-| `stackableShulkerBoxes` | Empty shulker boxes can stack when thrown on the ground. | Empty shulker boxes stack when thrown on the ground |
+| Rule | Explanation |
+| --- | --- |
+| `tntDoNotUpdate` | TNT placed against a power source is not updated |
+| `explosionNoBlockDamage` | Explosions do not destroy blocks |
+| `antiCheatDisabled` | Stops players being rubberbanded for moving too fast |
+| `updateSuppressionBlock` | Placing an activator rail on top of a barrier block fills the neighbour update stack when the rail turns |
+| `stackableShulkerBoxes` | Empty shulker boxes stack when thrown on the ground |
 
 `updateSuppressionBlock` is the official, controllable entry point for update suppression (known in the community as "cutting doors"); the crash-prevention rules that go with it are in section 6.
 
 ### Counting and debugging
 
-| Rule | Official description (verbatim) | Explanation |
-| --- | --- | --- |
-| `hopperCounters` | hoppers pointing to wool will count items passing through them | Hoppers pointing at wool count the items passing through them |
-| `commandTick` | Enables `/tick` command to control game clocks | Enables the `/tick` command to control the game clocks |
+| Rule | Explanation |
+| --- | --- |
+| `hopperCounters` | Hoppers pointing at wool count the items passing through them |
+| `commandTick` | Enables the `/tick` command to control the game clocks |
 
-### Named rules with no quotable description
+### Named rules without a description
 
-The following rules do exist, but their official descriptions are not quoted here; check your own version's source or the in-game `/carpet` output for their exact behaviour:
+The following rules do exist, but only their names are listed here; check your own version's source or the in-game `/carpet` output for their exact behaviour:
 
 `creativeNoClip`, `renewableSponges`, `persistentParrots`, `flippinCactus`, `xpNoCooldown`, `smoothClientAnimations`, `tntPrimerMomentumRemoved`, `commandPlayer`.
 
@@ -83,7 +83,7 @@ Carpet itself only carries the main rule set; extra features come from add-ons. 
 
 | Name | Repository | Supported versions | Version entries | Purpose |
 | --- | --- | --- | --- | --- |
-| Carpet Extra | `gnembon/carpet-extra` | 1.14.4–26.2 | 87 | Official description: Extra Features for Carpet Mod; new dispenser behaviour, new renewable sources and more |
+| Carpet Extra | `gnembon/carpet-extra` | 1.14.4–26.2 | 87 | New dispenser behaviour, new renewable sources and more |
 | Carpet TIS Addition | `TISUnion/Carpet-TIS-Addition` | 1.14.4–26.3 | 141 | A Fabric Carpet extension pack |
 | Carpet AMS Addition | `Minecraft-AMS/Carpet-AMS-Addition` | 1.16.4–26.3 | 49 | Website `https://carpet.mcams.club` |
 | Carpet Org Addition | `fcsailboat/Carpet-Org-Addition` | 1.19.4–26.3 | 34 | A Carpet extension pack |
@@ -144,4 +144,4 @@ Once the rules are set, read the risk control before any machine moves earth: se
 
 ---
 
-> Rule names and official descriptions in this article come from Carpet's official source, and the add-on repositories, supported versions and version counts come from official Modrinth data; whether a rule exists and how it behaves is whatever the in-game `/carpet` output of your version says.
+> Rule names in this article come from Carpet's official source, and the add-on repositories, supported versions and version counts come from official Modrinth data; whether a rule exists and how it behaves is whatever the in-game `/carpet` output of your version says.

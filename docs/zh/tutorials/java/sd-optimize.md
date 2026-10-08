@@ -19,20 +19,20 @@ draft: false
 
 ## 一、全部 10 个 mod 一览
 
-下面的 loaders、支持版本与下载量来自 Modrinth 官方条目，官方一句话为项目页描述原文或其直译。
+下面的 loaders、支持版本与下载量来自 Modrinth 官方条目。
 
-| mod | loaders | 支持版本 | 下载量（约） | 官方一句话 |
-| --- | --- | --- | --- | --- |
-| `lithium` | fabric、neoforge、quilt | 1.16.2–26.3 | 1.337 亿 | 通用服务端/客户端性能优化 |
-| `ferrite-core` | fabric、forge、neoforge、quilt | 1.16.5–26.3 | 1.574 亿 | Memory usage optimizations |
-| `krypton` | fabric | 1.16.2–26.3 | 4304 万 | A mod to optimize the Minecraft networking stack |
-| `c2me-fabric` | fabric | 1.17.1–26.4-snapshot-3 | 3918 万 | A Fabric mod designed to improve the chunk performance of Minecraft. |
-| `modernfix` | fabric、forge、neoforge | 1.16.4–26.1.2 | 8023 万 | All-in-one mod that improves performance, reduces memory usage, and fixes many bugs |
-| `memoryleakfix` | fabric、forge、quilt | 1.14.4–1.20.4 | 3802 万 | 修内存泄漏 |
-| `starlight` | fabric | 1.17–1.20.4 | 1606 万 | 重写光照引擎（Fabric 版） |
-| `async` | fabric、neoforge、quilt | （官方条目未给出固定区间） | 71.7 万 | improves entity performance by processing entities in parallel across multiple CPU cores and threads |
-| `spark` | fabric、forge、neoforge、quilt | 1.16.5–26.3 | 2317 万 | 性能分析工具（profiler） |
-| `chunky` | bukkit、fabric、folia、forge | 1.13.2–26.3 | 1888 万 | 区块预生成 |
+| mod | loaders | 支持版本 | 下载量（约） |
+| --- | --- | --- | --- |
+| `lithium` | fabric、neoforge、quilt | 1.16.2–26.3 | 1.337 亿 |
+| `ferrite-core` | fabric、forge、neoforge、quilt | 1.16.5–26.3 | 1.574 亿 |
+| `krypton` | fabric | 1.16.2–26.3 | 4304 万 |
+| `c2me-fabric` | fabric | 1.17.1–26.4-snapshot-3 | 3918 万 |
+| `modernfix` | fabric、forge、neoforge | 1.16.4–26.1.2 | 8023 万 |
+| `memoryleakfix` | fabric、forge、quilt | 1.14.4–1.20.4 | 3802 万 |
+| `starlight` | fabric | 1.17–1.20.4 | 1606 万 |
+| `async` | fabric、neoforge、quilt | （官方条目未给出固定区间） | 71.7 万 |
+| `spark` | fabric、forge、neoforge、quilt | 1.16.5–26.3 | 2317 万 |
+| `chunky` | bukkit、fabric、folia、forge | 1.13.2–26.3 | 1888 万 |
 
 读这张表时有两点要注意：
 
@@ -43,12 +43,12 @@ draft: false
 
 这一类是"行为无关"的：它们优化的地方不是游戏的逻辑与顺序，而是内存占用、启动过程、观测手段与区块生成。对生电服来说，这一类的代价最低。
 
-| mod | 官方一句话 | 可以放心装的理由 |
-| --- | --- | --- |
-| `ferrite-core` | Memory usage optimizations | 动的是内存占用这一层，不介入 tick 逻辑 |
-| `modernfix` | All-in-one mod that improves performance, reduces memory usage, and fixes many bugs | 覆盖面是性能、内存与 bug 修复，不是单一机制的改写 |
-| `spark` | 性能分析工具（profiler） | 它只负责观测，不修改游戏行为 |
-| `chunky` | 区块预生成 | 提前把区块生成完，避免玩家跑图时边跑边生成 |
+| mod | 可以放心装的理由 |
+| --- | --- |
+| `ferrite-core` | 动的是内存占用这一层，不介入 tick 逻辑 |
+| `modernfix` | 覆盖面是性能、内存与 bug 修复，不是单一机制的改写 |
+| `spark` | 它只负责观测，不修改游戏行为 |
+| `chunky` | 提前把区块生成完，避免玩家跑图时边跑边生成 |
 
 几点补充：
 
@@ -84,21 +84,21 @@ draft: false
 
 这一类是生电服真正要停下来想一想的。它们的共同点是**改变了事件发生的顺序或时机**，而机器的正确性往往正建立在那个顺序上。
 
-| mod | 官方一句话 | 风险在哪 |
-| --- | --- | --- |
-| `lithium` | 通用服务端/客户端性能优化 | 覆盖范围广，会动到刷怪、AI、方块行为等逻辑路径；"通用优化"不等于"对你无害" |
-| `krypton` | A mod to optimize the Minecraft networking stack | 改的是网络栈。官方 README 明确声明：**作者不对其稳定性、与其他 mod 的兼容性作任何保证** |
-| `c2me-fabric` | A Fabric mod designed to improve the chunk performance of Minecraft. | 区块处理多线程化，时序与单线程不再一样 |
-| `async` | improves entity performance by processing entities in parallel across multiple CPU cores and threads | 实体处理并行化（跨多个 CPU 核心与线程），实体的处理顺序随之改变 |
+| mod | 风险在哪 |
+| --- | --- |
+| `lithium` | 覆盖范围广，会动到刷怪、AI、方块行为等逻辑路径；"通用优化"不等于"对你无害" |
+| `krypton` | 改的是网络栈。官方 README 明确声明：**作者不对其稳定性、与其他 mod 的兼容性作任何保证** |
+| `c2me-fabric` | 区块处理多线程化，时序与单线程不再一样 |
+| `async` | 实体处理并行化（跨多个 CPU 核心与线程），实体的处理顺序随之改变 |
 
 逐条说明：
 
 - **`lithium`** 是这一类里最常被推荐的，也是最容易让人放松警惕的：它被描述为通用优化，但"尽量不改变行为"与"绝对不改变行为"是两回事。**装之前先在机器上实测**——尤其是那些对刷怪、AI、方块更新敏感的装置。
 - **`krypton`** 的立场最明确：官方 README 直接写明不对稳定性与兼容性作任何保证。这不是"不能用"，而是"出问题时不要指望作者兜底"。用在公开服上要权衡。
-- **`c2me-fabric`** 的官方描述指向区块性能，也就是把区块处理并行化。多线程会改变区块的加载、生成与卸载时机，而**常加载区、机器跨区块的部分正是最容易因此出问题的地方**。
-- **`async`** 的官方描述原文是 improves entity performance by processing entities in parallel across multiple CPU cores and threads，即把实体处理并行到多个 CPU 核心与线程上。实体并行意味着 tick 顺序不再逐一开始，依赖实体顺序或碰撞时序的机器是最脆的一类。
+- **`c2me-fabric`** 把区块处理并行化。多线程会改变区块的加载、生成与卸载时机，而**常加载区、机器跨区块的部分正是最容易因此出问题的地方**。
+- **`async`** 把实体处理并行到多个 CPU 核心与线程上。实体并行意味着 tick 顺序不再逐一开始，依赖实体顺序或碰撞时序的机器是最脆的一类。
 
-一句话总结这一节：**这四类 mod 的收益是真的，机器失效的风险也是真的，所以只能"先测机器"。**
+本节结论：**这四类 mod 的收益是真的，机器失效的风险也是真的，所以只能"先测机器"。**
 
 ## 五、生电服装优化 mod 的三条原则
 

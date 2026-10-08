@@ -33,7 +33,7 @@ This is not a preference. It follows from three hard facts.
 
 ### MCDR runs outside the server process
 
-`MCDR` (MCDReforged) is a Python-written server manager, officially described as: A rewritten version of MCDaemon, a python tool to control your Minecraft server.
+`MCDR` (MCDReforged) is a Python-written server manager.
 
 The point is that **it runs outside the server process**:
 
@@ -66,10 +66,10 @@ This article does not repeat either of them.
 
 The idea behind a multi-threaded core is to spread chunk or entity processing across several threads:
 
-| Mod | Official one-liner | The problem from a technical-play view |
-| --- | --- | --- |
-| `c2me-fabric` | A Fabric mod designed to improve the chunk performance of Minecraft. | Chunk processing is parallelised, so timing differs from vanilla |
-| `async` | Async — Minecraft Entity Multi-Threading Mod; improves entity performance by processing entities in parallel across multiple CPU cores and threads | Entities are processed in parallel, so the update order machines rely on changes |
+| Mod | The problem from a technical-play view |
+| --- | --- |
+| `c2me-fabric` | Chunk processing is parallelised, so timing differs from vanilla |
+| `async` | Entities are processed in parallel, so the update order machines rely on changes |
 
 Redstone and technical machines **depend heavily on update order and timing**. Multi-threading speeds up throughput at the cost of making "who goes first within a tick" unpredictable — a machine may work sometimes and fail other times, which is far harder to debug than being consistently slow.
 
@@ -83,7 +83,7 @@ The conflict is logical:
 
 - normal technical play keeps tripping anti-cheat checks on its own — high-speed movement, large numbers of entities, and the unusual behaviour produced by machines and automation all look suspicious;
 - anti-cheat usually has to be installed on a **plugin core or an optimised core**, and both of those change vanilla behaviour, which directly conflicts with the goals of technical play;
-- the vanilla checks and rubberbanding aimed at fast movement already have a switch in Carpet: `antiCheatDisabled`, officially described as Prevents players from rubberbanding when moving too fast.
+- the vanilla checks and rubberbanding aimed at fast movement already have a switch in Carpet: `antiCheatDisabled`, which stops players being rubberbanded for moving too fast.
 
 What you actually need are alternatives such as **whitelists and permissions, logging and rollback, and regular offsite backups**, not another layer of checks that will misfire. The full argument is in [Why Anti-cheat Is Not Recommended](/tutorials/java/sd-anticheat); logging and rollback tools are in [Anti-Cheat and Grief Prevention](/tutorials/java/anticheat).
 
@@ -93,9 +93,7 @@ What you actually need are alternatives such as **whitelists and permissions, lo
 
 ### What it is
 
-Its synchronisation protocol is officially described as follows:
-
-> The PCA sync protocol is a protocol for synchronising Entities and BlockEntities between the server and the client, currently used by MasaGadget to implement multiplayer container preview.
+The PCA sync protocol is a protocol for synchronising Entities and BlockEntities between the server and the client, currently used by MasaGadget to implement multiplayer container preview.
 
 Three layers are worth separating out:
 
@@ -118,8 +116,8 @@ Note that `pcaSyncProtocol` **defaults to off**: the protocol is a capability, n
 | --- | --- |
 | `plusls/plusls-carpet-addition` (the original) | Last updated 2022 |
 | `Nyan-Work/plusls-carpet-addition` (one of the forks) | Last updated 2024 |
-| `pca-protocol` | Available today. Modrinth, `fabric`, 1.14.4–26.3, by fallen-breath. Official description: A fork of plusls-carpet-addition, provides PCA protocol support to the server. That's everything it does |
-| `pca-protocol-plugin` | Available today. Modrinth, `bukkit` / `paper` / `purpur` / `spigot`, 1.17–1.21.8. Official description: Add PCA protocol support for the spigot and its optimized/branch server |
+| `pca-protocol` | Available today. Modrinth, `fabric`, 1.14.4–26.3, by fallen-breath. |
+| `pca-protocol-plugin` | Available today. Modrinth, `bukkit` / `paper` / `purpur` / `spigot`, 1.17–1.21.8. |
 
 In other words: the original project and its fork are both discontinued, and **what works now are the two stripped-down forks that keep only the protocol** — `pca-protocol` for Fabric servers and `pca-protocol-plugin` for Spigot-family servers.
 

@@ -13,7 +13,7 @@ draft: false
 
 生电玩法绕不开原理图：别人设计的世吞、刷怪塔、切门机器，你不可能凭记忆照抄，得靠投影一层层对着搭。单人存档里这很简单，装上客户端投影 mod 就行；一旦到了多人服务器，原理图就散落在每个人自己的电脑上，谁想照着搭，都得先向原作者要一份文件。
 
-`syncmatica` 解决的正是这件事。它的官方描述原文是：Syncmatica is a mod which aims to mod into litematica so that schematics and their placements can be easily shared. 也就是说，它是给 Litematica 做同步的配套，让原理图和放置能被方便地共享。
+`syncmatica` 解决的正是这件事。它是给 Litematica 做同步的配套，让原理图和放置能被方便地共享。
 
 这一篇只讲三件事：为什么需要它、它装在哪一侧、版本怎么对齐。**具体怎么上传、谁有权限、用什么命令，请以 mod 官方说明为准，本篇不复述操作步骤**——那部分每个版本都可能变，照着过期教程走反而更容易出错。
 
@@ -27,7 +27,7 @@ draft: false
 | 位置对不上 | 投影需要知道"这份原理图放在世界的哪个坐标"，口头报坐标很容易传错 |
 | 版本与来源混杂 | 传着传着就分不清谁手里那份是不是最新的 |
 
-`syncmatica` 要处理的就是前两层：把原理图与它的放置变成"可以方便地共享"的东西。注意它的官方描述用的是 aims to（目标是）这个说法，说明它做的是同步与共享这一层，而不是替你做投影显示——投影显示仍然是 Litematica 的活。
+`syncmatica` 要处理的就是前两层：把原理图与它的放置变成"可以方便地共享"的东西。它做的是同步与共享这一层，而不是替你做投影显示——投影显示仍然是 Litematica 的活。
 
 > 想先了解投影在生电工具链里的位置，可以回看 [生电与红石](/tutorials/java/redstone) 里的客户端 mod 表，以及 [生电与红石进阶](/tutorials/java/redstone-advanced) 里对 MiniHUD、Litematica 一类工具的说明。
 
@@ -60,7 +60,7 @@ draft: false
 几点补充：
 
 - 三个 mod 的版本区间都很宽，从 1.12 / 1.14 / 1.16 一直覆盖到 26.x 一类的近期版本。**区间宽不代表随便挑一版就能用**，真正要对齐的是"游戏版本一致、两侧的 Syncmatica 同属一个版本区间"。
-- 还有一个常被一起提到的 mod：`servux`。它的官方描述原文是：Servux is a server-side mod that provides extra support and features for some client-side mods when playing on a that server. 它是**服务端 mod**，为部分客户端 mod 提供额外支持与功能。它不是共享原理图的必需品，但它解决的是同一类问题——"客户端 mod 想要更多数据，得服务端配合"。
+- 还有一个常被一起提到的 mod：`servux`。它是**服务端 mod**，为部分客户端 mod 提供额外支持与功能。它不是共享原理图的必需品，但它解决的是同一类问题——"客户端 mod 想要更多数据，得服务端配合"。
 - `litematica` 的 loaders 里有 forge 与 liteloader、ornithe，说明它本身不止 Fabric 一条路；但 `syncmatica` 只有 fabric 与 quilt，**这一侧的同步能力是把选择面收窄的那一环**。
 
 ## 四、版本对齐：这一侧最容易错
@@ -98,7 +98,7 @@ draft: false
 
 ## 六、它和 Carpet 是什么关系
 
-一句话：**同属生电工具箱，但解决的是不同问题**。
+**同属生电工具箱，但解决的是不同问题**。
 
 | | Carpet | Syncmatica |
 | --- | --- | --- |

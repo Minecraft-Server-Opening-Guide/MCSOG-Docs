@@ -13,7 +13,7 @@ draft: false
 
 Technical Minecraft runs on schematics. Nobody builds someone else's world eater, mob farm or update-suppression machine from memory; you project the schematic and work through it layer by layer. On a single-player world that is simple: install a client-side projection mod and you are done. On a multiplayer server the schematics live on individual players' computers, so anyone who wants to build from one has to ask the author for a copy of the file first.
 
-`syncmatica` exists to solve exactly that. Its official description reads: Syncmatica is a mod which aims to mod into litematica so that schematics and their placements can be easily shared. In other words, it is a companion that synchronises Litematica, so that schematics and their placements can be shared conveniently.
+`syncmatica` exists to solve exactly that. It is a companion that synchronises Litematica, so that schematics and their placements can be shared conveniently.
 
 This article covers three things only: why you need it, which side it goes on, and how the versions line up. **For how to actually upload a schematic, who is allowed to do so, and which command to use, follow the mod's own documentation — this article deliberately does not reproduce those steps**, because they can change between releases and following an outdated walkthrough is worse than reading the official one.
 
@@ -27,7 +27,7 @@ In a single-player world the schematic files and the projection both live in you
 | The placement does not match | A projection needs to know which coordinates the schematic sits at, and passing coordinates around by chat goes wrong easily |
 | Versions and sources get mixed up | After a few hand-offs, nobody can tell whose copy is the current one |
 
-`syncmatica` is aimed at the first two: making a schematic and its placement into something that "can be easily shared". Note that its official description says aims to, which tells you it handles the synchronisation and sharing layer, not the projection itself — displaying the projection is still Litematica's job.
+`syncmatica` is aimed at the first two: making a schematic and its placement into something that "can be easily shared". It handles the synchronisation and sharing layer, not the projection itself — displaying the projection is still Litematica's job.
 
 > To see where projection sits in the technical toolchain, look back at the client-side mod table in [Technical Minecraft and Redstone](/tutorials/java/redstone) and at the description of MiniHUD, Litematica and similar tools in [Advanced Technical Minecraft](/tutorials/java/redstone-advanced).
 
@@ -60,7 +60,7 @@ The data below comes from the official Modrinth project entries and was checked 
 A few notes:
 
 - All three ranges are wide, running from 1.12 / 1.14 / 1.16 up to recent 26.x releases. **A wide range does not mean any build will do**: what has to line up is the game version, plus both sides of Syncmatica sitting in the same version range.
-- One more mod is often mentioned alongside these: `servux`, whose official description reads: Servux is a server-side mod that provides extra support and features for some client-side mods when playing on a that server. It is a **server-side mod** that gives some client-side mods extra support and features. It is not a requirement for sharing schematics, but it solves the same kind of problem — a client-side mod wants more data, and the server has to cooperate.
+- One more mod is often mentioned alongside these: `servux`, which is a **server-side mod** that gives some client-side mods extra support and features. It is not a requirement for sharing schematics, but it solves the same kind of problem — a client-side mod wants more data, and the server has to cooperate.
 - `litematica` lists forge, liteloader and ornithe among its loaders, so it is not limited to the Fabric route. `syncmatica`, however, is fabric and quilt only, and **that synchronisation side is what narrows your options**.
 
 ## 4. Getting the Versions to Line Up
