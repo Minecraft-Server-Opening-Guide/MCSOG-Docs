@@ -1,6 +1,6 @@
 ---
 title: "[生电篇]共享原理图"
-slug: tech-schematic
+slug: sd-schematic
 cat: java
 level: 3
 order: 31
@@ -106,9 +106,9 @@ draft: false
 | 形态 | Fabric 服务端 mod，提供规则系统 | 同步 mod，服务端与客户端各一半 |
 | 典型用法 | `/carpet <规则名> <值>` | 与 Litematica 配合共享原理图 |
 
-两者的共同点是都以 Fabric 为主：Carpet 及其全部附属包都是 Fabric，`syncmatica` 的 loaders 也是 fabric 与 quilt。这也是 [服务端选择](/tutorials/java/tech-server) 里推荐 Fabric 服务端 + MCDR 的原因之一——工具链在同一侧，不用做桥接。
+两者的共同点是都以 Fabric 为主：Carpet 及其全部附属包都是 Fabric，`syncmatica` 的 loaders 也是 fabric 与 quilt。这也是 [服务端选择](/tutorials/java/sd-server) 里推荐 Fabric 服务端 + MCDR 的原因之一——工具链在同一侧，不用做桥接。
 
-Carpet 本体的定位与规则用法，见 [Carpet 及其附属包](/tutorials/java/tech-carpet)。
+Carpet 本体的定位与规则用法，见 [Carpet 及其附属包](/tutorials/java/sd-carpet)。
 
 ## 七、和世吞、切门怎么配合
 
@@ -116,7 +116,7 @@ Carpet 本体的定位与规则用法，见 [Carpet 及其附属包](/tutorials/
 
 共享原理图在这个流程里解决的是协作问题：一台世吞往往不是一个人搭完的，需要几个人分片施工；投影一致，几个人的方块才能拼得上。
 
-而一旦机器开始运转，重点就不再是投影，而是风险控制：[世吞与切门](/tutorials/java/tech-machine) 讲的是机器越猛，越要"备份 + 权限 + 防崩规则"三件套，以及新版本上更新抑制（社区俗称"切门"）要靠社区 mod 恢复这些事实。搭机器之前先把那篇读完。
+而一旦机器开始运转，重点就不再是投影，而是风险控制：[世吞与切门](/tutorials/java/sd-machine) 讲的是机器越猛，越要"备份 + 权限 + 防崩规则"三件套，以及新版本上更新抑制（社区俗称"切门"）要靠社区 mod 恢复这些事实。搭机器之前先把那篇读完。
 
 ## 八、底线清单
 
@@ -131,7 +131,7 @@ Carpet 本体的定位与规则用法，见 [Carpet 及其附属包](/tutorials/
 
 ## 下一步
 
-生电工具箱的底座是规则系统：见 [Carpet 及其附属包](/tutorials/java/tech-carpet)。服务端为什么必须是 Fabric 见 [服务端选择](/tutorials/java/tech-server)；投影最终要变成机器，动手之前先读 [世吞与切门](/tutorials/java/tech-machine)。通用性能与排障见 [性能优化](/tutorials/java/optimize) 与 [用 spark 分析服务器性能](/tutorials/ops/spark)。
+生电工具箱的底座是规则系统：见 [Carpet 及其附属包](/tutorials/java/sd-carpet)。服务端为什么必须是 Fabric 见 [服务端选择](/tutorials/java/sd-server)；投影最终要变成机器，动手之前先读 [世吞与切门](/tutorials/java/sd-machine)。通用性能与排障见 [性能优化](/tutorials/java/optimize) 与 [用 spark 分析服务器性能](/tutorials/ops/spark)。
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "[Technical] Sharing Schematics"
-slug: tech-schematic
+slug: sd-schematic
 cat: java
 level: 3
 order: 31
@@ -106,9 +106,9 @@ In one line: **the same technical toolbox, but a different problem**.
 | Shape | A Fabric server-side mod providing a rule system | A synchronisation mod with a server half and a client half |
 | Typical use | `/carpet <rule> <value>` | Sharing schematics together with Litematica |
 
-What they share is Fabric: Carpet and all of its add-ons are Fabric, and `syncmatica` lists fabric and quilt. That is one of the reasons [Choosing a Server Core](/tutorials/java/tech-server) recommends a Fabric server with MCDR — the toolchain sits on one side, so there is no bridging to do.
+What they share is Fabric: Carpet and all of its add-ons are Fabric, and `syncmatica` lists fabric and quilt. That is one of the reasons [Choosing a Server Core](/tutorials/java/sd-server) recommends a Fabric server with MCDR — the toolchain sits on one side, so there is no bridging to do.
 
-For Carpet's own role and how its rules are used, see [Carpet and Its Add-ons](/tutorials/java/tech-carpet).
+For Carpet's own role and how its rules are used, see [Carpet and Its Add-ons](/tutorials/java/sd-carpet).
 
 ## 7. Working with World Eaters and Update Suppression
 
@@ -116,7 +116,7 @@ Large machines are the classic use case for projection. A world eater is a TNT a
 
 Sharing schematics solves the collaboration problem inside that flow. A world eater is rarely built by one person; several players work on different sections, and identical projections are what let their blocks meet up correctly.
 
-Once the machine is running, the priority stops being projection and becomes risk control: [World Eaters and Update Suppression](/tutorials/java/tech-machine) explains that the more aggressive the machine, the more you need the trio of backups, permissions and crash-prevention rules, and that on current versions update suppression (known in the community as "cutting the gate") depends on community mods to be restored. Read that article before you build.
+Once the machine is running, the priority stops being projection and becomes risk control: [World Eaters and Update Suppression](/tutorials/java/sd-machine) explains that the more aggressive the machine, the more you need the trio of backups, permissions and crash-prevention rules, and that on current versions update suppression (known in the community as "cutting the gate") depends on community mods to be restored. Read that article before you build.
 
 ## 8. The Bottom Line
 
@@ -131,7 +131,7 @@ Then align all three versions — miss one and sharing simply does not work
 
 ## Next Step
 
-The foundation of the technical toolbox is the rule system: see [Carpet and Its Add-ons](/tutorials/java/tech-carpet). For why the server has to run Fabric see [Choosing a Server Core](/tutorials/java/tech-server); a projection eventually becomes a machine, so read [World Eaters and Update Suppression](/tutorials/java/tech-machine) before you start. General performance and diagnosis are in [Performance Optimisation](/tutorials/java/optimize) and [Profiling a Server with `spark`](/tutorials/ops/spark).
+The foundation of the technical toolbox is the rule system: see [Carpet and Its Add-ons](/tutorials/java/sd-carpet). For why the server has to run Fabric see [Choosing a Server Core](/tutorials/java/sd-server); a projection eventually becomes a machine, so read [World Eaters and Update Suppression](/tutorials/java/sd-machine) before you start. General performance and diagnosis are in [Performance Optimisation](/tutorials/java/optimize) and [Profiling a Server with `spark`](/tutorials/ops/spark).
 
 ---
 

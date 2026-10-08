@@ -1,6 +1,6 @@
 ---
 title: "[生电篇]为什么不推荐反作弊"
-slug: tech-anticheat
+slug: sd-anticheat
 cat: java
 level: 3
 order: 36
@@ -68,15 +68,15 @@ draft: false
 | 想防的事 | 该用的手段 | 说明 |
 | --- | --- | --- |
 | 陌生人乱来 | 白名单与权限 | 把门槛放在进服之前，比事后判定便宜得多 |
-| 破坏与偷窃 | `ledger` 记录与回溯 | 官方描述：Ledger is a comprehensive logging system for Fabric servers. It provides essential tracking for hundreds of in game events；一句话，它是服务端侧的记录 mod |
+| 破坏与偷窃 | `ledger` 记录与回溯 | 官方描述：Ledger is a comprehensive logging system for Fabric servers. It provides essential tracking for hundreds of in game events；一句话，它是服务端侧的记录 mod，对标插件端的 CoreProtect |
 | 最坏情况 | 定期与异地备份 | 出事能整体回档，这是最后一道防线 |
 | 人肉盾构机、自动破基岩一类 | `playerOperationLimiter` | 官方描述：每 gt 玩家可以放置 2 个方块，秒破 1 个方块，这两个操作每 gt 只能做一种，用于防人肉盾构机和玩家自动破基岩 mod |
 
 几点补充：
 
 - **白名单与权限**：生电服通常是熟人圈子，把"谁能进来"控制住，比在服内做实时判定有效得多。权限分开配置的思路见 [领地与保护](/tutorials/java/protection)。
-- **记录与回溯**：`ledger` 属于记录类工具，它不做实时拦截，但**能回答"是谁、什么时候、动了什么"**。没有记录，你连处理依据都没有。
-- **备份**：定期备份与异地备份解决的是"前面都失效了"的情况，完整的策略与恢复流程见 [存档保护](/tutorials/java/tech-backup)。
+- **记录与回溯**：`ledger`（对标插件端的 CoreProtect）属于记录类工具，它不做实时拦截，但**能回答"是谁、什么时候、动了什么"**。没有记录，你连处理依据都没有。
+- **备份**：定期备份与异地备份解决的是"前面都失效了"的情况，完整的策略与恢复流程见 [存档保护](/tutorials/java/sd-backup)。
 - **`playerOperationLimiter`**：请注意它是**服务端侧的限制手段**，作用在服务端自身，不需要玩家装任何东西。它限制的是每 gt 的放置与破坏操作，针对的是自动化滥用，而不是给正常玩家打分。它属于某个 Carpet 附属项目提供的规则，**装之前先按你的游戏版本与 mod 组合确认可用**。
 
 ## 五、该怎么做：一张正向清单
@@ -102,7 +102,7 @@ draft: false
 
 ## 下一步
 
-通用的两层防护与配置方法见 [反作弊与防破坏](/tutorials/java/anticheat)；谁能动机器、谁来管权限见 [领地与保护](/tutorials/java/protection)；出事了怎么回来见 [存档保护](/tutorials/java/tech-backup)，机器开工前的风险控制见 [世吞与切门](/tutorials/java/tech-machine)。
+通用的两层防护与配置方法见 [反作弊与防破坏](/tutorials/java/anticheat)；谁能动机器、谁来管权限见 [领地与保护](/tutorials/java/protection)；出事了怎么回来见 [存档保护](/tutorials/java/sd-backup)，机器开工前的风险控制见 [世吞与切门](/tutorials/java/sd-machine)。
 
 ---
 

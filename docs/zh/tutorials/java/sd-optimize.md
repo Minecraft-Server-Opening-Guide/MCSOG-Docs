@@ -1,6 +1,6 @@
 ---
 title: "[生电篇]优化 mod"
-slug: tech-optimize
+slug: sd-optimize
 cat: java
 level: 3
 order: 32
@@ -126,12 +126,12 @@ draft: false
 - **配置层面的优化**（视距、模拟距离、JVM、预生成思路）：[性能优化](/tutorials/java/optimize)
 - **分析工具的用法**：[用 spark 分析服务器性能](/tutorials/ops/spark)
 - **模组服的加载器与排错**：[模组服完整上手](/tutorials/java/modded)
-- **为什么生电服优先选 Fabric**，以及多线程端的取舍：[服务端选择](/tutorials/java/tech-server)
+- **为什么生电服优先选 Fabric**，以及多线程端的取舍：[服务端选择](/tutorials/java/sd-server)
 - **原版行为为什么这么重要**：[生电与红石](/tutorials/java/redstone)、[生电与红石进阶](/tutorials/java/redstone-advanced)
 
 ## 下一步
 
-优化要有数据支撑，先用 `spark` 把结论变成数字：见 [用 spark 分析服务器性能](/tutorials/ops/spark)。整体思路见 [性能优化](/tutorials/java/optimize)；服务端本身的选型见 [服务端选择](/tutorials/java/tech-server) 与 [Carpet 及其附属包](/tutorials/java/tech-carpet)。
+优化要有数据支撑，先用 `spark` 把结论变成数字：见 [用 spark 分析服务器性能](/tutorials/ops/spark)。整体思路见 [性能优化](/tutorials/java/optimize)；服务端本身的选型见 [服务端选择](/tutorials/java/sd-server) 与 [Carpet 及其附属包](/tutorials/java/sd-carpet)。
 
 ---
 

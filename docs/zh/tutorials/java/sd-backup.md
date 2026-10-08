@@ -1,6 +1,6 @@
 ---
 title: "[生电篇]存档保护"
-slug: tech-backup
+slug: sd-backup
 cat: java
 level: 3
 order: 33
@@ -54,6 +54,8 @@ MCDR 官方插件目录里**确实存在**的备份类插件目录名，可以�
 `Ledger` 是服务端日志 mod（loaders：`fabric`、`quilt`；支持版本 `1.17-rc1` 至 `26.3`；一句话：A serverside logging mod）。它的官方描述原文是：
 
 > Ledger is a comprehensive logging system for Fabric servers. It provides essential tracking for hundreds of in game events.
+
+在插件端，同类工具里最出名的是 **CoreProtect**（loaders：`bukkit`、`folia`、`paper`、`purpur`、`spigot`；支持版本 `1.14.1` 至 `26.2`；官方定位是数据记录与防破坏工具，支持回滚与恢复）。`Ledger` 可以理解为 Fabric 生态里**对标 CoreProtect 的那一套**：同样记录方块与容器的操作、同样能按时间与位置回查；区别是 CoreProtect 跑在插件端且自带回滚，而 `Ledger` 只负责记录与查询。
 
 它和备份回答的是两个不同的问题，不能互相替代：
 
@@ -121,11 +123,11 @@ MCDR 官方插件目录里**确实存在**的备份类插件目录名，可以�
 | --- | --- | --- |
 | 备份 | 出事之后把世界退回去 | 本篇与 [备份与恢复](/tutorials/java/backup) |
 | 权限与白名单 | 让不该动手的人动不了手 | [反作弊与防破坏](/tutorials/java/anticheat) |
-| 防崩规则 | 做更新抑制一类操作时，不让服务端直接崩掉 | [Carpet 及其附属包](/tutorials/java/tech-carpet) |
+| 防崩规则 | 做更新抑制一类操作时，不让服务端直接崩掉 | [Carpet 及其附属包](/tutorials/java/sd-carpet) |
 
 ## 下一步
 
-机器越猛，越要把备份当成流程的一部分：世吞与切门这类高破坏力操作的风险控制见 [世吞与切门](/tutorials/java/tech-machine)。MCDR 本身的安装与插件机制见 [MCDR 服务端管理器](/tutorials/java/mcdr)；一致性、保留策略与恢复演练的通用原则见 [备份与恢复](/tutorials/java/backup)。
+机器越猛，越要把备份当成流程的一部分：世吞与切门这类高破坏力操作的风险控制见 [世吞与切门](/tutorials/java/sd-machine)。MCDR 本身的安装与插件机制见 [MCDR 服务端管理器](/tutorials/java/mcdr)；一致性、保留策略与恢复演练的通用原则见 [备份与恢复](/tutorials/java/backup)。
 
 ---
 

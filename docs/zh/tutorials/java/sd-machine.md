@@ -1,6 +1,6 @@
 ---
 title: "[生电篇]世吞与切门"
-slug: tech-machine
+slug: sd-machine
 cat: java
 level: 3
 order: 35
@@ -78,7 +78,7 @@ Carpet 用 `/carpet <规则名> <值>` 开关原版细节行为。与世吞直�
 2. 再进机器、再让玩家开工
 ```
 
-已经核实到的防崩规则如下，按来源分两组。规则名与可选值在 [Carpet 及其附属包](/tutorials/java/tech-carpet) 里已作为清单列过一遍，**这里要补的是使用顺序**：
+已经核实到的防崩规则如下，按来源分两组。规则名与可选值在 [Carpet 及其附属包](/tutorials/java/sd-carpet) 里已作为清单列过一遍，**这里要补的是使用顺序**：
 
 | 来源 | 规则 | 可选值 |
 | --- | --- | --- |
@@ -120,7 +120,7 @@ Carpet 用 `/carpet <规则名> <值>` 开关原版细节行为。与世吞直�
 
 | 事项 | 作用 | 详见 |
 | --- | --- | --- |
-| **备份** | 崩服、误操作、机器失控之后能回到上一个可用状态 | [存档保护](/tutorials/java/tech-backup) |
+| **备份** | 崩服、误操作、机器失控之后能回到上一个可用状态 | [存档保护](/tutorials/java/sd-backup) |
 | **权限** | 决定谁能动机器、谁能用更新抑制这类高风险操作 | [领地与保护](/tutorials/java/protection) |
 | **防崩规则** | 把更新抑制这类操作从"可能搞挂服务端"压回可控范围 | 本篇第四节 |
 
@@ -137,7 +137,7 @@ Carpet 用 `/carpet <规则名> <值>` 开关原版细节行为。与世吞直�
 
 ## 下一步
 
-机器一动土，最先要保证的是出事了能回来：见 [存档保护](/tutorials/java/tech-backup)。谁能动机器由权限决定，见 [领地与保护](/tutorials/java/protection)；机器为什么坏、为什么慢，见 [生电与红石进阶](/tutorials/java/redstone-advanced)，反作弊在生电服为什么是负收益见 [为什么不推荐反作弊](/tutorials/java/tech-anticheat)。
+机器一动土，最先要保证的是出事了能回来：见 [存档保护](/tutorials/java/sd-backup)。谁能动机器由权限决定，见 [领地与保护](/tutorials/java/protection)；机器为什么坏、为什么慢，见 [生电与红石进阶](/tutorials/java/redstone-advanced)，反作弊在生电服为什么是负收益见 [为什么不推荐反作弊](/tutorials/java/sd-anticheat)。
 
 ---
 

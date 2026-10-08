@@ -1,6 +1,6 @@
 ---
 title: "[生电篇]配置优化"
-slug: tech-config
+slug: sd-config
 cat: java
 level: 3
 order: 34
@@ -13,7 +13,7 @@ draft: false
 
 生电服的"优化"和普通服的优化不是一回事：普通服可以靠调低视距、换核心、加优化插件把 TPS 拉上来，而生电服每动一个开关，都要先问一句"这会不会改变原版行为"。这篇回答的是**生电服到底有哪些开关可以动、动了之后谁负责复验**。
 
-通用的性能优化（优先级、视距与模拟距离、JVM 参数）见 [性能优化](/tutorials/java/optimize)，优化 mod 的选型见 [优化 mod](/tutorials/java/tech-optimize)，Carpet 规则与附属包的完整清单见 [Carpet 及其附属包](/tutorials/java/tech-carpet)。本篇只讲配置层面的取舍，并且**不给任何具体配置字段名与默认值**——那些东西随版本变化，必须以各自官方文档为准。
+通用的性能优化（优先级、视距与模拟距离、JVM 参数）见 [性能优化](/tutorials/java/optimize)，优化 mod 的选型见 [优化 mod](/tutorials/java/sd-optimize)，Carpet 规则与附属包的完整清单见 [Carpet 及其附属包](/tutorials/java/sd-carpet)。本篇只讲配置层面的取舍，并且**不给任何具体配置字段名与默认值**——那些东西随版本变化，必须以各自官方文档为准。
 
 ## 一、生电服的三层开关
 
@@ -117,7 +117,7 @@ Carpet 是 Fabric 服务端 mod，提供规则系统，用 `/carpet <规则名> 
 
 ## 下一步
 
-规则层面的完整清单与附属包（包括防崩与更新抑制相关规则）见 [Carpet 及其附属包](/tutorials/java/tech-carpet)；优化 mod 的选型与"过时结论"见 [优化 mod](/tutorials/java/tech-optimize)；从硬件、视距到 JVM 的通用优化顺序见 [性能优化](/tutorials/java/optimize)。
+规则层面的完整清单与附属包（包括防崩与更新抑制相关规则）见 [Carpet 及其附属包](/tutorials/java/sd-carpet)；优化 mod 的选型与"过时结论"见 [优化 mod](/tutorials/java/sd-optimize)；从硬件、视距到 JVM 的通用优化顺序见 [性能优化](/tutorials/java/optimize)。
 
 ---
 

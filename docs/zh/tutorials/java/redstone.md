@@ -118,6 +118,19 @@ Paper 支持切换**红石实现方式**。请**保持 vanilla 实现**——换
 
 技术上跑通之后，服务器能不能长久，靠的是经营：见 [经营管理](/tutorials/ops/management-java)。
 
+## 生电篇
+
+本篇讲的是生电的通用原则。真正开一个生电服要落地的东西，写成了下面这一组：
+
+- [[生电篇]服务端选择](/tutorials/java/sd-server)：Fabric 加 MCDR、生电优化端与多线程端的取舍。
+- [[生电篇]Carpet 及其附属包](/tutorials/java/sd-carpet)：规则系统、四个主流附属包与防崩规则。
+- [[生电篇]共享原理图](/tutorials/java/sd-schematic)：把投影与放置同步给所有人。
+- [[生电篇]优化 mod](/tutorials/java/sd-optimize)：哪些能放心装、哪些会改时序。
+- [[生电篇]存档保护](/tutorials/java/sd-backup)：备份流程、Ledger 与异地备份。
+- [[生电篇]配置优化](/tutorials/java/sd-config)：生电服到底有哪些开关可动。
+- [[生电篇]世吞与切门](/tutorials/java/sd-machine)：世吞与更新抑制的风险控制。
+- [[生电篇]为什么不推荐反作弊](/tutorials/java/sd-anticheat)：生电服为什么不该装反作弊。
+
 ---
 
 > 本篇部分内容参考自 [NitWikit（Cubic Wiki）](https://nitwikit.8aka.org/) 与 [其 GitHub 仓库](https://github.com/Cubic-Project/NitWikit)，已按本站结构重写；如与上游不一致以上游为准。

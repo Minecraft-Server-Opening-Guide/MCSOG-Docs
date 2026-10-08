@@ -1,6 +1,6 @@
 ---
 title: "[Technical] Choosing a Server Core"
-slug: tech-server
+slug: sd-server
 cat: java
 level: 3
 order: 29
@@ -29,7 +29,7 @@ This is not a preference. It follows from three hard facts.
 
 ### The whole technical toolchain lives on Fabric
 
-`Carpet` itself, and its four mainstream add-ons (`Carpet Extra`, `Carpet TIS Addition`, `Carpet AMS Addition`, `Carpet Org Addition`), are **all Fabric server-side mods**. In other words, the rule system that technical players actually depend on is fully implemented on Fabric only; choosing another core means giving that toolchain up. Rules and add-ons are covered in [Carpet and Its Add-ons](/tutorials/java/tech-carpet).
+`Carpet` itself, and its four mainstream add-ons (`Carpet Extra`, `Carpet TIS Addition`, `Carpet AMS Addition`, `Carpet Org Addition`), are **all Fabric server-side mods**. In other words, the rule system that technical players actually depend on is fully implemented on Fabric only; choosing another core means giving that toolchain up. Rules and add-ons are covered in [Carpet and Its Add-ons](/tutorials/java/sd-carpet).
 
 ### MCDR runs outside the server process
 
@@ -85,7 +85,7 @@ The conflict is logical:
 - anti-cheat usually has to be installed on a **plugin core or an optimised core**, and both of those change vanilla behaviour, which directly conflicts with the goals of technical play;
 - the vanilla checks and rubberbanding aimed at fast movement already have a switch in Carpet: `antiCheatDisabled`, officially described as Prevents players from rubberbanding when moving too fast.
 
-What you actually need are alternatives such as **whitelists and permissions, logging and rollback, and regular offsite backups**, not another layer of checks that will misfire. The full argument is in [Why Anti-cheat Is Not Recommended](/tutorials/java/tech-anticheat); logging and rollback tools are in [Anti-Cheat and Grief Prevention](/tutorials/java/anticheat).
+What you actually need are alternatives such as **whitelists and permissions, logging and rollback, and regular offsite backups**, not another layer of checks that will misfire. The full argument is in [Why Anti-cheat Is Not Recommended](/tutorials/java/sd-anticheat); logging and rollback tools are in [Anti-Cheat and Grief Prevention](/tutorials/java/anticheat).
 
 ## 5. The PCA Protocol
 
@@ -137,7 +137,7 @@ The official documentation states it plainly: the stripped-down fork **conflicts
 
 ## Next Step
 
-With the core settled, the next step is the rule system: see [Carpet and Its Add-ons](/tutorials/java/tech-carpet). Read the risk control before the machines start, in [World Eaters and Update Suppression](/tutorials/java/tech-machine); for why anti-cheat is a net loss on a technical server, see [Why Anti-cheat Is Not Recommended](/tutorials/java/tech-anticheat). The general selection and the details skipped here are in [Choosing a Server Core](/tutorials/java/core) and [Technical Minecraft and Redstone](/tutorials/java/redstone).
+With the core settled, the next step is the rule system: see [Carpet and Its Add-ons](/tutorials/java/sd-carpet). Read the risk control before the machines start, in [World Eaters and Update Suppression](/tutorials/java/sd-machine); for why anti-cheat is a net loss on a technical server, see [Why Anti-cheat Is Not Recommended](/tutorials/java/sd-anticheat). The general selection and the details skipped here are in [Choosing a Server Core](/tutorials/java/core) and [Technical Minecraft and Redstone](/tutorials/java/redstone).
 
 ---
 

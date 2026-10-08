@@ -1,6 +1,6 @@
 ---
 title: "[Technical] Carpet and Its Add-ons"
-slug: tech-carpet
+slug: sd-carpet
 cat: java
 level: 3
 order: 30
@@ -11,7 +11,7 @@ updated: 2026-10-08
 draft: false
 ---
 
-Once the Fabric server is chosen, the mod a technical server deals with every day is **Carpet**. On its own it does one thing: it turns a pile of hard-coded vanilla details into **rules you can switch with a command**. This article covers how the rule system works, what the four mainstream add-ons contribute, and the **verified crash-prevention rules** — the last of these is what makes world eaters and update suppression safe to run. If you have not settled the core yet, start with [Choosing a Server Core](/tutorials/java/tech-server).
+Once the Fabric server is chosen, the mod a technical server deals with every day is **Carpet**. On its own it does one thing: it turns a pile of hard-coded vanilla details into **rules you can switch with a command**. This article covers how the rule system works, what the four mainstream add-ons contribute, and the **verified crash-prevention rules** — the last of these is what makes world eaters and update suppression safe to run. If you have not settled the core yet, start with [Choosing a Server Core](/tutorials/java/sd-server).
 
 ## 1. What Carpet Is
 
@@ -128,7 +128,7 @@ One more note: no suppression or crash-related rules could be verified for Carpe
 - the crash risk is caught by TIS's `yeetUpdateSuppressionCrash`, `updateSuppressionSimulator` and `deobfuscateCrashReportStackTrace`, plus AMS's `amsUpdateSuppressionCrashFix`;
 - the three layers relate as "**a controllable entry point, swappable parameters, and a crash net**" — remove any one and debugging becomes much harder.
 
-For how the machines are actually run and how the risk is contained, see article 7, [World Eaters and Update Suppression](/tutorials/java/tech-machine). Its conclusion is that the more aggressive the machine, the more you need the trio of "backups, permissions and crash-prevention rules" — and **the crash-prevention part is exactly this section**.
+For how the machines are actually run and how the risk is contained, see article 7, [World Eaters and Update Suppression](/tutorials/java/sd-machine). Its conclusion is that the more aggressive the machine, the more you need the trio of "backups, permissions and crash-prevention rules" — and **the crash-prevention part is exactly this section**.
 
 ## 7. Three Bottom Lines
 
@@ -140,7 +140,7 @@ For how the machines are actually run and how the risk is contained, see article
 
 ## Next Step
 
-Once the rules are set, read the risk control before any machine moves earth: see [World Eaters and Update Suppression](/tutorials/java/tech-machine). To let everyone work from the same projection, see [Sharing Schematics](/tutorials/java/tech-schematic); for the performance budget see [Performance Mods](/tutorials/java/tech-optimize), and for why the core has to be Fabric see [Choosing a Server Core](/tutorials/java/tech-server).
+Once the rules are set, read the risk control before any machine moves earth: see [World Eaters and Update Suppression](/tutorials/java/sd-machine). To let everyone work from the same projection, see [Sharing Schematics](/tutorials/java/sd-schematic); for the performance budget see [Performance Mods](/tutorials/java/sd-optimize), and for why the core has to be Fabric see [Choosing a Server Core](/tutorials/java/sd-server).
 
 ---
 

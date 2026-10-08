@@ -1,6 +1,6 @@
 ---
 title: "[Technical] Tuning the Configuration"
-slug: tech-config
+slug: sd-config
 cat: java
 level: 3
 order: 34
@@ -13,7 +13,7 @@ draft: false
 
 Optimisation on a technical server is not the same as optimisation on a casual one. A casual server can raise TPS by lowering the view distance, switching cores or adding performance plugins; a technical server has to ask one extra question about every switch it touches: **does this change vanilla behaviour?** This article answers **which switches actually exist on a technical server, and who is responsible for re-verifying the machines afterwards**.
 
-General performance work (priority order, view and simulation distance, JVM flags) is covered in [Performance Optimisation](/tutorials/java/optimize), mod selection in [Performance Mods](/tutorials/java/tech-optimize), and the full rule list in [Carpet and Its Add-ons](/tutorials/java/tech-carpet). This article stays on configuration trade-offs, and it deliberately **names no configuration fields and no default values** — those change between versions and must come from each project's own documentation.
+General performance work (priority order, view and simulation distance, JVM flags) is covered in [Performance Optimisation](/tutorials/java/optimize), mod selection in [Performance Mods](/tutorials/java/sd-optimize), and the full rule list in [Carpet and Its Add-ons](/tutorials/java/sd-carpet). This article stays on configuration trade-offs, and it deliberately **names no configuration fields and no default values** — those change between versions and must come from each project's own documentation.
 
 ## 1. The Three Layers of Switches
 
@@ -117,7 +117,7 @@ There is one test for keeping a change: **the data says it is better**, not that
 
 ## Next Step
 
-The full rule list and the add-on packs (including crash and update-suppression rules) are in [Carpet and Its Add-ons](/tutorials/java/tech-carpet); mod selection and the "obsolete" verdicts are in [Performance Mods](/tutorials/java/tech-optimize); the general order from hardware to view distance to JVM flags is in [Performance Optimisation](/tutorials/java/optimize).
+The full rule list and the add-on packs (including crash and update-suppression rules) are in [Carpet and Its Add-ons](/tutorials/java/sd-carpet); mod selection and the "obsolete" verdicts are in [Performance Mods](/tutorials/java/sd-optimize); the general order from hardware to view distance to JVM flags is in [Performance Optimisation](/tutorials/java/optimize).
 
 ---
 

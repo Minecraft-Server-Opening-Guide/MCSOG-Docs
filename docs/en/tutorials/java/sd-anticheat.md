@@ -1,6 +1,6 @@
 ---
 title: "[Technical] Why Anti-cheat Is Not Recommended"
-slug: tech-anticheat
+slug: sd-anticheat
 cat: java
 level: 3
 order: 36
@@ -68,15 +68,15 @@ The more useful question is the reverse one: **what are you actually trying to p
 | What you want to stop | What to use | Notes |
 | --- | --- | --- |
 | Strangers causing trouble | Whitelist and permissions | Putting the barrier in front of the door is far cheaper than judging behaviour afterwards |
-| Griefing and theft | `ledger` logging and rollback | Official description: Ledger is a comprehensive logging system for Fabric servers. It provides essential tracking for hundreds of in game events — in one line, a server-side logging mod |
+| Griefing and theft | `ledger` logging and rollback | Official description: Ledger is a comprehensive logging system for Fabric servers. It provides essential tracking for hundreds of in game events — in one line, a server-side logging mod — the Fabric-side counterpart to CoreProtect on the plugin side |
 | The worst case | Scheduled and offsite backups | Being able to roll the whole world back is the last line of defence |
 | Block-eating players and auto bedrock-breaking | `playerOperationLimiter` | Official description: per game tick a player may place 2 blocks or instantly break 1 block, and only one of the two operations per tick, for preventing human bulldozers and player auto bedrock-breaking mods |
 
 A few notes:
 
 - **Whitelist and permissions**: a technical server is usually a circle of people who know each other, so controlling who gets in beats judging behaviour once they are inside. For splitting permissions by group, see [Land Claims and Protection](/tutorials/java/protection).
-- **Logging and rollback**: `ledger` is a logging tool. It does not intercept anything in real time, but it **answers who did what, and when**. Without a log you have no basis for acting at all.
-- **Backups**: scheduled plus offsite backups cover the case where everything above has already failed; the full strategy and recovery procedure are in [Protecting Your World](/tutorials/java/tech-backup).
+- **Logging and rollback**: `ledger` (the Fabric-side counterpart to CoreProtect) is a logging tool. It does not intercept anything in real time, but it **answers who did what, and when**. Without a log you have no basis for acting at all.
+- **Backups**: scheduled plus offsite backups cover the case where everything above has already failed; the full strategy and recovery procedure are in [Protecting Your World](/tutorials/java/sd-backup).
 - **`playerOperationLimiter`**: note that this is a **server-side limit**. It acts inside the server itself and requires nothing from players. It caps per-tick placement and breaking operations, targeting automation abuse rather than scoring legitimate play. It is a rule provided by a Carpet add-on project, so **confirm it is available for your game version and mod set before installing**.
 
 ## 5. What to Do: A Positive Checklist
@@ -102,7 +102,7 @@ Rather than arguing against anti-cheat again, just follow this:
 
 ## Next Step
 
-The general two-layer defence and how to configure it is in [Anti-Cheat and Grief Prevention](/tutorials/java/anticheat); who may run machines and who holds permissions is in [Land Claims and Protection](/tutorials/java/protection); how to recover when things go wrong is in [Protecting Your World](/tutorials/java/tech-backup), and risk control before a machine starts is in [World Eaters and Update Suppression](/tutorials/java/tech-machine).
+The general two-layer defence and how to configure it is in [Anti-Cheat and Grief Prevention](/tutorials/java/anticheat); who may run machines and who holds permissions is in [Land Claims and Protection](/tutorials/java/protection); how to recover when things go wrong is in [Protecting Your World](/tutorials/java/sd-backup), and risk control before a machine starts is in [World Eaters and Update Suppression](/tutorials/java/sd-machine).
 
 ---
 

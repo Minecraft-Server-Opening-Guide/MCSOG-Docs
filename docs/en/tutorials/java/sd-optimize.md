@@ -1,6 +1,6 @@
 ---
 title: "[Technical] Performance Mods"
-slug: tech-optimize
+slug: sd-optimize
 cat: java
 level: 3
 order: 32
@@ -126,12 +126,12 @@ Two operational habits that have nothing to do with the mods themselves but matt
 - **Configuration-level optimisation** (view distance, simulation distance, JVM, pre-generation): [Performance Optimisation](/tutorials/java/optimize)
 - **How to use the profiling tool**: [Profiling a Server with spark](/tutorials/ops/spark)
 - **Modded servers, loaders and troubleshooting**: [Getting Started with Modded Servers](/tutorials/java/modded)
-- **Why a Fabric server comes first for technical play**, and the trade-offs of multi-threaded cores: [Choosing a Server Core](/tutorials/java/tech-server)
+- **Why a Fabric server comes first for technical play**, and the trade-offs of multi-threaded cores: [Choosing a Server Core](/tutorials/java/sd-server)
 - **Why vanilla behaviour matters so much**: [Technical Minecraft and Redstone](/tutorials/java/redstone) and [Advanced Technical Minecraft](/tutorials/java/redstone-advanced)
 
 ## Next Step
 
-Optimisation needs data behind it, so start by turning conclusions into numbers with `spark`: see [Profiling a Server with `spark`](/tutorials/ops/spark). For the wider picture see [Performance Optimisation](/tutorials/java/optimize); for the server itself see [Choosing a Server Core](/tutorials/java/tech-server) and [Carpet and Its Add-ons](/tutorials/java/tech-carpet).
+Optimisation needs data behind it, so start by turning conclusions into numbers with `spark`: see [Profiling a Server with `spark`](/tutorials/ops/spark). For the wider picture see [Performance Optimisation](/tutorials/java/optimize); for the server itself see [Choosing a Server Core](/tutorials/java/sd-server) and [Carpet and Its Add-ons](/tutorials/java/sd-carpet).
 
 ---
 

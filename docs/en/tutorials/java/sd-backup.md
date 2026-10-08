@@ -1,6 +1,6 @@
 ---
 title: "[Technical] Protecting Your World"
-slug: tech-backup
+slug: sd-backup
 cat: java
 level: 3
 order: 33
@@ -54,6 +54,8 @@ For a technical server a practical combination is **one scheduled full backup pl
 `Ledger` is a server-side logging mod (loaders: `fabric`, `quilt`; supported versions `1.17-rc1` to `26.3`; one line: A serverside logging mod). Its official description reads:
 
 > Ledger is a comprehensive logging system for Fabric servers. It provides essential tracking for hundreds of in game events.
+
+On the plugin side the best-known equivalent is **CoreProtect** (loaders: `bukkit`, `folia`, `paper`, `purpur`, `spigot`; versions `1.14.1` to `26.2`; officially a fast, efficient data logging and anti-griefing tool that can roll back and restore damage). Think of `Ledger` as **the CoreProtect counterpart in the Fabric ecosystem**: it also records block and container activity and lets you look it up by time and position — except that CoreProtect runs on the plugin side and can roll damage back itself, while `Ledger` only records and queries.
 
 It answers a different question from backups, and the two are not interchangeable:
 
@@ -121,11 +123,11 @@ The bigger the machines, the more you need **backups, permissions and crash-prev
 | --- | --- | --- |
 | Backups | Returning the world after something goes wrong | This article and [Backup and Recovery](/tutorials/java/backup) |
 | Permissions and whitelist | Stopping the people who should not be touching anything | [Anti-Cheat and Anti-Grief](/tutorials/java/anticheat) |
-| Crash-prevention rules | Keeping the server from crashing outright during update-suppression style operations | [Carpet and Its Add-ons](/tutorials/java/tech-carpet) |
+| Crash-prevention rules | Keeping the server from crashing outright during update-suppression style operations | [Carpet and Its Add-ons](/tutorials/java/sd-carpet) |
 
 ## Next Step
 
-The bigger the machines, the more backups belong in your process: risk control for high-destruction operations such as world eaters and update suppression is covered in [World Eaters and Update Suppression](/tutorials/java/tech-machine). For MCDR itself see [The MCDR Server Manager](/tutorials/java/mcdr); for consistency, retention and restore drills see [Backup and Recovery](/tutorials/java/backup).
+The bigger the machines, the more backups belong in your process: risk control for high-destruction operations such as world eaters and update suppression is covered in [World Eaters and Update Suppression](/tutorials/java/sd-machine). For MCDR itself see [The MCDR Server Manager](/tutorials/java/mcdr); for consistency, retention and restore drills see [Backup and Recovery](/tutorials/java/backup).
 
 ---
 

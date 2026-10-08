@@ -1,6 +1,6 @@
 ---
 title: "[Technical] World Eaters and Update Suppression"
-slug: tech-machine
+slug: sd-machine
 cat: java
 level: 3
 order: 35
@@ -78,7 +78,7 @@ That is the whole answer to the ordering question. Many owners start the machine
 2. Then start the machine and let players work
 ```
 
-The verified crash-protection rules, grouped by source. The names and values are already catalogued in [Carpet and Its Add-ons](/tutorials/java/tech-carpet); **what this section adds is the order in which to use them**:
+The verified crash-protection rules, grouped by source. The names and values are already catalogued in [Carpet and Its Add-ons](/tutorials/java/sd-carpet); **what this section adds is the order in which to use them**:
 
 | Source | Rule | Accepted values |
 | --- | --- | --- |
@@ -120,7 +120,7 @@ The more powerful the machine, the less optional these three become. Each maps t
 
 | Item | What it buys you | Where |
 | --- | --- | --- |
-| **Backups** | After a crash, a mistake or a runaway machine, a state you can return to | [Protecting Your World](/tutorials/java/tech-backup) |
+| **Backups** | After a crash, a mistake or a runaway machine, a state you can return to | [Protecting Your World](/tutorials/java/sd-backup) |
 | **Permissions** | Who may run the machine, and who may use high-risk operations such as update suppression | [Land Claims and Protection](/tutorials/java/protection) |
 | **Crash-protection rules** | Pulls update suppression back from "can take the server down" into a controllable range | Section 4 above |
 
@@ -137,7 +137,7 @@ One more article is directly relevant to how machines behave: why machines break
 
 ## Next Step
 
-Before a machine moves earth, make sure you can get your world back: see [Protecting Your World](/tutorials/java/tech-backup). Who may run a machine is a permissions question — see [Land Claims and Protection](/tutorials/java/protection); why machines break and why they are slow is covered in [Advanced Technical Minecraft and Redstone](/tutorials/java/redstone-advanced), and why anti-cheat is a net loss here in [Why Anti-cheat Is Not Recommended](/tutorials/java/tech-anticheat).
+Before a machine moves earth, make sure you can get your world back: see [Protecting Your World](/tutorials/java/sd-backup). Who may run a machine is a permissions question — see [Land Claims and Protection](/tutorials/java/protection); why machines break and why they are slow is covered in [Advanced Technical Minecraft and Redstone](/tutorials/java/redstone-advanced), and why anti-cheat is a net loss here in [Why Anti-cheat Is Not Recommended](/tutorials/java/sd-anticheat).
 
 ---
 

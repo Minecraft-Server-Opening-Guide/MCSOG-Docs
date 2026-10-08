@@ -1,6 +1,6 @@
 ---
 title: "[生电篇]Carpet 及其附属包"
-slug: tech-carpet
+slug: sd-carpet
 cat: java
 level: 3
 order: 30
@@ -128,7 +128,7 @@ Carpet 本体只做主规则集，功能扩展靠附属包。以下仓库地址�
 - 崩溃风险由 TIS 的 `yeetUpdateSuppressionCrash`、`updateSuppressionSimulator`、`deobfuscateCrashReportStackTrace` 与 AMS 的 `amsUpdateSuppressionCrashFix` 来兜；
 - 这三层是"**入口可控 + 参数可换 + 崩溃可兜**"的关系，缺一层都会让排障变难。
 
-具体到机器怎么开、风险怎么控，见第 7 篇 [世吞与切门](/tutorials/java/tech-machine)。那里的结论是：机器越猛，越要"备份 + 权限 + 防崩规则"三件套，而**防崩规则就是本节这几条**。
+具体到机器怎么开、风险怎么控，见第 7 篇 [世吞与切门](/tutorials/java/sd-machine)。那里的结论是：机器越猛，越要"备份 + 权限 + 防崩规则"三件套，而**防崩规则就是本节这几条**。
 
 ## 七、本篇的三条底线
 
@@ -140,7 +140,7 @@ Carpet 本体只做主规则集，功能扩展靠附属包。以下仓库地址�
 
 ## 下一步
 
-规则开完之后，机器一动土就要先读风险控制：见 [世吞与切门](/tutorials/java/tech-machine)。想让大家都用上同一份投影，见 [共享原理图](/tutorials/java/tech-schematic)；回头算性能账见 [优化 mod](/tutorials/java/tech-optimize)，核心为什么必须是 Fabric 见 [服务端选择](/tutorials/java/tech-server)。
+规则开完之后，机器一动土就要先读风险控制：见 [世吞与切门](/tutorials/java/sd-machine)。想让大家都用上同一份投影，见 [共享原理图](/tutorials/java/sd-schematic)；回头算性能账见 [优化 mod](/tutorials/java/sd-optimize)，核心为什么必须是 Fabric 见 [服务端选择](/tutorials/java/sd-server)。
 
 ---
 

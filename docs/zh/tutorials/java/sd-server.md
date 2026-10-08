@@ -1,6 +1,6 @@
 ---
 title: "[生电篇]服务端选择"
-slug: tech-server
+slug: sd-server
 cat: java
 level: 3
 order: 29
@@ -29,7 +29,7 @@ draft: false
 
 ### 生电工具链全在 Fabric 上
 
-`Carpet` 本体，以及它的四个主流附属包（`Carpet Extra`、`Carpet TIS Addition`、`Carpet AMS Addition`、`Carpet Org Addition`）**全部是 Fabric 服务端 mod**。也就是说，生电玩家真正依赖的那套规则系统，只在 Fabric 上有完整实现；选别的核心，等于放弃这套工具链。规则与附属包的细节见 [Carpet 及其附属包](/tutorials/java/tech-carpet)。
+`Carpet` 本体，以及它的四个主流附属包（`Carpet Extra`、`Carpet TIS Addition`、`Carpet AMS Addition`、`Carpet Org Addition`）**全部是 Fabric 服务端 mod**。也就是说，生电玩家真正依赖的那套规则系统，只在 Fabric 上有完整实现；选别的核心，等于放弃这套工具链。规则与附属包的细节见 [Carpet 及其附属包](/tutorials/java/sd-carpet)。
 
 ### MCDR 独立在服务端进程之外
 
@@ -85,7 +85,7 @@ Paper 系一类的插件端能把 TPS 优化得很好，插件生态也成熟，
 - 反作弊通常要求装在**插件端或优化端**上，而这两类核心本身就会改原版行为，与生电目标直接冲突；
 - 原版那套针对快速移动的检测与回拉，Carpet 自己就有开关：`antiCheatDisabled`，官方描述为 Prevents players from rubberbanding when moving too fast（防止玩家因移动过快被回拉）。
 
-你真正需要的是**白名单与权限、操作记录与回溯、定期与异地备份**这类替代方案，而不是再加一层会误判的判定。完整论证见 [为什么不推荐反作弊](/tutorials/java/tech-anticheat)，日志与回滚手段见 [反作弊与防破坏](/tutorials/java/anticheat)。
+你真正需要的是**白名单与权限、操作记录与回溯、定期与异地备份**这类替代方案，而不是再加一层会误判的判定。完整论证见 [为什么不推荐反作弊](/tutorials/java/sd-anticheat)，日志与回滚手段见 [反作弊与防破坏](/tutorials/java/anticheat)。
 
 ## 五、PCA 协议
 
@@ -137,7 +137,7 @@ Paper 系一类的插件端能把 TPS 优化得很好，插件生态也成熟，
 
 ## 下一步
 
-核心定下来之后，下一步是把规则系统装上：见 [Carpet 及其附属包](/tutorials/java/tech-carpet)。机器开工之前先读风险控制，见 [世吞与切门](/tutorials/java/tech-machine)；为什么反作弊在生电服是负收益，见 [为什么不推荐反作弊](/tutorials/java/tech-anticheat)。通用选型与被跳过的细节见 [服务端选择](/tutorials/java/core) 与 [生电与红石](/tutorials/java/redstone)。
+核心定下来之后，下一步是把规则系统装上：见 [Carpet 及其附属包](/tutorials/java/sd-carpet)。机器开工之前先读风险控制，见 [世吞与切门](/tutorials/java/sd-machine)；为什么反作弊在生电服是负收益，见 [为什么不推荐反作弊](/tutorials/java/sd-anticheat)。通用选型与被跳过的细节见 [服务端选择](/tutorials/java/core) 与 [生电与红石](/tutorials/java/redstone)。
 
 ---
 

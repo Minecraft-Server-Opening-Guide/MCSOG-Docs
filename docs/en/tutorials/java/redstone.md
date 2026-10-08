@@ -119,6 +119,19 @@ Redstone circuits only
 
 Once it runs technically, whether the server lasts comes down to how you run it: see [Operations and Management](/tutorials/ops/management-java).
 
+## Technical Play Series
+
+This article covers the general principles. The series below covers what a technical server actually needs in practice:
+
+- [Choosing a Server Core](/tutorials/java/sd-server) — Fabric plus MCDR, optimised cores and multi-threaded cores.
+- [Carpet and Its Add-ons](/tutorials/java/sd-carpet) — the rule system, the four add-ons and crash prevention.
+- [Sharing Schematics](/tutorials/java/sd-schematic) — syncing projections and placements with everyone.
+- [Performance Mods](/tutorials/java/sd-optimize) — what is safe to install and what changes timing.
+- [Protecting Your World](/tutorials/java/sd-backup) — backup workflow, Ledger and off-site copies.
+- [Tuning the Configuration](/tutorials/java/sd-config) — which switches a technical server can actually turn.
+- [World Eaters and Update Suppression](/tutorials/java/sd-machine) — risk control for world eaters and update suppression.
+- [Why Anti-cheat Is Not Recommended](/tutorials/java/sd-anticheat) — why anti-cheat backfires here.
+
 ---
 
 > Parts of this article reference [NitWikit (Cubic Wiki)](https://nitwikit.8aka.org/) and [its GitHub repository](https://github.com/Cubic-Project/NitWikit), rewritten to fit this site's structure; where it differs from upstream, upstream prevails.
