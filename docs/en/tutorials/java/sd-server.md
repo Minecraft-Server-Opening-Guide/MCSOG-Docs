@@ -89,7 +89,7 @@ What you actually need are alternatives such as **whitelists and permissions, lo
 
 ## 5. The PCA Protocol
 
-`PCA` is properly known as `plusls-carpet-addition` (Plusls Carpet Addition), an extension mod for Carpet.
+`PCA` is properly known as `plusls-carpet-addition` (Plusls Carpet Addition), an extension mod for Carpet. "Adding the PCA protocol to your server" is what the community usually shortens to **PCA Protect**; the protocol documentation is [plusls/plusls-carpet-addition](https://github.com/plusls/plusls-carpet-addition).
 
 ### What it is
 
@@ -122,6 +122,16 @@ Note that `pcaSyncProtocol` **defaults to off**: the protocol is a capability, n
 | `pca-protocol-plugin` | Available today. Modrinth, `bukkit` / `paper` / `purpur` / `spigot`, 1.17–1.21.8. Official description: Add PCA protocol support for the spigot and its optimized/branch server |
 
 In other words: the original project and its fork are both discontinued, and **what works now are the two stripped-down forks that keep only the protocol** — `pca-protocol` for Fabric servers and `pca-protocol-plugin` for Spigot-family servers.
+
+### Adding the PCA Protocol (PCA Protect)
+
+What the community shortens to **PCA Protect** is simply installing the matching one of the two stripped forks above:
+
+- **Fabric servers**: `pca-protocol` (source: [Fallen-Breath/pca-protocol](https://github.com/Fallen-Breath/pca-protocol)); it needs no extra dependencies, only the Fabric loader.
+- **Spigot-family servers** (`bukkit` / `paper` / `purpur` / `spigot`): `pca-protocol-plugin`.
+- **Clients**: the server only "speaks" the protocol; to actually use it the client needs a mod that consumes it, such as `MasaGadget` (multiplayer container preview is what it implements).
+
+Even after installing, the protocol stays **off by default**: turn on `pcaSyncProtocol` and use `pcaSyncPlayerEntity` to decide the scope.
 
 :::warn The stripped-down fork conflicts with the full version
 The official documentation states it plainly: the stripped-down fork **conflicts** with the full `plusls-carpet-addition`. So either use the full version (which has other features but is discontinued) or the stripped-down one (protocol only, still maintained) — **never install both**.

@@ -89,7 +89,7 @@ Paper 系一类的插件端能把 TPS 优化得很好，插件生态也成熟，
 
 ## 五、PCA 协议
 
-`PCA` 的准确身份是 `plusls-carpet-addition`（Plusls Carpet Addition），一个 Carpet 的扩展 mod。
+`PCA` 的准确身份是 `plusls-carpet-addition`（Plusls Carpet Addition），一个 Carpet 的扩展 mod。社区里说「给服务端加入 PCA 协议」，指的就是这件事，常被简称为 **PCA Protect**；协议文档见 [plusls/plusls-carpet-addition](https://github.com/plusls/plusls-carpet-addition)。
 
 ### 它是什么
 
@@ -122,6 +122,16 @@ Paper 系一类的插件端能把 TPS 优化得很好，插件生态也成熟，
 | `pca-protocol-plugin` | 现可用。Modrinth，`bukkit` / `paper` / `purpur` / `spigot`，1.17–1.21.8。官方描述：Add PCA protocol support for the spigot and its optimized/branch server |
 
 也就是说：原始项目与其 fork 都已停更，**现在能用的是只保留协议功能的两个精简 fork**——`pca-protocol` 给 Fabric 服务端，`pca-protocol-plugin` 给 Spigot 系服务端。
+
+### 给服务端加入 PCA 协议（PCA Protect）
+
+社区把「让服务端说 PCA 协议」这件事简称为 **PCA Protect**，做法就是装上面两个精简 fork 中对应的那一个：
+
+- **Fabric 服务端**：装 `pca-protocol`（源码：[Fallen-Breath/pca-protocol](https://github.com/Fallen-Breath/pca-protocol)），它不需要任何额外前置，只要有 Fabric Loader。
+- **Spigot 系服务端**（`bukkit` / `paper` / `purpur` / `spigot`）：装 `pca-protocol-plugin`。
+- **客户端**：服务端只是"会说话"，真正要用起来还得客户端装一个使用该协议的 mod，例如 `MasaGadget`（多人容器预览就是它实现的）。
+
+装好之后协议仍然**默认关闭**：要手动打开 `pcaSyncProtocol`，并用 `pcaSyncPlayerEntity` 决定同步范围。
 
 :::warn 精简 fork 与完整版冲突
 官方明确说明：精简 fork 与完整的 `plusls-carpet-addition` **冲突**。也就是说，要么用完整版（含其他功能，但已停更），要么用精简版（只有协议，仍在维护），**不要同时装**。
