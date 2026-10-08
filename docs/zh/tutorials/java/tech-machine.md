@@ -137,10 +137,7 @@ Carpet 用 `/carpet <规则名> <值>` 开关原版细节行为。与世吞直�
 
 ## 下一步
 
-- 出事了能回来：[存档保护](/tutorials/java/tech-backup)
-- 谁能动机器：[领地与保护](/tutorials/java/protection)
-- 机器为什么坏、为什么慢：[生电与红石进阶](/tutorials/java/redstone-advanced)
-- 反作弊在生电服为什么是负收益：[为什么不推荐反作弊](/tutorials/java/tech-anticheat)
+机器一动土，最先要保证的是出事了能回来：见 [存档保护](/tutorials/java/tech-backup)。谁能动机器由权限决定，见 [领地与保护](/tutorials/java/protection)；机器为什么坏、为什么慢，见 [生电与红石进阶](/tutorials/java/redstone-advanced)，反作弊在生电服为什么是负收益见 [为什么不推荐反作弊](/tutorials/java/tech-anticheat)。
 
 ---
 

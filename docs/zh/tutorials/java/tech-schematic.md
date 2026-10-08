@@ -131,10 +131,7 @@ Carpet 本体的定位与规则用法，见 [Carpet 及其附属包](/tutorials/
 
 ## 下一步
 
-- 生电工具箱的底座：[Carpet 及其附属包](/tutorials/java/tech-carpet)
-- 服务端为什么选 Fabric：[服务端选择](/tutorials/java/tech-server)
-- 把投影变成机器：[世吞与切门](/tutorials/java/tech-machine)
-- 通用性能与排障：[性能优化](/tutorials/java/optimize)、[用 spark 分析服务器性能](/tutorials/ops/spark)
+生电工具箱的底座是规则系统：见 [Carpet 及其附属包](/tutorials/java/tech-carpet)。服务端为什么必须是 Fabric 见 [服务端选择](/tutorials/java/tech-server)；投影最终要变成机器，动手之前先读 [世吞与切门](/tutorials/java/tech-machine)。通用性能与排障见 [性能优化](/tutorials/java/optimize) 与 [用 spark 分析服务器性能](/tutorials/ops/spark)。
 
 ---
 

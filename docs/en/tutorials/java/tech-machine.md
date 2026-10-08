@@ -135,12 +135,9 @@ One more article is directly relevant to how machines behave: why machines break
 4. On newer versions, pick the restoration/helper mod by version before anything else
 ```
 
-## Next Steps
+## Next Step
 
-- Recovering when things go wrong: [Protecting Your World](/tutorials/java/tech-backup)
-- Deciding who may run the machine: [Land Claims and Protection](/tutorials/java/protection)
-- Why machines break and why they are slow: [Advanced Technical Minecraft and Redstone](/tutorials/java/redstone-advanced)
-- Why anti-cheat is a net loss on a technical server: [Why Anti-cheat Is Not Recommended](/tutorials/java/tech-anticheat)
+Before a machine moves earth, make sure you can get your world back: see [Protecting Your World](/tutorials/java/tech-backup). Who may run a machine is a permissions question — see [Land Claims and Protection](/tutorials/java/protection); why machines break and why they are slow is covered in [Advanced Technical Minecraft and Redstone](/tutorials/java/redstone-advanced), and why anti-cheat is a net loss here in [Why Anti-cheat Is Not Recommended](/tutorials/java/tech-anticheat).
 
 ---
 

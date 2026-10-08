@@ -138,9 +138,10 @@ For how the machines are actually run and how the risk is contained, see article
 3. Turn the crash-prevention rules on first — catch the crash before the world eater runs
 ```
 
-## Next Steps
+## Next Step
 
-- Before the machines move earth, read the risk control: [World Eaters and Update Suppression](/tutorials/java/tech-machine)
-- Let everyone share schematics and placements: [Sharing Schematics](/tutorials/java/tech-schematic)
-- Rules settled, now review the performance budget: [Performance Mods](/tutorials/java/tech-optimize)
-- Why the core has to be Fabric: [Choosing a Server Core](/tutorials/java/tech-server)
+Once the rules are set, read the risk control before any machine moves earth: see [World Eaters and Update Suppression](/tutorials/java/tech-machine). To let everyone work from the same projection, see [Sharing Schematics](/tutorials/java/tech-schematic); for the performance budget see [Performance Mods](/tutorials/java/tech-optimize), and for why the core has to be Fabric see [Choosing a Server Core](/tutorials/java/tech-server).
+
+---
+
+> Rule names and official descriptions in this article come from Carpet's official source, and the add-on repositories, supported versions and version counts come from official Modrinth data; whether a rule exists and how it behaves is whatever the in-game `/carpet` output of your version says.

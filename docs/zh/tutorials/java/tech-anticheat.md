@@ -102,11 +102,8 @@ draft: false
 
 ## 下一步
 
-- 通用的两层防护与配置方法：[反作弊与防破坏](/tutorials/java/anticheat)
-- 谁能动机器、谁来管权限：[领地与保护](/tutorials/java/protection)
-- 出事了怎么回来：[存档保护](/tutorials/java/tech-backup)
-- 机器开工前的风险控制：[世吞与切门](/tutorials/java/tech-machine)
+通用的两层防护与配置方法见 [反作弊与防破坏](/tutorials/java/anticheat)；谁能动机器、谁来管权限见 [领地与保护](/tutorials/java/protection)；出事了怎么回来见 [存档保护](/tutorials/java/tech-backup)，机器开工前的风险控制见 [世吞与切门](/tutorials/java/tech-machine)。
 
 ---
 
-> 本篇引用的规则名与官方描述来自 Carpet 官方源码，mod 定位与官方描述来自 `ledger` 的 Modrinth 官方条目与 `playerOperationLimiter` 所属项目的官方说明；本篇不涉及任何具体反作弊产品的实现与阈值，也不复述 [反作弊与防破坏](/tutorials/java/anticheat) 已有的内容。
+> 本篇引用的规则名与官方描述来自 Carpet 官方源码，mod 定位与官方描述来自 `ledger` 的 Modrinth 官方条目，以及 Plusls Carpet Addition（plusls-carpet-addition）官方说明中的 `playerOperationLimiter`；本篇不涉及任何具体反作弊产品的实现与阈值，也不复述 [反作弊与防破坏](/tutorials/java/anticheat) 已有的内容。

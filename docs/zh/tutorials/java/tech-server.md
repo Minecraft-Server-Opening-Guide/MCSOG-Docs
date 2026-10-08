@@ -137,7 +137,8 @@ Paper 系一类的插件端能把 TPS 优化得很好，插件生态也成熟，
 
 ## 下一步
 
-- 核心定了，下一步是装规则系统：[Carpet 及其附属包](/tutorials/java/tech-carpet)
-- 机器要开工之前，先读风险控制：[世吞与切门](/tutorials/java/tech-machine)
-- 为什么反作弊在生电服是负收益：[为什么不推荐反作弊](/tutorials/java/tech-anticheat)
-- 通用选型与被跳过的细节：[服务端选择](/tutorials/java/core)、[生电与红石](/tutorials/java/redstone)
+核心定下来之后，下一步是把规则系统装上：见 [Carpet 及其附属包](/tutorials/java/tech-carpet)。机器开工之前先读风险控制，见 [世吞与切门](/tutorials/java/tech-machine)；为什么反作弊在生电服是负收益，见 [为什么不推荐反作弊](/tutorials/java/tech-anticheat)。通用选型与被跳过的细节见 [服务端选择](/tutorials/java/core) 与 [生电与红石](/tutorials/java/redstone)。
+
+---
+
+> 本篇的 mod 加载器、支持版本与插件目录名均取自 Modrinth 官方数据与 MCDR 官方插件目录；具体配置以各项目官方说明为准。

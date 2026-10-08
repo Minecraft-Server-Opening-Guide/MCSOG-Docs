@@ -140,7 +140,8 @@ Carpet 本体只做主规则集，功能扩展靠附属包。以下仓库地址�
 
 ## 下一步
 
-- 机器要动土了，先读风险控制：[世吞与切门](/tutorials/java/tech-machine)
-- 让大家共享投影与放置：[共享原理图](/tutorials/java/tech-schematic)
-- 规则开完了，回头看性能账：[优化 mod](/tutorials/java/tech-optimize)
-- 核心为什么必须是 Fabric：[服务端选择](/tutorials/java/tech-server)
+规则开完之后，机器一动土就要先读风险控制：见 [世吞与切门](/tutorials/java/tech-machine)。想让大家都用上同一份投影，见 [共享原理图](/tutorials/java/tech-schematic)；回头算性能账见 [优化 mod](/tutorials/java/tech-optimize)，核心为什么必须是 Fabric 见 [服务端选择](/tutorials/java/tech-server)。
+
+---
+
+> 本篇的规则名与官方描述取自 Carpet 官方源码，附属包的仓库地址、支持版本与版本条目数取自 Modrinth 官方数据；规则是否存在、行为如何，请以你所用版本的游戏内 `/carpet` 输出为准。

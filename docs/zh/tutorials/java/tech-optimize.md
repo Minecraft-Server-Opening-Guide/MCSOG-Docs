@@ -131,10 +131,8 @@ draft: false
 
 ## 下一步
 
-- 用 `spark` 把优化变成数据：[用 spark 分析服务器性能](/tutorials/ops/spark)
-- 回到配置与服务端的整体思路：[性能优化](/tutorials/java/optimize)
-- 服务端本身的选型：[服务端选择](/tutorials/java/tech-server)、[Carpet 及其附属包](/tutorials/java/tech-carpet)
+优化要有数据支撑，先用 `spark` 把结论变成数字：见 [用 spark 分析服务器性能](/tutorials/ops/spark)。整体思路见 [性能优化](/tutorials/java/optimize)；服务端本身的选型见 [服务端选择](/tutorials/java/tech-server) 与 [Carpet 及其附属包](/tutorials/java/tech-carpet)。
 
 ---
 
-> 本篇的 mod 列表、loaders、支持版本与下载量均来自 Modrinth 官方条目；`memoryleakfix`、`starlight`、`krypton` 的结论引用各自官方 README。装之前请再核对一次项目页，版本与描述会随项目更新而变化。
+> 本篇的 mod 列表、加载器、支持版本与下载量均来自 Modrinth 官方条目；`memoryleakfix`、`starlight`、`krypton` 的结论引用各自官方 README。装之前请再核对一次项目页，版本与描述会随项目更新而变化。

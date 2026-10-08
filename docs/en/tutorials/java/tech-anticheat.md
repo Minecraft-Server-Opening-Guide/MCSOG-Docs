@@ -100,13 +100,10 @@ Rather than arguing against anti-cheat again, just follow this:
 4. Alternatives: whitelist and permissions + ledger logging + scheduled offsite backups + server-side limits
 ```
 
-## Next Steps
+## Next Step
 
-- The general two-layer defence and how to configure it: [Anti-Cheat and Grief Prevention](/tutorials/java/anticheat)
-- Who may run machines and who holds permissions: [Land Claims and Protection](/tutorials/java/protection)
-- How to recover when things go wrong: [Protecting Your World](/tutorials/java/tech-backup)
-- Risk control before a machine starts: [World Eaters and Update Suppression](/tutorials/java/tech-machine)
+The general two-layer defence and how to configure it is in [Anti-Cheat and Grief Prevention](/tutorials/java/anticheat); who may run machines and who holds permissions is in [Land Claims and Protection](/tutorials/java/protection); how to recover when things go wrong is in [Protecting Your World](/tutorials/java/tech-backup), and risk control before a machine starts is in [World Eaters and Update Suppression](/tutorials/java/tech-machine).
 
 ---
 
-> The rule names and official descriptions quoted here come from the official Carpet source; the mod summaries come from the Modrinth project page for `ledger` and the official documentation of the project providing `playerOperationLimiter`. No specific anti-cheat product, implementation or threshold is discussed, and nothing already covered by [Anti-Cheat and Grief Prevention](/tutorials/java/anticheat) is repeated.
+> The rule names and official descriptions quoted here come from the official Carpet source; the mod summaries come from the Modrinth project page for `ledger` and the official Plusls Carpet Addition (plusls-carpet-addition) documentation of `playerOperationLimiter`. No specific anti-cheat product, implementation or threshold is discussed, and nothing already covered by [Anti-Cheat and Grief Prevention](/tutorials/java/anticheat) is repeated.

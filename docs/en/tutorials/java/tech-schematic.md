@@ -129,12 +129,9 @@ Then align all three versions — miss one and sharing simply does not work
 - **Follow the official documentation** for the actual operations rather than copying someone's steps without checking them.
 - **Align versions before installing**: the ranges are in the table in section 3; confirm on the project page first.
 
-## Next Steps
+## Next Step
 
-- The foundation of the technical toolbox: [Carpet and Its Add-ons](/tutorials/java/tech-carpet)
-- Why a Fabric server: [Choosing a Server Core](/tutorials/java/tech-server)
-- Turning a projection into a machine: [World Eaters and Update Suppression](/tutorials/java/tech-machine)
-- General performance and diagnosis: [Performance Optimisation](/tutorials/java/optimize) and [Profiling a Server with `spark`](/tutorials/ops/spark)
+The foundation of the technical toolbox is the rule system: see [Carpet and Its Add-ons](/tutorials/java/tech-carpet). For why the server has to run Fabric see [Choosing a Server Core](/tutorials/java/tech-server); a projection eventually becomes a machine, so read [World Eaters and Update Suppression](/tutorials/java/tech-machine) before you start. General performance and diagnosis are in [Performance Optimisation](/tutorials/java/optimize) and [Profiling a Server with `spark`](/tutorials/ops/spark).
 
 ---
 

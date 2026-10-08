@@ -129,11 +129,9 @@ Two operational habits that have nothing to do with the mods themselves but matt
 - **Why a Fabric server comes first for technical play**, and the trade-offs of multi-threaded cores: [Choosing a Server Core](/tutorials/java/tech-server)
 - **Why vanilla behaviour matters so much**: [Technical Minecraft and Redstone](/tutorials/java/redstone) and [Advanced Technical Minecraft](/tutorials/java/redstone-advanced)
 
-## Next Steps
+## Next Step
 
-- Turn optimisation into data with `spark`: [Profiling a Server with spark](/tutorials/ops/spark)
-- Go back to the configuration and server-wide view: [Performance Optimisation](/tutorials/java/optimize)
-- Pick the server itself: [Choosing a Server Core](/tutorials/java/tech-server) and [Carpet and Its Add-ons](/tutorials/java/tech-carpet)
+Optimisation needs data behind it, so start by turning conclusions into numbers with `spark`: see [Profiling a Server with `spark`](/tutorials/ops/spark). For the wider picture see [Performance Optimisation](/tutorials/java/optimize); for the server itself see [Choosing a Server Core](/tutorials/java/tech-server) and [Carpet and Its Add-ons](/tutorials/java/tech-carpet).
 
 ---
 

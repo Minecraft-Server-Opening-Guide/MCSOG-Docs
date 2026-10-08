@@ -135,9 +135,10 @@ The official documentation states it plainly: the stripped-down fork **conflicts
 3. Skip anti-cheat — misfires are guaranteed; use permissions, logs and backups instead
 ```
 
-## Next Steps
+## Next Step
 
-- Core settled, now add the rule system: [Carpet and Its Add-ons](/tutorials/java/tech-carpet)
-- Read the risk control before the machines start: [World Eaters and Update Suppression](/tutorials/java/tech-machine)
-- Why anti-cheat is a net loss on a technical server: [Why Anti-cheat Is Not Recommended](/tutorials/java/tech-anticheat)
-- The general selection and the details skipped here: [Choosing a Server Core](/tutorials/java/core), [Technical Minecraft and Redstone](/tutorials/java/redstone)
+With the core settled, the next step is the rule system: see [Carpet and Its Add-ons](/tutorials/java/tech-carpet). Read the risk control before the machines start, in [World Eaters and Update Suppression](/tutorials/java/tech-machine); for why anti-cheat is a net loss on a technical server, see [Why Anti-cheat Is Not Recommended](/tutorials/java/tech-anticheat). The general selection and the details skipped here are in [Choosing a Server Core](/tutorials/java/core) and [Technical Minecraft and Redstone](/tutorials/java/redstone).
+
+---
+
+> Loaders, supported versions and plugin directory names in this article come from official Modrinth data and the official MCDR plugin catalogue; follow each project's own documentation for configuration.
