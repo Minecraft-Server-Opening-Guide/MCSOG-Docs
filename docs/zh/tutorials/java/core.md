@@ -25,6 +25,17 @@ draft: false
 
 > 还有一类是**代理端**（Velocity / BungeeCord）：它自己不跑世界，只负责把玩家转发到多个子服，属于「多服互联」时才需要。
 
+这三类里，生电服走的是**模组端（Fabric）**这条路。开生电服之前，这组教程值得先过一遍：
+
+- [[生电篇]服务端选择](/tutorials/java/sd-server)：为什么是 Fabric 加 MCDR，以及各条路线的代价。
+- [[生电篇]Carpet 及其附属包](/tutorials/java/sd-carpet)：规则系统、四个主流附属包与防崩规则。
+- [[生电篇]共享原理图](/tutorials/java/sd-schematic)：用 Syncmatica 把投影与放置同步给所有人。
+- [[生电篇]优化 mod](/tutorials/java/sd-optimize)：哪些能放心装、哪些会改变时序。
+- [[生电篇]存档保护](/tutorials/java/sd-backup)：备份流程、Ledger 与异地备份。
+- [[生电篇]配置优化](/tutorials/java/sd-config)：生电服到底有哪些开关可动。
+- [[生电篇]世吞与切门](/tutorials/java/sd-machine)：世吞与更新抑制的风险控制。
+- [[生电篇]为什么不推荐反作弊](/tutorials/java/sd-anticheat)：生电服为什么不该装反作弊。
+
 ## 二、按硬件选：这是最容易选错的一点
 
 **Minecraft 的主线程是单线程的。** 实体、区块、红石、插件逻辑几乎都压在**一个核心**上——所以核心多不等于快，**单核频率才是关键**。

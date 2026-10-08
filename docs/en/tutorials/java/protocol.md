@@ -53,6 +53,15 @@ A Java Edition server must accept the [Minecraft End User License Agreement (EUL
 | Disk | **50GB SSD** | Worlds, backups and logs all keep growing |
 | Network | Upload bandwidth of **30Mbps+** | More players and plugins need more headroom |
 
+### Technical Server Specs (running machines and world eaters)
+
+| Item | Requirement | Details |
+| --- | --- | --- |
+| CPU | **8 cores** (4.5GHz+ single-core clock recommended) | World eaters, update suppression and large machines all sit on one core; the extra cores are headroom for sub-servers and background work |
+| Memory | **16–32GB** | Multiple sub-servers in mind: each one needs its own allocation, and the system plus cache still need room |
+| Disk | **120GB+** | Backups in mind: once machines start moving earth, worlds and backups grow far faster than on an ordinary survival server |
+| Network | Upload bandwidth of **100Mbps+** | Schematic sync, many players in one area and heavy entity traffic all ride on upload, so leave plenty of headroom |
+
 ### Why CPU Matters More Than Memory
 
 **A Minecraft server demands far more from single-core CPU performance than from memory.** The main thread processes entities, chunks, redstone and plugin logic serially, and nearly all of it lands on **one core** — you can add more cores, but there is still only one main thread.

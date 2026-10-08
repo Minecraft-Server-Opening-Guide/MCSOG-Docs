@@ -25,6 +25,17 @@ Choosing wrong will not stop the server from starting, but it wastes money (a ma
 
 > There is also the **proxy** category (Velocity / BungeeCord): it runs no world of its own and only forwards players to several backend servers, so you need it only when linking multiple servers together.
 
+Of the three categories, a technical server takes the **modded (Fabric)** route. Before you open one, work through this series:
+
+- [Choosing a Server Core](/tutorials/java/sd-server) — why Fabric plus MCDR, and what each route costs.
+- [Carpet and Its Add-ons](/tutorials/java/sd-carpet) — the rule system, the four add-ons and crash prevention.
+- [Sharing Schematics](/tutorials/java/sd-schematic) — syncing projections and placements with everyone via Syncmatica.
+- [Performance Mods](/tutorials/java/sd-optimize) — what is safe to install and what changes timing.
+- [Protecting Your World](/tutorials/java/sd-backup) — backup workflow, Ledger and off-site copies.
+- [Tuning the Configuration](/tutorials/java/sd-config) — which switches a technical server can actually turn.
+- [World Eaters and Update Suppression](/tutorials/java/sd-machine) — risk control for both.
+- [Why Anti-cheat Is Not Recommended](/tutorials/java/sd-anticheat) — why anti-cheat backfires here.
+
 ## 2. Choose by Hardware: The Easiest Thing to Get Wrong
 
 **Minecraft's main thread is single-threaded.** Entities, chunks, redstone and plugin logic almost all land on **one core** — so more cores does not mean faster; **single-core clock speed is what counts**.
