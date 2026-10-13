@@ -10,7 +10,7 @@ auto: true
 
 > This page is generated automatically by the site crawler and refreshed on every crawl. Java data comes from the [official Mojang version manifest](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json); Bedrock data comes from the version history table maintained on this site.
 >
-> Coverage: **918** Java entries (**103** releases) and **283** Bedrock entries.
+> Coverage: **919** Java entries (**103** releases) and **283** Bedrock entries.
 
 ## Java releases (newest first)
 
@@ -106,8 +106,8 @@ auto: true
 | 1.5.2 | 2013-04-25 |
 | 1.5.1 | 2013-03-20 |
 | 1.4.7 | 2012-12-27 |
-| 1.4.6 | 2012-12-19 |
 | 1.4.5 | 2012-12-19 |
+| 1.4.6 | 2012-12-19 |
 | 1.4.4 | 2012-12-13 |
 | 1.4.2 | 2012-11-24 |
 | 1.3.2 | 2012-08-15 |
@@ -124,6 +124,7 @@ auto: true
 
 | Version | Type | Released |
 |----|----|----|
+| 26.4-snapshot-4 | Snapshot | 2026-10-13 |
 | 26.4-snapshot-3 | Snapshot | 2026-10-06 |
 | 26.4-snapshot-2 | Snapshot | 2026-09-29 |
 | 26.4-snapshot-1 | Snapshot | 2026-09-22 |
@@ -964,8 +965,8 @@ auto: true
 | 1.5.1 | Release | 2013-03-20 |
 | 1.5 | Snapshot | 2013-03-06 |
 | 1.4.7 | Release | 2012-12-27 |
-| 1.4.6 | Release | 2012-12-19 |
 | 1.4.5 | Release | 2012-12-19 |
+| 1.4.6 | Release | 2012-12-19 |
 | 1.4.4 | Release | 2012-12-13 |
 | 1.4.3 | Snapshot | 2012-11-30 |
 | 1.4.2 | Release | 2012-11-24 |
