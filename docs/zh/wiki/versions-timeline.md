@@ -1,7 +1,11 @@
 ---
 title: "Minecraft 版本时间线（Java 版与基岩版）"
 slug: "versions-timeline"
+<<<<<<< HEAD
 updated: "2026-10-17"
+=======
+updated: "2026-10-16"
+>>>>>>> 46fc2091 (chore(downloads): inject the new translations into the shards)
 tags: ["wiki", "version", "timeline"]
 auto: true
 ---
