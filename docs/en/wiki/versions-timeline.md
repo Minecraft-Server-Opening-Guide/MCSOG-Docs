@@ -1,11 +1,7 @@
 ---
 title: "Minecraft version timeline (Java and Bedrock)"
 slug: "versions-timeline"
-<<<<<<< HEAD
 updated: "2026-10-17"
-=======
-updated: "2026-10-16"
->>>>>>> 46fc2091 (chore(downloads): inject the new translations into the shards)
 tags: ["wiki", "version", "timeline"]
 auto: true
 ---
