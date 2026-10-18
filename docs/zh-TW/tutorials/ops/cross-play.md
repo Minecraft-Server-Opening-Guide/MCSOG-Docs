@@ -1,11 +1,11 @@
 ---
-title: Java 與基岩版跨端聯機速查表
+title: Java 與基岩版跨端連線速查表
 slug: cross-play
 cat: ops
 level: 2
 order: 30
 minutes: 8
-tags: [跨端, 基岩版, Geyser, Floodgate, 聯機, 埠]
+tags: [跨端, 基岩版, Geyser, Floodgate, 連線, 埠]
 updated: 2026-10-04
 draft: false
 ---

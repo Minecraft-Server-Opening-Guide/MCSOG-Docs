@@ -14,15 +14,15 @@ draft: false
 
 本篇只講 spark 本身怎麼用。調優方向見 [效能最佳化](/tutorials/java/optimize)，實體堆積見 [實體與掉落物堆積](/tutorials/faq/entity-lag)，崩潰與報錯見 [[JAVA] 常見問題](/tutorials/faq/faq-java)。
 
-:::warn 命令以官方文件為準
-本文列出的命令與選項來自 spark 官方文件（spark.lucko.me/docs）與 PaperMC 文件，並已逐條核對。**spark 在不同平台、不同大版本上可用的子命令與選項略有差異**；動手前先用 `/spark` 或 Tab 補全確認你這一版支援哪些參數，不要憑記憶拼選項。
+:::warn 指令以官方文件為準
+本文列出的指令與選項來自 spark 官方文件（spark.lucko.me/docs）與 PaperMC 文件，並已逐條核對。**spark 在不同平台、不同大版本上可用的子指令與選項略有差異**；動手前先用 `/spark` 或 Tab 補全確認你這一版支援哪些參數，不要憑記憶拼選項。
 :::
 
 ## 1. spark 是什麼、怎麼裝
 
 ### 1.1 它由三部分組成
 
-spark 是一個性能分析工具（profiler），官方把它定位為"面向 Minecraft 客戶端、服務端和代理端的效能分析器"，由三塊能力組成：
+spark 是一個效能分析工具（profiler），官方把它定位為"面向 Minecraft 客戶端、服務端和代理端的效能分析器"，由三塊能力組成：
 
 | 元件 | 能回答的問題 |
 | --- | --- |
@@ -40,7 +40,7 @@ spark 是一個性能分析工具（profiler），官方把它定位為"面向 M
 
 ### 1.2 各平台怎麼裝
 
-官方下載頁（https://spark.lucko.me/download）按平台分发不同的包。**先选对你的平台，再下载**，把 jar 放進對應目錄，重啟服務端即生效。
+官方下載頁（https://spark.lucko.me/download）按平台分發不同的包。**先選對你的平台，再下載**，把 jar 放進對應目錄，重啟服務端即生效。
 
 | 平台 | 官方下載頁條目 | 放到哪裡 | 備註 |
 | --- | --- | --- | --- |
@@ -48,14 +48,14 @@ spark 是一個性能分析工具（profiler），官方把它定位為"面向 M
 | Fabric | Fabric | `mods/` | 模組形式 |
 | Forge | Forge | `mods/` | 模組形式 |
 | NeoForge | NeoForge | `mods/` | 模組形式 |
-| Velocity | Velocity | `plugins/` | 代理端；命令字首不同，見 1.4 |
-| BungeeCord | BungeeCord | `plugins/` | 代理端；命令字首不同，見 1.4 |
+| Velocity | Velocity | `plugins/` | 代理端；指令字首不同，見 1.4 |
+| BungeeCord | BungeeCord | `plugins/` | 代理端；指令字首不同，見 1.4 |
 | Sponge | Sponge (API 12) | `mods/` | 官方下載頁單獨列出 |
-| 客戶端（Fabric/Forge 等） | 對應平台包 | `mods/` | 分析客戶端卡頓；命令用 `/sparkc` |
+| 客戶端（Fabric/Forge 等） | 對應平台包 | `mods/` | 分析客戶端卡頓；指令用 `/sparkc` |
 | 任意 JVM 程式 / 原版服務端 | Standalone (Java Agent) | 啟動參數 | 見 1.3 |
 
 :::note Paper 1.21 及以上已經內建
-官方安裝文件明確說明：**Paper 1.21 或更新版本已經把 spark 打包進服務端，不需要再裝插件**。只有在你需要比內建版本更新的 spark 時，才把獨立插件 jar 放進 `plugins/`，並在啟動參數里加上 `-Dpaper.preferSparkPlugin=true` 來覆蓋內建版本。
+官方安裝文件明確說明：**Paper 1.21 或更新版本已經把 spark 打包進服務端，不需要再裝插件**。只有在你需要比內建版本更新的 spark 時，才把獨立插件 jar 放進 `plugins/`，並在啟動參數裡加上 `-Dpaper.preferSparkPlugin=true` 來覆蓋內建版本。
 :::
 
 :::warn 只從官方網站下載
@@ -97,24 +97,24 @@ java -jar spark-x.y.z-standalone-agent.jar <pid>
 java -jar spark-x.y.z-standalone-agent.jar <pid> port=2222
 ```
 
-不帶 PID 執行這個 jar 時，它會列出當前所有 Java 行程及其 PID。附加成功後，**連線方式會列印在被附加程式自己的控制台/日誌裡**；按提示用一個 SSH 會話連進去，就能執行常規的 spark 命令，用 `exit` 退出該會話。
+不帶 PID 執行這個 jar 時，它會列出當前所有 Java 行程及其 PID。附加成功後，**連線方式會列印在被附加程式自己的控制台/日誌裡**；按提示用一個 SSH 會話連進去，就能執行常規的 spark 指令，用 `exit` 退出該會話。
 
 ### 1.4 確認它載入成功了
 
-最直接的驗證方式：**不帶任何參數執行 `/spark`**，它會列印版本與可用子命令列表。如果提示未知命令或沒有輸出，說明沒載入成功。
+最直接的驗證方式：**不帶任何參數執行 `/spark`**，它會列印版本與可用子指令列表。如果提示未知指令或沒有輸出，說明沒載入成功。
 
 按順序排查：jar 是否放對目錄（`plugins/` 還是 `mods/`）、是否選對了平台包、服務端是否真的重啟過、啟動日誌裡有沒有 spark 的載入資訊。
 
-命令字首因平台而異，官方文件特別標註：
+指令字首因平台而異，官方文件特別標註：
 
-| 環境 | 使用的命令 |
+| 環境 | 使用的指令 |
 | --- | --- |
 | 服務端（Bukkit 系、Fabric/Forge 服務端） | `/spark` |
 | BungeeCord | `/sparkb` |
 | Velocity | `/sparkv` |
 | Forge/Fabric **客戶端** | `/sparkc` |
 
-權限方面：需要 `spark` 權限，或者使用各子命令自己的權限節點。官方文件列出的權限節點包括 `spark.profiler`、`spark.health`、`spark.ping`、`spark.tps`、`spark.tickmonitor`、`spark.gc`、`spark.gcmonitor`、`spark.heapsummary`、`spark.heapdump`、`spark.activity`。多數情況下**把自己設為 OP** 就夠了。
+權限方面：需要 `spark` 權限，或者使用各子指令自己的權限節點。官方文件列出的權限節點包括 `spark.profiler`、`spark.health`、`spark.ping`、`spark.tps`、`spark.tickmonitor`、`spark.gc`、`spark.gcmonitor`、`spark.heapsummary`、`spark.heapdump`、`spark.activity`。多數情況下**把自己設為 OP** 就夠了。
 
 :::tip 一個容易被忽略的配置
 spark 的設定項 `overrideTpsCommand` 預設是 `true`，並且**只在 Bukkit 系服務端生效**：也就是說預設情況下 `/tps` 會被 spark 接管，輸出的就是 spark 的 TPS 檢視。
@@ -140,7 +140,7 @@ spark 的設定項 `overrideTpsCommand` 預設是 `true`，並且**只在 Bukkit
 
 官方文件說明，`/spark tps` 的輸出還會包含 MSPT 的**最小值、中位數、95 分位與最大值**，並且 spark 會按好壞自動把這些數字標成綠色、黃色或紅色。
 
-**為什麼最大值很重要**：上述指標都是平均值或統計量。官方在 tick 迴圈指南里特別提醒：完全可能出現"大多數 tick 只用 20 毫秒（健康），偶爾某個 tick 用 300 毫秒（不健康）"的情況，這就是**卡頓尖峰（lag spike）**——平均值會把尖峰抹平，所以只看平均 TPS 會漏掉問題。
+**為什麼最大值很重要**：上述指標都是平均值或統計量。官方在 tick 迴圈指南裡特別提醒：完全可能出現"大多數 tick 只用 20 毫秒（健康），偶爾某個 tick 用 300 毫秒（不健康）"的情況，這就是**卡頓尖峰（lag spike）**——平均值會把尖峰抹平，所以只看平均 TPS 會漏掉問題。
 
 ### 2.2 /spark tps
 
@@ -152,7 +152,7 @@ spark 的設定項 `overrideTpsCommand` 預設是 `true`，並且**只在 Bukkit
 
 ### 2.3 /spark health
 
-`health` 子命令生成服務端健康報告，**內容包括 TPS、CPU、記憶體和磁碟佔用**。官方文件給出的用法：
+`health` 子指令生成服務端健康報告，**內容包括 TPS、CPU、記憶體和磁碟佔用**。官方文件給出的用法：
 
 ```text
 /spark health
@@ -162,7 +162,7 @@ spark 的設定項 `overrideTpsCommand` 預設是 `true`，並且**只在 Bukkit
 /spark health show --network
 ```
 
-| 命令 | 行為 |
+| 指令 | 行為 |
 | --- | --- |
 | `/spark health` | 在檢視器裡開啟，**live dashboard 模式，資料每 10 秒自動重新整理** |
 | `/spark health upload` | 上傳一份**靜態**健康報告，不會自動更新 |
@@ -198,13 +198,13 @@ spark 的設定項 `overrideTpsCommand` 預設是 `true`，並且**只在 Bukkit
 
 ## 3. 取樣分析（profiler）
 
-### 3.1 命令與選項
+### 3.1 指令與選項
 
-以下命令與選項全部來自官方 Command Usage 頁面。
+以下指令與選項全部來自官方 Command Usage 頁面。
 
 基礎操作：
 
-| 命令 | 作用 |
+| 指令 | 作用 |
 | --- | --- |
 | `/spark profiler start` | 以預設模式開始取樣 |
 | `/spark profiler stop` | 停止並檢視結果（預設會上傳並給出連結） |
@@ -243,7 +243,7 @@ spark 的設定項 `overrideTpsCommand` 預設是 `true`，並且**只在 Bukkit
 ```
 
 :::note 關於"不帶參數的 /spark profiler"
-官方文件把 profiler 的操作方式寫成 `start`、`stop`、`cancel`、`open`、`info` 這幾個明確的子命令，並沒有把"不帶參數的 `/spark profiler`"描述成一個獨立動作。另外官方配置文件說明 spark 的**後台分析器預設開啟**（設定項 `backgroundProfiler` 預設 `true`），這種情況下你可以直接用 `/spark profiler stop` 或 `/spark profiler open` 去操作**已經在跑的那一次**。因此：**按子命令寫，不要假設裸命令的行為**。
+官方文件把 profiler 的操作方式寫成 `start`、`stop`、`cancel`、`open`、`info` 這幾個明確的子指令，並沒有把"不帶參數的 `/spark profiler`"描述成一個獨立動作。另外官方配置文件說明 spark 的**後台分析器預設開啟**（設定項 `backgroundProfiler` 預設 `true`），這種情況下你可以直接用 `/spark profiler stop` 或 `/spark profiler open` 去操作**已經在跑的那一次**。因此：**按子指令寫，不要假設裸指令的行為**。
 :::
 
 ### 3.2 標準流程
@@ -277,7 +277,7 @@ Server thread
       Thread.sleep()                <- 睡眠，健康，可以忽略
 ```
 
-**睡眠佔比是第一個要看的東西**。官方在 tick 迴圈指南里給了經驗值：
+**睡眠佔比是第一個要看的東西**。官方在 tick 迴圈指南裡給了經驗值：
 
 | 睡眠（waitForNextTick / sleep）佔比 | 含義 |
 | --- | --- |
@@ -322,7 +322,7 @@ com.example.shop.ShopManager.tickShops()
 
 那麼 `com.example.shop` 這個插件就是在做這件事。判斷方法：
 
-1. 在 All 視圖裡順著百分比往下展開，直到看到一個"看起來像插件"的包名（通常是反向域名，如 `me.lucko.`、`com.example.`）。
+1. 在 All 視圖裡順著百分比往下展開，直到看到一個"看起來像插件"的包名（通常是反向網域，如 `me.lucko.`、`com.example.`）。
 2. 或者直接切到 **Sources 檢視**，它會**按插件/模組分別建樹**，誰的樹最"胖"誰就是嫌疑物件。
 3. 如果最頂層是服務端自己的方法（NMS），別急著下結論：用 **Bottom Up** 或繼續展開，看看**是誰呼叫了它**——很可能是某個插件通過事件或 API 觸發了這段服務端程式碼。
 
@@ -332,7 +332,7 @@ com.example.shop.ShopManager.tickShops()
 
 第一步，用 `tickmonitor` 找出"多慢算異常"：
 
-| 命令 | 作用 |
+| 指令 | 作用 |
 | --- | --- |
 | `/spark tickmonitor` | **開關**監控系統（再執行一次即關閉） |
 | `/spark tickmonitor --threshold <percent>` | 只報告**比平均 tick 時長高出指定百分比**的 tick |
@@ -358,7 +358,7 @@ com.example.shop.ShopManager.tickShops()
 
 ## 4. 其他診斷工具
 
-| 命令 | 回答什麼問題 | 什麼時候用 |
+| 指令 | 回答什麼問題 | 什麼時候用 |
 | --- | --- | --- |
 | `/spark tps` | 現在到底卡不卡？TPS、MSPT、CPU 各是多少？ | 每次排查的第一步；改配置前後做對比 |
 | `/spark health` | 整體健康度如何（TPS、CPU、記憶體、磁碟）？ | 需要連續觀察；live dashboard 每 10 秒重新整理 |
@@ -385,7 +385,7 @@ com.example.shop.ShopManager.tickShops()
 
 兩者的區別很重要：
 
-| 命令 | 產物 | 用途 |
+| 指令 | 產物 | 用途 |
 | --- | --- | --- |
 | `/spark heapsummary` | 堆**摘要**，上傳到檢視器 | 快速看"哪類物件佔記憶體最多"，用來判斷有沒有洩漏嫌疑 |
 | `/spark heapdump` | 完整 `.hprof` 檔案，寫到磁碟 | 需要離線用專業工具深挖物件引用鏈 |
@@ -455,8 +455,8 @@ spark 是取樣型分析器，開銷比插樁小得多，但**不是零**：
 
 1. **上傳是預設行為**。`/spark profiler stop` 預設上傳；只有 `/spark profiler stop --save-to-file` 是**儲存到配置目錄下的檔案而不上傳**。
 2. **官方文件沒有描述"把報告設為私有"的開關**。在本文核對過的頁面裡，沒有任何關於訪問控制或私有報告的說明。因此**請把報告連結當作"任何拿到它的人都能開啟"來對待**。
-3. **原始資料是可取的**。官方 "Raw spark data" 頁面說明：給連結加上 `?raw=1` 可以得到 JSON 後設資料；甚至可以直接向 `https://spark-usercontent.lucko.me/<code>` 請求原始資料（類型為 `application/x-spark-sampler`、`application/x-spark-heap`、`application/x-spark-health`）。也就是說，**那串短碼本身就是訪問憑據**。
-4. **後設資料裡包含身份資訊**。官方示例的後設資料裡就有發起者的使用者名稱與 UUID。把連結貼到公開場合前，先想一下這一點。
+3. **原始資料是可取的**。官方 "Raw spark data" 頁面說明：給連結加上 `?raw=1` 可以得到 JSON 元資料；甚至可以直接向 `https://spark-usercontent.lucko.me/<code>` 請求原始資料（類型為 `application/x-spark-sampler`、`application/x-spark-heap`、`application/x-spark-health`）。也就是說，**那串短碼本身就是訪問憑據**。
+4. **元資料裡包含身份資訊**。官方示例的元資料裡就有發起者的使用者名與 UUID。把連結貼到公開場合前，先想一下這一點。
 5. **本地開啟**：不想上傳時，可以把 `.sparkprofile` 或 `.sparkheap` 檔案拖拽到檢視器頁面的拖放區域，在本地檢視。
 6. 如果是拿去求助，PaperMC 官方文件的建議是**帶著 spark 報告去他們的 Discord `#paper-help` 頻道**（這是 Paper 官方給出的渠道）。
 
@@ -492,4 +492,4 @@ spark 是取樣型分析器，開銷比插樁小得多，但**不是零**：
 
 配套閱讀：[效能最佳化](/tutorials/java/optimize)（配置與 JVM 調優）、[實體與掉落物堆積](/tutorials/faq/entity-lag)（實體過多）、[系統安全加固](/tutorials/ops/system-security)（主機側加固）、[備份與恢復](/tutorials/java/backup)（改動前的兜底）。
 
-> spark 的命令與選項以其官方文件為準；不同平台可用命令略有差異。
+> spark 的指令與選項以其官方文件為準；不同平台可用指令略有差異。

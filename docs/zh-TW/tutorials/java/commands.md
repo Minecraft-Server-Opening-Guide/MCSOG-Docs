@@ -6,7 +6,7 @@ level: 1
 order: 9
 minutes: 12
 mc: ["1.21.x", "1.20.4", "1.18.2", "1.16.5"]
-tags: [java, 指令, 命令, op, ban, whitelist, 控制台]
+tags: [java, 指令, 指令, op, ban, whitelist, 控制台]
 updated: 2026-10-04
 draft: false
 ---

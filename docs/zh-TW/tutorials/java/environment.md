@@ -13,7 +13,7 @@ draft: false
 
 這篇把 Windows 與 Linux 放在一起寫。兩邊要做的是**同樣四件事**：**確認 Java 版本 → 放行埠 → 建目錄 → 裝對 Java 並配好環境**。
 
-差異只在命令寫法，所以每個小節裡都給兩套做法，**照著你自己的系統看那一半就行**。
+差異只在指令寫法，所以每個小節裡都給兩套做法，**照著你自己的系統看那一半就行**。
 
 ## 第一步：先確認你要開的版本，再決定 Java
 
@@ -82,12 +82,12 @@ sudo firewall-cmd --list-ports
 :::warn 用 Docker 部署時，系統防火牆管不住容器
 如果你打算用 **Docker / Docker Compose** 部署服務端（見 [用 Docker 部署 Java 版](/tutorials/java/docker)），那麼 **`ufw` 與 `firewalld` 對本節這些埠都不起作用**。
 
-原因：Docker 啟動時會自己往 `iptables` 寫轉發與 NAT 規則，並且把這些規則插在系統防火牆規則**之前**。所以即使你執行了 `sudo ufw deny 25565`，外部**照樣能連上容器映射出來的埠**。這不是配置寫錯了，是 Docker 的既定行為。
+原因：Docker 啟動時會自己往 `iptables` 寫轉發與 NAT 規則，並且把這些規則插在系統防火牆規則**之前**。所以即使你執行了 `sudo ufw deny 25565`，外部**照樣能連上容器對映出來的埠**。這不是配置寫錯了，是 Docker 的既定行為。
 
 四條可行做法，**按推薦程度排序**：
 
 1. **埠只綁本機迴環**（最安全、最簡單）：`-p 127.0.0.1:25565:25565`，容器埠因此**完全不暴露到公網**；需要對外時再由宿主機的反向代理（Nginx `stream`、frp、加速器等）轉發。
-2. **用 [ufw-docker](https://github.com/chaifeng/ufw-docker) 腳本讓 UFW 重新管得住容器**（**想讓 UFW 繼續當統一入口時選它**）：一條命令裝好，之後就能用 `ufw route allow proto tcp from any to any port 25565` 放行容器埠、`ufw route delete allow …` 收回，**既不用停用 Docker 的 iptables，也不用自己寫 iptables 規則**。詳見 [用 Docker 部署 Java 版 → 5.2 正確的四種做法](/tutorials/java/docker#52-正确的四种做法)。
+2. **用 [ufw-docker](https://github.com/chaifeng/ufw-docker) 腳本讓 UFW 重新管得住容器**（**想讓 UFW 繼續當統一入口時選它**）：一條指令裝好，之後就能用 `ufw route allow proto tcp from any to any port 25565` 放行容器埠、`ufw route delete allow …` 收回，**既不用停用 Docker 的 iptables，也不用自己寫 iptables 規則**。詳見 [用 Docker 部署 Java 版 → 5.2 正確的四種做法](/tutorials/java/docker#52-正确的四种做法)。
 3. **用 `DOCKER-USER` 鏈手工寫規則**：這是 Docker 專門留給使用者的鏈，Docker 自己不會覆蓋它，適合只做少量來源限制的場景。
 4. 在 `/etc/docker/daemon.json` 寫 `"iptables": false` 後自行維護轉發規則——**會同時失去埠對映能力（除非你自己配 NAT），不建議新手使用**。
 
@@ -293,7 +293,7 @@ sudo systemctl status minecraft
 | --- | --- | --- |
 | `java: command not found` / `'java' 不是内部或外部命令` | 未安裝，或 `PATH` 沒配好，或視窗沒重開 | 檢查 `PATH`，**新開**視窗再試 |
 | `UnsupportedClassVersionError ... class file version 65.0` | Java 版本過低（65 = Java 21） | 按上表換對應 Java 版本 |
-| 雙擊啟動腳本視窗一閃而過 | 報錯後窗口自動關閉 | 腳本末尾加 `pause`，或在終端裡執行看輸出 |
+| 雙擊啟動腳本視窗一閃而過 | 報錯後視窗自動關閉 | 腳本末尾加 `pause`，或在終端裡執行看輸出 |
 | 啟動後立刻退出，日誌提示 EULA | 沒同意 EULA | 改 `eula.txt` 為 `eula=true` |
 | `Address already in use` | 25565 被佔用 | Windows：`netstat -ano \| findstr :25565`；Linux：`ss -tlnp \| grep 25565`，查 PID 後結束 |
 | `Could not reserve enough space for object heap` | `-Xmx` 超過可用記憶體 | 調小 `-Xmx`（例如 `-Xmx2G`） |

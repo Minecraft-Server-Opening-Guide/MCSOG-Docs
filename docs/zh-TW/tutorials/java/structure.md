@@ -42,7 +42,7 @@ draft: false
 | `usercache.json` | 玩家名與 UUID 的快取 |
 | `bukkit.yml` / `spigot.yml` | Bukkit / Spigot 層配置（Paper 系都有） |
 | `purpur.yml` / `paper.yml` | 對應核心自己的配置（換了核心才有） |
-| `commands.yml` | 命令別名與攔截對映 |
+| `commands.yml` | 指令別名與攔截對映 |
 | `permissions.yml` | 預設權限定義 |
 
 ## 三、世界資料夾裡是什麼

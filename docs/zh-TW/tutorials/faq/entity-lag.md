@@ -60,7 +60,7 @@ MSPT 200 ms → TPS 5（基本玩不动）
 | 漏斗 | 是 | 方塊實體，經典的效能殺手，見第 4 節 |
 | 熔爐 / 高爐 / 煙燻爐 | 僅在燃燒工作時 | 閒置的熔爐沒有每 tick 邏輯 |
 | 箱子 / 木桶 / 潛影盒 | 否（本身不 tick） | 純容器沒有每 tick 的方塊實體邏輯，被開啟或被漏斗訪問時才產生開銷 |
-| 命令方塊 | 否（僅被觸發時） | 閒置不運算 |
+| 指令方塊 | 否（僅被觸發時） | 閒置不運算 |
 
 :::warn 「容器方塊」不等於「一直在算」
 最容易搞混的一點：**箱子、熔爐這類"容器方塊"本身並不會每 tick 運算**，真正每 tick 運算的是掛在方塊上的**方塊實體（block entity）**，而且只有帶 ticker 的那些（漏斗、刷怪籠、燃燒中的熔爐）才吃 CPU。所以「箱子裡東西多」不卡，「漏斗鏈又長又閒」才卡。
@@ -68,7 +68,7 @@ MSPT 200 ms → TPS 5（基本玩不动）
 
 ### 1.4 區塊載入與區塊 tick 不是一回事
 
-實體只在**正在 tick 的區塊**裡運算，而"被載入"的區塊不一定在 tick。Paper 的 `/paper chunkinfo` 會把當前區塊分成幾類（定義見 Paper 官方命令文件）：
+實體只在**正在 tick 的區塊**裡運算，而"被載入"的區塊不一定在 tick。Paper 的 `/paper chunkinfo` 會把當前區塊分成幾類（定義見 Paper 官方指令文件）：
 
 | 類型 | 含義 |
 | --- | --- |
@@ -141,7 +141,7 @@ entity-activation-range:
 - **玩家隨手丟東西**：整理背包、死亡掉落、搬家扔垃圾；
 - **TNT / 沙子複製機**這類複製裝置產生的實體；
 - **漏斗線斷了**：目標箱子滿了、漏斗被堵住、區塊解除安裝導致物品卡在半路，上游卻還在持續產出；
-- **`/give` 濫用或命令方塊迴圈發物品**；
+- **`/give` 濫用或指令方塊迴圈發物品**；
 - **農場通宵執行**：出生點區塊、`/forceload`、插件強制載入的區塊裡，機器在無人時也照跑。
 
 ### 2.2 為什麼掉落物這麼傷
@@ -159,7 +159,7 @@ entity-activation-range:
 
 | 手段 | 用途 |
 | --- | --- |
-| `/paper entity list minecraft:item` | Paper 命令，列出當前 tick 的實體，輸出形如 `Total Ticking: N, Total Non-Ticking: M`，並按類型給出（ticking 數, 非 ticking 數）。掉落物大量出現在非 ticking 一側，說明它們在啟用範圍外被節流——總量仍然值得關注 |
+| `/paper entity list minecraft:item` | Paper 指令，列出當前 tick 的實體，輸出形如 `Total Ticking: N, Total Non-Ticking: M`，並按類型給出（ticking 數, 非 ticking 數）。掉落物大量出現在非 ticking 一側，說明它們在啟用範圍外被節流——總量仍然值得關注 |
 | `/spark tps`、`/spark health` | 先判斷"是不是真的卡"、卡在 TPS 還是記憶體/磁碟 |
 | `/spark profiler start --timeout 60` | 取樣後看呼叫樹裡 `ItemEntity.tick`、`Entity.tick` 的佔比 |
 | `/spark tickmonitor --threshold-tick 100` | 只報告超過 100 ms 的 tick，配合現場操作定位 |
@@ -187,7 +187,7 @@ spark 的完整用法與讀圖方法見 [用 spark 分析效能](/tutorials/ops/
 
 1. 先用 `/paper chunkinfo` 排除"區塊載入過多"這一類原因；
 2. 再用 spark 取樣，對比不同世界、不同區域的熱點，或開著 `/spark tickmonitor --threshold-tick 100` 跑到可疑區域，看 tick 是否明顯變長；
-3. 用 `@e` 選擇器做範圍計數：站到可疑位置執行 `/execute if entity @e[type=item,distance=..16]`，從命令回饋的成功次數判斷數量級（不同版本的回饋格式不同，以實際輸出為準）；
+3. 用 `@e` 選擇器做範圍計數：站到可疑位置執行 `/execute if entity @e[type=item,distance=..16]`，從指令回饋的成功次數判斷數量級（不同版本的回饋格式不同，以實際輸出為準）；
 4. 需要長期盯著看時，用能按區塊列出實體數量的插件或面板工具。
 
 :::tip timings 是老版本的事
@@ -360,7 +360,7 @@ hopper:
 - `ignore-occluding-blocks`：忽略遮擋方塊相關的檢查。
 
 :::note 結構與預設值隨版本變化
-上面這一段的形狀在不同 Paper 版本里改過（例如 `cooldown-when-full` 早期是帶 `enabled` / `movement-ticks` 的子節點）。**請以你本地生成的 `paper-world-defaults.yml` 與 Paper 官方文件為準。**
+上面這一段的形狀在不同 Paper 版本裡改過（例如 `cooldown-when-full` 早期是帶 `enabled` / `movement-ticks` 的子節點）。**請以你本地生成的 `paper-world-defaults.yml` 與 Paper 官方文件為準。**
 :::
 
 ### 4.3 順帶一提：容器更新與"不受支援"的開關

@@ -262,7 +262,7 @@ Missing or unsupported mandatory dependencies:
         Mod ID: 'create', Requested by: 'mymod', Expected range: '[0.5.1,)', Actual version: '0.5.0'
 ```
 
-模組在後設資料裡聲明依賴：Fabric 在 `fabric.mod.json` 的 `depends`，Forge / NeoForge 在 `mods.toml` 的 `[[dependencies]]`。另外要分清**僅客戶端**、**僅服務端**和**兩端通用**的模組：把僅客戶端的模組放進服務端 `mods/`，同樣會報錯。
+模組在元資料裡聲明依賴：Fabric 在 `fabric.mod.json` 的 `depends`，Forge / NeoForge 在 `mods.toml` 的 `[[dependencies]]`。另外要分清**僅客戶端**、**僅服務端**和**兩端通用**的模組：把僅客戶端的模組放進服務端 `mods/`，同樣會報錯。
 
 ### 3.5 怎麼診斷核心不相容
 
@@ -357,7 +357,7 @@ You need to agree to the EULA in order to run the server. Go to eula.txt for mor
 | `Could not reserve enough space for object heap` | JVM **啟動階段**就失敗，堆要不到 | `-Xmx` 超過可用記憶體，或用的是 32 位 Java；調小 `-Xmx` 並改用 64 位 Java |
 | `Error occurred during initialization of VM` | JVM 初始化失敗，通常是參數或記憶體問題 | 檢查啟動參數裡的 `-Xms` / `-Xmx` 是否合理 |
 
-- `-Xms` 是初始堆，`-Xmx` 是最大堆。兩者設成相同值可以減少執行時擴堆的開銷，但**不要超過實體記憶體**，要給作業系統和其他行程留出空間。
+- `-Xms` 是初始堆，`-Xmx` 是最大堆。兩者設成相同值可以減少執行時擴堆的開銷，但**不要超過物理記憶體**，要給作業系統和其他行程留出空間。
 - **調大 `-Xmx` 不是萬能藥**：如果記憶體是被插件或模組洩漏掉的，調大隻是把崩潰時間往後推。用 **spark** 這類工具看記憶體與火焰圖，方法見 [效能最佳化](/tutorials/java/optimize)。
 - 記憶體與玩家的推薦配比見 [開服協議與配置推薦](/tutorials/java/protocol)。
 
@@ -477,7 +477,7 @@ Description: Ticking block entity
 - [環境準備（Windows 與 Linux）](/tutorials/java/environment)：Java 版本對照、埠與權限
 - [插件入門](/tutorials/java/plugins)：插件放在哪、怎麼被載入
 - [常用前置插件](/tutorials/java/plugin-deps)：Vault、PlaceholderAPI、ProtocolLib、LuckPerms
-- [服務端選擇](/tutorials/java/core)：各核心的定位與兼容範圍
+- [服務端選擇](/tutorials/java/core)：各核心的定位與相容範圍
 - [效能最佳化](/tutorials/java/optimize)：用 spark 看記憶體與卡頓
 - [[JAVA] 常見問題](/tutorials/faq/faq-java)：按現象直接查的速查表
 

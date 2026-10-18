@@ -141,7 +141,7 @@ HandleLidSwitchDocked=ignore
 改完執行 `sudo systemctl restart systemd-logind` 生效。
 
 :::warn 具體鍵名與預設值隨發行版與 systemd 版本而不同
-`logind.conf` 的可選值（`ignore` / `poweroff` / `suspend` / `hibernate` / `lock`）與預設行為在不同發行版、不同 systemd 版本上不完全一致，**改之前先讀 `man logind.conf`**，並確認改動不會被桌面環境的電源管理覆蓋。桌面發行版（GNOME/KDE）通常還有自己的"空白屏幕後掛起"開關。
+`logind.conf` 的可選值（`ignore` / `poweroff` / `suspend` / `hibernate` / `lock`）與預設行為在不同發行版、不同 systemd 版本上不完全一致，**改之前先讀 `man logind.conf`**，並確認改動不會被桌面環境的電源管理覆蓋。桌面發行版（GNOME/KDE）通常還有自己的"空白螢幕後掛起"開關。
 :::
 
 ### BIOS：停電恢復後自動開機
@@ -213,7 +213,7 @@ watch -n 5 sensors               # 每 5 秒刷新
 
 - **延遲抖動（jitter）比平均延遲更致命**：MC 對丟包和抖動敏感，玩家會表現為"回彈""卡頓""瞬移"。
 - **通道干擾與鄰居 Wi-Fi 擁擠**，晚上更明顯。
-- **省電機制**：無線網絡卡會進入省電模式，帶來週期性延遲尖峰。
+- **省電機制**：無線網路卡會進入省電模式，帶來週期性延遲尖峰。
 - **穩定性**：AP 重啟、韌體問題都會斷線。
 
 **結論：能插網線就插網線。** 如果機器離路由器遠，用電力貓（受電路影響大）、MoCA（同軸）或乾脆拉一根網線。下面三條講清楚家寬最常見的三個坑。
@@ -231,11 +231,11 @@ watch -n 5 sensors               # 每 5 秒刷新
 
 ### 動態 IP 與 DDNS
 
-家庭寬頻的公網 IP **會變**（重新撥號、運營商調整）。DDNS（動態域名解析）解決的就是這件事：
+家庭寬頻的公網 IP **會變**（重新撥號、運營商調整）。DDNS（動態網域解析）解決的就是這件事：
 
-1. 註冊一個 DDNS 服務（或使用域名商的 API）。
+1. 註冊一個 DDNS 服務（或使用網域商的 API）。
 2. 在路由器或機器上執行更新客戶端，**定期把當前公網 IP 上報**給 DDNS。
-3. 玩家用**域名**而不是 IP 連線。
+3. 玩家用**網域**而不是 IP 連線。
 
 要點：
 
@@ -289,7 +289,7 @@ sudo dnf autoremove
 
 ### 磁碟健康（SMART）
 
-`smartmontools` 是讀取 SMART 資料的標準工具（`smartctl` 是其中的命令）。
+`smartmontools` 是讀取 SMART 資料的標準工具（`smartctl` 是其中的指令）。
 
 ```bash
 sudo apt install smartmontools
@@ -339,7 +339,7 @@ SSD 的壽命由**寫入量（TBW）**決定，不是通電時間。頻繁全量
 ### 檔案系統檢查與日誌
 
 - **ext4**：異常斷電後可能要求 `fsck`。**不要在掛載狀態下對根分區執行 `fsck`**；現代發行版在啟動時自動檢查。手動檢查未掛載分區用 `sudo fsck -f /dev/sdb1`（先 `umount`）。
-- **Btrfs / ZFS**：有各自的檢查與清理工具（`btrfs scrub`、`zpool scrub`），**具體命令與用法隨版本不同，以其官方文件為準**。
+- **Btrfs / ZFS**：有各自的檢查與清理工具（`btrfs scrub`、`zpool scrub`），**具體指令與用法隨版本不同，以其官方文件為準**。
 - **日誌增長**：用 `journalctl --disk-usage` 看 systemd 日誌佔用，用 `sudo journalctl --vacuum-size=500M` 限制大小；日誌輪轉由 `logrotate` 負責，一般預設已配好。
 - **Windows**：事件檢視器會無限增長，可在"事件檢視器 -> Windows 日誌 -> 屬性"裡設定最大大小與覆蓋策略；`cleanmgr` 可清理系統檔案。
 
@@ -351,7 +351,7 @@ SSD 的壽命由**寫入量（TBW）**決定，不是通電時間。頻繁全量
 
 ### 計劃性重啟
 
-**定期重啟**能回收記憶體碎片、清理未釋放的資源，常見做法是**每天或每幾天一次**，選在低峰期（凌晨）。重啟方式：通過控制台傳送 `stop`（**不要直接殺行程**），等待行程完全退出後再啟動；**重啟前先確認備份成功**。用 systemd 託管時 `systemctl restart minecraft.service` 會走正常的停止流程（前提是服務端能收到 `stop`；若啟動方式無法接收控制台輸入，需要改用 `screen`/`tmux` 或 RCON 傳送命令）。
+**定期重啟**能回收記憶體碎片、清理未釋放的資源，常見做法是**每天或每幾天一次**，選在低峰期（凌晨）。重啟方式：通過控制台傳送 `stop`（**不要直接殺行程**），等待行程完全退出後再啟動；**重啟前先確認備份成功**。用 systemd 託管時 `systemctl restart minecraft.service` 會走正常的停止流程（前提是服務端能收到 `stop`；若啟動方式無法接收控制台輸入，需要改用 `screen`/`tmux` 或 RCON 傳送指令）。
 
 :::warn 直接斷電式重啟很危險
 `kill -9`、工作管理員"結束任務"、直接按電源鍵，都可能讓服務端來不及儲存。**能用 `stop` 就用 `stop`。**
@@ -370,7 +370,7 @@ tail -20 /var/log/mc-backup.log
 
 - **`logs/latest.log`**：當前/最近一次執行的日誌。搜尋 `WARN`、`ERROR`、`Exception`、`Caused by`。
 - **`crash-reports/`**：崩潰報告，含完整堆疊與當時的環境資訊，**是排查崩潰的第一手資料**。
-- 常見訊號：記憶體不足（`OutOfMemoryError`）、插件報錯、區塊載入失敗、端口占用。
+- 常見訊號：記憶體不足（`OutOfMemoryError`）、插件報錯、區塊載入失敗、埠佔用。
 
 ```bash
 grep -nE "ERROR|Exception|Caused by" logs/latest.log | tail -40
@@ -379,7 +379,7 @@ ls -lt crash-reports/ | head
 
 ### 用 spark 看 TPS
 
-**spark** 是常用的效能分析插件/模組（Bukkit 系、Fabric、Forge 等都有對應版本），能取樣 TPS、MSPT 與卡頓來源。常用命令 `/spark tps`、`/spark profiler start` / `/spark profiler stop`（**具體子命令以 spark 官方文件為準**，不同版本略有差異）。**TPS 長期低於 20 說明服務端跟不上**，**MSPT 持續高於 50 ms** 同樣說明單個 tick 超時。先用 `/spark tps` 判斷"是不是真的卡"，再用 profiler 找"是誰在卡"；系統排查見 [效能最佳化](/tutorials/java/optimize)。
+**spark** 是常用的效能分析插件/模組（Bukkit 系、Fabric、Forge 等都有對應版本），能取樣 TPS、MSPT 與卡頓來源。常用指令 `/spark tps`、`/spark profiler start` / `/spark profiler stop`（**具體子指令以 spark 官方文件為準**，不同版本略有差異）。**TPS 長期低於 20 說明服務端跟不上**，**MSPT 持續高於 50 ms** 同樣說明單個 tick 逾時。先用 `/spark tps` 判斷"是不是真的卡"，再用 profiler 找"是誰在卡"；系統排查見 [效能最佳化](/tutorials/java/optimize)。
 
 ### 觀察記憶體增長
 
@@ -395,7 +395,7 @@ ls -lt crash-reports/ | head
 4. **低峰期切換**：停服 -> 替換 jar -> 啟動 -> 觀察日誌 -> 讓玩家驗證，並**保留舊版本**以便回退。
 
 :::tip 更新前把"回退方案"寫下來
-"如果新版本起不來，我要執行哪幾條命令"——寫清楚。出事時人在慌，靠記憶容易漏步驟。
+"如果新版本起不來，我要執行哪幾條指令"——寫清楚。出事時人在慌，靠記憶容易漏步驟。
 :::
 
 ## 7. Windows 與 Linux 的差異
@@ -451,4 +451,4 @@ ls -lt crash-reports/ | head
 
 延伸閱讀：[部署到可存取環境](/tutorials/java/deploy)、[服務端結構](/tutorials/java/structure)、[開啟服務端](/tutorials/java/start)、[效能最佳化](/tutorials/java/optimize)、[備份與恢復](/tutorials/java/backup)、[異地備份](/tutorials/ops/offsite-backup)。
 
-> 命令與配置以各軟體官方文件為準；主機板、電源、UPS 的具體行為以廠商規格書為準。
+> 指令與配置以各軟體官方文件為準；主機板、電源、UPS 的具體行為以廠商規格書為準。

@@ -79,7 +79,7 @@ stop            安全关服
 （重新启动）
 ```
 
-方式 A 需要**向服務端控制台傳送命令**。若用 systemd 託管且啟動方式能接收控制台輸入，可以用 `screen`/`tmux` 注入，或啟用 RCON 後遠端發命令（**RCON 配置方式隨核心與版本不同，以官方文件為準**）。
+方式 A 需要**向服務端控制台傳送指令**。若用 systemd 託管且啟動方式能接收控制台輸入，可以用 `screen`/`tmux` 注入，或啟用 RCON 後遠端發指令（**RCON 配置方式隨核心與版本不同，以官方文件為準**）。
 
 :::warn 打包工具讀檔案時服務端仍在寫
 `tar`、`rsync`、`restic` 都會**一邊讀一邊遍歷**。即使你剛執行過 `save-all`，如果沒 `save-off`，服務端仍會在遍歷過程中寫入新資料，**歸檔裡可能出現不一致的組合**。`save-off` 這一步不能省。
@@ -89,7 +89,7 @@ stop            安全关服
 
 `rsync` 是最經典的異地增量同步方案：只傳變化的部分，走 SSH 加密通道，幾乎所有 Linux 發行版都能裝。
 
-### 一次完整的示例命令
+### 一次完整的示例指令
 
 ```bash
 rsync -aHAX --delete --numeric-ids --info=progress2 \
@@ -113,7 +113,7 @@ rsync -aHAX --delete --numeric-ids --info=progress2 \
 | `-A` | 保留 ACL（訪問控制列表） |
 | `-X` | 保留擴充屬性（xattr） |
 | `--delete` | 刪除目標端"源端已不存在"的檔案，使目標與源保持一致。**這是雙刃劍**：源端誤刪會被同步過去 |
-| `--numeric-ids` | 按數字 UID/GID 而不是按使用者名稱/組名對映。跨機器、目標端沒有同名使用者時**必須加** |
+| `--numeric-ids` | 按數字 UID/GID 而不是按使用者名/組名對映。跨機器、目標端沒有同名使用者時**必須加** |
 | `--info=progress2` | 顯示整體進度（rsync 3.1 及以上） |
 | `--exclude` | 排除不需要備份的目錄 |
 | `--link-dest=DIR` | **硬連結快照**：與 DIR 中內容相同的檔案不再複製，而是在目標裡建立硬連結，從而讓每個日期的目錄看起來都是完整副本，實際只佔增量空間 |
@@ -124,7 +124,7 @@ rsync -aHAX --delete --numeric-ids --info=progress2 \
 
 ### 先 dry-run
 
-**任何帶 `--delete` 的命令，第一次都必須先加 `-n`（`--dry-run`）跑一遍**：
+**任何帶 `--delete` 的指令，第一次都必須先加 `-n`（`--dry-run`）跑一遍**：
 
 ```bash
 rsync -aHAX --delete --numeric-ids -n -i \
@@ -144,7 +144,7 @@ ssh-copy-id backup@backup.example.com
 ssh backup@backup.example.com 'echo ok'
 ```
 
-`ssh-keygen -t ed25519` 生成 Ed25519 金鑰對，預設放在 `~/.ssh/id_ed25519`（私鑰）與 `~/.ssh/id_ed25519.pub`（公鑰）。**給私鑰設口令（passphrase）更安全，但定時任務就需要 ssh-agent 或 `keychain` 才能免互動；無人值守的備份機通常不設口令，因此必須嚴格限制它的權限。** `ssh-copy-id` 把公鑰追加到目標機的 `~/.ssh/authorized_keys`；**部分平台（如 Windows 的 OpenSSH 或某些精簡系統）可能沒有這個命令**，那就手動追加公鑰內容。建議在目標機的 `authorized_keys` 裡限制這把金鑰：
+`ssh-keygen -t ed25519` 生成 Ed25519 金鑰對，預設放在 `~/.ssh/id_ed25519`（私鑰）與 `~/.ssh/id_ed25519.pub`（公鑰）。**給私鑰設口令（passphrase）更安全，但定時任務就需要 ssh-agent 或 `keychain` 才能免互動；無人值守的備份機通常不設口令，因此必須嚴格限制它的權限。** `ssh-copy-id` 把公鑰追加到目標機的 `~/.ssh/authorized_keys`；**部分平台（如 Windows 的 OpenSSH 或某些精簡系統）可能沒有這個指令**，那就手動追加公鑰內容。建議在目標機的 `authorized_keys` 裡限制這把金鑰：
 
 ```text
 from="203.0.113.10",command="/usr/bin/rrsync -wo /srv/backup/mcserver/",no-port-forwarding,no-pty ssh-ed25519 AAAA... mc-backup@home
@@ -412,14 +412,14 @@ ls -la /tmp/restore-test
 5. **記錄並清理**：寫下演練日期、用時與遇到的問題（**這是你唯一能證明備份可用的證據**），然後刪掉測試實例，保留記錄。
 
 :::tip 把恢復步驟寫成文件
-出事當天不是研究"怎麼恢復"的時候。**提前把命令寫成一頁紙**，演練時照著走、發現問題就更新它。
+出事當天不是研究"怎麼恢復"的時候。**提前把指令寫成一頁紙**，演練時照著走、發現問題就更新它。
 :::
 
 ### 校驗完整性
 
-| 手段 | 命令 | 說明 |
+| 手段 | 指令 | 說明 |
 | --- | --- | --- |
-| restic 倉庫檢查 | `restic check` | 校驗倉庫結構與後設資料；加 `--read-data` 會**讀取全部資料塊**，慢但更徹底 |
+| restic 倉庫檢查 | `restic check` | 校驗倉庫結構與元資料；加 `--read-data` 會**讀取全部資料塊**，慢但更徹底 |
 | 列出 tar 內容 | `tar -tzf archive.tar.gz >/dev/null` | 讀取並解壓列表，能發現**截斷或損壞的歸檔** |
 | 校驗和比對 | `sha256sum archive.tar.gz` | 與備份時記錄的雜湊比對，確認傳輸後內容一致 |
 | rclone 校驗 | `rclone check src dst` | 比較兩端檔案（能力取決於後端是否支援雜湊） |
@@ -474,4 +474,4 @@ ls -la /tmp/restore-test
 
 配套閱讀：[備份與恢復](/tutorials/java/backup)（備份範圍與回檔流程）、[服務端結構](/tutorials/java/structure)（哪些檔案該備）、[家用電腦開服與維護](/tutorials/ops/home-hosting)（硬體與供電風險）。
 
-> 命令與配置以各軟體官方文件為準；物件儲存的計價、生命週期規則與取回策略以各服務商文件為準。
+> 指令與配置以各軟體官方文件為準；物件儲存的計價、生命週期規則與取回策略以各服務商文件為準。

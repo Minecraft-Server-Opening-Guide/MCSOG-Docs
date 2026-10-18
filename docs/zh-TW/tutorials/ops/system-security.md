@@ -40,7 +40,7 @@ sudo useradd -r -m -d /opt/mcserver mcserver
 | `-r` | 建立**系統使用者**（UID 從系統保留區間分配，通常不建立密碼、不過期） |
 | `-m` | 同時建立家目錄（`-r` 預設**不**建立，必須顯式指定） |
 | `-d /opt/mcserver` | 指定家目錄為 `/opt/mcserver` |
-| `mcserver` | 使用者名稱 |
+| `mcserver` | 使用者名 |
 
 **建立目錄並把屬主交給它**：
 
@@ -64,17 +64,17 @@ sudo usermod -s /usr/sbin/nologin mcserver
 
 ### 1.3 有意識地使用 sudo
 
-`sudo` 的價值在於**每次提權都留痕**（寫入系統日誌），並且可以精確到"某個使用者只能執行某幾條命令"。
+`sudo` 的價值在於**每次提權都留痕**（寫入系統日誌），並且可以精確到"某個使用者只能執行某幾條指令"。
 
-- **不要 `sudo su -` 然後一直待在裡面**。這會丟掉"哪條命令是誰在什麼時候跑的"這一層記錄。
-- **按需提權**：單條命令用 `sudo 命令`，不要整段會話都在 root 下。
+- **不要 `sudo su -` 然後一直待在裡面**。這會丟掉"哪條指令是誰在什麼時候跑的"這一層記錄。
+- **按需提權**：單條指令用 `sudo 命令`，不要整段會話都在 root 下。
 - **用 `visudo` 編輯 sudoers**。它會做語法檢查；直接改 `/etc/sudoers` 寫錯一個字元就可能讓所有人都無法提權。
 
 ```bash
 sudo visudo
 ```
 
-**推薦的做法**：不直接改 `/etc/sudoers` 主檔案，而是在 `/etc/sudoers.d/` 下放獨立片段，並用 `sudo visudo -f /etc/sudoers.d/mcadmin` 編輯以獲得語法檢查。片段裡可以精確到命令，例如只允許某個管理員重啟服務端：
+**推薦的做法**：不直接改 `/etc/sudoers` 主檔案，而是在 `/etc/sudoers.d/` 下放獨立片段，並用 `sudo visudo -f /etc/sudoers.d/mcadmin` 編輯以獲得語法檢查。片段裡可以精確到指令，例如只允許某個管理員重啟服務端：
 
 ```
 mcadmin ALL=(root) /usr/bin/systemctl restart minecraft
@@ -241,7 +241,7 @@ apply_updates = yes
 **驗證是否在執行**：`systemctl status unattended-upgrades`（Debian / Ubuntu）或 `systemctl status dnf-automatic.timer`（RHEL 系）。
 
 :::warn 具體設定項與預設值隨版本變化
-上面只是常見寫法。**不同發行版、不同版本里設定檔名、選項名與預設範圍都可能不同**（例如"是否包含非安全更新""是否自動清理舊核心"）。改之前請對照你所使用版本的官方文件，並用 `systemctl status` 確認服務真的在跑。**配置了不等於生效了。**
+上面只是常見寫法。**不同發行版、不同版本裡設定檔名、選項名與預設範圍都可能不同**（例如"是否包含非安全更新""是否自動清理舊核心"）。改之前請對照你所使用版本的官方文件，並用 `systemctl status` 確認服務真的在跑。**配置了不等於生效了。**
 :::
 
 ### 3.2 不要盲目自動重啟
@@ -295,7 +295,7 @@ WantedBy=multi-user.target
 | --- | --- |
 | `User=` / `Group=` | **以專用使用者執行**。不寫就預設以 root 執行——這是最常見的加固漏洞。 |
 | `WorkingDirectory=` | 服務端的工作目錄。相對路徑（`world/`、`plugins/`）都以它為基準。 |
-| `ExecStart=` | 啟動命令。**必須寫絕對路徑**，systemd 不解析 `PATH`。 |
+| `ExecStart=` | 啟動指令。**必須寫絕對路徑**，systemd 不解析 `PATH`。 |
 | `Restart=on-failure` | 異常退出時重啟。正常 `stop` 不觸發。 |
 | `RestartSec=10` | 重啟前等待 10 秒，避免崩潰時空轉刷屏。 |
 
@@ -393,9 +393,9 @@ ReadWritePaths=/opt/mcserver/survival
 
 加固不是一次性動作。下面這些檢查建議**定期跑一遍**，或者至少在你改動過系統之後跑一遍。
 
-### 6.1 檢查清單與命令
+### 6.1 檢查清單與指令
 
-| 檢查項 | 命令 | 期望結果 |
+| 檢查項 | 指令 | 期望結果 |
 | --- | --- | --- |
 | **監聽埠** | `sudo ss -tlnp` | 只有你知道的服務在監聽；陌生埠要查清 |
 | **UDP 監聽** | `sudo ss -ulnp` | 同上（基岩版 / Geyser 用 UDP） |
@@ -434,7 +434,7 @@ ReadWritePaths=/opt/mcserver/survival
 - [ ] 已按需啟用 `NoNewPrivileges`、`PrivateTmp`、`ProtectSystem`、`ReadWritePaths`
 - [ ] 重啟過一次機器，確認**服務能開機自啟**
 - [ ] 有**離線 / 異地**備份，且服務帳號**無法寫**備份目錄
-- [ ] 已把上面的審計命令排進定期複查
+- [ ] 已把上面的審計指令排進定期複查
 
 ## 下一步
 
@@ -445,4 +445,4 @@ ReadWritePaths=/opt/mcserver/survival
 
 ---
 
-> 命令與配置以各軟體官方文件為準。不同發行版的軟體包名、服務名、systemd 版本與設定項預設值可能存在差異，請以你係統上的實際輸出為準。
+> 指令與配置以各軟體官方文件為準。不同發行版的軟體包名、服務名、systemd 版本與設定項預設值可能存在差異，請以你係統上的實際輸出為準。

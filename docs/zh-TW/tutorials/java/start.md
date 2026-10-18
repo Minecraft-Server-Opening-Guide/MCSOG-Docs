@@ -29,8 +29,8 @@ C:\mcserver\survival\        （Linux 下对应 /opt/mcserver/survival/）
 
 ### Windows：`start.bat`
 
-1. 在這個目錄裡新建一個**文本文件**，把檔名改成 `start.bat`（副檔名從 `.txt` 改成 `.bat`）。
-2. 右鍵 → 用文本編輯器開啟，寫入下面內容並儲存：
+1. 在這個目錄裡新建一個**文字檔**，把檔名改成 `start.bat`（副檔名從 `.txt` 改成 `.bat`）。
+2. 右鍵 → 用文字編輯器開啟，寫入下面內容並儲存：
 
 ```bat
 @echo off
@@ -70,7 +70,7 @@ chmod +x start.sh
 You need to agree to the EULA in order to run the server. Go to eula.txt for more info.
 ```
 
-這時用文本編輯器開啟目錄裡**自動生成的 `eula.txt`**，把：
+這時用文字編輯器開啟目錄裡**自動生成的 `eula.txt`**，把：
 
 ```
 eula=false
@@ -99,7 +99,7 @@ Done (6.554s)! For help, type "help"
 括號裡的秒數因機器而異。此時：
 
 - 在**本機**可用 `localhost:25565` 進入；
-- 別人用**你的公網 IP**（或域名）加預設埠 `25565` 進入；
+- 別人用**你的公網 IP**（或網域）加預設埠 `25565` 進入；
 - 在控制台輸入 `stop` 可以**安全關閉**伺服器（**不要直接叉掉視窗**，容易損壞存檔）。
 
 ## 四、拓展：三個實用技巧
@@ -113,7 +113,7 @@ java -Xms2G -Xmx2G -jar 核心名.jar --nogui
 pause
 ```
 
-這樣伺服器退出後窗口會停住，報錯資訊就能看清了（Linux 下等價做法是在腳本末尾加 `read -n 1 -p "按任意键继续..."`）。
+這樣伺服器退出後視窗會停住，報錯資訊就能看清了（Linux 下等價做法是在腳本末尾加 `read -n 1 -p "按任意键继续..."`）。
 
 ### 2. 用萬用字元，換核心版本不用改腳本
 

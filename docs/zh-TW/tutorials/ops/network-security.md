@@ -16,7 +16,7 @@ draft: false
 
 
 :::warn Docker 容器會繞過本機防火牆
-本頁講的所有 `ufw` / `firewalld` 規則，對 **Docker 容器映射出來的埠無效**。Docker 會把自己的 `iptables` 規則插在系統防火牆之前，因此 `ufw deny` 擋不住容器埠。
+本頁講的所有 `ufw` / `firewalld` 規則，對 **Docker 容器對映出來的埠無效**。Docker 會把自己的 `iptables` 規則插在系統防火牆之前，因此 `ufw deny` 擋不住容器埠。
 
 想真正限制，請把埠綁到迴環（`-p 127.0.0.1:25565:25565`）或使用 `DOCKER-USER` 鏈。詳見 [用 Docker 部署 Java 版 → 網路與防火牆](/tutorials/java/docker)。
 :::
@@ -201,7 +201,7 @@ KbdInteractiveAuthentication no
 | --- | --- |
 | `PubkeyAuthentication yes` | 允許公鑰認證（金鑰登入的基礎） |
 | `PasswordAuthentication no` | **關閉密碼認證**，爆破腳本直接失去目標 |
-| `PermitRootLogin no` | **禁止 root 直接登入**，攻擊者必須先猜到一個普通使用者名稱 |
+| `PermitRootLogin no` | **禁止 root 直接登入**，攻擊者必須先猜到一個普通使用者名 |
 | `KbdInteractiveAuthentication no` | 關閉鍵盤互動認證，避免繞過 `PasswordAuthentication no` |
 
 :::warn 改完必須驗證語法再過載
@@ -389,4 +389,4 @@ sudo ss -tlnp
 
 ---
 
-> 命令與配置以各軟體官方文件為準。不同發行版的軟體包名、服務名與設定項預設值可能存在差異，請以你係統上的實際輸出為準。
+> 指令與配置以各軟體官方文件為準。不同發行版的軟體包名、服務名與設定項預設值可能存在差異，請以你係統上的實際輸出為準。

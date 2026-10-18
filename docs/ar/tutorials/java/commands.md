@@ -43,11 +43,11 @@ draft: false
 ### القائمة البيضاء
 
 ```
-whitelist on                  开启白名单
-whitelist add <玩家>          添加
-whitelist remove <玩家>       移除
-whitelist list                查看名单
-whitelist reload              从 whitelist.json 重新读取
+whitelist on                   فعّل القائمة البيضاء
+whitelist add <اللاعب>         أضف لاعبًا
+whitelist remove <اللاعب>      أزل لاعبًا
+whitelist list                 اعرض القائمة
+whitelist reload               أعد القراءة من whitelist.json
 ```
 
 بعد التعديل بالأوامر تُكتب القائمة في `whitelist.json`؛ وإذا **عدّلت هذا الملف مباشرةً** فتذكّر تنفيذ `whitelist reload` ليُعمَل به.

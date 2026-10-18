@@ -59,9 +59,9 @@ draft: false
 如果條件允許，把 `logs/`（或整個日誌掛載點）放到獨立分區或獨立盤上。這樣即使日誌失控，存檔仍然寫得進去，最壞情況只是丟日誌而不是丟存檔。
 :::
 
-## 3. 先量後治：四條命令看清現狀
+## 3. 先量後治：四條指令看清現狀
 
-動手之前先測量。以下命令都只讀，不會破壞任何東西。
+動手之前先測量。以下指令都只讀，不會破壞任何東西。
 
 ```bash
 # 1) 服务端日志目录有多大
@@ -128,7 +128,7 @@ logrotate 是 Linux 上管理日誌輪轉的標準工具，幾乎所有發行版
 }
 ```
 
-把 `/opt/minecraft/server` 和 `minecraft` 換成你機器上的真實路徑與使用者名稱。第二個塊裡的萬用字元是安全的：輪轉後的檔案會變成 `*.log.1` 或 `*.log.1.gz`，不會再被 `*.log` 匹配到。
+把 `/opt/minecraft/server` 和 `minecraft` 換成你機器上的真實路徑與使用者名。第二個塊裡的萬用字元是安全的：輪轉後的檔案會變成 `*.log.1` 或 `*.log.1.gz`，不會再被 `*.log` 匹配到。
 
 ### 5.2 每條指令在做什麼
 
@@ -141,7 +141,7 @@ logrotate 是 Linux 上管理日誌輪轉的標準工具，幾乎所有發行版
 | `missingok` | 檔案不存在時不報錯（服務端還沒啟動、或換了目錄時很有用） |
 | `notifempty` | 檔案為空時不輪轉，避免製造一堆空歸檔 |
 | `copytruncate` | **先複製、再把原檔案原地清空**，而不是把檔案改名 |
-| `su minecraft minecraft` | 以指定使用者/組身份執行輪轉；當日志目錄屬於服務端使用者時推薦加上 |
+| `su minecraft minecraft` | 以指定使用者/組身份執行輪轉；當日誌目錄屬於服務端使用者時推薦加上 |
 
 ### 5.3 為什麼 copytruncate 對執行中的服務端很重要
 
@@ -278,10 +278,10 @@ services:
 
 ## 8. nginx、面板與代理的日誌
 
-- **nginx**：`/var/log/nginx/access.log` 與 `error.log`。發行版的 nginx 包**自帶** logrotate 配置，通常已經輪轉；如果面板被公網掃描，`access.log` 會異常膨脹，可以考慮把靜態資源關掉造訪日誌，或單獨為面板網站指定日誌檔案並加 `maxsize 200M`。
+- **nginx**：`/var/log/nginx/access.log` 與 `error.log`。發行版的 nginx 包**自帶** logrotate 配置，通常已經輪轉；如果面板被公網掃描，`access.log` 會異常膨脹，可以考慮把靜態資源關掉訪問日誌，或單獨為面板網站指定日誌檔案並加 `maxsize 200M`。
 - **面板**：面板自己的日誌目錄 + 資料庫。面板日誌通常不在你的 `logs/` 裡，別以為清了 `logs/` 就萬事大吉。
 - **代理端**：Velocity / BungeeCord 各有獨立工作目錄與 `logs/`，需要**單獨**加一份 logrotate 塊或清理規則。
-- **反代與面板的造訪日誌裡含有玩家 IP**：這類日誌在集中化和外發時要按隱私資料處理，參考 [系統安全](/tutorials/ops/system-security)。
+- **反代與面板的訪問日誌裡含有玩家 IP**：這類日誌在集中化和外發時要按隱私資料處理，參考 [系統安全](/tutorials/ops/system-security)。
 
 ## 9. 把日誌集中到一處（可選）
 
@@ -314,9 +314,9 @@ ForwardToSocket=10.0.0.5:4444
 
 ## 10. 高效檢索日誌
 
-日誌動輒幾個 GB，檢索策略比命令本身更重要：**先用時間範圍或檔名把範圍縮小，再做文本匹配。**
+日誌動輒幾個 GB，檢索策略比指令本身更重要：**先用時間範圍或檔名把範圍縮小，再做文本匹配。**
 
-| 目的 | 命令 |
+| 目的 | 指令 |
 | --- | --- |
 | 即時跟蹤當前日誌 | `tail -f logs/latest.log` |
 | 看最後 200 行 | `tail -n 200 logs/latest.log` |
@@ -414,7 +414,7 @@ journalctl -u mc-log-cleanup.service -n 50 --no-pager
 
 ## 12. 維護清單
 
-| 頻率 | 動作 | 命令 / 位置 |
+| 頻率 | 動作 | 指令 / 位置 |
 | --- | --- | --- |
 | 每天（自動） | logrotate 輪轉服務端與插件日誌 | `logrotate.timer`，配置在 `/etc/logrotate.d/minecraft` |
 | 每天（自動） | 清理腳本刪舊歸檔、控制崩潰報告數量 | `mc-log-cleanup.timer` |
@@ -423,7 +423,7 @@ journalctl -u mc-log-cleanup.service -n 50 --no-pager
 | 每週 | 檢查崩潰報告是否在成批增加（可能是崩潰迴圈） | `ls -1t crash-reports/ \| head` |
 | 每月 | 複查 logrotate 配置與保留份數是否仍然合適 | `logrotate -d /etc/logrotate.d/minecraft` |
 | 每月 | 確認集中化/異地日誌確實有新資料到達 | 接收端目錄或物件儲存的修改時間 |
-| 每次變更後 | 改了路徑、使用者名稱、unit 名之後幹跑一次 | `sudo logrotate -d` |
+| 每次變更後 | 改了路徑、使用者名、unit 名之後幹跑一次 | `sudo logrotate -d` |
 | 出事後 | 先歸檔現場再清理 | 把相關 `latest.log` 與 `crash-reports/` 複製出去，再動手 |
 
 ## 13. 下一步

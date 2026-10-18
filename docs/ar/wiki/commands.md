@@ -150,7 +150,7 @@ draft: false
 ```text
 save hold
 save query
-# 按 query 输出的清单复制文件（worlds/ 要整体拷走）
+# انسخ الملفات التي يسردها query (خذ مجلد worlds/ كاملًا)
 save resume
 ```
 
@@ -246,17 +246,17 @@ MCDReforged (MCDR) مدير **يلتف حول الخادم من الخارج**: 
 الإجراء القياسي قبل الصيانة (إصدار Java):
 
 ```text
-say 服务器将在 5 分钟后进入维护
+say سيدخل الخادم الصيانة بعد 5 دقائق
 save-all
 save-off
-# 此时在外部打包世界目录与插件目录
+# في هذه اللحظة أرشف مجلدَي العالم والإضافات من الخارج
 stop
 ```
 
 القائمة البيضاء من الصفر إلى الجاهزية (إصدار Java):
 
 ```text
-whitelist add 你的ID
+whitelist add <اسمك>
 whitelist on
 whitelist list
 ```
@@ -266,7 +266,7 @@ whitelist list
 ```text
 save hold
 save query
-# 复制 query 列出的文件，worlds/ 整体拷走
+# انسخ الملفات التي يسردها query؛ خذ مجلد worlds/ كاملًا
 save resume
 ```
 

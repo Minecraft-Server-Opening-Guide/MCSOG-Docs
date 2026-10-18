@@ -29,7 +29,7 @@ draft: false
 :::
 
 :::warn 版本與廠商差異
-Minecraft 服務端生態裡，**預設值、配置鍵名、可用命令幾乎都會隨版本和分支變化**。本文只解釋"這個詞是什麼意思"，**不承諾某個鍵在當前版本的具體預設值**；動手改配置時，請以你所用核心的官方文件和本地生成的設定檔為準。
+Minecraft 服務端生態裡，**預設值、配置鍵名、可用指令幾乎都會隨版本和分支變化**。本文只解釋"這個詞是什麼意思"，**不承諾某個鍵在當前版本的具體預設值**；動手改配置時，請以你所用核心的官方文件和本地生成的設定檔為準。
 :::
 
 ## 1. 效能類
@@ -98,8 +98,8 @@ Minecraft 服務端生態裡，**預設值、配置鍵名、可用命令幾乎�
 | BungeeCord | BungeeCord | 最早的成熟代理實現，其插件訊息通道後來被其他代理相容，成為事實標準之一 | [跨服端](/tutorials/java/proxy) |
 | Velocity | Velocity | 現代代理實現，效能與安全性設計更好。**現代轉發（modern forwarding）**需要代理與後端共享金鑰，配置錯了就進不去服 | [跨服端](/tutorials/java/proxy) |
 | 後端服 | backend server | 代理後面真正承載玩法的服務端實例。玩家在代理上"切服"，實際是斷開與一個後端的連線、再連到另一個 | [跨服端](/tutorials/java/proxy) |
-| 大廳 | lobby | 一種特殊的後端服：玩家登入後先落在這裡，再通過 NPC 或命令進入各玩法服。通常插件很少、配置很輕 | [跨服端](/tutorials/java/proxy) |
-| MCDR | MCDReforged | 掛在服務端旁邊、通過解析控制台輸出與傳送命令來工作的**服務端管理框架**。它不改服務端本身，因此不受核心類型限制 | [MCDR](/tutorials/java/mcdr) |
+| 大廳 | lobby | 一種特殊的後端服：玩家登入後先落在這裡，再通過 NPC 或指令進入各玩法服。通常插件很少、配置很輕 | [跨服端](/tutorials/java/proxy) |
+| MCDR | MCDReforged | 掛在服務端旁邊、通過解析控制台輸出與傳送指令來工作的**服務端管理框架**。它不改服務端本身，因此不受核心類型限制 | [MCDR](/tutorials/java/mcdr) |
 
 ### 2.1 "插件端"和"模組端"是兩條平行線
 
@@ -142,8 +142,8 @@ Minecraft 服務端生態裡，**預設值、配置鍵名、可用命令幾乎�
 | 離線服 | offline-mode / cracked server | `online-mode=false` 的伺服器。玩家名可以任意填寫，**任何人都能冒用別人的名字**，也無法獲得官方 UUID | [配置服務端](/tutorials/java/config) |
 | UUID | Universally Unique Identifier | 玩家的唯一標識。正版服由 Mojang 會話服務給出；離線服則由服務端按名字推導，**同名即同 UUID，改名即換身份** | [常用服務端指令](/tutorials/java/commands) |
 | 白名單 | whitelist | 只允許名單內玩家進入的機制。相關鍵為 `white-list`，名單檔案是 `whitelist.json`；`enforce-whitelist` 決定過載後是否踢掉不在名單上的線上玩家 | [配置服務端](/tutorials/java/config) |
-| OP / 管理員 | operator | 擁有服務端管理命令權限的玩家，記錄在 `ops.json`。**給 OP 等於給出很大的權限**，給之前想清楚 | [常用服務端指令](/tutorials/java/commands) |
-| RCON | Remote Console | 通過網路向服務端傳送控制台命令的協議，預設埠 25575。**它不加密**，密碼與命令都可被截獲，**只應在本機或加密隧道內使用** | [網路安全基礎](/tutorials/ops/network-security) |
+| OP / 管理員 | operator | 擁有服務端管理指令權限的玩家，記錄在 `ops.json`。**給 OP 等於給出很大的權限**，給之前想清楚 | [常用服務端指令](/tutorials/java/commands) |
+| RCON | Remote Console | 通過網路向服務端傳送控制台指令的協議，預設埠 25575。**它不加密**，密碼與指令都可被截獲，**只應在本機或加密隧道內使用** | [網路安全基礎](/tutorials/ops/network-security) |
 
 ### 3.1 這幾個核心是什麼關係
 
@@ -194,9 +194,9 @@ RCON 的設計目標是本機或可信網路內的遠端管理，**協議本身�
 | 控制什麼 | **誰能進服** | **進來之後能做什麼** |
 | 存放位置 | `whitelist.json` | `ops.json` |
 | 相關開關 | `white-list`、`enforce-whitelist` | `op-permission-level` 決定 OP 的預設權限等級 |
-| 常見誤區 | 以為開了白名單就等於安全 | 以為給了 OP 只是"多幾個命令" |
+| 常見誤區 | 以為開了白名單就等於安全 | 以為給了 OP 只是"多幾個指令" |
 
-**給了 OP 就等於給了很大的權限**，包括能執行會改變世界的命令。給之前想清楚對方是誰，以及這個權限能不能收回。相關命令見 [常用服務端指令](/tutorials/java/commands)。
+**給了 OP 就等於給了很大的權限**，包括能執行會改變世界的指令。給之前想清楚對方是誰，以及這個權限能不能收回。相關指令見 [常用服務端指令](/tutorials/java/commands)。
 
 ## 4. 基岩版概念
 
@@ -224,7 +224,7 @@ RCON 的設計目標是本機或可信網路內的遠端管理，**協議本身�
 
 ### 4.2 第三方實現要自己評估
 
-Nukkit、PMMP、PNX 都**不是官方服務端**，對原版機制的還原程度、更新速度、插件質量差異很大。選之前先確認三件事：**是否已跟進你要的協議版本**、**插件生態是否滿足需求**、**專案最近是否還在維護**。參見 [第三方基岩服務端](/tutorials/bedrock/third-party-setup)。
+Nukkit、PMMP、PNX 都**不是官方服務端**，對原版機制的還原程度、更新速度、插件品質差異很大。選之前先確認三件事：**是否已跟進你要的協議版本**、**插件生態是否滿足需求**、**專案最近是否還在維護**。參見 [第三方基岩服務端](/tutorials/bedrock/third-party-setup)。
 
 :::note 術語不要跨版本套用
 `whitelist.json`（Java 版）與 `allowlist.json`（基岩版）是兩個不同的檔案；Java 版的"插件"和基岩版的"行為包"不是同類東西。**在群裡提問時先說清是哪個版本**，能省下大量來回。
@@ -273,7 +273,7 @@ Nukkit、PMMP、PNX 都**不是官方服務端**，對原版機制的還原程�
 | 異地備份 | offsite backup | 把備份副本放到**與主機不同的物理位置或不同的服務商**。主機整機損毀、被入侵或機房事故時，本機上的備份會一起消失 | [異地備份](/tutorials/ops/offsite-backup) |
 | 3-2-1 原則 | 3-2-1 rule | 一條通用的備份經驗法則：**至少 3 份副本、放在 2 種不同介質上、其中 1 份在異地**。它是經驗總結，不是標準 | [異地備份](/tutorials/ops/offsite-backup) |
 | 異地 | off-site | 與主機不在同一物理位置、不受同一事故影響的儲存位置。**同一台機器上的另一個目錄、同一台機器上的另一塊盤，都不算異地** | [異地備份](/tutorials/ops/offsite-backup) |
-| UPS | Uninterruptible Power Supply | 不間斷電源。它的主要價值不是"停電繼續玩"，而是**給服務端爭取幾分鐘完成安全停機**，避免寫入過程中的硬掉電損壞存檔 | [機架、交換機與 UPS](/tutorials/ops/hardware-rack) |
+| UPS | Uninterruptible Power Supply | 不間斷電源。它的主要價值不是"停電繼續玩"，而是**給服務端爭取幾分鐘完成安全停機**，避免寫入過程中的硬掉電損壞存檔 | [機架、交換器與 UPS](/tutorials/ops/hardware-rack) |
 | 面板 | panel / control panel | 用網頁介面管理服務端的工具，提供啟停、控制台、檔案管理、備份等功能，常見如 Pterodactyl、MCSManager。**它同時是一個新的攻擊面** | [面板管理](/tutorials/ops/panels) |
 | 守護行程 | daemon | 在後台常駐、負責執行具體任務的程式。面板架構裡通常有一個守護行程跑在每台被管理的機器上，**它與網頁端之間的通訊需要重點加固** | [面板管理](/tutorials/ops/panels) |
 | DDoS | Distributed Denial of Service | 分散式拒絕服務攻擊：用大量來源的流量把目標頻寬或連線資源佔滿。**主機側能做的事有限，通常需要服務商在上游清洗** | [常見網路攻擊與防禦](/tutorials/ops/attack-defense) |
@@ -281,7 +281,7 @@ Nukkit、PMMP、PNX 都**不是官方服務端**，對原版機制的還原程�
 | 取證 | forensics | 在重啟、重灌、封禁之前，先把**幾分鐘後就會永久消失的現場**固定下來：行程、連線、日誌、時間線。**順序錯了，證據就沒了** | [應急與取證](/tutorials/ops/incident-forensics) |
 | 事後分析 | post-mortem analysis | 出事之後再去查"當時發生了什麼"。**它只能解釋過去，不能阻止下一次** | [用 spark 分析伺服器效能](/tutorials/ops/spark) |
 | 事前告警 | alerting | 在問題影響到玩家之前，由系統主動通知你。它與事後分析是互補關係，不是替代關係 | [監控與告警](/tutorials/ops/monitoring) |
-| 磁碟 I/O 等待 | I/O wait | CPU 在等磁碟完成讀寫而空轉的時間佔比。**它高的時候，服務端看起來"沒在算"，但就是慢** | [機架、交換機與 UPS](/tutorials/ops/hardware-rack) |
+| 磁碟 I/O 等待 | I/O wait | CPU 在等磁碟完成讀寫而空轉的時間佔比。**它高的時候，服務端看起來"沒在算"，但就是慢** | [機架、交換器與 UPS](/tutorials/ops/hardware-rack) |
 | 執行手冊 | runbook | 針對"某條告警響了該怎麼辦"預先寫好的處理步驟。**沒有執行手冊的告警，等於半夜把你叫醒去看一個你不知道怎麼處理的問題** | [監控與告警](/tutorials/ops/monitoring) |
 
 ### 6.1 "備份"這個詞被誤用得太厲害
@@ -301,22 +301,22 @@ Nukkit、PMMP、PNX 都**不是官方服務端**，對原版機制的還原程�
 
 因為斷電和"伺服器崩了"是兩件不同性質的事。**服務端崩潰通常不會損壞存檔**（行程異常退出，但檔案系統仍是一致的）；而**寫入過程中的硬掉電可能留下半寫的檔案**，輕則丟區塊，重則存檔無法載入。
 
-所以 UPS 的定位是"讓服務端有機會安全停機"，而不是"讓玩家停電也能玩"。選型、NUT 監控與自動關機配置見 [機架、交換機與 UPS](/tutorials/ops/hardware-rack) 與 [家用電腦開服與維護](/tutorials/ops/home-hosting)。
+所以 UPS 的定位是"讓服務端有機會安全停機"，而不是"讓玩家停電也能玩"。選型、NUT 監控與自動關機配置見 [機架、交換器與 UPS](/tutorials/ops/hardware-rack) 與 [家用電腦開服與維護](/tutorials/ops/home-hosting)。
 
 :::tip 最容易漏的一條
 上面這些詞裡，真正被反覆忽略的是**"驗證恢復"**。備份檔案存在、腳本退出碼為 0，都不代表能把伺服器恢復起來。定期真的恢復一次，見 [異地備份](/tutorials/ops/offsite-backup)。
 :::
 
-## 7. 與術語對應的常用命令
+## 7. 與術語對應的常用指令
 
-術語只有落到具體命令上才有用。下表把前面幾節最常見的詞和"看一眼現狀"的命令對應起來。**這些命令的具體輸出格式隨發行版和版本變化，請以你係統上的實際輸出為準。**
+術語只有落到具體指令上才有用。下表把前面幾節最常見的詞和"看一眼現狀"的指令對應起來。**這些指令的具體輸出格式隨發行版和版本變化，請以你係統上的實際輸出為準。**
 
-| 想確認的詞 | 命令 | 看什麼 |
+| 想確認的詞 | 指令 | 看什麼 |
 | --- | --- | --- |
 | 宿主機整體負載 | `uptime` | 末尾三個數字是 1、5、15 分鐘的平均負載；**要和 CPU 核心數一起看**，單核滿載是 1.00 |
 | 記憶體與交換 | `free -h` | 重點看 `available` 這一列，它比 `free` 更接近"還能用多少" |
 | 磁碟空間 | `df -h` | 看掛載點對應的剩餘空間；**磁碟滿會導致服務端寫存檔失敗** |
-| 磁碟健康 | `smartctl -a /dev/sdX` | 通電時間、寫入量、重分配扇區等屬性；命令來自 `smartmontools` |
+| 磁碟健康 | `smartctl -a /dev/sdX` | 通電時間、寫入量、重分配扇區等屬性；指令來自 `smartmontools` |
 | 網路連線概況 | `ss -s` | 各類 socket 的總數；**連線數異常增長往往先於記憶體耗盡出現** |
 | 監聽埠 | `ss -lntp` / `ss -lunp` | TCP / UDP 分別在聽哪些埠、由哪個行程持有 |
 | 服務狀態 | `systemctl status <服务名>` | 是否 active、最近幾次退出、最近日誌片段 |
@@ -373,7 +373,7 @@ Nukkit、PMMP、PNX 都**不是官方服務端**，對原版機制的還原程�
 | 基岩版玩家集體進不來 | 協議版本、客戶端自動更新 | 第 4 節；[基岩版協議與版本](/tutorials/bedrock/protocol) |
 | 紅石機器突然不工作 | 生電、TNT 複製、實體啟用範圍、服務端分支改動 | 第 5 節；[生電與紅石](/tutorials/java/redstone) |
 | 備份腳本"跑了"，但檔案不對 | 退出碼、異地、驗證恢復 | 第 6 節；[異地備份](/tutorials/ops/offsite-backup) |
-| 面板上不去 / 控制台連不上 | 守護行程、埠、證書 | 第 6 節；[面板管理](/tutorials/ops/panels) |
+| 面板上不去 / 控制台連不上 | 守護行程、埠、憑證 | 第 6 節；[面板管理](/tutorials/ops/panels) |
 | 頻寬被打滿、SSH 都連不上 | DDoS、限速、上游清洗 | 第 6 節；[常見網路攻擊與防禦](/tutorials/ops/attack-defense) |
 
 > 各軟體的安裝與配置以官方文件為準。

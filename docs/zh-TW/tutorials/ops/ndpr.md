@@ -176,7 +176,7 @@ onlinemode = true   # true = 正版服, false = 离线服
 | `check_hwid` | 啟用 HWID 裝置驗證 | `false` |
 | `check_interval` | 驗證通過後免檢天數 | `3` |
 | `fail_closed` | 封禁庫缺失時拒絕進服（安全優先） | `false` |
-| `verify_timeout` | HWID 驗證超時（秒，30~600） | `60` |
+| `verify_timeout` | HWID 驗證逾時（秒，30~600） | `60` |
 | `freeze_interval` | 驗證期間釘回座標間隔（秒，1~60） | `1` |
 
 **MCDR 端完整示例**（`MCDR根目录\config\ndpr\config.toml`）：
@@ -195,13 +195,13 @@ verify_timeout = 60
 freeze_interval = 1
 ```
 
-## 五、命令
+## 五、指令
 
 ### MCDR 端
 
-主命令 `!!NDPR` 或 `!!ndpr`。
+主指令 `!!NDPR` 或 `!!ndpr`。
 
-| 命令 | 描述 |
+| 指令 | 描述 |
 | --- | --- |
 | `ban <ID> <原因>` | 封禁玩家 |
 | `check <ID>` | 檢查玩家封禁狀態 |
@@ -213,9 +213,9 @@ freeze_interval = 1
 
 ### 其他平台（插件端 / Mod / 代理端 / 基岩版）
 
-命令字首統一為 `/ndpr`（代理端與基岩版沒有 `!!` 字首命令）。
+指令字首統一為 `/ndpr`（代理端與基岩版沒有 `!!` 字首指令）。
 
-| 命令 | 描述 | 權限 |
+| 指令 | 描述 | 權限 |
 | --- | --- | --- |
 | `/ndpr`、`/ndpr help` | 幫助資訊 | 所有人 |
 | `/ndpr d`、`/ndpr download` | 手動下載封禁資料庫 | `ndpr.admin` |
@@ -230,7 +230,7 @@ freeze_interval = 1
 ## 六、幾個需要你自己權衡的點
 
 1. **`fail_closed`：安全 vs 可用性**。預設 `false` —— 雲端封禁庫拉不下來時**放行**，伺服器照常能用；改成 `true` 則**拒絕進服**，安全優先，但云端故障時玩家會被擋在門外。公開服與朋友服的選擇可能相反。
-2. **`check_hwid`：反作弊 vs 隱私**。開啟後會用**瀏覽器指紋採集**做機器驗證（配套 `verify_timeout` 驗證超時、`freeze_interval` 驗證期間釘回座標間隔、`check_interval` 免檢天數）。這是**比 IP 更強的識別手段**，但也涉及玩家裝置資訊採集 —— 官方文件說明了用途，**你應當在伺服器規則裡向玩家說明**再開啟。
+2. **`check_hwid`：反作弊 vs 隱私**。開啟後會用**瀏覽器指紋採集**做機器驗證（配套 `verify_timeout` 驗證逾時、`freeze_interval` 驗證期間釘回座標間隔、`check_interval` 免檢天數）。這是**比 IP 更強的識別手段**，但也涉及玩家裝置資訊採集 —— 官方文件說明了用途，**你應當在伺服器規則裡向玩家說明**再開啟。
 3. **`download_interval`**：預設 900 秒（15 分鐘）同步一次。調太小會增加請求頻率，調太大則封禁生效變慢；`0` 表示停用自動更新（那就只能靠 `/ndpr d` 手動拉取）。
 4. **代理端優先**：如果是 Velocity/BungeeCord 架構，裝在代理端一次即可覆蓋全部子服，比逐子服安裝更不容易漏。
 

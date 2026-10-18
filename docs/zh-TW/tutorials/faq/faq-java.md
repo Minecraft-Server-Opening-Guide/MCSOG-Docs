@@ -19,7 +19,7 @@ draft: false
 | 啟動後**立刻退出**，日誌提示 EULA | 沒同意協議 | 把 `eula.txt` 改成 `eula=true` | [開啟服務端](/tutorials/java/start) |
 | `UnsupportedClassVersionError ... class file version 65.0` | **Java 版本不對**（65 = Java 21） | 按版本對照表換對應 Java | [環境準備](/tutorials/java/environment) |
 | `'java' 不是内部或外部命令` / `java: command not found` | 沒裝 Java，或 `PATH` 沒配好，或**視窗沒重開** | 檢查 `PATH`，**新開**一個終端再試 | [環境準備](/tutorials/java/environment) |
-| 雙擊啟動腳本**視窗一閃而過** | 報錯後窗口自動關閉 | 腳本末尾加 `pause`，或在終端裡執行 | [開啟服務端](/tutorials/java/start) |
+| 雙擊啟動腳本**視窗一閃而過** | 報錯後視窗自動關閉 | 腳本末尾加 `pause`，或在終端裡執行 | [開啟服務端](/tutorials/java/start) |
 | `Address already in use` | 25565 被佔用 | `netstat -ano \| findstr :25565`（Win）/ `ss -tlnp \| grep 25565`（Linux）查 PID 後結束 | [環境準備](/tutorials/java/environment) |
 | `Could not reserve enough space for object heap` | `-Xmx` 超過可用記憶體 | 調小 `-Xmx` | [環境準備](/tutorials/java/environment) |
 | 首次啟動卡在 `Downloading mojang_x.x.x.jar` | 正在下載執行檔案 | 耐心等；國內網路長期卡住需自備加速手段 | [開啟服務端](/tutorials/java/start) |
@@ -30,7 +30,7 @@ draft: false
 | --- | --- | --- | --- |
 | 自己 `telnet` 通、別人連不上 | **只配了本機防火牆，雲安全組沒放行** | 到雲控制台補入站規則 `TCP 25565` | [部署到可存取環境](/tutorials/java/deploy) |
 | 埠檢測顯示關閉 | 服務端**沒啟動**時埠不會監聽 | 先把服務端跑起來再測 | [環境準備](/tutorials/java/environment) |
-| 家裡路由器映射了還是不通 | 大機率**沒有公網 IPv4** | 對比路由器 WAN 口 IP 與"我的公網 IP"；不一致則需申請/改用雲伺服器/內網穿透 | [部署到可存取環境](/tutorials/java/deploy) |
+| 家裡路由器對映了還是不通 | 大機率**沒有公網 IPv4** | 對比路由器 WAN 口 IP 與"我的公網 IP"；不一致則需申請/改用雲伺服器/內網穿透 | [部署到可存取環境](/tutorials/java/deploy) |
 | **手機玩家連不上** | 只放行了 TCP | 基岩版/跨端需要額外放行 **UDP 19132** | [手機玩家支援](/tutorials/java/mobile) |
 
 ## 三、路徑與權限

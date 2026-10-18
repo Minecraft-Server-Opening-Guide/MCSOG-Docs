@@ -41,7 +41,7 @@ draft: false
 
 ## 2. 安裝 Docker 與 Compose 插件
 
-不要複製來源不明的「一鍵安裝腳本」。下面給出 **Ubuntu / Debian** 的完整手動安裝流程（每個命令都說明作用），其他發行版與 Windows / macOS 見本節末尾的官方入口。
+不要複製來源不明的「一鍵安裝腳本」。下面給出 **Ubuntu / Debian** 的完整手動安裝流程（每個指令都說明作用），其他發行版與 Windows / macOS 見本節末尾的官方入口。
 
 ### 2.1 更新系統並清理舊版本
 
@@ -56,21 +56,21 @@ sudo apt upgrade -y
 sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc podman-docker containerd runc 2>/dev/null | cut -f1)
 ```
 
-命令拆解：`dpkg --get-selections` 列出已安裝包，`cut -f1` 只取包名，`apt remove` 逐個解除安裝。
+指令拆解：`dpkg --get-selections` 列出已安裝包，`cut -f1` 只取包名，`apt remove` 逐個解除安裝。
 
 :::note 提示
-如果系統從未裝過 Docker，這條命令會提示「找不到這些包」，**屬於正常現象**，可以忽略。
+如果系統從未裝過 Docker，這條指令會提示「找不到這些包」，**屬於正常現象**，可以忽略。
 :::
 
 ### 2.2 安裝前置依賴
 
-Docker 官方倉庫走 HTTPS，需要系統具備證書校驗與下載能力：
+Docker 官方倉庫走 HTTPS，需要系統具備憑證校驗與下載能力：
 
 ```bash
 sudo apt install -y ca-certificates curl
 ```
 
-- `ca-certificates`：根證書集合，讓系統能驗證 HTTPS 網站身份，避免下載金鑰時報證書錯誤。
+- `ca-certificates`：根憑證集合，讓系統能驗證 HTTPS 網站身份，避免下載金鑰時報憑證錯誤。
 - `curl`：命令列下載工具，用於獲取 Docker 的 GPG 公鑰。
 
 ### 2.3 新增 Docker 官方 GPG 金鑰
@@ -128,10 +128,10 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 | 包名 | 作用 |
 | --- | --- |
 | `docker-ce` | Docker 社群版核心引擎，負責建立與管理容器 |
-| `docker-ce-cli` | 命令列客戶端，提供 `docker` 命令 |
+| `docker-ce-cli` | 命令列客戶端，提供 `docker` 指令 |
 | `containerd.io` | 底層容器執行時，管理容器生命週期 |
 | `docker-buildx-plugin` | 構建插件，支援多平台映像構建 |
-| `docker-compose-plugin` | Compose v2 插件，提供 `docker compose` 命令 |
+| `docker-compose-plugin` | Compose v2 插件，提供 `docker compose` 指令 |
 
 ### 2.6 啟動並驗證
 
@@ -153,7 +153,7 @@ sudo docker run --rm hello-world
 
 ### 2.7 配置國內映像加速（中國大陸伺服器建議）
 
-Docker Hub 的映像層在國內直連往往很慢甚至超時。可以在**不改變映像名**的前提下配置加速器，讓 `docker pull` 自動走映像站。
+Docker Hub 的映像層在國內直連往往很慢甚至逾時。可以在**不改變映像名**的前提下配置加速器，讓 `docker pull` 自動走映像站。
 
 ```bash
 sudo mkdir -p /etc/docker
@@ -277,14 +277,14 @@ Compose v2 **不再需要**頂層的 `version:` 欄位，寫了會被忽略（�
 | `tty: true` | 分配一個偽終端，讓控制台有正常的互動與回顯（配合 `docker attach` 使用） |
 | `restart: unless-stopped` | 崩潰或宿主機重啟後自動拉起；但**手動 `docker compose stop` 之後不會被自動拉起**，符合直覺 |
 
-`volumes` 裡顯式寫了 `name: mcsog-java-data`，是為了讓卷名**可預測**。不寫的話 Compose 會自動加專案名字首（變成 `mcsogjava_mcsog-java-data` 之類），後面寫備份命令時很容易指錯卷。
+`volumes` 裡顯式寫了 `name: mcsog-java-data`，是為了讓卷名**可預測**。不寫的話 Compose 會自動加專案名字首（變成 `mcsogjava_mcsog-java-data` 之類），後面寫備份指令時很容易指錯卷。
 
 :::note `EULA=TRUE` 是法律要求，不是技術開關
-`EULA: "TRUE"` 表示**你已閱讀並同意 [Minecraft 終端使用者許可協議](https://aka.ms/MinecraftEULA)**。這是使用服務端軟體的前提條件，映像只是把你的聲明寫進 `eula.txt`。不寫這個變數（或寫成 `FALSE`），服務端會啟動後立刻退出。請先真的讀一遍協議再填。
+`EULA: "TRUE"` 表示**你已閱讀並同意 [Minecraft 最終使用者許可協議](https://aka.ms/MinecraftEULA)**。這是使用服務端軟體的前提條件，映像只是把你的聲明寫進 `eula.txt`。不寫這個變數（或寫成 `FALSE`），服務端會啟動後立刻退出。請先真的讀一遍協議再填。
 :::
 
 :::tip 改完先做一次「體檢」
-每次改完 compose 檔案先跑一次 `docker compose config`：它會把埠、卷、環境變數展開打印出來，寫錯的地方會當場報錯，比啟動之後翻日誌快得多。
+每次改完 compose 檔案先跑一次 `docker compose config`：它會把埠、卷、環境變數展開列印出來，寫錯的地方會當場報錯，比啟動之後翻日誌快得多。
 :::
 
 ```bash
@@ -297,7 +297,7 @@ docker compose config
 
 ### 5.1 系統防火牆管不住 Docker
 
-**結論先說：`ufw`、`firewalld`、`iptables` 裡你手寫的那幾條規則，對 Docker 容器映射出來的埠全部無效。**
+**結論先說：`ufw`、`firewalld`、`iptables` 裡你手寫的那幾條規則，對 Docker 容器對映出來的埠全部無效。**
 
 原因在於 Docker 的啟動順序與規則位置：
 
@@ -333,7 +333,7 @@ services:
       - "127.0.0.1:25565:25565/tcp"
 ```
 
-加了 `127.0.0.1:` 字首後，宿主機只會在**迴環網絡卡**上監聽這個埠，公網**根本無法直連**。要對外提供訪問，再由宿主機上的反向代理轉發：
+加了 `127.0.0.1:` 字首後，宿主機只會在**迴環網路卡**上監聽這個埠，公網**根本無法直連**。要對外提供訪問，再由宿主機上的反向代理轉發：
 
 ```nginx
 # /etc/nginx/nginx.conf（stream 模块，四层转发）
@@ -373,9 +373,9 @@ sudo iptables -L DOCKER-USER -n --line-numbers
 
 前兩種做法要麼改變埠繫結方式（做法一），要麼要自己維護 iptables 規則（做法二）。**如果你希望繼續用 `ufw` 這一個工具管理所有防火牆規則**，用這個腳本是最省心的：
 
-它的思路不是"繞過"或"停用"，而是**把 Docker 預留的 `DOCKER-USER` 連結回 UFW 的轉發鏈**，這樣 `ufw route` 命令就能直接管容器埠。
+它的思路不是"繞過"或"停用"，而是**把 Docker 預留的 `DOCKER-USER` 連結回 UFW 的轉發鏈**，這樣 `ufw route` 指令就能直接管容器埠。
 
-**安裝（三條命令）**：
+**安裝（三條指令）**：
 
 ```bash
 sudo wget -O /usr/local/bin/ufw-docker \
@@ -424,7 +424,7 @@ sudo ufw route allow proto udp from any to any port 19132
 sudo ufw-docker allow mc-bedrock 19132/udp
 ```
 
-**容器 IP 變了怎麼辦**：容器重建後 IP 會變，腳本提供了一條過載命令：
+**容器 IP 變了怎麼辦**：容器重建後 IP 會變，腳本提供了一條過載指令：
 
 ```bash
 sudo ufw-docker reload
@@ -432,7 +432,7 @@ sudo ufw-docker reload
 
 **為什麼用 `ufw route`（轉發鏈）而不是 `ufw allow`（輸入鏈）**：
 
-| 命令 | 作用範圍 | 風險 |
+| 指令 | 作用範圍 | 風險 |
 | --- | --- | --- |
 | `ufw allow 25565` | **同時**放行【宿主機】和【容器】的 25565 | 可能順帶把宿主機的服務也暴露了 |
 | `ufw route allow … port 25565` | **只**放行轉發到容器的流量 | 宿主機上的 25565 仍然不開，邊界清晰 |
@@ -487,9 +487,9 @@ sudo ufw-docker uninstall   # 还原 UFW 配置并删除安装的文件
 
 | 寫法 | 監聽位址 | 誰能訪問 | 適用場景 |
 | --- | --- | --- | --- |
-| `-p 25565:25565` | `0.0.0.0`（所有網絡卡） | **公網 + 內網全部** | 只有在你已用安全組/雲防火牆兜底時才可接受 |
+| `-p 25565:25565` | `0.0.0.0`（所有網路卡） | **公網 + 內網全部** | 只有在你已用安全組/雲防火牆兜底時才可接受 |
 | `-p 127.0.0.1:25565:25565` | 僅迴環 | **僅本機** | **推薦**：配反向代理或 SSH 隧道 |
-| `-p 192.168.1.10:25565:25565` | 指定網絡卡 | 僅該網段 | 純內網/區域網路伺服器 |
+| `-p 192.168.1.10:25565:25565` | 指定網路卡 | 僅該網段 | 純內網/區域網路伺服器 |
 
 **關鍵點**：`-p 25565:25565` 的預設行為是綁 `0.0.0.0`，也就是**一旦對映就等於對公網開放**（雲廠商安全組是另一道閘，但那不是本機防火牆）。很多人以為「我沒動防火牆所以是安全的」，其實埠已經全開了。
 
@@ -499,7 +499,7 @@ sudo ufw-docker uninstall   # 还原 UFW 配置并删除安装的文件
 | --- | --- | --- | --- | --- |
 | `bridge`（預設） | 容器接在 `docker0` 網橋上，通過 NAT 出網 | 隔離好、埠可控 | 多一層 NAT；`-p` 才可達 | **絕大多數場景** |
 | `host` | 容器**直接使用宿主機網路棧**，不建網橋、不做 NAT | 效能最好、延遲最低 | **完全失去網路隔離**；埠衝突；`-p` 被忽略；Docker 的防火牆規則也不適用 | 極致效能或埠複雜的場景 |
-| `macvlan` | 給容器分配獨立 MAC 與區域網路 IP，看起來像區域網路裡的一台真機 | **區域網路內可直接發現**（基岩版區域網路列表、Java 版 LAN 廣播） | 需要交換機/路由器配合；部分雲環境不支援 | 區域網路聯機、需要廣播發現的場景 |
+| `macvlan` | 給容器分配獨立 MAC 與區域網路 IP，看起來像區域網路裡的一台真機 | **區域網路內可直接發現**（基岩版區域網路列表、Java 版 LAN 廣播） | 需要交換器/路由器配合；部分雲環境不支援 | 區域網路連線、需要廣播發現的場景 |
 | `overlay` | 跨多台宿主機的虛擬網路（Swarm 用） | 多機叢集 | 複雜度高 | 多機部署 |
 | `none` | 無網路 | 完全隔離 | 容器不能聯網 | 純離線計算任務 |
 
@@ -522,7 +522,7 @@ Docker 預設給 `docker0` 網橋分配 **`172.17.0.0/16`**，每建一個自定
 
 **問題在於**：如果你的**公司內網、VPN、雲廠商內網**也在用 `172.17.x.x`，宿主機就會同時存在兩條指向同一網段的路由，表現為：
 
-- 容器訪問內網服務超時；
+- 容器訪問內網服務逾時；
 - 宿主機訪問某些內網位址時好時壞；
 - SSH 到別的機器突然斷開。
 
@@ -575,7 +575,7 @@ networks:
 
 - **預設的 `bridge` 網路不支援服務名解析**，必須自己建一個網路（`docker network create` 或用 Compose 的 `networks`）。Compose 預設會為專案建立一個網路，所以用 Compose 通常沒問題。
 - **容器 IP 會在重建後變化**，所以任何配置裡都不要寫容器 IP，一律寫服務名。
-- 想讓容器訪問**宿主機**上的服務（例如宿主機的 MySQL），用 `host.docker.internal`（Linux 需在 `extra_hosts` 里加 `host-gateway`），或用 `--network host`。
+- 想讓容器訪問**宿主機**上的服務（例如宿主機的 MySQL），用 `host.docker.internal`（Linux 需在 `extra_hosts` 裡加 `host-gateway`），或用 `--network host`。
 
 ### 5.7 網路相關常見坑速查
 
@@ -583,12 +583,12 @@ networks:
 | --- | --- | --- |
 | `ufw` 放行/拒絕了，容器埠行為都不變 | Docker 繞過系統防火牆 | 用 `-p 127.0.0.1:` 或 `DOCKER-USER` 鏈 |
 | 埠沒想開卻能從公網訪問 | `-p` 預設綁 `0.0.0.0`；系統防火牆又管不住容器 | 改成 `-p 127.0.0.1:宿主机端口:容器端口`，詳見 §5.3 |
-| 容器訪問內網服務超時 | `docker0` 網段與內網衝突 | 改 `default-address-pools` 並重建網路 |
+| 容器訪問內網服務逾時 | `docker0` 網段與內網衝突 | 改 `default-address-pools` 並重建網路 |
 | 區域網路列表裡看不到基岩版伺服器 | `bridge` 模式不做廣播轉發 | 改用 `macvlan` 或 `host` 模式 |
 | 重建容器後連線位址失效 | 容器 IP 變了 | 改用服務名，別寫 IP |
 | 容器裡連不上宿主機的服務 | `localhost` 指容器自己 | 用 `host.docker.internal` 或 `host` 網路 |
 | `host` 模式下 `ports` 不生效 | `host` 模式不使用埠對映 | 直接改服務端監聽埠 |
-| 大包傳輸偶發卡頓/超時 | MTU 不匹配（部分雲廠商） | 在 `daemon.json` 設 `"mtu": 1400` 或按廠商建議值 |
+| 大包傳輸偶發卡頓/逾時 | MTU 不匹配（部分雲廠商） | 在 `daemon.json` 設 `"mtu": 1400` 或按廠商建議值 |
 | 重啟後 `DOCKER-USER` 規則丟失 | iptables 規則未持久化 | 用 `iptables-persistent` 或開機腳本 |
 
 ### 5.8 一份安全的對外暴露清單
@@ -641,7 +641,7 @@ docker compose stop
 docker compose down
 ```
 
-| 命令 | 做了什麼 | 卷裡的資料 |
+| 指令 | 做了什麼 | 卷裡的資料 |
 | --- | --- | --- |
 | `docker compose stop` | 停止容器，容器還在 | 保留 |
 | `docker compose start` | 啟動已停止的容器 | 保留 |
@@ -716,7 +716,7 @@ docker compose start
 
 Windows PowerShell 下把掛載路徑換成 `-v "${PWD}\backups:/backup"`（Docker Desktop）。
 
-必須保持線上、不能停服時，用控制台命令保證一致性：
+必須保持線上、不能停服時，用控制台指令保證一致性：
 
 ```bash
 docker compose exec -it mcsog-java rcon-cli save-all
@@ -813,7 +813,7 @@ docker compose restart
 | 容器裡寫不了 `/data`，日誌報權限錯誤 | Linux 繫結掛載的屬主與容器內使用者不一致 | 修正宿主機目錄屬主，或用映像提供的使用者對映變數（`PUID`/`PGID`，**以映像文件為準**） |
 | 重建容器後存檔「沒了」 | 刪了卷（如 `down -v`），或忘了掛載 `/data` | 立刻停手，從備份恢復；以後固定卷名並納入備份 |
 | 控制台打不了字 | 少了 `stdin_open: true` 與 `tty: true` | 補上並重建容器 |
-| `docker compose` 提示不是命令 | 裝的是舊版 `docker-compose`（v1） | 按官方文件安裝 Compose v2 插件，命令是 `docker compose` |
+| `docker compose` 提示不是指令 | 裝的是舊版 `docker-compose`（v1） | 按官方文件安裝 Compose v2 插件，指令是 `docker compose` |
 | 改完配置沒生效 | 只改了檔案沒重建容器 | `docker compose up -d` 讓配置生效 |
 
 日常巡檢（容器狀態、資源佔用、磁碟餘量）建議配合 [監控與告警](/tutorials/ops/monitoring) 一起做。

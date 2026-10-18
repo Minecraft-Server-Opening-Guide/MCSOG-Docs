@@ -48,7 +48,7 @@ draft: false
 | 模組發佈頁（Modrinth / CurseForge） | 環境標記。Modrinth 現在用 `environment` 欄位（如 `client_only`、`server_only`、`client_and_server`），舊的 `client_side` / `server_side` 取值為 `required` / `optional` / `unsupported` |
 | 模組 README / 作者公告 | 作者常直接寫 "server-side only"、"client-side only"、"required on both sides" |
 | Fabric 模組 | `fabric.mod.json` 裡的 `environment` 欄位：`"*"`（預設，兩端都算）、`"client"`（客戶端）、`"server"`（獨立服務端，不含單人整合的服務端） |
-| NeoForge 模組 | `META-INF/neoforge.mods.toml` 的後設資料，以及程式碼中標註為僅客戶端載入的入口（如 `dist = Dist.CLIENT`） |
+| NeoForge 模組 | `META-INF/neoforge.mods.toml` 的元資料，以及程式碼中標註為僅客戶端載入的入口（如 `dist = Dist.CLIENT`） |
 :::warn 別把插件服的經驗套到模組服
 - `spigot.yml`、`paper-world-defaults.yml`、Bukkit 插件那一整套在模組服**不存在**，照著插件服教學調模組服只會白費功夫。
 - 模組服預設**不能裝 Bukkit 插件**（要裝得用混合端，屬於另一套方案）。
@@ -66,7 +66,7 @@ draft: false
 
 **版本格局要看清**：載入器"支援哪些 Minecraft 版本"是隨時間變化的，本文不列具體數字，只給判斷方法：
 
-- Fabric：官方下載頁可以同時選遊戲版本與載入器版本，頁面會直接給出下載與啟動命令。Fabric 官方文件寫明支援 1.14 及之後的所有正式版（以及 18w43b 之後的快照）。
+- Fabric：官方下載頁可以同時選遊戲版本與載入器版本，頁面會直接給出下載與啟動指令。Fabric 官方文件寫明支援 1.14 及之後的所有正式版（以及 18w43b 之後的快照）。
 - NeoForge：官網首頁按 Minecraft 版本給出對應安裝器檔案；官方文件提供伺服器安裝步驟。
 - Forge：官方下載頁按版本列出 latest / recommended 構建，至今仍在為多個版本（含較新版本）發佈；但新版本的模組生態有相當一部分已轉向 NeoForge。
 
@@ -110,8 +110,8 @@ Java 裝錯版本是最常見的"安裝器打不開/服務端起不來"原因，
 
 ### 3.3 Fabric
 
-- 官方伺服器下載頁（fabricmc.net 的 server 頁面）可以選擇版本，並給出下載命令與啟動命令；照著頁面顯示的**檔名與啟動命令**執行即可。
-- 安裝器有 Server 選項卡，用於在本地生成服務端啟動器。
+- 官方伺服器下載頁（fabricmc.net 的 server 頁面）可以選擇版本，並給出下載指令與啟動指令；照著頁面顯示的**檔名與啟動指令**執行即可。
+- 安裝器有 Server 索引標籤，用於在本地生成服務端啟動器。
 - 絕大多數 Fabric 模組需要 **Fabric API**，它也是一個模組，放進 `mods/`。
 
 ```bash
@@ -140,7 +140,7 @@ java -jar neoforge-<版本>-installer.jar --installServer
 
 - 安裝後會生成 `run.sh` / `run.bat` 和 **`user_jvm_args.txt`**。**改記憶體請改 `user_jvm_args.txt`，不要手改 `run.sh`**。
 - 首次啟動後出現 `mods` 資料夾，模組放這裡。
-- 更新 NeoForge 只需用新版本安裝器再跑一遍同樣的命令；官方明確提醒：**更新前先備份世界**。
+- 更新 NeoForge 只需用新版本安裝器再跑一遍同樣的指令；官方明確提醒：**更新前先備份世界**。
 
 ### 3.5 Forge（老版本 / 老整合包）
 
@@ -251,7 +251,7 @@ java -jar forge-<版本>-installer.jar --installServer
 | --- | --- | --- | --- | --- |
 | 遊戲邏輯最佳化 | **Lithium** | 最佳化遊戲邏輯（刷怪、AI、方塊行為等）的效能，儘量不改變行為 | Fabric、NeoForge、Quilt | 兩端都可裝，服務端收益明顯 |
 | 記憶體佔用 | **FerriteCore** | 降低記憶體佔用（方塊狀態等資料結構） | Fabric、Forge、NeoForge、Quilt | 記憶體吃緊的模組服很實用 |
-| 網路最佳化 | **Krypton** | 最佳化網路棧，降低頻寬與 CPU 開銷 | Fabric | 主要面向服務端與聯機 |
+| 網路最佳化 | **Krypton** | 最佳化網路棧，降低頻寬與 CPU 開銷 | Fabric | 主要面向服務端與連線 |
 | 光照引擎 | **Starlight** | 重寫光照引擎，修光照效能與錯誤 | Fabric | 專案已歸檔，最高支援到 1.20.4；其說明也寫明 1.20 上它與原版差距已經很小。**新版本不要硬裝** |
 | 區塊預生成 | **Chunky** | 提前生成區塊，減少玩家跑圖時的卡頓 | Fabric、Forge、NeoForge，以及 Paper/Spigot 等 | 長期開放的服幾乎是必備 |
 | 客戶端渲染 | **Sodium** | 客戶端渲染最佳化（提升幀率） | Fabric、NeoForge、Quilt | **僅客戶端**，服務端不要裝 |
@@ -293,7 +293,7 @@ java -jar forge-<版本>-installer.jar --installServer
 | --- | --- | --- |
 | 堆記憶體需求 | 相對低 | **明顯更高**：模組登錄檔、模型、配方、機器資料都吃記憶體 |
 | 啟動時間 | 短 | 長（幾百個模組時啟動數分鐘很常見） |
-| 主要瓶頸 | 主執行緒 + 插件質量 | 主執行緒 + 模組質量 + 記憶體/GC |
+| 主要瓶頸 | 主執行緒 + 插件品質 | 主執行緒 + 模組品質 + 記憶體/GC |
 | 參數來源 | 核心官方文件的推薦組合 | **載入器自己的啟動檔案說明** |
 
 實操建議：

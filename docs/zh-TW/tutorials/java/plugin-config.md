@@ -238,7 +238,7 @@ warning: "&c&l警告&r &7请不要在此处建造"
 
 1. 用 VS Code、Notepad++ 之類的編輯器開啟檔案。
 2. 在儲存時選擇 **UTF-8**（VS Code 右下角編碼處選 `Save with Encoding`）。
-3. 確認不要帶 BOM。Windows 記事本在舊版本里預設存成"UTF-8 帶 BOM"，是最常見的坑。
+3. 確認不要帶 BOM。Windows 記事本在舊版本裡預設存成"UTF-8 帶 BOM"，是最常見的坑。
 4. 儲存後重新載入插件，觀察控制台與遊戲內文本。
 
 :::warn 先用記事本存一次是危險操作

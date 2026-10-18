@@ -106,10 +106,10 @@ Compose v2 **不需要**頂層 `version:` 欄位。
 | --- | --- |
 | `image` | 使用的映像；正式環境建議固定標籤，不要永遠用 `latest` |
 | `container_name` | 固定容器名，方便 `logs` / `attach` |
-| `ports` | **`/udp` 必須寫**。`19132` 是 IPv4 主埠，`19133` 是 IPv6 埠（沒有 IPv6 客戶端可以不對映，但映射了不會有副作用） |
+| `ports` | **`/udp` 必須寫**。`19132` 是 IPv4 主埠，`19133` 是 IPv6 埠（沒有 IPv6 客戶端可以不對映，但對映了不會有副作用） |
 
 :::warn Docker 會繞過系統防火牆（基岩版同樣適用）
-`ufw` 與 `firewalld` 的規則**對 Docker 容器映射出來的埠無效**：Docker 會把自己的 `iptables` 規則插在系統防火牆之前，所以 `ufw deny 19132/udp` 也擋不住外部訪問。
+`ufw` 與 `firewalld` 的規則**對 Docker 容器對映出來的埠無效**：Docker 會把自己的 `iptables` 規則插在系統防火牆之前，所以 `ufw deny 19132/udp` 也擋不住外部訪問。
 
 基岩版走 **UDP**，更容易被忽略，務必按下面的方式收緊：
 
@@ -127,14 +127,14 @@ Compose v2 **不需要**頂層 `version:` 欄位。
 | `tty: true` | 分配偽終端，配合 `docker attach` 獲得可互動的控制台 |
 | `restart: unless-stopped` | 崩潰或宿主機重啟後自動拉起；手動 `docker compose stop` 後不會自動拉起 |
 
-`volumes` 裡顯式寫 `name:` 是為了讓卷名**可預測**（否則 Compose 會加專案名字首），備份命令才不會指錯卷。
+`volumes` 裡顯式寫 `name:` 是為了讓卷名**可預測**（否則 Compose 會加專案名字首），備份指令才不會指錯卷。
 
 :::note `EULA=TRUE` 是法律要求
-`EULA: "TRUE"` 表示**你已閱讀並同意 [Minecraft 終端使用者許可協議](https://aka.ms/MinecraftEULA)**。不設定這個變數，BDS 會啟動後立刻退出，容器就會進入重啟迴圈。
+`EULA: "TRUE"` 表示**你已閱讀並同意 [Minecraft 最終使用者許可協議](https://aka.ms/MinecraftEULA)**。不設定這個變數，BDS 會啟動後立刻退出，容器就會進入重啟迴圈。
 :::
 
 :::tip 啟動前先做一次「體檢」
-每次改完 compose 檔案先跑一次 `docker compose config`：埠、卷、環境變數會被展開打印出來，寫錯的地方會當場報錯。**尤其是 `/udp`，漏寫在這裡就能看出來。**
+每次改完 compose 檔案先跑一次 `docker compose config`：埠、卷、環境變數會被展開列印出來，寫錯的地方會當場報錯。**尤其是 `/udp`，漏寫在這裡就能看出來。**
 :::
 
 ```bash
@@ -161,7 +161,7 @@ docker compose logs -f
 docker attach mcsog-bedrock
 ```
 
-attach 之後就可以像在本地窗口裡一樣輸入 BDS 指令，例如：
+attach 之後就可以像在本地視窗裡一樣輸入 BDS 指令，例如：
 
 ```text
 list
@@ -182,7 +182,7 @@ docker compose stop
 docker compose down
 ```
 
-| 命令 | 做了什麼 | 卷裡的資料 |
+| 指令 | 做了什麼 | 卷裡的資料 |
 | --- | --- | --- |
 | `docker compose stop` | 停止容器，容器還在 | 保留 |
 | `docker compose start` | 啟動已停止的容器 | 保留 |

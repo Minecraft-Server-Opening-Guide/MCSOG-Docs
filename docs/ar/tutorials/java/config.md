@@ -68,10 +68,10 @@ draft: false
 الصعوبة وحماية نقطة الظهور تُعدَّل في `server.properties`؛ أما **قواعد اللعبة فتُعدَّل بالأوامر**:
 
 ```
-/gamerule keepInventory true        死亡不掉落
-/gamerule doDaylightCycle false     关闭昼夜更替
-/gamerule mobGriefing false         苦力怕不破坏方块
-/gamerule announceAdvancements false 不公告进度达成
+/gamerule keepInventory true         احتفظ بالأغراض عند الموت
+/gamerule doDaylightCycle false      أوقف دورة الليل والنهار
+/gamerule mobGriefing false          لا تدع الكريبر يخرّب المكعبات
+/gamerule announceAdvancements false لا تعلن إنجاز التقدمات
 ```
 
 نفّذها في وحدة التحكم أو داخل اللعبة (بحاجة OP)، و**تسري فورًا وتُحفظ**.
