@@ -96,8 +96,8 @@ MCSManager 的服务名、安装脚本地址、默认端口与数据目录可能
 | 守护进程端口 | `24444` | 可在守护进程配置文件的 `port` 修改 |
 | Linux 服务名 | `mcsm-web`、`mcsm-daemon` | systemd 服务 |
 | 脚本安装目录 | `/opt/mcsmanager` | 官方示例路径 |
-| Web 配置文件 | `<Web 安装目录>/data/SystemConfig/config.json` | 含 `httpPort`、`httpIp`、`loginCheckIp` 等 |
-| 守护进程配置文件 | `<Daemon 安装目录>/data/Config/global.json` | 含 `port`、`key`、`defaultInstancePath` 等 |
+| Web 配置文件 | `<Web install dir>/data/SystemConfig/config.json` | 含 `httpPort`、`httpIp`、`loginCheckIp` 等 |
+| 守护进程配置文件 | `<Daemon install dir>/data/Config/global.json` | 含 `port`、`key`、`defaultInstancePath` 等 |
 | 守护进程密钥 | 上述 `global.json` 的 `key` 字段 | 守护进程启动时也会打印 |
 
 :::tip 一个非常容易被忽略的官方警告
@@ -159,7 +159,7 @@ systemctl enable mcsm-daemon.service
 | 7 | 在实例控制台点"启动"并观察日志 | 首次启动通常还要在"配置文件"里把 `eula.txt` 改成 `eula=true` |
 | 8 | 给协管建子账号，只授权需要的实例 | 不要给"全部实例 + 文件管理" |
 
-官方文档还说明：实例数据默认位于 `<Daemon 安装目录>/data/InstanceData/<instance-id>/`，实例配置位于 `<Daemon 安装目录>/data/InstanceConfig/<instance-id>.json`（其中包含启动命令等配置）。**这两处是"丢了就很难重建"的东西，必须纳入备份。**
+官方文档还说明：实例数据默认位于 `<Daemon install dir>/data/InstanceData/<instance-id>/`，实例配置位于 `<Daemon install dir>/data/InstanceConfig/<instance-id>.json`（其中包含启动命令等配置）。**这两处是"丢了就很难重建"的东西，必须纳入备份。**
 
 :::warn 启动命令里的内存参数不要贪心
 官方文档特别警告：**不要把机器全部内存都分给 JVM**，操作系统本身也需要资源，否则可能整机崩溃。`-Xmx` 要明显小于机器物理内存。
@@ -332,7 +332,7 @@ sudo ufw status verbose
 :::warn 路径以官方文档为准
 各面板的数据目录位置不同，**必须从官方文档确认后再写进备份脚本**，不要凭猜测写路径。
 
-以 MCSManager 为例，官方文档给出的相关位置是：Web 配置在 `<Web 安装目录>/data/SystemConfig/config.json`，守护进程配置在 `<Daemon 安装目录>/data/Config/global.json`，实例数据在 `<Daemon 安装目录>/data/InstanceData/<instance-id>/`，实例配置在 `<Daemon 安装目录>/data/InstanceConfig/<instance-id>.json`。官方"更新与重置"文档则直接建议：**升级前把 `web/data` 与 `daemon/data` 两个目录备份到别处。**
+以 MCSManager 为例，官方文档给出的相关位置是：Web 配置在 `<Web install dir>/data/SystemConfig/config.json`，守护进程配置在 `<Daemon install dir>/data/Config/global.json`，实例数据在 `<Daemon install dir>/data/InstanceData/<instance-id>/`，实例配置在 `<Daemon install dir>/data/InstanceConfig/<instance-id>.json`。官方"更新与重置"文档则直接建议：**升级前把 `web/data` 与 `daemon/data` 两个目录备份到别处。**
 :::
 
 备份建议：

@@ -400,7 +400,7 @@ Tác giả nhắc rõ: **có khi khởi động lại UFW xong quy tắc không 
 **Cách dùng hằng ngày** (lấy Java Edition 25565 làm ví dụ):
 
 ```bash
-# cho phép bên ngoài truy cập cổng container 25565 (chú ý: điền 【cổng container】, không phải cổng máy host)
+# cho phép bên ngoài truy cập cổng container 25565 (chú ý: điền [cổng container], không phải cổng máy host)
 sudo ufw route allow proto tcp from any to any port 25565
 
 # không cho phép nữa (thu hồi)
@@ -434,7 +434,7 @@ sudo ufw-docker reload
 
 | Lệnh | Phạm vi tác dụng | Rủi ro |
 | --- | --- | --- |
-| `ufw allow 25565` | **Đồng thời** cho qua 25565 của 【máy host】 và 【container】 | Có thể tiện thể để lộ luôn dịch vụ trên máy host |
+| `ufw allow 25565` | **Đồng thời** cho qua 25565 của máy host và container | Có thể tiện thể để lộ luôn dịch vụ trên máy host |
 | `ufw route allow … port 25565` | **Chỉ** cho qua lưu lượng chuyển tiếp tới container | 25565 trên máy host vẫn không mở, ranh giới rõ ràng |
 
 **Tùy chọn: tự định nghĩa dải mạng được phép truy cập container**

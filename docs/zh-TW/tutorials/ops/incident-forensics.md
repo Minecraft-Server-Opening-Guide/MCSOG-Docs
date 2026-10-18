@@ -87,7 +87,7 @@ sudo tcpdump -i eth0 -nn -s 0 -w /var/log/incident-$(date +%F-%H%M).pcap 'udp po
 | `-i eth0` | 指定網路卡 | **換成你的實際介面名**；不指定時 tcpdump 會自己挑，可能挑錯 |
 | `-nn` | 不做名稱解析（IP 與埠保持數字） | 反向 DNS 會**拖慢抓包並丟包**；更嚴重的是攻擊流量會誘使你**對外發起大量 DNS 查詢，等於告訴對方"我正在被攻擊"** |
 | `-s 0` | 抓取完整包，不截斷 | 預設只抓前若干位元組，**載荷被截斷後無法分析協議內容**；`0` 表示完整長度 |
-| `-w 文件` | 寫入 pcap | 見下方說明 |
+| `-w FILE` | 寫入 pcap | 見下方說明 |
 | `'port 25565'` | BPF 過濾表示式 | 單引號防止 shell 解釋；`port` 同時匹配 TCP 與 UDP |
 
 **為什麼必須寫檔案而不是列印到終端**：攻擊期間包速率可能達每秒數十萬，把解析結果打到終端會讓 tcpdump **自己成為瓶頸並大量丟包**，同時刷屏使終端失去意義；`-w` 直接寫二進位制，開銷小得多。**別忘了磁碟**：`-s 0` 加高速流量可以在幾分鐘內寫出幾十 GB，先看剩餘空間，並用 `-c` 限制包數，或用 `-C` 按大小輪轉、`-W` 限制檔案數：
@@ -219,7 +219,7 @@ journalctl -u <service> --since "1 hour ago"
 
 - `ps auxf`：以**行程樹**列出所有行程，看有沒有不該在的東西——異常礦工、從 `/tmp` 執行的可執行檔案、偽裝成 `java` 卻指向奇怪路徑的行程。**被攻陷的主機上 `ps` 本身可能被替換或劫持，重要結論要用多種方式交叉驗證。**
 - `systemctl status <service>`：服務狀態與最近幾行日誌。服務名取決於部署方式，例如 `minecraft`、`mcserver`、`paper`，**不是固定的**。
-- `journalctl -u <service> --since "1 hour ago"`：systemd 日誌，支援 `--since`/`--until`，可寫 `"1 hour ago"`、`"2026-10-04 12:00:00"`、`"today"`。**預設按本地時區顯示，加 `--utc` 強制 UTC**，取證時強烈建議統一用 `--utc`。日誌已輪轉時，用 `journalctl -u <service> --since ... --no-pager > 文件` 匯出，或用 `journalctl --file` 讀取歸檔檔案。
+- `journalctl -u <service> --since "1 hour ago"`：systemd 日誌，支援 `--since`/`--until`，可寫 `"1 hour ago"`、`"2026-10-04 12:00:00"`、`"today"`。**預設按本地時區顯示，加 `--utc` 強制 UTC**，取證時強烈建議統一用 `--utc`。日誌已輪轉時，用 `journalctl -u <service> --since ... --no-pager > FILE` 匯出，或用 `journalctl --file` 讀取歸檔檔案。
 
 Minecraft 側：
 

@@ -122,7 +122,7 @@ Ngoài ra, nếu muốn máy chủ xuất hiện trong **danh sách mạng LAN**
 Giải thích đầy đủ (gồm xung đột dải mạng, so sánh chế độ mạng, bảng kiểm tra) xem [Triển khai Java Edition bằng Docker → Mạng và tường lửa](/tutorials/java/docker#5-网络与防火墙最容易踩坑的一节).
 :::
 | `environment` | Cấu hình mà image đọc, xem mục 6 |
-| `volumes` | `卷名:/data`. **Thế giới, cấu hình, gói phụ trợ đều nằm trong `/data`** |
+| `volumes` | `volume name:/data`. **Thế giới, cấu hình, gói phụ trợ đều nằm trong `/data`** |
 | `stdin_open: true` | Mở đầu vào chuẩn, nếu không sẽ không thể **nhập lệnh** vào console BDS |
 | `tty: true` | Cấp pseudo-terminal, kết hợp `docker attach` để có console tương tác |
 | `restart: unless-stopped` | Tự kéo lên sau khi sụp hoặc máy chủ khởi động lại; sau khi `docker compose stop` thủ công thì không tự kéo lên |

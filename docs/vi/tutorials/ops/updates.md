@@ -434,7 +434,7 @@ Khi trên hệ thống đồng thời có Python hệ thống, môi trường �
 :::
 
 :::note Các cách cài khác
-- **pipx**: nâng cấp bằng `pipx upgrade mcdreforged`; muốn cài phụ thuộc Python cho nó thì dùng `pipx inject mcdreforged <包名>`.
+- **pipx**: nâng cấp bằng `pipx upgrade mcdreforged`; muốn cài phụ thuộc Python cho nó thì dùng `pipx inject mcdreforged <package>`.
 - **Docker**: đổi tag image theo tài liệu image chính thức, cách viết cụ thể lấy chương Docker của tài liệu chính thức làm chuẩn.
 - **Mạng trong nước**: có thể thêm `-i https://pypi.tuna.tsinghua.edu.cn/simple` vào lệnh để dùng mirror tăng tốc, đây là cách làm được tài liệu chính thức đưa ra.
 - **Trình quản lý gói của hệ thống**: tài liệu chính thức **rất không khuyến nghị** dùng nó để cài MCDR, vì rất khó quản lý phụ thuộc của plugin.
@@ -470,7 +470,7 @@ pip install mcdreforged==2.15.0
 mcdreforged -V
 ```
 
-- **Số phiên bản nhất định phải xác nhận trên PyPI**, đừng viết theo trí nhớ; môi trường pipx có thể dùng `pipx install --force mcdreforged==<版本>` để cài đè (cách viết cụ thể lấy tài liệu chính thức của pipx làm chuẩn).
+- **Số phiên bản nhất định phải xác nhận trên PyPI**, đừng viết theo trí nhớ; môi trường pipx có thể dùng `pipx install --force mcdreforged==<version>` để cài đè (cách viết cụ thể lấy tài liệu chính thức của pipx làm chuẩn).
 - Nếu khi nâng cấp đã cập nhật cả plugin MCDR thì **plugin cũng phải quay lui theo**, nếu không plugin mới đi với MCDR cũ cũng sẽ lỗi.
 
 ## 5. Danh sách kiểm tra cập nhật

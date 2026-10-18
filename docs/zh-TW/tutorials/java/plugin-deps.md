@@ -82,7 +82,7 @@ Vault 同時支援舊版本和新版本的 Minecraft，不用在意 SpigotMC 頁
 **它是什麼**：PlaceholderAPI（簡稱 PAPI）是一個變數佔位符系統。它把形如 `%变量扩展_参数%` 的文本，替換成其他插件提供的資訊。
 
 ```
-%player_name%        玩家名
+%player_name%        the player's name
 %player_level%       玩家等级
 %vault_eco_balance%  玩家余额
 %server_online%      在线人数

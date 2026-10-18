@@ -272,7 +272,7 @@ Compose v2 **不再需要**頂層的 `version:` 欄位，寫了會被忽略（�
 | `container_name` | 固定容器名，後面 `logs` / `exec` / `attach` 都用它，比自動生成的名字好記 |
 | `ports` | `宿主机端口:容器端口/协议`。Java 版是 **TCP 25565**，寫成 `"25565:25565/tcp"` 最不容易誤解 |
 | `environment` | 映像讀取的配置，見第 6 節表格 |
-| `volumes` | `卷名:/data`。**存檔、插件、配置全在 `/data`**，這是整個部署裡唯一不能丟的東西 |
+| `volumes` | `volume name:/data`。**存檔、插件、配置全在 `/data`**，這是整個部署裡唯一不能丟的東西 |
 | `stdin_open: true` | 保持容器的標準輸入開啟，否則你沒法往服務端控制台**打字** |
 | `tty: true` | 分配一個偽終端，讓控制台有正常的互動與回顯（配合 `docker attach` 使用） |
 | `restart: unless-stopped` | 崩潰或宿主機重啟後自動拉起；但**手動 `docker compose stop` 之後不會被自動拉起**，符合直覺 |

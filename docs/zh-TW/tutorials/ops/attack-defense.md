@@ -359,7 +359,7 @@ enforce-whitelist=true
 | `white-list` | 只允許名單內的玩家登入 |
 | `enforce-whitelist` | 名單變化時**立即把不在名單上的線上玩家踢出**。不改這個鍵，新加入的名單要等玩家重連才生效 |
 
-名單用控制台/遊戲內指令維護（`whitelist add <玩家名>`、`whitelist list` 等，**具體語法以你的服務端版本為準**）。
+名單用控制台/遊戲內指令維護（`whitelist add <player>`、`whitelist list` 等，**具體語法以你的服務端版本為準**）。
 
 基岩版使用伺服器根目錄下的 **`allowlist.json`**，通常由 `allowlist` 相關指令自動維護。**檔案格式與開關鍵名隨服務端軟體和版本變化，請以你自己伺服器生成的 `allowlist.json` 和官方文件為準，不要照抄教學裡的示例檔案。**
 

@@ -96,8 +96,8 @@ MCSManager 的服務名、安裝腳本位址、預設埠與資料目錄可能隨
 | 守護行程埠 | `24444` | 可在守護行程設定檔的 `port` 修改 |
 | Linux 服務名 | `mcsm-web`、`mcsm-daemon` | systemd 服務 |
 | 腳本安裝目錄 | `/opt/mcsmanager` | 官方示例路徑 |
-| Web 設定檔 | `<Web 安装目录>/data/SystemConfig/config.json` | 含 `httpPort`、`httpIp`、`loginCheckIp` 等 |
-| 守護行程設定檔 | `<Daemon 安装目录>/data/Config/global.json` | 含 `port`、`key`、`defaultInstancePath` 等 |
+| Web 設定檔 | `<Web install dir>/data/SystemConfig/config.json` | 含 `httpPort`、`httpIp`、`loginCheckIp` 等 |
+| 守護行程設定檔 | `<Daemon install dir>/data/Config/global.json` | 含 `port`、`key`、`defaultInstancePath` 等 |
 | 守護行程金鑰 | 上述 `global.json` 的 `key` 欄位 | 守護行程啟動時也會列印 |
 
 :::tip 一個非常容易被忽略的官方警告
@@ -159,7 +159,7 @@ systemctl enable mcsm-daemon.service
 | 7 | 在實例控制台點"啟動"並觀察日誌 | 首次啟動通常還要在"設定檔"裡把 `eula.txt` 改成 `eula=true` |
 | 8 | 給協管建子帳號，只授權需要的實例 | 不要給"全部實例 + 檔案管理" |
 
-官方文件還說明：實例資料預設位於 `<Daemon 安装目录>/data/InstanceData/<instance-id>/`，實例配置位於 `<Daemon 安装目录>/data/InstanceConfig/<instance-id>.json`（其中包含啟動指令等配置）。**這兩處是"丟了就很難重建"的東西，必須納入備份。**
+官方文件還說明：實例資料預設位於 `<Daemon install dir>/data/InstanceData/<instance-id>/`，實例配置位於 `<Daemon install dir>/data/InstanceConfig/<instance-id>.json`（其中包含啟動指令等配置）。**這兩處是"丟了就很難重建"的東西，必須納入備份。**
 
 :::warn 啟動指令裡的記憶體參數不要貪心
 官方文件特別警告：**不要把機器全部記憶體都分給 JVM**，作業系統本身也需要資源，否則可能整機崩潰。`-Xmx` 要明顯小於機器物理記憶體。
@@ -332,7 +332,7 @@ sudo ufw status verbose
 :::warn 路徑以官方文件為準
 各面板的資料目錄位置不同，**必須從官方文件確認後再寫進備份腳本**，不要憑猜測寫路徑。
 
-以 MCSManager 為例，官方文件給出的相關位置是：Web 配置在 `<Web 安装目录>/data/SystemConfig/config.json`，守護行程配置在 `<Daemon 安装目录>/data/Config/global.json`，實例資料在 `<Daemon 安装目录>/data/InstanceData/<instance-id>/`，實例配置在 `<Daemon 安装目录>/data/InstanceConfig/<instance-id>.json`。官方"更新與重置"文件則直接建議：**升級前把 `web/data` 與 `daemon/data` 兩個目錄備份到別處。**
+以 MCSManager 為例，官方文件給出的相關位置是：Web 配置在 `<Web install dir>/data/SystemConfig/config.json`，守護行程配置在 `<Daemon install dir>/data/Config/global.json`，實例資料在 `<Daemon install dir>/data/InstanceData/<instance-id>/`，實例配置在 `<Daemon install dir>/data/InstanceConfig/<instance-id>.json`。官方"更新與重置"文件則直接建議：**升級前把 `web/data` 與 `daemon/data` 兩個目錄備份到別處。**
 :::
 
 備份建議：

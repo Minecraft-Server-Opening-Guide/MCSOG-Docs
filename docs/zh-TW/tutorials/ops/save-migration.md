@@ -16,7 +16,7 @@ draft: false
 
 ## 1. 先看清：單機存檔裡到底有什麼
 
-單機存檔是 `.minecraft/saves/<世界名>/` 下的一個目錄（Windows 上通常是 `%APPDATA%\.minecraft\saves\<世界名>\`）。它不是一個整體檔案，而是**幾十到幾萬個檔案**的組合：
+單機存檔是 `.minecraft/saves/<world-name>/` 下的一個目錄（Windows 上通常是 `%APPDATA%\.minecraft\saves\<world-name>\`）。它不是一個整體檔案，而是**幾十到幾萬個檔案**的組合：
 
 | 路徑 | 內容 | 說明 |
 | --- | --- | --- |
@@ -238,7 +238,7 @@ java -Xms2G -Xmx2G -jar server.jar --nogui
 
 ## 7. 資料包（`datapacks/`）
 
-- 世界級資料包放在世界目錄下的 `datapacks/`（單機是 `saves/<世界名>/datapacks/`，服務端是 `world/datapacks/`），它跟著世界一起走，複製世界時會一起搬過去。
+- 世界級資料包放在世界目錄下的 `datapacks/`（單機是 `saves/<world-name>/datapacks/`，服務端是 `world/datapacks/`），它跟著世界一起走，複製世界時會一起搬過去。
 - **已啟用/已停用的列表記錄在 `level.dat` 裡**，所以搬過去之後一般無需重新啟用；用 `/datapack list` 確認，需要時用 `/datapack enable <name>` / `/datapack disable <name>`，改動後用 `/reload` 生效。
 - **版本要匹配**：資料包聲明了目標 `pack_format`，服務端版本不對時會被拒絕載入或給出警告。
 - **新增維度的資料包要特別注意**：這類世界會有 `dimensions/<namespace>/<path>/` 目錄，只有服務端也裝了同一個資料包，那些維度才載入得出來。資料不會因此被刪除，但玩家會進不去。

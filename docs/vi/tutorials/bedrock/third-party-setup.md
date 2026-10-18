@@ -62,7 +62,7 @@ Sau lần khởi động đầu, thư mục gốc đại khái như sau (các nh
 | `plugins/` | **Thư mục plugin**, đặt tệp `.jar` |
 | `logs/` | Nhật ký chạy |
 
-Bên trong thư mục thế giới `worlds/<世界名>/`:
+Bên trong thư mục thế giới `worlds/<world-name>/`:
 
 | Tệp / thư mục | Nội dung |
 | --- | --- |

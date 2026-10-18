@@ -67,7 +67,7 @@ sudo usermod -s /usr/sbin/nologin mcserver
 Giá trị của `sudo` nằm ở **mỗi lần nâng quyền đều để lại dấu vết** (ghi vào nhật ký hệ thống), và có thể chi tiết đến "một người dùng chỉ chạy được vài lệnh nhất định".
 
 - **Đừng `sudo su -` rồi ngồi luôn trong đó**. Nó làm mất lớp ghi chép "lệnh nào do ai chạy lúc nào".
-- **Nâng quyền theo nhu cầu**: một lệnh thì dùng `sudo 命令`, đừng để cả phiên đều dưới root.
+- **Nâng quyền theo nhu cầu**: một lệnh thì dùng `sudo command`, đừng để cả phiên đều dưới root.
 - **Dùng `visudo` sửa sudoers**. Nó kiểm tra cú pháp; sửa thẳng `/etc/sudoers` sai một ký tự có thể khiến mọi người không nâng quyền được.
 
 ```bash

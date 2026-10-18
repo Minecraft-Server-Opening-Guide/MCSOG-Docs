@@ -359,7 +359,7 @@ enforce-whitelist=true
 | `white-list` | Chỉ cho người chơi trong danh sách đăng nhập |
 | `enforce-whitelist` | Khi danh sách thay đổi, **đá ngay những người đang trực tuyến không có trong danh sách**. Không đổi khóa này, người mới thêm vào danh sách phải chờ họ kết nối lại mới có hiệu lực |
 
-Danh sách được bảo trì bằng lệnh console/trong game (`whitelist add <玩家名>`, `whitelist list`, v.v., **cú pháp cụ thể lấy phiên bản máy chủ của bạn làm chuẩn**).
+Danh sách được bảo trì bằng lệnh console/trong game (`whitelist add <player>`, `whitelist list`, v.v., **cú pháp cụ thể lấy phiên bản máy chủ của bạn làm chuẩn**).
 
 Bản Bedrock dùng **`allowlist.json`** ở thư mục gốc máy chủ, thường được duy trì tự động bằng các lệnh liên quan đến `allowlist`. **Định dạng tệp và tên khóa thay đổi theo phần mềm máy chủ và phiên bản, hãy lấy `allowlist.json` do máy chủ bạn tự tạo và tài liệu chính thức làm chuẩn, đừng chép tệp mẫu trong hướng dẫn.**
 

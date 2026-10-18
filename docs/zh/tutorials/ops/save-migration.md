@@ -16,7 +16,7 @@ draft: false
 
 ## 1. 先看清：单机存档里到底有什么
 
-单机存档是 `.minecraft/saves/<世界名>/` 下的一个目录（Windows 上通常是 `%APPDATA%\.minecraft\saves\<世界名>\`）。它不是一个整体文件，而是**几十到几万个文件**的组合：
+单机存档是 `.minecraft/saves/<world-name>/` 下的一个目录（Windows 上通常是 `%APPDATA%\.minecraft\saves\<world-name>\`）。它不是一个整体文件，而是**几十到几万个文件**的组合：
 
 | 路径 | 内容 | 说明 |
 | --- | --- | --- |
@@ -238,7 +238,7 @@ java -Xms2G -Xmx2G -jar server.jar --nogui
 
 ## 7. 数据包（`datapacks/`）
 
-- 世界级数据包放在世界目录下的 `datapacks/`（单机是 `saves/<世界名>/datapacks/`，服务端是 `world/datapacks/`），它跟着世界一起走，复制世界时会一起搬过去。
+- 世界级数据包放在世界目录下的 `datapacks/`（单机是 `saves/<world-name>/datapacks/`，服务端是 `world/datapacks/`），它跟着世界一起走，复制世界时会一起搬过去。
 - **已启用/已禁用的列表记录在 `level.dat` 里**，所以搬过去之后一般无需重新启用；用 `/datapack list` 确认，需要时用 `/datapack enable <name>` / `/datapack disable <name>`，改动后用 `/reload` 生效。
 - **版本要匹配**：数据包声明了目标 `pack_format`，服务端版本不对时会被拒绝加载或给出警告。
 - **添加维度的数据包要特别注意**：这类世界会有 `dimensions/<namespace>/<path>/` 目录，只有服务端也装了同一个数据包，那些维度才加载得出来。数据不会因此被删除，但玩家会进不去。

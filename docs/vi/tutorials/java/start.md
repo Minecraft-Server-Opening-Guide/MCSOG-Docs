@@ -113,7 +113,7 @@ java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 pause
 ```
 
-Như vậy sau khi máy chủ thoát cửa sổ sẽ dừng lại, thấy rõ thông tin lỗi (cách tương đương trên Linux là thêm `read -n 1 -p "按任意键继续..."` vào cuối script).
+Như vậy sau khi máy chủ thoát cửa sổ sẽ dừng lại, thấy rõ thông tin lỗi (cách tương đương trên Linux là thêm `read -n 1 -p "Press any key to continue..."` vào cuối script).
 
 ### 2. Dùng ký tự đại diện, đổi phiên bản lõi không cần sửa script
 

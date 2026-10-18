@@ -94,7 +94,7 @@ Bóc từng dòng ra xem:
 
 - `[12:00:05 ERROR]:` là tiền tố nhật ký (thời gian và mức độ), không phải nội dung báo lỗi.
 - `java.lang.RuntimeException: Failed to load plugin data` là **ngoại lệ lớp ngoài cùng**. Nó thường chỉ là lớp bọc, thông tin thật nằm bên dưới.
-- `at 包名.类名.方法名(文件名.java:行号)` là chuỗi gọi. **Dòng trên cùng là vị trí ném ngoại lệ, càng xuống dưới càng gần framework phía trên đã gọi nó**.
+- `at package.Class.method(File.java:123)` là chuỗi gọi. **Dòng trên cùng là vị trí ném ngoại lệ, càng xuống dưới càng gần framework phía trên đã gọi nó**.
 - `Caused by:` mới là chuỗi nguyên nhân gốc, có thể có nhiều lớp. **`Caused by` cuối cùng là nguyên nhân gốc sâu nhất**.
 - `... 18 more` nghĩa là lược bớt các khung stack hoàn toàn giống lớp trên, không phải nhật ký bị cắt.
 - `~[MyPlugin-1.2.3.jar:?]` là dấu nguồn, cho biết khung stack này đến từ jar nào; `~[?:?]` nghĩa là nguồn không xác định.

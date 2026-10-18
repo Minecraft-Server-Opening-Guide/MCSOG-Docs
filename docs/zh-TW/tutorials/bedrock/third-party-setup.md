@@ -62,7 +62,7 @@ Linux 發行版倉庫裡的 PHP 版本往往偏舊，Windows 上也可能裝著�
 | `plugins/` | **插件目錄**，放 `.jar` |
 | `logs/` | 執行日誌 |
 
-世界目錄 `worlds/<世界名>/` 內部：
+世界目錄 `worlds/<world-name>/` 內部：
 
 | 檔案 / 目錄 | 內容 |
 | --- | --- |

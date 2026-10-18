@@ -87,7 +87,7 @@ sudo tcpdump -i eth0 -nn -s 0 -w /var/log/incident-$(date +%F-%H%M).pcap 'udp po
 | `-i eth0` | Chỉ định card mạng | **Đổi thành tên giao diện thực tế của bạn**; không chỉ định thì tcpdump tự chọn, có thể chọn sai |
 | `-nn` | Không phân giải tên (IP và cổng giữ dạng số) | DNS ngược sẽ **làm chậm việc bắt gói và gây mất gói**; nghiêm trọng hơn là lưu lượng tấn công sẽ dụ bạn **phát ra lượng lớn truy vấn DNS, tức là báo cho đối phương "tôi đang bị tấn công"** |
 | `-s 0` | Bắt gói đầy đủ, không cắt | Mặc định chỉ bắt vài byte đầu, **payload bị cắt thì không phân tích được nội dung giao thức**; `0` nghĩa là độ dài đầy đủ |
-| `-w 文件` | Ghi ra tệp pcap | Xem giải thích bên dưới |
+| `-w FILE` | Ghi ra tệp pcap | Xem giải thích bên dưới |
 | `'port 25565'` | Biểu thức lọc BPF | Nháy đơn để shell không diễn giải; `port` khớp cả TCP và UDP |
 
 **Vì sao bắt buộc ghi ra tệp mà không in ra terminal**: trong lúc tấn công, tốc độ gói có thể tới hàng trăm nghìn gói mỗi giây, in kết quả phân tích ra terminal sẽ khiến **chính tcpdump thành nút thắt và mất gói hàng loạt**, đồng thời làm ngập màn hình khiến terminal mất ý nghĩa; `-w` ghi thẳng nhị phân, chi phí nhỏ hơn nhiều. **Đừng quên đĩa**: `-s 0` cộng lưu lượng tốc độ cao có thể ghi ra vài chục GB trong vài phút, hãy xem dung lượng còn trống trước, và dùng `-c` giới hạn số gói, hoặc dùng `-C` luân chuyển theo kích thước, `-W` giới hạn số tệp:
@@ -219,7 +219,7 @@ journalctl -u <service> --since "1 hour ago"
 
 - `ps auxf`: liệt kê mọi tiến trình theo **cây tiến trình**, xem có thứ không nên có không —— thợ đào coin bất thường, tệp thực thi chạy từ `/tmp`, tiến trình giả làm `java` nhưng trỏ tới đường dẫn kỳ lạ. **Trên máy đã bị chiếm, bản thân `ps` có thể đã bị thay hoặc bị chiếm quyền điều khiển, kết luận quan trọng phải kiểm chứng chéo bằng nhiều cách.**
 - `systemctl status <service>`: trạng thái dịch vụ và vài dòng nhật ký gần nhất. Tên dịch vụ tùy cách triển khai, ví dụ `minecraft`, `mcserver`, `paper`, **không cố định**.
-- `journalctl -u <service> --since "1 hour ago"`: nhật ký systemd, hỗ trợ `--since`/`--until`, có thể viết `"1 hour ago"`, `"2026-10-04 12:00:00"`, `"today"`. **Mặc định hiển thị theo múi giờ địa phương, thêm `--utc` để ép UTC**, khi điều tra chứng cứ rất khuyến nghị thống nhất dùng `--utc`. Khi nhật ký đã luân chuyển, dùng `journalctl -u <service> --since ... --no-pager > 文件` để xuất, hoặc dùng `journalctl --file` đọc tệp lưu trữ.
+- `journalctl -u <service> --since "1 hour ago"`: nhật ký systemd, hỗ trợ `--since`/`--until`, có thể viết `"1 hour ago"`, `"2026-10-04 12:00:00"`, `"today"`. **Mặc định hiển thị theo múi giờ địa phương, thêm `--utc` để ép UTC**, khi điều tra chứng cứ rất khuyến nghị thống nhất dùng `--utc`. Khi nhật ký đã luân chuyển, dùng `journalctl -u <service> --since ... --no-pager > FILE` để xuất, hoặc dùng `journalctl --file` đọc tệp lưu trữ.
 
 Phía Minecraft:
 

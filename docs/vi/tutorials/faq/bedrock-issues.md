@@ -103,7 +103,7 @@ Có một **cái bẫy riêng của Bedrock Edition**: `enable-lan-visibility` t
 
 ### 2.7 Viết sai server.properties
 
-`server.properties` của Bedrock là **văn bản `键=值` từng dòng**, dòng bắt đầu bằng `#` là chú thích. Viết sai kiểu hoặc giá trị vượt phạm vi có thể khiến khởi động thất bại, hoặc tùy chọn bị bỏ qua mà "sửa rồi không có hiệu lực". Vài giá trị hợp lệ đã xác nhận có thể đối chiếu trực tiếp:
+`server.properties` của Bedrock là **văn bản `key=value` từng dòng**, dòng bắt đầu bằng `#` là chú thích. Viết sai kiểu hoặc giá trị vượt phạm vi có thể khiến khởi động thất bại, hoặc tùy chọn bị bỏ qua mà "sửa rồi không có hiệu lực". Vài giá trị hợp lệ đã xác nhận có thể đối chiếu trực tiếp:
 
 ```properties
 server-port=19132

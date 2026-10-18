@@ -434,7 +434,7 @@ mcdreforged -V
 :::
 
 :::note 其他安装方式
-- **pipx**：用 `pipx upgrade mcdreforged` 升级；给它装 Python 依赖要用 `pipx inject mcdreforged <包名>`。
+- **pipx**：用 `pipx upgrade mcdreforged` 升级；给它装 Python 依赖要用 `pipx inject mcdreforged <package>`。
 - **Docker**：按官方镜像文档更换镜像标签，具体写法以官方文档的 Docker 章节为准。
 - **国内网络**：可以在命令里加 `-i https://pypi.tuna.tsinghua.edu.cn/simple` 使用镜像加速，这是官方文档给出的做法。
 - **系统包管理器**：官方文档**非常不建议**用它安装 MCDR，因为很难管理插件依赖。
@@ -470,7 +470,7 @@ pip install mcdreforged==2.15.0
 mcdreforged -V
 ```
 
-- **版本号务必在 PyPI 上确认**，不要凭记忆写；pipx 环境可以用 `pipx install --force mcdreforged==<版本>` 覆盖安装（具体写法以 pipx 官方文档为准）。
+- **版本号务必在 PyPI 上确认**，不要凭记忆写；pipx 环境可以用 `pipx install --force mcdreforged==<version>` 覆盖安装（具体写法以 pipx 官方文档为准）。
 - 如果升级时同时更新了 MCDR 插件，**插件也要一起回滚**，否则新插件配旧 MCDR 一样会出错。
 
 ## 5. 更新检查清单

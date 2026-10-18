@@ -61,7 +61,7 @@ draft: false
 | 核心自身配置 | `bukkit.yml`、`spigot.yml`、`paper-*.yml`、`purpur.yml` | 最佳化參數、世界預設值丟失，效能可能明顯變化 |
 | 名單檔案 | `ops.json`、`whitelist.json`、`banned-players.json`、`banned-ips.json` | 管理員權限丟失，或封禁失效、白名單形同虛設 |
 | 玩家名快取 | `usercache.json` | 通常可重建，但離線模式的 UUID 與顯示名對映會短暫錯亂 |
-| 啟動腳本 | `start.sh`、`启动.bat`、Java 參數 | **最常見漏項**：服務起不來，或參數不對導致記憶體/效能異常 |
+| 啟動腳本 | `start.sh`、`start.bat`、Java 參數 | **最常見漏項**：服務起不來，或參數不對導致記憶體/效能異常 |
 | systemd unit | `/etc/systemd/system/minecraft.service` | 開機不自啟、崩潰不重啟；`WorkingDirectory` 寫錯還會新建一個空世界 |
 | 定時任務 | `crontab -l`、`/etc/cron.d/`、systemd timer | 備份、重啟、清理任務全部消失，且**很久之後才會發現** |
 | 防火牆規則 | `ufw status`、`firewall-cmd --list-all`、雲安全組 | 埠不通，玩家連不上；或舊規則缺失導致意外暴露 |

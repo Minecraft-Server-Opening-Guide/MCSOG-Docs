@@ -122,7 +122,7 @@ Compose v2 **不需要**頂層 `version:` 欄位。
 完整說明（含網段衝突、網路模式對比、排查表）見 [用 Docker 部署 Java 版 → 網路與防火牆](/tutorials/java/docker#5-网络与防火墙最容易踩坑的一节)。
 :::
 | `environment` | 映像讀取的配置，見第 6 節 |
-| `volumes` | `卷名:/data`。**世界、配置、附加包全在 `/data`** |
+| `volumes` | `volume name:/data`。**世界、配置、附加包全在 `/data`** |
 | `stdin_open: true` | 開啟標準輸入，否則無法向 BDS 控制台**輸入指令** |
 | `tty: true` | 分配偽終端，配合 `docker attach` 獲得可互動的控制台 |
 | `restart: unless-stopped` | 崩潰或宿主機重啟後自動拉起；手動 `docker compose stop` 後不會自動拉起 |

@@ -61,7 +61,7 @@ Mỗi dòng trong bảng dưới đây đều là thứ từng bị bỏ sót tr
 | Cấu hình của chính lõi | `bukkit.yml`, `spigot.yml`, `paper-*.yml`, `purpur.yml` | Tham số tối ưu, giá trị mặc định thế giới mất, hiệu năng có thể thay đổi rõ rệt |
 | Tệp danh sách | `ops.json`, `whitelist.json`, `banned-players.json`, `banned-ips.json` | Mất quyền quản trị, hoặc cấm mất hiệu lực, danh sách trắng thành vô dụng |
 | Bộ nhớ đệm tên người chơi | `usercache.json` | Thường xây lại được, nhưng ánh xạ UUID và tên hiển thị ở chế độ ngoại tuyến sẽ rối tạm thời |
-| Script khởi động | `start.sh`, `启动.bat`, tham số Java | **Mục bị bỏ sót phổ biến nhất**: dịch vụ không lên, hoặc tham số sai khiến bộ nhớ/hiệu năng bất thường |
+| Script khởi động | `start.sh`, `start.bat`, tham số Java | **Mục bị bỏ sót phổ biến nhất**: dịch vụ không lên, hoặc tham số sai khiến bộ nhớ/hiệu năng bất thường |
 | systemd unit | `/etc/systemd/system/minecraft.service` | Không tự khởi động khi boot, sập không tự khởi động lại; `WorkingDirectory` viết sai còn tạo ra một thế giới trống |
 | Tác vụ định kỳ | `crontab -l`, `/etc/cron.d/`, systemd timer | Tác vụ sao lưu, khởi động lại, dọn dẹp mất hết, và **rất lâu sau mới phát hiện** |
 | Quy tắc tường lửa | `ufw status`, `firewall-cmd --list-all`, nhóm bảo mật cloud | Cổng không thông, người chơi không kết nối được; hoặc thiếu quy tắc cũ dẫn đến lộ ngoài ý muốn |

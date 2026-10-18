@@ -102,7 +102,7 @@ draft: false
 [MCDR] [20:21:34] [TaskExecutor/INFO] [ndpr]: تم تحميل ملحق NDPR
 ```
 
-والطريقة الثانية، قراءته من ملف الإعداد بعد التشغيل الثاني، والدليل `MCDR根目录\config\ndpr\config.toml`:
+والطريقة الثانية، قراءته من ملف الإعداد بعد التشغيل الثاني، والدليل `MCDR root\config\ndpr\config.toml`:
 
 ```toml
 uuid = "xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx"
@@ -128,7 +128,7 @@ uuid = "xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx"
 
 ### الخطوة 3: ضبط Token
 
-**جهة MCDR** (`MCDR根目录\config\ndpr\config.toml`):
+**جهة MCDR** (`MCDR root\config\ndpr\config.toml`):
 
 ```toml
 token = "xxxxxxxxxxxxxxxxxxxx"
@@ -179,7 +179,7 @@ onlinemode = true   # true = خادم أصلي، false = خادم دون اتص�
 | `verify_timeout` | مهلة التحقق بـ HWID (ثانية، 30~600) | `60` |
 | `freeze_interval` | فاصل تثبيت الإحداثيات أثناء التحقق (ثانية، 1~60) | `1` |
 
-**مثال كامل لجهة MCDR** (`MCDR根目录\config\ndpr\config.toml`):
+**مثال كامل لجهة MCDR** (`MCDR root\config\ndpr\config.toml`):
 
 ```toml
 uuid = "xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx"

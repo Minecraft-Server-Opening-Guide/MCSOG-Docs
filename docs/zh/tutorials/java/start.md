@@ -113,7 +113,7 @@ java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 pause
 ```
 
-这样服务器退出后窗口会停住，报错信息就能看清了（Linux 下等价做法是在脚本末尾加 `read -n 1 -p "按任意键继续..."`）。
+这样服务器退出后窗口会停住，报错信息就能看清了（Linux 下等价做法是在脚本末尾加 `read -n 1 -p "Press any key to continue..."`）。
 
 ### 2. 用通配符，换核心版本不用改脚本
 

@@ -149,7 +149,7 @@ java -jar forge-<版本>-installer.jar --installServer
 ```
 
 - 较新的 Forge 与 NeoForge 类似，会生成 `run.sh` / `run.bat` 与 `user_jvm_args.txt`。
-- 更老的版本会生成一个可直接启动的 `forge-<版本>.jar`，用 `java -jar` 启动。
+- 更老的版本会生成一个可直接启动的 `forge-<version>.jar`，用 `java -jar` 启动。
 - 老版本的模组往往只维护在 Forge 上，此时没有太多选择余地。
 :::tip 起不来先看日志
 加载器安装失败、模组崩溃，日志都在 `logs/latest.log`、`logs/debug.log` 和 `crash-reports/` 里。定位思路见 [常见报错与崩溃排查](/tutorials/faq/errors)。

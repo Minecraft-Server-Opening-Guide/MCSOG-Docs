@@ -102,7 +102,7 @@ draft: false
 [MCDR] [20:21:34] [TaskExecutor/INFO] [ndpr]: NDPR插件已加载
 ```
 
-方式二，第二次啟動後從設定檔讀，目錄 `MCDR根目录\config\ndpr\config.toml`：
+方式二，第二次啟動後從設定檔讀，目錄 `MCDR root\config\ndpr\config.toml`：
 
 ```toml
 uuid = "xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx"
@@ -128,7 +128,7 @@ uuid = "xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx"
 
 ### 第 3 步：配置 Token
 
-**MCDR 端**（`MCDR根目录\config\ndpr\config.toml`）：
+**MCDR 端**（`MCDR root\config\ndpr\config.toml`）：
 
 ```toml
 token = "xxxxxxxxxxxxxxxxxxxx"
@@ -179,7 +179,7 @@ onlinemode = true   # true = 正版服, false = 离线服
 | `verify_timeout` | HWID 驗證逾時（秒，30~600） | `60` |
 | `freeze_interval` | 驗證期間釘回座標間隔（秒，1~60） | `1` |
 
-**MCDR 端完整示例**（`MCDR根目录\config\ndpr\config.toml`）：
+**MCDR 端完整示例**（`MCDR root\config\ndpr\config.toml`）：
 
 ```toml
 uuid = "xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx"

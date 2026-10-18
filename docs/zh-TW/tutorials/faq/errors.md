@@ -94,7 +94,7 @@ Caused by: java.lang.ClassNotFoundException: com.example.lib.RequiredLib
 
 - `[12:00:05 ERROR]:` 是日誌字首（時間與級別），不是報錯內容本身。
 - `java.lang.RuntimeException: Failed to load plugin data` 是**最外層異常**。它常常只是包裝，真正的資訊在下面。
-- `at 包名.类名.方法名(文件名.java:行号)` 是呼叫鏈。**最上面那一行是異常丟擲的位置，越往下越接近呼叫它的上層框架**。
+- `at package.Class.method(File.java:123)` 是呼叫鏈。**最上面那一行是異常丟擲的位置，越往下越接近呼叫它的上層框架**。
 - `Caused by:` 才是根因鏈，可能有多層。**最後一層 `Caused by` 是最底層的原始原因**。
 - `... 18 more` 表示省略了與上一層完全相同的棧幀，不是日誌被截斷。
 - `~[MyPlugin-1.2.3.jar:?]` 是來源標記，說明這個棧幀來自哪個 jar；`~[?:?]` 表示來源未知。
