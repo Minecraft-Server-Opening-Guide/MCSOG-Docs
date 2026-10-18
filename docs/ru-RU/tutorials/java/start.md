@@ -35,11 +35,11 @@ C:\mcserver\survival\        (в Linux соответствует /opt/mcserver/
 ```bat
 @echo off
 cd /d "%~dp0"
-java -Xms2G -Xmx2G -jar server.jar --nogui
+java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 pause
 ```
 
-Замените `server.jar` на фактическое имя файла (например, `paper-1.21.4.jar`).
+Замените `<core-name>.jar` на фактическое имя файла (например, `paper-1.21.4.jar`).
 
 - `cd /d "%~dp0"` фиксирует рабочий каталог в папке скрипта, чтобы при двойном щелчке ядро находилось.
 - `--nogui` отключает встроенное графическое окно сервера, весь вывод идёт в командную строку (`nogui` — старый псевдоним, они равнозначны).
@@ -50,7 +50,7 @@ pause
 ```bash
 #!/bin/sh
 cd "$(dirname "$0")"
-exec java -Xms2G -Xmx2G -jar server.jar --nogui
+exec java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 ```
 
 Дайте право на выполнение и запустите:
@@ -109,7 +109,7 @@ Done (6.554s)! For help, type "help"
 При запуске `.bat` двойным щелчком в Windows окно при краше сервера **мелькнёт и закроется**, и вы ничего не увидите. Достаточно добавить `pause` в **последнюю строку** скрипта:
 
 ```bat
-java -Xms2G -Xmx2G -jar server.jar --nogui
+java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 pause
 ```
 

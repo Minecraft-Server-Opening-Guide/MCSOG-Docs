@@ -81,7 +81,7 @@ Chạy trong console hoặc trong game (cần OP), **có hiệu lực ngay và �
 1. **Tắt máy chủ trước** rồi mới sửa `server.properties` (khi sửa cấu hình liên quan đến thế giới càng phải tắt, tránh xung đột ghi bản lưu).
 2. Sửa xong **sao lưu tệp gốc trước**, có sự cố khôi phục ngay được.
 3. Sau khi khởi động lại xem `logs/latest.log` để xác nhận không có lỗi cấu hình.
-4. Cấu hình plugin nằm ở `plugins/tên-plugin/config.yml`, phần lớn hỗ trợ `/tên-plugin reload` nạp lại nóng —— nhưng **cấu hình của chính máy chủ thì không hỗ trợ**.
+4. Cấu hình plugin nằm ở `plugins/<plugin-name>/config.yml`, phần lớn hỗ trợ `/<plugin-name> reload` nạp lại nóng —— nhưng **cấu hình của chính máy chủ thì không hỗ trợ**.
 
 ## Bước tiếp theo
 

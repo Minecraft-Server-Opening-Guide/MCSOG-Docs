@@ -17,7 +17,7 @@ Bài này nói ba việc: **YAML viết thế nào, mã màu dùng thế nào, m
 
 ## 1. Cấu hình plugin nằm ở đâu
 
-Phần lớn plugin đặt tệp của mình dưới `plugins/tên-plugin/`, mấy loại thường gặp:
+Phần lớn plugin đặt tệp của mình dưới `plugins/<plugin-name>/`, mấy loại thường gặp:
 
 | Tệp / thư mục | Tác dụng |
 | --- | --- |
@@ -257,7 +257,7 @@ Notepad của Windows mở `.yml` rồi tiện tay Ctrl+S, rất dễ đổi t�
 
 | Cách | Giải thích |
 | --- | --- |
-| `/tên-plugin reload` | Phần lớn plugin hỗ trợ, **ưu tiên** (như `/tab reload`, `/papi reload`) |
+| `/<plugin-name> reload` | Phần lớn plugin hỗ trợ, **ưu tiên** (như `/tab reload`, `/papi reload`) |
 | Khởi động lại máy chủ | Chắc nhất, plugin không hỗ trợ nạp nóng thì chỉ còn cách này |
 | `/reload` (lệnh bản gốc) | **Không khuyến nghị**, dễ làm trạng thái plugin rối loạn |
 

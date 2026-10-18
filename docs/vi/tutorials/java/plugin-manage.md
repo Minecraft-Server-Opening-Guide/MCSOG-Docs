@@ -34,7 +34,7 @@ Cập nhật dễ xảy ra chuyện hơn cài, vì kết cấu cấu hình của
 | Bước | Điểm chính |
 | --- | --- |
 | Đọc nhật ký cập nhật | Xác nhận có thay đổi định dạng cấu hình không, có dữ liệu cần chuyển đổi tay không |
-| Sao lưu | Ít nhất sao lưu `plugins/<tên-plugin>/`, liên quan cơ sở dữ liệu thì sao lưu cả cơ sở dữ liệu |
+| Sao lưu | Ít nhất sao lưu `plugins/<plugin-name>/`, liên quan cơ sở dữ liệu thì sao lưu cả cơ sở dữ liệu |
 | Giữ jar cũ | Đổi tên bản cũ thành `.jar.bak` để đó, xác nhận bản mới bình thường rồi mới xóa |
 | Tắt máy chủ rồi thay | Đừng ghi đè jar đang dùng khi đang chạy |
 | Khởi động lại kiểm chứng | Xem console, rồi dùng `plugins` xác nhận trạng thái |
@@ -46,7 +46,7 @@ Gỡ không chỉ là "xóa cái jar đi".
 
 1. Tắt máy chủ.
 2. Dời jar đi.
-3. Thư mục dữ liệu **đừng xóa ngay**, trước hết đổi tên thành `<tên-plugin>.bak` quan sát một thời gian.
+3. Thư mục dữ liệu **đừng xóa ngay**, trước hết đổi tên thành `<plugin-name>.bak` quan sát một thời gian.
 4. Kiểm tra có plugin khác lấy nó làm phần phụ thuộc không, có thì xử lý cùng.
 5. Dọn các nút quyền nó để lại trong plugin quyền.
 6. Dọn tác vụ định kỳ, lệnh tự định nghĩa, mục bảng điểm mà nó đăng ký.
@@ -69,7 +69,7 @@ Công cụ quản lý plugin lâu đời, tiền thân là PlugMan, hiện do Pl
 | Trang phát hành | SpigotMC tài nguyên 88135 |
 | Mã nguồn | Test-Account666/PlugManX trên GitHub (bản cũ là ryan-clancy/PlugMan) |
 | Lệnh con thường gặp | `load`, `unload`, `reload`, `list`, `info`, `check` |
-| Cách dùng điển hình | `/plugman <lệnh-con> <tên-plugin>` |
+| Cách dùng điển hình | `/plugman <subcommand> <plugin-name>` |
 
 Tên lệnh con và tham số cụ thể thay đổi theo phiên bản, lấy thông tin trợ giúp có sẵn của plugin làm chuẩn.
 

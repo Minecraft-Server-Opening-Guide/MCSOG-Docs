@@ -52,7 +52,7 @@ Thứ tự tắt máy chủ chuẩn là `save-all` → `save-off` → sao lưu �
 - khởi động lại tiến trình máy chủ, cũng không nạp lại mã plugin;
 - đưa nội dung đăng ký của plugin về trạng thái sạch.
 
-Ngược lại, nó **có thể** làm trạng thái plugin rối loạn: bảng điểm, listener, bộ đệm, lệnh đã đăng ký đều có thể còn lại nửa mới nửa cũ, triệu chứng là "nạp lại xong vài chức năng thành kỳ lạ". Việc nào giải quyết được bằng `/tên-plugin reload`, `/datapack enable`, `/datapack disable` của chính plugin thì đừng dùng `/reload` bản gốc; khi thay đổi lớn hoặc không rõ ảnh hưởng, hãy chọn cửa sổ bảo trì để khởi động lại.
+Ngược lại, nó **có thể** làm trạng thái plugin rối loạn: bảng điểm, listener, bộ đệm, lệnh đã đăng ký đều có thể còn lại nửa mới nửa cũ, triệu chứng là "nạp lại xong vài chức năng thành kỳ lạ". Việc nào giải quyết được bằng `/<plugin-name> reload`, `/datapack enable`, `/datapack disable` của chính plugin thì đừng dùng `/reload` bản gốc; khi thay đổi lớn hoặc không rõ ảnh hưởng, hãy chọn cửa sổ bảo trì để khởi động lại.
 
 Lệnh cùng tên của Bedrock có phạm vi hẹp hơn (nạp lại hàm và script trong gói hành vi), `reload` của cả hai phiên bản đều **không** phải nút "làm mới cấu hình máy chủ".
 :::

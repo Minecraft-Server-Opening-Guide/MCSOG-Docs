@@ -53,7 +53,7 @@ Nhiều plugin tự nó không làm gì, chỉ cung cấp năng lực chung, **p
 
 ## Bốn, tệp cấu hình và YAML
 
-Cấu hình plugin cơ bản đều ở dưới `plugins/tên-plugin/`, thường là `config.yml`. Khi viết YAML, những bẫy dễ mắc nhất:
+Cấu hình plugin cơ bản đều ở dưới `plugins/<plugin-name>/`, thường là `config.yml`. Khi viết YAML, những bẫy dễ mắc nhất:
 
 - **Thụt lề chỉ được dùng dấu cách, không được dùng Tab** (đây là nguồn lỗi YAML số một).
 - Sau dấu hai chấm phải có một dấu cách, như `enabled: true`.
@@ -77,7 +77,7 @@ Phạm vi hỗ trợ cụ thể tùy phiên bản máy chủ và plugin.
 
 | Cách | Giải thích |
 | --- | --- |
-| `/tên-plugin reload` hoặc `/viết-tắt-plugin reload` | Phần lớn plugin hỗ trợ, **ưu tiên** (như `/tab reload`) |
+| `/<plugin-name> reload` hoặc `/<plugin-abbreviation> reload` | Phần lớn plugin hỗ trợ, **ưu tiên** (như `/tab reload`) |
 | Khởi động lại máy chủ | Chắc chắn nhất, nhưng plugin không hỗ trợ nạp nóng chỉ còn cách này |
 | `/reload` (lệnh bản gốc) | **Không khuyến nghị**, dễ làm trạng thái plugin rối loạn |
 
