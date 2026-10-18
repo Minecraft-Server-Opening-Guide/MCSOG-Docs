@@ -68,10 +68,10 @@ draft: false
 難易度やスポーン保護などは `server.properties` で変更しますが、**ゲームルールはコマンドで変更**します：
 
 ```
-/gamerule keepInventory true        死亡不掉落
-/gamerule doDaylightCycle false     关闭昼夜更替
-/gamerule mobGriefing false         苦力怕不破坏方块
-/gamerule announceAdvancements false 不公告进度达成
+/gamerule keepInventory true         死亡してもアイテムを保持
+/gamerule doDaylightCycle false      昼夜サイクルを停止
+/gamerule mobGriefing false          クリーパーがブロックを壊さない
+/gamerule announceAdvancements false 進捗達成を通知しない
 ```
 
 コンソールまたはゲーム内（OP が必要）で実行すれば、**即座に反映され保存されます**。

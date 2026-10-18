@@ -22,9 +22,9 @@ draft: false
 ダウンロードしたサーバーコア（`.jar`）を配置ディレクトリに置きます。例えば：
 
 ```
-C:\mcserver\survival\        （Linux 下对应 /opt/mcserver/survival/）
-├── paper-1.21.4.jar         ← 你下载的核心
-└── （其余文件首次启动后自动生成）
+C:\mcserver\survival\        （Linux では /opt/mcserver/survival/）
+├── paper-1.21.4.jar         ← ダウンロードしたコア
+└── （その他のファイルは初回起動後に自動生成）
 ```
 
 ### Windows：`start.bat`
@@ -35,7 +35,7 @@ C:\mcserver\survival\        （Linux 下对应 /opt/mcserver/survival/）
 ```bat
 @echo off
 cd /d "%~dp0"
-java -Xms2G -Xmx2G -jar 核心名.jar --nogui
+java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 pause
 ```
 
@@ -50,7 +50,7 @@ pause
 ```bash
 #!/bin/sh
 cd "$(dirname "$0")"
-exec java -Xms2G -Xmx2G -jar 核心名.jar --nogui
+exec java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 ```
 
 実行権限を与えてから実行します：
@@ -111,7 +111,7 @@ Done (6.554s)! For help, type "help"
 Windows の `.bat` をダブルクリックで実行していると、サーバーがクラッシュしたときウィンドウが**一瞬で消えて**何も見えません。スクリプトの**最終行**に `pause` を追加します：
 
 ```bat
-java -Xms2G -Xmx2G -jar 核心名.jar --nogui
+java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 pause
 ```
 
@@ -155,7 +155,7 @@ pause
 cd /d "%~dp0"
 :start
 java -Xmx4G -Xms1G -jar server.jar nogui
-echo 服务器崩溃，3 秒后重启...
+echo サーバーがクラッシュしました。3 秒後に再起動します...
 timeout /t 3
 goto start
 ```
@@ -167,7 +167,7 @@ goto start
 cd "$(dirname "$0")"
 while true; do
     java -Xmx4G -Xms1G -jar server.jar nogui
-    echo "服务器已关闭，3 秒后重启..."
+    echo "サーバーが停止しました。3 秒後に再起動します..."
     sleep 3
 done
 ```

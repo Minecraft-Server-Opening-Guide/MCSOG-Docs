@@ -43,11 +43,11 @@ draft: false
 ### ホワイトリスト
 
 ```
-whitelist on                  开启白名单
-whitelist add <玩家>          添加
-whitelist remove <玩家>       移除
-whitelist list                查看名单
-whitelist reload              从 whitelist.json 重新读取
+whitelist on                     ホワイトリストを有効化
+whitelist add <プレイヤー>       追加
+whitelist remove <プレイヤー>    削除
+whitelist list                   一覧を表示
+whitelist reload                 whitelist.json から再読み込み
 ```
 
 コマンドで変更するとリストは `whitelist.json` に書き込まれます。**このファイルを直接編集した**場合は、`whitelist reload` を実行して反映させてください。

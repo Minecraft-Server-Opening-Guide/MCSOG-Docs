@@ -150,7 +150,7 @@ BDS の設定にはコマンドと直接関係する項目があります：`ser
 ```text
 save hold
 save query
-# 按 query 输出的清单复制文件（worlds/ 要整体拷走）
+# query の出力に従ってファイルをコピー（worlds/ は丸ごとコピー）
 save resume
 ```
 
@@ -246,17 +246,17 @@ MCDR のサブコマンドと短縮形はバージョン間で調整されます
 メンテナンス前の標準手順（Java 版）：
 
 ```text
-say 服务器将在 5 分钟后进入维护
+say サーバーは 5 分後にメンテナンスに入ります
 save-all
 save-off
-# 此时在外部打包世界目录与插件目录
+# ここで外部からワールドとプラグインのディレクトリをアーカイブ
 stop
 ```
 
 ホワイトリストをゼロから使える状態にする（Java 版）：
 
 ```text
-whitelist add 你的ID
+whitelist add <プレイヤー名>
 whitelist on
 whitelist list
 ```
@@ -266,7 +266,7 @@ whitelist list
 ```text
 save hold
 save query
-# 复制 query 列出的文件，worlds/ 整体拷走
+# query が列挙したファイルをコピーし、worlds/ は丸ごとコピー
 save resume
 ```
 
