@@ -77,9 +77,9 @@ Chặn được bên ngoài, nhưng nội bộ lật thuyền cũng chí mạng:
 **Không có chống gian lận nào chặn được 100% gian lận**, cũng không có bảo vệ nào chống được 100% phá hoại. Nên thứ thực sự đáng tin là tổ hợp ba việc:
 
 ```
-早装记录插件（能查、能回滚）
-   + 谨慎配置反作弊（别误伤）
-   + 定期异地备份（最坏情况能整体回档）
+Cài plugin ghi log sớm (để tra cứu và khôi phục)
+   + Cấu hình chống gian lận cẩn thận (đừng làm oan người chơi)
+   + Sao lưu định kỳ ở nơi khác (tình huống xấu nhất vẫn khôi phục toàn bộ được)
 ```
 
 Trong ba việc này, **sao lưu là tuyến phòng thủ cuối cùng** (xem "Sao lưu và khôi phục").

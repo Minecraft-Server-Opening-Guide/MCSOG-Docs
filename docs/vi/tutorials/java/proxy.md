@@ -18,10 +18,10 @@ Khi máy chủ từ "một máy chủ" chuyển thành "một nhóm máy chủ" 
 Proxy **tự nó không chạy thế giới**, nó chỉ làm một việc: **nhận kết nối của người chơi, rồi chuyển tiếp tới một máy chủ con phía sau**.
 
 ```
-玩家 → 代理端（Velocity / BungeeCord）
-              ├→ 大厅服
-              ├→ 生存服
-              └→ 小游戏服
+Người chơi → Proxy (Velocity / BungeeCord)
+              ├→ Máy chủ sảnh chờ
+              ├→ Máy chủ sinh tồn
+              └→ Máy chủ minigame
 ```
 
 Lợi ích:

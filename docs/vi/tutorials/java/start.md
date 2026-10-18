@@ -22,9 +22,9 @@ draft: false
 Đặt lõi máy chủ đã tải (`.jar`) vào thư mục triển khai, ví dụ:
 
 ```
-C:\mcserver\survival\        （Linux 下对应 /opt/mcserver/survival/）
-├── paper-1.21.4.jar         ← 你下载的核心
-└── （其余文件首次启动后自动生成）
+C:\mcserver\survival\        (trên Linux: /opt/mcserver/survival/)
+├── paper-1.21.4.jar         ← lõi bạn đã tải về
+└── (các tệp còn lại được tạo tự động ở lần khởi động đầu)
 ```
 
 ### Windows: `start.bat`
@@ -35,7 +35,7 @@ C:\mcserver\survival\        （Linux 下对应 /opt/mcserver/survival/）
 ```bat
 @echo off
 cd /d "%~dp0"
-java -Xms2G -Xmx2G -jar 核心名.jar --nogui
+java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 pause
 ```
 
@@ -50,7 +50,7 @@ pause
 ```bash
 #!/bin/sh
 cd "$(dirname "$0")"
-exec java -Xms2G -Xmx2G -jar 核心名.jar --nogui
+exec java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 ```
 
 Cấp quyền thực thi rồi chạy:
@@ -109,7 +109,7 @@ Số giây trong ngoặc khác nhau tùy máy. Lúc này:
 Khi bấm đúp chạy `.bat` trên Windows, nếu máy chủ sập, cửa sổ sẽ **lóe lên rồi tắt**, bạn không thấy gì. Thêm `pause` ở **dòng cuối** của script là được:
 
 ```bat
-java -Xms2G -Xmx2G -jar 核心名.jar --nogui
+java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 pause
 ```
 
@@ -153,7 +153,7 @@ pause
 cd /d "%~dp0"
 :start
 java -Xmx4G -Xms1G -jar server.jar nogui
-echo 服务器崩溃，3 秒后重启...
+echo Máy chủ bị crash, khởi động lại sau 3 giây...
 timeout /t 3
 goto start
 ```
@@ -165,7 +165,7 @@ goto start
 cd "$(dirname "$0")"
 while true; do
     java -Xmx4G -Xms1G -jar server.jar nogui
-    echo "服务器已关闭，3 秒后重启..."
+    echo "Máy chủ đã dừng, khởi động lại sau 3 giây..."
     sleep 3
 done
 ```

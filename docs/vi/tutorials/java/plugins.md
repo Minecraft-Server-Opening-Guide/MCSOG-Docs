@@ -33,7 +33,7 @@ Plugin là giá trị lớn nhất của **máy chủ plugin** (Paper / Purpur /
 ### Dùng `plugins` để phán đoán trạng thái nạp
 
 ```
-plugins          （简写 pl）
+plugins          (dạng ngắn: pl)
 ```
 
 - **Xanh**: đã nạp —— được (lưu ý: chỉ nghĩa là **lần nạp này thành công**, không có nghĩa là lúc chạy không báo lỗi)
@@ -68,7 +68,7 @@ Khi tệp cấu hình có tiếng Trung mà hiển thị thành ký tự lỗi, 
 Văn bản máy chủ (MOTD, chat, thông báo của plugin) dùng `&` cộng một chữ cái để biểu thị màu và kiểu, ví dụ:
 
 ```
-&a绿色  &c红色  &l加粗  &o斜体  &r重置
+&aXanh lá  &cĐỏ  &lĐậm  &oNghiêng  &rĐặt lại
 ```
 
 Phạm vi hỗ trợ cụ thể tùy phiên bản máy chủ và plugin.

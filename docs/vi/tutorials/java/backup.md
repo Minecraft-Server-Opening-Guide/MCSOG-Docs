@@ -33,18 +33,18 @@ Tư thế đúng (hai cách):
 **Cách A: sao lưu nóng (không tắt máy chủ)**
 
 ```
-save-all        先把数据刷到磁盘
-save-off        关闭自动保存（避免备份过程中继续写入）
-（此时执行复制/打包）
-save-on         备份完恢复自动保存
+save-all        ghi dữ liệu xuống đĩa trước
+save-off        tắt lưu tự động (để không ghi gì trong lúc sao lưu)
+(ở đây thực hiện sao chép/đóng gói)
+save-on         bật lại lưu tự động khi sao lưu xong
 ```
 
 **Cách B: sao lưu khi tắt máy chủ (chắc chắn nhất)**
 
 ```
-stop            安全关服
-（复制/打包整个目录）
-（重新启动）
+stop            tắt máy chủ an toàn
+(sao chép/đóng gói toàn bộ thư mục)
+(khởi động lại)
 ```
 
 :::tip Script sao lưu định kỳ nên dùng cách A

@@ -233,18 +233,18 @@ Lấy được số phiên bản rồi, đặt phiên bản người chơi và p
 ## 11. Tra cứu một trang
 
 ```text
-我要开新服
-  → 选最新正式版，然后确认核心与插件都支持它
+Mở máy chủ mới
+  -> chọn bản chính thức mới nhất, rồi xác nhận lõi và plugin đều hỗ trợ
 
-玩家说进不来
-  → 先要客户端版本号 → 比协议 → 再查端口、白名单、正版验证
+Người chơi báo không vào được
+  -> hỏi phiên bản client trước -> so giao thức -> rồi kiểm tra cổng, danh sách trắng, xác thực chính hãng
 
-我想升级
-  → 查核心/插件/加载器的支持交集 → 等修订版 → 备份并验证
-  → 独立实例试跑 → 挑维护窗口 → 公告
+Tôi muốn nâng cấp
+  -> xem giao hỗ trợ của lõi/plugin/loader -> chờ bản sửa -> sao lưu và kiểm chứng
+  -> chạy thử trên instance riêng -> chọn khung bảo trì -> thông báo
 
-我看到一个不认识的版本号
-  → 看日期，不看数字大小
+Tôi thấy một số phiên bản không quen
+  -> xem ngày, đừng xem số lớn nhỏ
 ```
 
 ## 12. Dùng dòng thời gian như hồ sơ phiên bản

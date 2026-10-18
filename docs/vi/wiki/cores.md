@@ -50,13 +50,13 @@ Ba lưu ý:
 Ghi nhớ chuỗi này là có thể tự phán đoán một nửa vấn đề tương thích plugin:
 
 ```text
-Bukkit（最早的服务端 API）
-  +- Spigot（Bukkit 的延续）
-       +- Paper（主流分支，插件生态最大）
-            +- Purpur（玩法开关最多）
-            +- Folia（区域化多线程，插件兼容差）
-            +- Leaves（还原原版特性，生电向）
-            +- Leaf（性能 / 原版机制 / 稳定性的平衡）
+Bukkit (API máy chủ sớm nhất)
+  +- Spigot (kế thừa Bukkit)
+       +- Paper (nhánh chính, hệ sinh thái plugin lớn nhất)
+            +- Purpur (nhiều công tắc lối chơi nhất)
+            +- Folia (đa luồng theo vùng, tương thích plugin kém)
+            +- Leaves (khôi phục đặc tính bản gốc, hướng kỹ thuật)
+            +- Leaf (cân bằng giữa hiệu năng / cơ chế bản gốc / độ ổn định)
 ```
 
 Quy tắc là **tương thích xuống dưới, không bảo đảm lên trên**: plugin viết cho Paper thường chạy được trên Purpur; plugin viết cho Folia không nhất định thích ứng cho Paper; plugin cũ chỉ hỗ trợ Spigot trên Paper nói chung vẫn chạy được, nhưng có thể báo "đã dùng API lỗi thời".
@@ -77,10 +77,10 @@ Máy chủ mod và máy chủ plugin là hai thế giới khác nhau. Trình t�
 Thứ tự phán đoán nên là **định cách chơi trước, định trình tải sau**:
 
 ```text
-列出你必须要的模组
-  → 查每个模组支持的加载器与游戏版本
-  → 取交集最大的那个组合
-  → 再装服务端
+Liệt kê các mod bạn không thể thiếu
+  -> xem mỗi mod hỗ trợ loader và phiên bản game nào
+  -> chọn tổ hợp có giao lớn nhất
+  -> rồi mới cài máy chủ
 ```
 
 Làm ngược lại (cài trình tải trước rồi tìm mod) gần như chắc chắn phải làm lại. Quy trình cài đặt, căn chỉnh client và chẩn đoán xem ở [Bắt đầu đầy đủ với máy chủ mod (Fabric / NeoForge)](/tutorials/java/modded).
@@ -173,24 +173,24 @@ Bản dựng máy chủ của Bedrock gắn chặt với giao thức, trình t�
 ## 7. Tôi nên chọn cái nào
 
 ```text
-玩家要用原版客户端进服，并且需要管理/玩法插件
-  → Paper（首选）
-  → 想调原版机制：Purpur
-  → 生电 + 插件：Leaves 或 Leaf（看清项目名）
-  → 核心多、主频低：再考虑 Folia（先确认插件适配）
+Người chơi dùng client bản gốc, và bạn cần plugin quản lý/lối chơi
+  -> Paper (lựa chọn đầu tiên)
+  -> muốn chỉnh cơ chế bản gốc: Purpur
+  -> kỹ thuật + plugin: Leaves hoặc Leaf (xem kỹ tên)
+  -> nhiều nhân, xung thấp: cân nhắc Folia (xác nhận plugin hỗ trợ trước)
 
-玩家要装模组、要新内容
-  → 先定模组清单 → Fabric（轻量/优化类）或 NeoForge（现代内容整合包）
-  → 老整合包：Forge
-  → 只有 Quilt 独有模组：才考虑 Quilt
+Người chơi muốn cài mod, muốn nội dung mới
+  -> chốt danh sách mod trước -> Fabric (nhẹ/tối ưu) hoặc NeoForge (gói nội dung hiện đại)
+  -> modpack cũ: Forge
+  -> chỉ khi có mod độc quyền cho Quilt: mới cân nhắc Quilt
 
-玩家是基岩版
-  → 原版生存、要官方兼容：BDS（需要插件再配加载器）
-  → 高性能 + 自定义：PowerNukkitX
-  → 现成插件最多、会 PHP：PocketMine-MP
+Người chơi dùng bản Bedrock
+  -> sinh tồn bản gốc, cần tương thích chính thức: BDS (cần plugin thì thêm loader)
+  -> hiệu năng cao + tuỳ biến: PowerNukkitX
+  -> nhiều plugin sẵn nhất, biết PHP: PocketMine-MP
 
-要多台服务器互联
-  → 加一层代理端（Velocity 优先）
+Cần nhiều máy chủ liên kết với nhau
+  -> thêm một lớp proxy (ưu tiên Velocity)
 ```
 
 ## 8. Plugin và mod là hai thế giới

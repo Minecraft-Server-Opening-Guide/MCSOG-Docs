@@ -60,7 +60,7 @@ collisions:
 ```yaml
 entities:
   behavior:
-    # 蜜蜂离巢的失败冷却时间，与原版行为相关
+    # Thời gian hồi thất bại khi ong rời tổ; liên quan đến hành vi bản gốc
 ```
 
 Paper vì hiệu năng đã thêm "thời gian chờ" hoặc giới hạn cho một phần hành vi thực thể, tình huống kỹ thuật redstone cần đối chiếu từng mục và tắt đi.
@@ -102,16 +102,16 @@ Cái giá là **nó không phải máy chủ sinh tồn bình thường**, nhi�
 ## Năm, tóm lại việc chọn
 
 ```
-要真生电（机器必须精确）
+Kỹ thuật redstone thật (máy phải chính xác)
    → Fabric / Leaves / Vanilla
-   → 插件端无论怎么调，都达不到 100% 原版
+   → Dù chỉnh thế nào, máy chủ plugin cũng không đạt 100% bản gốc
 
-要轻度生电 + 想用插件
-   → Paper 系 + 上面第二节的配置调校
-   → 接受"部分机器可能仍然不工作"
+Kỹ thuật redstone nhẹ + vẫn muốn dùng plugin
+   → Họ Paper + phần chỉnh cấu hình ở mục 2
+   → Chấp nhận "một số máy có thể vẫn không chạy"
 
-只要测红石电路
-   → MCHPRS 一类专用核心
+Chỉ để thử mạch redstone
+   → Lõi chuyên dụng như MCHPRS
 ```
 
 ## Bước tiếp theo

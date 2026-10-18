@@ -16,11 +16,11 @@ draft: false
 ## Một, thứ tự ưu tiên
 
 ```
-1. 硬件（单核性能）        ← 收益最大，花钱也最多
-2. 服务端配置（视距/模拟距离）  ← 几乎免费，立竿见影
-3. 核心选择（Paper 系 vs 原版）
-4. 插件/模组质量（劣质插件是重灾区）
-5. JVM 参数
+1. Phần cứng (hiệu năng đơn nhân)        ← lợi nhất, cũng tốn tiền nhất
+2. Cấu hình máy chủ (view/simulation distance)  ← gần như miễn phí, hiệu quả ngay
+3. Chọn lõi (họ Paper vs bản gốc)
+4. Chất lượng plugin/mod (plugin kém là chỗ tệ nhất)
+5. Tham số JVM
 ```
 
 **Nói kết luận trước**: nếu máy của bạn đơn nhân rất yếu, **đổi cấu hình hay chỉnh tham số đều không cứu được**, vì luồng chính chỉ có một.
@@ -95,7 +95,7 @@ Với **máy chủ sinh tồn mở lâu dài**, tạo trước gần như là vi
 ## Bảy, giới hạn đáy của tối ưu
 
 ```
-优化不能以牺牲"原版行为"为代价 —— 除非你明确不需要原版行为
+Tối ưu không được đánh đổi bằng "hành vi bản gốc" — trừ khi bạn chắc chắn không cần hành vi bản gốc
 ```
 
 Với máy chủ kỹ thuật redstone: **thà lag một chút, cũng phải bảo đảm máy móc hoạt động**.
@@ -106,10 +106,10 @@ Với máy chủ sinh tồn thường: **có thể mạnh tay vừa phải**, ư
 Đến đây, toàn bộ chuỗi mở máy chủ Java Edition đã đi hết:
 
 ```
-协议与配置 → 操作系统 → 环境准备 → 服务端选择 → 开启服务端
-   → 服务端结构 → 配置服务端 → 部署 → 常用指令
-   → MCDR → 插件 → 生电
-   → 经营管理 → 跨服端 → 手机玩家 → 备份 → 反作弊 → 性能优化
+Giao thức và cấu hình → Hệ điều hành → Chuẩn bị môi trường → Chọn lõi → Khởi động máy chủ
+   → Cấu trúc máy chủ → Cấu hình máy chủ → Triển khai → Lệnh thường dùng
+   → MCDR → Plugin → Kỹ thuật redstone
+   → Vận hành và quản lý → Proxy → Người chơi di động → Sao lưu → Chống gian lận → Tối ưu hiệu năng
 ```
 
 Cần xem lại mắt nào, lúc nào cũng có thể từ mục lục bên trái quay về chương tương ứng. Đối chiếu từng mục khi chọn lõi xem ở [So sánh lõi máy chủ](/wiki/compare#mcsog-h-%E6%A0%B8%E5%BF%83%E5%AF%B9%E7%85%A7).

@@ -43,11 +43,11 @@ Quản lý máy chủ hằng ngày, đi đi lại lại cũng chỉ những lệ
 ### Danh sách trắng
 
 ```
-whitelist on                  开启白名单
-whitelist add <玩家>          添加
-whitelist remove <玩家>       移除
-whitelist list                查看名单
-whitelist reload              从 whitelist.json 重新读取
+whitelist on                   Bật danh sách trắng
+whitelist add <người chơi>     Thêm người chơi
+whitelist remove <người chơi>  Xoá người chơi
+whitelist list                 Xem danh sách
+whitelist reload               Đọc lại từ whitelist.json
 ```
 
 Sửa bằng lệnh xong danh sách sẽ được ghi vào `whitelist.json`; nếu bạn **sửa trực tiếp tệp này**, nhớ chạy `whitelist reload` để có hiệu lực.

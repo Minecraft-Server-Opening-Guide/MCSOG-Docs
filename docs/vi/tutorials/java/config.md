@@ -68,10 +68,10 @@ Trong chế độ offline, tài khoản không có bảo đảm nào: cấm có 
 Độ khó, bảo vệ điểm sinh ra thì sửa trong `server.properties`; còn **quy tắc trò chơi phải sửa bằng lệnh**:
 
 ```
-/gamerule keepInventory true        死亡不掉落
-/gamerule doDaylightCycle false     关闭昼夜更替
-/gamerule mobGriefing false         苦力怕不破坏方块
-/gamerule announceAdvancements false 不公告进度达成
+/gamerule keepInventory true         Giữ vật phẩm khi chết
+/gamerule doDaylightCycle false      Tắt chu kỳ ngày/đêm
+/gamerule mobGriefing false          Creeper không phá khối
+/gamerule announceAdvancements false Không thông báo khi đạt tiến trình
 ```
 
 Chạy trong console hoặc trong game (cần OP), **có hiệu lực ngay và được lưu lại**.

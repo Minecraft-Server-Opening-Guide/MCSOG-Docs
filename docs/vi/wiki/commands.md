@@ -150,7 +150,7 @@ Quy trình sao lưu của Bedrock hoàn toàn khác Java Edition, có thể ché
 ```text
 save hold
 save query
-# 按 query 输出的清单复制文件（worlds/ 要整体拷走）
+# sao chép các tệp mà query liệt kê (lấy cả thư mục worlds/)
 save resume
 ```
 
@@ -246,17 +246,17 @@ Cái bẫy điển hình nhất là "chạy `/tp ~ ~10 ~` trong console" —— 
 Quy trình chuẩn trước khi bảo trì (Java Edition):
 
 ```text
-say 服务器将在 5 分钟后进入维护
+say Máy chủ sẽ bảo trì sau 5 phút
 save-all
 save-off
-# 此时在外部打包世界目录与插件目录
+# lúc này đóng gói thư mục world và thư mục plugin từ bên ngoài
 stop
 ```
 
 Danh sách trắng từ con số không đến dùng được (Java Edition):
 
 ```text
-whitelist add 你的ID
+whitelist add <tên người chơi>
 whitelist on
 whitelist list
 ```
@@ -266,7 +266,7 @@ Sao lưu và khôi phục trên Bedrock:
 ```text
 save hold
 save query
-# 复制 query 列出的文件，worlds/ 整体拷走
+# sao chép các tệp query liệt kê; lấy cả thư mục worlds/
 save resume
 ```
 
