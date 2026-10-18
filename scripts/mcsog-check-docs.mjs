@@ -81,7 +81,7 @@ for (const file of files) {
   }
 
   if (lang === 'zh') zhSet.add(rel.replace('docs/zh/', ''))
-  else enSet.add(rel.replace('docs/en/', ''))
+  else if (lang === 'en') enSet.add(rel.replace('docs/en/', ''))
 }
 
 for (const p of zhSet) if (!enSet.has(p)) warnings.push('缺少英文版本: docs/en/' + p)
