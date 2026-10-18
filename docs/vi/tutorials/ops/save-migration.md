@@ -32,7 +32,7 @@ Bản lưu chơi đơn là một thư mục dưới `.minecraft/saves/<tên th�
 | `advancements/<uuid>.json` | Tiến trình (thành tựu) | Cũng đặt tên theo UUID |
 | `stats/<uuid>.json` | Thống kê | Cũng đặt tên theo UUID |
 | `datapacks/` | Data pack cấp thế giới | Khác với data pack toàn cục, nó đi theo thế giới |
-| `DIM-1/`、`DIM1/` | Nether và End | Bố cục cũ; tên đến từ ID chiều không gian dạng số của bản cũ (-1 và 1) |
+| `DIM-1/`, `DIM1/` | Nether và End | Bố cục cũ; tên đến từ ID chiều không gian dạng số của bản cũ (-1 và 1) |
 | `dimensions/<không gian tên>/<đường dẫn>/` | Chiều không gian tự định nghĩa | Hỗ trợ từ 1.16; từ 26.1 ba chiều mặc định cũng chuyển vào đây |
 | `resources.zip` | Gói tài nguyên đi kèm thế giới | Từ 26.1 chuyển vào thư mục con `resourcepacks/` |
 
@@ -46,7 +46,7 @@ Thư mục Nether và End chỉ được **sinh ra lần đầu vào chiều kh�
 
 | Khoảng phiên bản | Thế giới chính | Nether | End | Chiều không gian tự định nghĩa |
 | --- | --- | --- | --- | --- |
-| 1.2.1 – 1.13 (từ Anvil) | Thư mục gốc bản lưu (`region/`、`data/` v.v.) | `DIM-1/` | `DIM1/` | Không hỗ trợ |
+| 1.2.1 – 1.13 (từ Anvil) | Thư mục gốc bản lưu (`region/`, `data/` v.v.) | `DIM-1/` | `DIM1/` | Không hỗ trợ |
 | 1.14 – 1.15 | Như trên, thêm `poi/` | `DIM-1/` | `DIM1/` | Không hỗ trợ |
 | 1.16 – 26.0 | Như trên, từ 1.17 thêm `entities/` | `DIM-1/` | `DIM1/` | `dimensions/<không gian tên>/<đường dẫn>/` |
 | 26.1 (snapshot 6) trở lên | `dimensions/minecraft/overworld/` | `dimensions/minecraft/the_nether/` | `dimensions/minecraft/the_end/` | `dimensions/<không gian tên>/<đường dẫn>/` |
@@ -55,7 +55,7 @@ Các điểm chính:
 
 - **Bố cục cũ (1.16 – 26.0 và trước đó)**: hai chiều mặc định dùng tên thư mục cố định `DIM-1` (Nether, ID chiều `-1`) và `DIM1` (End, ID chiều `1`). Chúng nằm thẳng **dưới thư mục gốc bản lưu**, ngang cấp với `region/`.
 - **Bố cục `dimensions/`**: sau khi 1.16 giới thiệu chiều tự định nghĩa, chiều không mặc định được lưu theo **vị trí tài nguyên**, tức `dimensions/<không gian tên>/<đường dẫn>/`, ví dụ `dimensions/mydatapack/skylands/`. Sau khi snapshot 6 của 26.1 tái cấu trúc, **ba chiều mặc định cũng dùng bộ bố cục này**, `DIM-1`/`DIM1` không còn dùng.
-- Trong cùng một bản lưu 26.1, dữ liệu người chơi cũng chuyển từ thư mục gốc bản lưu sang `players/`: `players/data/<uuid>.dat`、`players/advancements/<uuid>.json`、`players/stats/<uuid>.json`.
+- Trong cùng một bản lưu 26.1, dữ liệu người chơi cũng chuyển từ thư mục gốc bản lưu sang `players/`: `players/data/<uuid>.dat`, `players/advancements/<uuid>.json`, `players/stats/<uuid>.json`.
 
 ## 3. Máy chủ rốt cuộc kỳ vọng thư mục nào
 
@@ -65,14 +65,14 @@ Bản lưu chơi đơn nhét ba chiều vào một cây thư mục, còn máy ch
 
 | Thứ trong bản lưu chơi đơn | Vị trí trên máy chủ | Mô tả |
 | --- | --- | --- |
-| Nội dung gốc bản lưu: `level.dat`、`region/`、`entities/`、`poi/`、`data/`、`playerdata/`、`advancements/`、`stats/`、`datapacks/` | `world/` | Thế giới chính, tức thư mục `level-name` trỏ tới |
+| Nội dung gốc bản lưu: `level.dat`, `region/`, `entities/`, `poi/`, `data/`, `playerdata/`, `advancements/`, `stats/`, `datapacks/` | `world/` | Thế giới chính, tức thư mục `level-name` trỏ tới |
 | `DIM-1/` | `world_nether/` | Nether |
 | `DIM1/` | `world_the_end/` | End |
 | `dimensions/<không gian tên>/<đường dẫn>/` | Thư mục của chiều tương ứng | Chỉ có ý nghĩa khi máy chủ cũng cài cùng data pack/mod đó |
 | `session.lock` | Không chép | Máy chủ tự tạo lại khi khởi động |
 | `level.dat_old` | Vào `world/` cùng `level.dat` | Chỉ là bản sao lưu `level.dat` trước đó, giữ lại không hại |
 
-Tên thư mục không hard-code: nó được suy ra từ `level-name` cộng hậu tố. Khi `level-name=myworld` thường là `myworld/`、`myworld_nether/`、`myworld_the_end/`.
+Tên thư mục không hard-code: nó được suy ra từ `level-name` cộng hậu tố. Khi `level-name=myworld` thường là `myworld/`, `myworld_nether/`, `myworld_the_end/`.
 
 :::warn Tuyệt đối không chép bản lưu khi máy chủ đang chạy
 Chép khi máy chủ đang ghi `region/*.mca` rất có thể chép phải **tệp vùng ghi dở**, khôi phục xong biểu hiện là thiếu chunk, khối lộn xộn thậm chí thế giới không nạp được; `session.lock` cũng sẽ tồn tại ở cả hai bên, gây xung đột khóa. Thứ tự đúng luôn là: `stop` dừng máy chủ (hoặc chạy `save-all` → `save-off` trong console, nhưng tình huống di chuyển **rất khuyến nghị dừng máy chủ luôn**) → chép → rồi khởi động.
@@ -84,7 +84,7 @@ Chép khi máy chủ đang ghi `region/*.mca` rất có thể chép phải **t�
 
 ## 4. Dữ liệu người chơi: vì sao không tự đi theo
 
-Tên tệp trong `playerdata/`、`advancements/`、`stats/` **đều là UUID người chơi**. Máy chủ khi nạp người chơi tìm tệp theo UUID, tên tệp không khớp thì coi là người chơi mới: túi đồ trống, thành tựu không, thống kê không.
+Tên tệp trong `playerdata/`, `advancements/`, `stats/` **đều là UUID người chơi**. Máy chủ khi nạp người chơi tìm tệp theo UUID, tên tệp không khớp thì coi là người chơi mới: túi đồ trống, thành tựu không, thống kê không.
 
 UUID đến từ đâu phụ thuộc máy chủ nhận diện người thế nào:
 
@@ -100,10 +100,10 @@ Cách xử lý (theo thứ tự khuyến nghị):
 
 1. **Cho người chơi vào máy chủ một lần trước**, để máy chủ tạo tệp dữ liệu cho UUID đó, và ghi nó vào `usercache.json` trong thư mục làm việc.
 2. Dừng máy chủ, đọc **UUID đích** từ `usercache.json` (hoặc từ tên tệp mới xuất hiện trong `world/playerdata/`).
-3. **Đổi tên** tệp nguồn thành UUID đích, chứ không ghi đè: `playerdata/<UUID cũ>.dat` → `playerdata/<UUID mới>.dat`, `advancements/`、`stats/` tương tự. Sao lưu tệp cũ trước, đổi sai còn quay lui được.
+3. **Đổi tên** tệp nguồn thành UUID đích, chứ không ghi đè: `playerdata/<UUID cũ>.dat` → `playerdata/<UUID mới>.dat`, `advancements/`, `stats/` tương tự. Sao lưu tệp cũ trước, đổi sai còn quay lui được.
 4. **Xác định `online-mode` trước khi di chuyển**: một khi đã chọn chế độ ngoại tuyến thì đừng đổi sang chế độ bản quyền nữa, nếu không toàn bộ người chơi ngoại tuyến đổi UUID, biểu hiện như "bản lưu bị quay lui".
 
-Cũng được đánh chỉ mục theo UUID là `ops.json` và `whitelist.json`: chép thế giới không mang theo chúng, cần `/op`、`/whitelist add` lại ở phía máy chủ (hoặc sửa tay hai tệp JSON theo đúng UUID).
+Cũng được đánh chỉ mục theo UUID là `ops.json` và `whitelist.json`: chép thế giới không mang theo chúng, cần `/op`, `/whitelist add` lại ở phía máy chủ (hoặc sửa tay hai tệp JSON theo đúng UUID).
 
 ## 5. Các bước di chuyển
 
@@ -230,7 +230,7 @@ Kết luận rất đơn giản: **đừng sửa tay nó.**
 
 - Mở bằng trình soạn thảo văn bản sẽ làm hỏng tệp luôn; dùng trình sửa NBT cũng phải đối mặt khác biệt phiên bản (ví dụ từ 26.1 luật chơi, thiết lập sinh thế giới v.v. đã được tách xuống `data/`).
 - Sửa sai thì biểu hiện là thế giới không nạp được luôn, mà `level.dat_old` không nhất thiết cứu được.
-- **Đại đa số thứ muốn đổi đều có cổng vào chính thức**: độ khó, chế độ chơi, khoảng cách nhìn, danh sách trắng đi qua `server.properties`; luật chơi, thời gian, thời tiết, điểm sinh, data pack đi qua lệnh trong game (`/gamerule`、`/time set`、`/weather clear`、`/setworldspawn`、`/datapack`).
+- **Đại đa số thứ muốn đổi đều có cổng vào chính thức**: độ khó, chế độ chơi, khoảng cách nhìn, danh sách trắng đi qua `server.properties`; luật chơi, thời gian, thời tiết, điểm sinh, data pack đi qua lệnh trong game (`/gamerule`, `/time set`, `/weather clear`, `/setworldspawn`, `/datapack`).
 - Chú ý `level-seed` **chỉ có hiệu lực khi tạo thế giới**, seed của thế giới đã có không đổi được bằng sửa cấu hình.
 - Khi cần "xem bên trong có gì", dùng công cụ xem NBT mở **chỉ đọc**, và chép một bản sao trước.
 
@@ -271,15 +271,15 @@ Cách đúng: **sao lưu trước, rồi nạp trên một bản sao dùng để
 | Hiện tượng | Nguyên nhân gốc | Xử lý |
 | --- | --- | --- |
 | Vào máy chủ là thế giới trống hoàn toàn mới | Tên thư mục không khớp `level-name`, hoặc thư mục đó không có `level.dat`, nên máy chủ **tạo mới** một thế giới | Dừng máy chủ, đối chiếu tên thư mục; đổi tên thư mục cũ để lưu lại, chép lại |
-| Vào được thế giới, nhưng Nether/End là địa hình hoàn toàn mới | `DIM-1/`、`DIM1/` không được bê sang `world_nether/`、`world_the_end/`, hoặc bê sai cấp (lồng thêm một lớp thư mục) | Dừng máy chủ rồi chép lại vào thư mục đúng |
-| Vào được thế giới, nhưng người chơi "bắt đầu từ số 0" | Tên tệp dữ liệu người chơi (UUID) không khớp UUID máy chủ xác định | Đổi tên `playerdata/`、`advancements/`、`stats/` theo mục 4 |
+| Vào được thế giới, nhưng Nether/End là địa hình hoàn toàn mới | `DIM-1/`, `DIM1/` không được bê sang `world_nether/`, `world_the_end/`, hoặc bê sai cấp (lồng thêm một lớp thư mục) | Dừng máy chủ rồi chép lại vào thư mục đúng |
+| Vào được thế giới, nhưng người chơi "bắt đầu từ số 0" | Tên tệp dữ liệu người chơi (UUID) không khớp UUID máy chủ xác định | Đổi tên `playerdata/`, `advancements/`, `stats/` theo mục 4 |
 | Máy chủ từ chối nạp thế giới | Phiên bản bản lưu (`DataVersion`) cao hơn phiên bản máy chủ | Nâng cấp máy chủ; **đừng** thử hạ phiên bản thế giới |
 | Mất một phần chunk, khối lộn xộn | Khi chép máy chủ vẫn đang chạy, hoặc đĩa đầy | Chép lại từ bản sao lưu; giải quyết dung lượng đĩa trước |
 | Nhật ký xuất hiện `Failed to save` | Chủ sở hữu/quyền tệp không đúng, người dùng máy chủ không ghi vào được | `chown -R` cho người dùng chạy máy chủ |
 | Trên Linux "tệp rõ ràng có mà máy chủ nói không có" | Chữ hoa thường không khớp (`MyWorld` vs `myworld`) | Thống nhất tên thư mục và `level-name` |
 | Khởi động kẹt ở `Preparing spawn area` rất lâu | Thế giới lớn, lần nạp đầu cần thời gian; cũng có thể là điểm nghẽn I/O đĩa | Kiên nhẫn chờ, quan sát mức chiếm CPU/đĩa; đừng khởi động lại lặp lại |
-| Danh sách trắng/OP mất hiệu lực | `whitelist.json`、`ops.json` không nằm trong thế giới, cần xây lại | `/whitelist add`、`/op` lại, hoặc sửa tay theo đúng UUID |
-| Sau di chuyển lag thường xuyên | Mô hình tải của chơi đơn và máy chủ khác nhau (khoảng cách nhìn, khoảng cách mô phỏng, số thực thể) | Chỉnh `view-distance`、`simulation-distance`, xem [Tối ưu](/tutorials/java/optimize) |
+| Danh sách trắng/OP mất hiệu lực | `whitelist.json`, `ops.json` không nằm trong thế giới, cần xây lại | `/whitelist add`, `/op` lại, hoặc sửa tay theo đúng UUID |
+| Sau di chuyển lag thường xuyên | Mô hình tải của chơi đơn và máy chủ khác nhau (khoảng cách nhìn, khoảng cách mô phỏng, số thực thể) | Chỉnh `view-distance`, `simulation-distance`, xem [Tối ưu](/tutorials/java/optimize) |
 
 ## 10. Danh sách kiểm chứng
 
@@ -292,13 +292,13 @@ Xác nhận từng mục, qua hết mới mở ra ngoài:
 | Dung lượng ba thế giới đúng kỳ vọng | `du -sh /opt/minecraft/server/world*` |
 | Nhật ký khởi động không có lỗi bản lưu | `grep -n -i "failed\|unknown dimension\|no space" logs/latest.log` |
 | Seed khớp | `/seed` trong game, so với giá trị ghi trước khi di chuyển |
-| Thời gian và luật chơi khớp | `/time query daytime`、`/gamerule keepInventory` v.v. |
+| Thời gian và luật chơi khớp | `/time query daytime`, `/gamerule keepInventory` v.v. |
 | Điểm sinh khớp | Xem điểm sinh hiện tại trước khi `/setworldspawn`, so với trước di chuyển |
 | Công trình then chốt tồn tại | Dịch chuyển đến tọa độ đã ghi để xác nhận bằng mắt |
 | Nether khớp | `/execute in minecraft:the_nether run tp @s 0 64 0`, kiểm tra cổng dịch chuyển và địa hình đã biết |
 | End khớp | Vào End, kiểm tra trạng thái ender dragon, cổng dịch chuyển End và cổng trở về |
 | Tiến trình người chơi đã về | Kiểm tra túi đồ, kinh nghiệm, giao diện tiến trình và thống kê |
-| Quyền và danh sách trắng đúng | Kiểm tra `/whitelist list`、`/op` |
+| Quyền và danh sách trắng đúng | Kiểm tra `/whitelist list`, `/op` |
 | Máy chủ ghi được đĩa | `sudo -u minecraft test -w /opt/minecraft/server/world && echo writable` |
 | Sao lưu đã có hiệu lực | Chạy tay script sao lưu một lần ngay, xác nhận thế giới mới đã nằm trong phạm vi sao lưu |
 
@@ -306,7 +306,7 @@ Xác nhận từng mục, qua hết mới mở ra ngoài:
 
 - **Chốt `online-mode`, danh sách trắng, xác minh bản quyền** rồi mới bắt đầu tích lũy dữ liệu người chơi; đổi chế độ xác thực giữa chừng sẽ khiến UUID thay đổi.
 - **Làm ngay một bản sao lưu đầy đủ**, và đưa nó vào bản sao khác vị trí/ngoại tuyến, xem [Sao lưu ngoài vị trí](/tutorials/ops/offsite-backup).
-- Đặt lại `view-distance`、`simulation-distance`、`max-players` theo tải máy chủ, bản lưu chơi đơn thường được sinh trong "khoảng cách nhìn một người", bê lên máy chủ có thể cần sinh lại các chunk xung quanh để khớp khoảng cách nhìn xa hơn.
+- Đặt lại `view-distance`, `simulation-distance`, `max-players` theo tải máy chủ, bản lưu chơi đơn thường được sinh trong "khoảng cách nhìn một người", bê lên máy chủ có thể cần sinh lại các chunk xung quanh để khớp khoảng cách nhìn xa hơn.
 - Thêm luân chuyển nhật ký và giám sát đĩa, tránh thế giới lớn vừa bê sang làm đầy đĩa, xem [Quản lý và luân chuyển nhật ký](/tutorials/ops/logs) và [Giám sát và cảnh báo](/tutorials/ops/monitoring).
 - **Bedrock Edition (BDS) là chuyện khác**: thế giới Java Edition và thế giới Bedrock Edition là hai định dạng hoàn toàn khác nhau, không nạp trực tiếp lẫn nhau được, cần công cụ chuyển đổi bên thứ ba, và chuyển đổi thường có tổn thất. Cấu trúc thư mục máy chủ Bedrock Edition xem [Máy chủ BDS](/tutorials/bedrock/bds).
 

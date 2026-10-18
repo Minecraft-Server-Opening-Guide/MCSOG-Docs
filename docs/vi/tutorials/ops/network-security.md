@@ -37,7 +37,7 @@ Muốn giới hạn thật sự, hãy bind cổng vào loopback (`-p 127.0.0.1:2
 | **SSH** | TCP | `22` | Có, nhưng **giới hạn nguồn** |
 
 :::warn Giá trị mặc định của cổng có thể đã bị đổi
-Bảng trên là **giá trị xuất xưởng** của từng phần mềm. Nếu bạn đã đổi `server-port`、`query.port`、`rcon.port` trong `server.properties`, hoặc đổi cổng lắng nghe trong bảng điều khiển, **hãy lấy cấu hình thực tế của bạn làm chuẩn**. Quy tắc tường lửa phải khớp cổng thực tế, nếu không thì hoặc không kết nối được, hoặc để lại một lỗ hổng.
+Bảng trên là **giá trị xuất xưởng** của từng phần mềm. Nếu bạn đã đổi `server-port`, `query.port`, `rcon.port` trong `server.properties`, hoặc đổi cổng lắng nghe trong bảng điều khiển, **hãy lấy cấu hình thực tế của bạn làm chuẩn**. Quy tắc tường lửa phải khớp cổng thực tế, nếu không thì hoặc không kết nối được, hoặc để lại một lỗ hổng.
 :::
 
 ### 1.2 Về RCON và cơ sở dữ liệu: vì sao phải khóa chết
@@ -60,7 +60,7 @@ Một nguyên tắc cơ bản: **bất kỳ cổng nào không phải "dành cho
 | Lớp | Vị trí | Ai quản | Ví dụ |
 | --- | --- | --- | --- |
 | **Nhóm bảo mật cloud / network ACL** | Ở phía nền tảng cloud, lưu lượng **chưa đến máy bạn** | Console nhà cung cấp cloud | Nhóm bảo mật Alibaba Cloud, Tencent Cloud, AWS Security Group |
-| **Tường lửa máy chủ** | Trong hệ điều hành, `netfilter` / `nftables` | Bạn tự cấu hình trên máy | `ufw`、`firewalld`、`iptables`、`nftables` |
+| **Tường lửa máy chủ** | Trong hệ điều hành, `netfilter` / `nftables` | Bạn tự cấu hình trên máy | `ufw`, `firewalld`, `iptables`, `nftables` |
 
 **Cả hai lớp đều phải cấu hình.** Chỉ cấu hình nhóm bảo mật thì khi máy bị chuyển sang mạng khác hoặc nhóm bảo mật bị nới rộng sẽ mất bảo vệ; chỉ cấu hình tường lửa máy chủ thì nhóm bảo mật mặc định của nhiều nền tảng cloud có thể đã rất rộng, tức là để mở toang cánh cửa đầu tiên.
 
@@ -373,7 +373,7 @@ Nếu không muốn ngày ngày lục nhật ký, dùng `logwatch`, tóm tắt �
 - [ ] Chỉ mở những cổng thực sự cần (Java `TCP 25565`, Bedrock / Geyser `UDP 19132`)
 - [ ] `enable-rcon` giữ `false`, hoặc RCON chỉ lắng nghe `127.0.0.1`
 - [ ] Cổng cơ sở dữ liệu, bảng điều khiển **chưa mở ra công cộng**
-- [ ] SSH đã cấu hình đăng nhập bằng khóa, `PasswordAuthentication no`、`PermitRootLogin no` đã có hiệu lực (dùng `sshd -T` xác nhận)
+- [ ] SSH đã cấu hình đăng nhập bằng khóa, `PasswordAuthentication no`, `PermitRootLogin no` đã có hiệu lực (dùng `sshd -T` xác nhận)
 - [ ] SSH đã giới hạn IP nguồn, hoặc ít nhất có fail2ban chặn cuối
 - [ ] Quyền tệp chứa mật khẩu là `600`, và **không nằm trong kho Git**
 - [ ] `online-mode` giữ `true` (trừ khi hiểu rõ cái giá của chế độ ngoại tuyến)

@@ -53,7 +53,7 @@ Hai thứ này phải xử lý riêng, nếu không rất dễ lạc trong một
 | --- | --- | --- |
 | Trạng thái máy chủ | Tiếp tục chạy, người chơi vẫn trực tuyến | Tiến trình thoát, cửa sổ đóng hoặc dịch vụ systemd dừng |
 | Kết thúc nhật ký | Sau ngoại lệ vẫn còn đầu ra tick bình thường | Kết thúc là `This crash report has been saved to: ...` |
-| Dấu hiệu điển hình | `Could not pass event ... to X`、`... has failed to load`、`... was disabled` | `Encountered an unexpected exception`、`Exception in server tick loop`、`Watching Server thread` |
+| Dấu hiệu điển hình | `Could not pass event ... to X`, `... has failed to load`, `... was disabled` | `Encountered an unexpected exception`, `Exception in server tick loop`, `Watching Server thread` |
 | Phạm vi ảnh hưởng | Một plugin hoặc một chức năng | Toàn bộ máy chủ |
 | Hướng xử lý | Sửa plugin, cập nhật plugin hoặc tắt nó trước | Cho máy chủ lên trước, rồi đọc báo cáo crash |
 
@@ -128,8 +128,8 @@ Caused by: java.lang.ClassNotFoundException: net.minecraft.server.v1_20_R1.Minec
 
 **Chỉ cần nhận hai đặc trưng này là đủ**:
 
-1. Trong báo lỗi xuất hiện các chữ như `mixin`、`MixinApplyError`、`InvalidMixinException`、`MixinTransformerError`、`mixin config`;
-2. Trong báo lỗi xuất hiện các tên gói **có số phiên bản hoặc trỏ vào nội bộ máy chủ** như `net.minecraft.server.v1_xx_Rx`、`org.bukkit.craftbukkit...`.
+1. Trong báo lỗi xuất hiện các chữ như `mixin`, `MixinApplyError`, `InvalidMixinException`, `MixinTransformerError`, `mixin config`;
+2. Trong báo lỗi xuất hiện các tên gói **có số phiên bản hoặc trỏ vào nội bộ máy chủ** như `net.minecraft.server.v1_xx_Rx`, `org.bukkit.craftbukkit...`.
 
 Bản thân những cái tên này đã nói lên: đoạn mã này được viết **cho một phiên bản cụ thể, một loader cụ thể**, mà môi trường nó đang chạy không phải cái nó kỳ vọng. **Đây gần như luôn là lệch phiên bản, chứ không phải cấu hình của bạn viết sai.**
 
@@ -226,7 +226,7 @@ NMS chỉ `net.minecraft.server`, tức là **phần triển khai nội bộ** c
 - Thời Spigot đưa phần triển khai nội bộ vào gói **có số phiên bản** như `v1_20_R1` qua remap, nên plugin đổi phiên bản một cái là không tìm thấy lớp.
 - Paper từ 1.20.5 chuyển sang dùng mapping chính thức của Mojang, cách viết plugin NMS khác trước đây, **thay đổi cụ thể lấy thông báo chính thức của Paper làm chuẩn**.
 
-Đặc trưng báo lỗi rất thống nhất: `NoClassDefFoundError`、`NoSuchMethodError`、`NoSuchFieldError`, và trong tên lớp có `net.minecraft` hoặc `org.bukkit.craftbukkit`.
+Đặc trưng báo lỗi rất thống nhất: `NoClassDefFoundError`, `NoSuchMethodError`, `NoSuchFieldError`, và trong tên lớp có `net.minecraft` hoặc `org.bukkit.craftbukkit`.
 
 ### 3.3 Phía plugin và phía mod không thể thay thế nhau
 
@@ -262,7 +262,7 @@ Missing or unsupported mandatory dependencies:
         Mod ID: 'create', Requested by: 'mymod', Expected range: '[0.5.1,)', Actual version: '0.5.0'
 ```
 
-Mod khai báo phụ thuộc trong metadata: Fabric trong `depends` của `fabric.mod.json`, Forge / NeoForge trong `[[dependencies]]` của `mods.toml`. Ngoài ra phải phân biệt mod **chỉ client**、**chỉ máy chủ** và **dùng được cả hai đầu**: đặt mod chỉ client vào `mods/` của máy chủ cũng sẽ báo lỗi.
+Mod khai báo phụ thuộc trong metadata: Fabric trong `depends` của `fabric.mod.json`, Forge / NeoForge trong `[[dependencies]]` của `mods.toml`. Ngoài ra phải phân biệt mod **chỉ client**, **chỉ máy chủ** và **dùng được cả hai đầu**: đặt mod chỉ client vào `mods/` của máy chủ cũng sẽ báo lỗi.
 
 ### 3.5 Chẩn đoán lõi không tương thích thế nào
 
@@ -374,7 +374,7 @@ Nguyên tắc xử lý:
 
 1. **Đừng tự sửa tay tệp trong `region/`**, sửa trực tiếp rất có thể mở rộng phạm vi hỏng.
 2. **Ưu tiên khôi phục bằng bản sao lưu**, đây là cách đáng tin nhất, xem [Sao lưu và khôi phục](/tutorials/java/backup).
-3. Khi chỉ một chunk hỏng, mà không muốn quay lui cả bản lưu, có thể dùng công cụ bên thứ ba như **MCA Selector**、**NBTExplorer** xóa hoặc thay thế chunk đó, **cái giá là toàn bộ nội dung trong chunk đó mất theo**.
+3. Khi chỉ một chunk hỏng, mà không muốn quay lui cả bản lưu, có thể dùng công cụ bên thứ ba như **MCA Selector**, **NBTExplorer** xóa hoặc thay thế chunk đó, **cái giá là toàn bộ nội dung trong chunk đó mất theo**.
 4. Nếu cùng một đĩa lặp lại hỏng, hãy nghi phần cứng và hệ thống tệp trước (tình trạng sức khỏe đĩa, nhật ký kernel), sửa xong phần cứng rồi mới nói đến khôi phục.
 
 ### 4.6 Crash Ticking entity / Ticking block entity
@@ -408,13 +408,13 @@ Description: Ticking block entity
 
 **Từ tọa độ định vị đến tệp**:
 
-- Tọa độ chunk = `floor(x) >> 4`、`floor(z) >> 4`. Trong ví dụ trên `x=123` tương ứng chunk `7`, `z=-68` tương ứng chunk `-5`, khớp với `in 7,-5` ghi trong báo cáo.
+- Tọa độ chunk = `floor(x) >> 4`, `floor(z) >> 4`. Trong ví dụ trên `x=123` tương ứng chunk `7`, `z=-68` tương ứng chunk `-5`, khớp với `in 7,-5` ghi trong báo cáo.
 - Tệp vùng = `r.<floor(chunkX/32)>.<floor(chunkZ/32)>.mca`. Trong ví dụ, chunk `7` và `-5` rơi vào `r.0.-1.mca`, khớp với trường Region trong báo cáo.
 
 **Thứ tự xử lý an toàn**:
 
 1. **Dừng máy chủ và sao lưu đầy đủ thế giới**. Bước này không được bỏ.
-2. Dùng công cụ như **MCA Selector**、**NBTExplorer** mở tệp vùng tương ứng, **chỉ xóa đúng một thực thể hoặc thực thể khối đó**, như vậy tổn thất nhỏ nhất.
+2. Dùng công cụ như **MCA Selector**, **NBTExplorer** mở tệp vùng tương ứng, **chỉ xóa đúng một thực thể hoặc thực thể khối đó**, như vậy tổn thất nhỏ nhất.
 3. Khi không tìm được thực thể cụ thể, hoặc công cụ không xử lý được, mới cân nhắc xóa cả chunk. **Xóa chunk sẽ xóa luôn công trình, rương và mọi thực thể trong chunk đó.**
 4. Xử lý xong khởi động kiểm tra trước, xác nhận không crash nữa, rồi làm một bản sao lưu mới.
 5. Nếu thứ có vấn đề là thực thể của mod, quay lại mục 3 đối chiếu "phiên bản game + phiên bản loader + phiên bản mod", **lệch phiên bản thường mới là nguyên nhân gốc**.
@@ -467,7 +467,7 @@ Trước khi hỏi trong nhóm hoặc issue, hãy chuẩn bị mấy thứ này.
 - **Đoạn nhật ký đầy đủ**: từ `ERROR` hoặc `Exception` đầu tiên đến khi ngoại lệ đó kết thúc, **gồm mọi `Caused by`**. Đừng chỉ cắt ba dòng, cũng đừng dùng điện thoại chụp màn hình.
 - **Báo cáo crash**: nếu là crash, kèm tệp tương ứng trong `crash-reports/`, nó đã chứa thông tin phiên bản và môi trường.
 - **Thông tin phiên bản**: phiên bản game, tên lõi và số bản dựng, đầu ra của `java -version`.
-- **Danh sách plugin hoặc mod**: đầu ra của `/plugins`, hoặc tên tệp và số phiên bản trong thư mục `plugins/`、`mods/`.
+- **Danh sách plugin hoặc mod**: đầu ra của `/plugins`, hoặc tên tệp và số phiên bản trong thư mục `plugins/`, `mods/`.
 - **Gần đây đã đổi gì**: nâng cấp lõi, cài plugin mới, sửa tệp cấu hình nào. **Mục này thường chính là câu trả lời.**
 - **Các bước tái hiện**: khi nào chắc chắn crash, khi nào không crash.
 - **Đã thử những gì**: tránh người khác bảo bạn làm lại thao tác đã loại trừ.

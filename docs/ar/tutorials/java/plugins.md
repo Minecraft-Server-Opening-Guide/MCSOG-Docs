@@ -33,7 +33,7 @@ draft: false
 ### الحكم على حالة التحميل بالأمر `plugins`
 
 ```
-plugins          （简写 pl）
+plugins          (اختصار: pl)
 ```
 
 - **الأخضر**: محمّل (تنبيه: يعني فقط أنه **حُمّل هذه المرة**، ولا يعني عدم ظهور أخطاء أثناء التشغيل)
@@ -68,7 +68,7 @@ plugins          （简写 pl）
 نصوص الخادم (MOTD والدردشة ورسائل الملحقات) تستخدم `&` مع حرف للتعبير عن اللون والنمط، مثل:
 
 ```
-&a绿色  &c红色  &l加粗  &o斜体  &r重置
+&aأخضر  &cأحمر  &lعريض  &oمائل  &rإعادة ضبط
 ```
 
 ونطاق الدعم الدقيق يتوقف على إصدار الخادم والملحق.
@@ -86,16 +86,16 @@ plugins          （简写 pl）
 | الاستخدام | الخيارات الشائعة |
 | --- | --- |
 | الصلاحيات | LuckPerms |
-| الوظائف الأساسية (المنزل، النقل، الحزم) | EssentialsX、CMI |
+| الوظائف الأساسية (المنزل، النقل، الحزم) | EssentialsX، CMI |
 | **الحماية من التخريب والرجوع** | CoreProtect (يسجّل الكتل، فيُعرف الفاعل عند الحادث) |
-| حماية المناطق | Residence、Dominion、GriefDefender |
-| تحرير العالم | WorldEdit (العصا السحرية)、WorldGuard (حماية المناطق) |
+| حماية المناطق | Residence، Dominion، GriefDefender |
+| تحرير العالم | WorldEdit (العصا السحرية)، WorldGuard (حماية المناطق) |
 | عوالم متعددة | Multiverse-Core |
-| تنسيق الدردشة | TrChat、Carbon |
-| القوائم / GUI | DeluxeMenus、TrMenu |
+| تنسيق الدردشة | TrChat، Carbon |
+| القوائم / GUI | DeluxeMenus، TrMenu |
 | MOTD وقائمة الخوادم | MiniMOTD |
 | الأزياء (ضرورية في الوضع دون اتصال) | SkinsRestorer |
-| تسجيل الدخول (الوضع دون اتصال) | AuthMe、LibreLogin |
+| تسجيل الدخول (الوضع دون اتصال) | AuthMe، LibreLogin |
 | التوافق بين الإصدارات | ViaVersion + ViaBackwards |
 | إدارة الملحقات الساخنة | PlugManX |
 
@@ -120,7 +120,7 @@ plugins          （简写 pl）
 
 ---
 
-> استُعين بجزء من محتوى هذا المقال من [NitWikit（Cubic Wiki）](https://nitwikit.8aka.org/) و[مستودعها على GitHub](https://github.com/Cubic-Project/NitWikit)، وأُعيدت كتابته وفق بنية هذا الموقع؛ وإذا اختلف عن المصدر فالمصدر هو المعتمد.
+> استُعين بجزء من محتوى هذا المقال من [NitWikit (Cubic Wiki)](https://nitwikit.8aka.org/) و[مستودعها على GitHub](https://github.com/Cubic-Project/NitWikit)، وأُعيدت كتابته وفق بنية هذا الموقع؛ وإذا اختلف عن المصدر فالمصدر هو المعتمد.
 
 ## موارد ذات صلة
 

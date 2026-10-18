@@ -34,7 +34,7 @@ Bài này chỉ nói về **BDS** chính thức. Nếu chưa chạy được má
 Những thứ dưới đây trên BDS **đều không tồn tại**, đừng làm theo hướng dẫn Java:
 
 - Biểu đồ flame `spark` (không hỗ trợ BDS, chi tiết xem mục 8);
-- Bộ cấu hình `paper.yml`、`spigot.yml` của Paper / Spigot;
+- Bộ cấu hình `paper.yml`, `spigot.yml` của Paper / Spigot;
 - Các công tắc plugin hoặc lõi kiểu phạm vi kích hoạt thực thể, giới hạn sinh quái, số thực thể mỗi tick;
 - Plugin tối ưu (máy chủ chính thức không có hệ thống plugin).
 

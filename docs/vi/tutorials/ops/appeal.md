@@ -109,7 +109,7 @@ Vài quy tắc sử dụng:
 3. **Thời hạn phải ghi rõ**. Sau `/ban` người chơi thấy là "bạn đã bị cấm", nên **bắt buộc đồng thời thông báo thời hạn và lý do**, nếu không khi khiếu nại bạn không tự chứng minh được.
 4. **Ghi chép và xử lý xảy ra cùng lúc**. "Bản ghi" bổ sung sau khi việc đã rồi gần như vô hiệu trong tranh chấp.
 
-Cú pháp lệnh cụ thể **tùy vào plugin cấm bạn dùng** (định dạng tham số `/ban`、`/tempban`、`/mute` của các plugin khác nhau), hãy lấy tài liệu chính thức của plugin đó làm chuẩn.
+Cú pháp lệnh cụ thể **tùy vào plugin cấm bạn dùng** (định dạng tham số `/ban`, `/tempban`, `/mute` của các plugin khác nhau), hãy lấy tài liệu chính thức của plugin đó làm chuẩn.
 
 ## 6. Ai ra quyết định
 
@@ -163,7 +163,7 @@ Dù dùng kênh nào, biểu mẫu đều nên yêu cầu các trường sau. Th
 ### 7.2 Một mẫu khiếu nại dùng được ngay
 
 ```text
-【Tên máy chủ】Mẫu khiếu nại cấm
+[Tên máy chủ] Mẫu khiếu nại cấm
 
 1. ID trong game:
 2. Ngày và giờ bị cấm (ghi rõ múi giờ):

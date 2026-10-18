@@ -22,9 +22,9 @@ draft: false
 ضع نواة الخادم المنزّلة (`.jar`) في دليل النشر، مثلًا:
 
 ```
-C:\mcserver\survival\        （Linux 下对应 /opt/mcserver/survival/）
-├── paper-1.21.4.jar         ← 你下载的核心
-└── （其余文件首次启动后自动生成）
+C:\mcserver\survival\        (في Linux المقابل /opt/mcserver/survival/)
+├── paper-1.21.4.jar         ← النواة التي نزّلتها
+└── (بقية الملفات تُولَّد تلقائيًا عند أول تشغيل)
 ```
 
 ### Windows: `start.bat`
@@ -153,7 +153,7 @@ pause
 cd /d "%~dp0"
 :start
 java -Xmx4G -Xms1G -jar server.jar nogui
-echo 服务器崩溃，3 秒后重启...
+echo تعطّل الخادم، إعادة التشغيل خلال 3 ثوانٍ...
 timeout /t 3
 goto start
 ```
@@ -165,7 +165,7 @@ goto start
 cd "$(dirname "$0")"
 while true; do
     java -Xmx4G -Xms1G -jar server.jar nogui
-    echo "服务器已关闭，3 秒后重启..."
+    echo "أُوقف الخادم، إعادة التشغيل خلال 3 ثوانٍ..."
     sleep 3
 done
 ```

@@ -87,4 +87,4 @@ Nukkit هو «Bukkit نسخة Bedrock»: **مكتوب بـ Java**، وله من�
 
 ---
 
-> استُعين بجزء من محتوى هذا المقال من قسم نسخة Bedrock في [NitWikit（Cubic Wiki）](https://nitwikit.8aka.org/) و[مستودعها على GitHub](https://github.com/Cubic-Project/NitWikit)، وأُعيدت كتابته وفق بنية هذا الموقع؛ وإذا اختلف عن المصدر فالمصدر هو المعتمد.
+> استُعين بجزء من محتوى هذا المقال من قسم نسخة Bedrock في [NitWikit (Cubic Wiki)](https://nitwikit.8aka.org/) و[مستودعها على GitHub](https://github.com/Cubic-Project/NitWikit)، وأُعيدت كتابته وفق بنية هذا الموقع؛ وإذا اختلف عن المصدر فالمصدر هو المعتمد.

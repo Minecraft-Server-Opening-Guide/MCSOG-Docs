@@ -428,7 +428,7 @@ Chủ đề: [DDoS/tấn công] Instance <实例ID/IP> đang bị tấn công, y
 
 6. Tệp chứng cứ
    - incident-2026-10-04-0915.pcap (sha256: <hash>)
-   - fw-iptables.txt、ss-established.txt、conntrack.txt
+   - fw-iptables.txt, ss-established.txt, conntrack.txt
    - Khi cần có thể cung cấp gói chứng cứ đầy đủ
 ```
 

@@ -117,17 +117,17 @@ Nhiệm vụ của bài quảng bá không phải "mô tả máy chủ bạn t�
 ### 4.1 Mẫu điền chỗ trống
 
 ```
-【Tên máy chủ】______
-【Định vị một câu】Đây là máy chủ ______ dành cho ______, khác biệt là ______
-【Phiên bản hỗ trợ】Java phiên bản ______; có hỗ trợ Bedrock Edition không: ______
-【Yêu cầu tài khoản】Bản quyền / ngoại tuyến (nếu hỗ trợ đăng nhập hỗn hợp hãy ghi rõ)
-【Đặc sắc cách chơi】1. ______  2. ______  3. ______
-【Phần cứng và độ ổn định】Vị trí host: ______; đỉnh trực tuyến hằng ngày: ______; độ khả dụng tháng gần nhất: ______
-【Cách tham gia】IP hoặc tên miền: ______; cổng: ______; cách vào nhóm: ______
-【Giờ mở máy chủ】______ (máy chủ mới hãy ghi thẳng "máy chủ mới", đừng giả làm máy chủ lâu năm)
-【Quy tắc】______ (liên kết)
-【Cách liên hệ】______
-【Ảnh chụp hoặc video】______
+[Tên máy chủ] ______
+[Định vị một câu] Đây là máy chủ ______ dành cho ______, khác biệt là ______
+[Phiên bản hỗ trợ] Java phiên bản ______; có hỗ trợ Bedrock Edition không: ______
+[Yêu cầu tài khoản] Bản quyền / ngoại tuyến (nếu hỗ trợ đăng nhập hỗn hợp hãy ghi rõ)
+[Đặc sắc cách chơi] 1. ______  2. ______  3. ______
+[Phần cứng và độ ổn định] Vị trí host: ______; đỉnh trực tuyến hằng ngày: ______; độ khả dụng tháng gần nhất: ______
+[Cách tham gia] IP hoặc tên miền: ______; cổng: ______; cách vào nhóm: ______
+[Giờ mở máy chủ] ______ (máy chủ mới hãy ghi thẳng "máy chủ mới", đừng giả làm máy chủ lâu năm)
+[Quy tắc] ______ (liên kết)
+[Cách liên hệ] ______
+[Ảnh chụp hoặc video] ______
 ```
 
 ### 4.2 Những điểm trừ thường gặp

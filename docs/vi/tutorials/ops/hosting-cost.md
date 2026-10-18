@@ -195,7 +195,7 @@ Bảng dưới là **tham khảo bậc độ lớn, không phải bảng thông 
 | Mod / modpack | Ưu tiên hiệu năng đơn nhân cao | Thường gấp vài lần bản gốc | Tùy lượng đồng bộ | **Lấy tài liệu chính thức của modpack làm chuẩn** |
 | Nhiều instance / máy chủ nhóm | Đa nhân bắt đầu có ý nghĩa | Cộng từng instance rồi thêm proxy và cơ sở dữ liệu | Cộng dồn | Xem [Phía chuyển máy chủ](/tutorials/java/proxy) |
 
-**Ước lượng thô băng thông**: ở trạng thái ổn định mỗi người chơi thường chỉ chiếm **bậc vài chục KB/s** (khoảng 0.2 - 1 Mbit/s), nhưng khoảng cách nhìn lớn, nhiều thực thể, người chơi bay nạp vùng mới sẽ cao hơn rõ rệt, **lưu lượng đột biến khi gửi chunk lúc vào máy chủ lớn hơn nhiều so với trạng thái ổn định**. Những con số này phụ thuộc rất nhiều vào phiên bản và cách chơi, **hãy lấy số đo thực tế của bạn làm chuẩn** (`vnstat`、`nload`, biểu đồ lưu lượng của bảng điều khiển đều được).
+**Ước lượng thô băng thông**: ở trạng thái ổn định mỗi người chơi thường chỉ chiếm **bậc vài chục KB/s** (khoảng 0.2 - 1 Mbit/s), nhưng khoảng cách nhìn lớn, nhiều thực thể, người chơi bay nạp vùng mới sẽ cao hơn rõ rệt, **lưu lượng đột biến khi gửi chunk lúc vào máy chủ lớn hơn nhiều so với trạng thái ổn định**. Những con số này phụ thuộc rất nhiều vào phiên bản và cách chơi, **hãy lấy số đo thực tế của bạn làm chuẩn** (`vnstat`, `nload`, biểu đồ lưu lượng của bảng điều khiển đều được).
 
 ### 5.2 Chia sẻ quá bán là chuyện bình thường của gói rẻ
 

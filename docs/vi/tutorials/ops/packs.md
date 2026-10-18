@@ -296,7 +296,7 @@ data/<không gian tên>/tags/function/tick.json
 ## 10. Tóm lại
 
 - **Gói tài nguyên đổi ngoại hình, data pack đổi luật**; một cái ở client, một cái ở máy chủ.
-- **Máy chủ đẩy gói tài nguyên dựa vào bốn khóa trong `server.properties`**: `resource-pack`、`resource-pack-sha1`、`require-resource-pack`、`resource-pack-prompt` (phiên bản mới hơn còn có `resource-pack-id`), sửa xong phải khởi động lại.
+- **Máy chủ đẩy gói tài nguyên dựa vào bốn khóa trong `server.properties`**: `resource-pack`, `resource-pack-sha1`, `require-resource-pack`, `resource-pack-prompt` (phiên bản mới hơn còn có `resource-pack-id`), sửa xong phải khởi động lại.
 - **Hash phải khớp tệp thực tế và là 40 ký tự thập lục phân chữ thường**; tính xong đừng đóng gói lại, tải lên xong phải kiểm tra lại.
 - **Data pack đặt ở `<level-name>/datapacks/`**, dùng `/datapack list` kiểm chứng; `/reload` chỉ nạp lại một phần nội dung, registry động và cấu hình lõi bắt buộc khởi động lại.
 - **Số định dạng thay đổi theo phiên bản**, nhất loạt tra bảng chính thức, đừng chép hướng dẫn.

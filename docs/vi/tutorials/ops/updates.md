@@ -418,8 +418,8 @@ pip3 install mcdreforged -U
 pipx upgrade mcdreforged
 
 # Môi trường ảo: kích hoạt trước, rồi nâng cấp
-# source venv/bin/activate        （POSIX）
-# venv\Scripts\Activate.ps1       （Windows PowerShell）
+# source venv/bin/activate        (POSIX)
+# venv\Scripts\Activate.ps1       (Windows PowerShell)
 pip install mcdreforged -U
 ```
 

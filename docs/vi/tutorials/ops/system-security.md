@@ -174,10 +174,10 @@ sudo chmod 750 /opt/mcserver
 
 | Đối tượng | Vì sao | Khuyến nghị |
 | --- | --- | --- |
-| `world/`、`world_nether/`、`world_the_end/` | Bản lưu là toàn bộ đầu tư của người chơi, bị phá là không cứu được | Chủ sở hữu `mcserver`, người khác không quyền; **sao lưu ngoại tuyến định kỳ** (xem mục năm) |
+| `world/`, `world_nether/`, `world_the_end/` | Bản lưu là toàn bộ đầu tư của người chơi, bị phá là không cứu được | Chủ sở hữu `mcserver`, người khác không quyền; **sao lưu ngoại tuyến định kỳ** (xem mục năm) |
 | `server.properties` | Chứa mật khẩu RCON, cổng, `online-mode` và các công tắc then chốt | `640`, chủ sở hữu `mcserver` |
-| `.env`、script chứa mật khẩu | Mật khẩu cơ sở dữ liệu, API Key | **`600`**, chỉ chủ sở hữu đọc ghi |
-| `ops.json`、`whitelist.json` | Quyết định ai có quyền quản trị | `640`, sửa xong rà soát lại nội dung |
+| `.env`, script chứa mật khẩu | Mật khẩu cơ sở dữ liệu, API Key | **`600`**, chỉ chủ sở hữu đọc ghi |
+| `ops.json`, `whitelist.json` | Quyết định ai có quyền quản trị | `640`, sửa xong rà soát lại nội dung |
 | Tệp khóa riêng (`id_ed25519` v.v.) | Lộ là giao quyền đăng nhập | **`600`**, thư mục `.ssh` là `700` |
 | Tệp sao lưu | Thường chứa mật khẩu và bản lưu đầy đủ | **Đừng đặt ở thư mục web truy cập được**; một bản khác vị trí |
 
@@ -189,7 +189,7 @@ ls -l /opt/mcserver/survival/.env
 ```
 
 :::note Sao lưu sẽ đổi quyền, khi khôi phục phải hoàn nguyên chủ sở hữu
-Sao lưu bằng cách **giữ thuộc tính** như `cp -a`、`tar`、`rsync -a`, khôi phục xong chủ sở hữu và quyền mới đúng. Nếu chỉ chép nội dung, khôi phục xong có thể thành chủ sở hữu root, máy chủ lại không ghi được bản lưu —— khôi phục xong nhớ dùng `ls -ld` kiểm tra một lần.
+Sao lưu bằng cách **giữ thuộc tính** như `cp -a`, `tar`, `rsync -a`, khôi phục xong chủ sở hữu và quyền mới đúng. Nếu chỉ chép nội dung, khôi phục xong có thể thành chủ sở hữu root, máy chủ lại không ghi được bản lưu —— khôi phục xong nhớ dùng `ls -ld` kiểm tra một lần.
 :::
 
 ## Ba, Cập nhật hệ thống
@@ -202,7 +202,7 @@ Sao lưu bằng cách **giữ thuộc tính** như `cp -a`、`tar`、`rsync -a`,
 
 | Bản phân phối | Công cụ | Tệp cấu hình |
 | --- | --- | --- |
-| Ubuntu / Debian | `unattended-upgrades` | `/etc/apt/apt.conf.d/20auto-upgrades`、`/etc/apt/apt.conf.d/50unattended-upgrades` |
+| Ubuntu / Debian | `unattended-upgrades` | `/etc/apt/apt.conf.d/20auto-upgrades`, `/etc/apt/apt.conf.d/50unattended-upgrades` |
 | RHEL / Rocky / AlmaLinux / Fedora | `dnf-automatic` | `/etc/dnf/automatic.conf` |
 
 **Ubuntu / Debian**:
@@ -294,7 +294,7 @@ WantedBy=multi-user.target
 | Chỉ thị | Tác dụng |
 | --- | --- |
 | `User=` / `Group=` | **Chạy bằng người dùng chuyên dụng**. Không viết thì mặc định chạy bằng root —— đây là lỗ hổng gia cố phổ biến nhất. |
-| `WorkingDirectory=` | Thư mục làm việc của máy chủ. Đường dẫn tương đối (`world/`、`plugins/`) đều lấy nó làm gốc. |
+| `WorkingDirectory=` | Thư mục làm việc của máy chủ. Đường dẫn tương đối (`world/`, `plugins/`) đều lấy nó làm gốc. |
 | `ExecStart=` | Lệnh khởi động. **Bắt buộc viết đường dẫn tuyệt đối**, systemd không phân tích `PATH`. |
 | `Restart=on-failure` | Khởi động lại khi thoát bất thường. `stop` bình thường không kích hoạt. |
 | `RestartSec=10` | Đợi 10 giây trước khi khởi động lại, tránh quay vòng làm ngập nhật ký khi sập. |
@@ -347,15 +347,15 @@ ReadWritePaths=/opt/mcserver/survival
 | --- | --- |
 | `NoNewPrivileges=yes` | Cấm tiến trình nâng quyền qua chương trình setuid / setgid. **Mục gia cố gần như không tác dụng phụ, khuyến nghị đều thêm.** |
 | `PrivateTmp=yes` | Cấp cho dịch vụ **`/tmp` và `/var/tmp` riêng**, không thấy cũng không ảnh hưởng tệp tạm của tiến trình khác |
-| `ProtectSystem=strict` | **Gắn toàn bộ hệ thống tệp thành chỉ đọc** (trừ `/dev`、`/proc`、`/sys`). Dịch vụ chỉ ghi được đường dẫn trong `ReadWritePaths` |
-| `ProtectHome=yes` | Làm `/home`、`/root`、`/run/user` **không thấy được** với dịch vụ (tương đương thư mục trống) |
+| `ProtectSystem=strict` | **Gắn toàn bộ hệ thống tệp thành chỉ đọc** (trừ `/dev`, `/proc`, `/sys`). Dịch vụ chỉ ghi được đường dẫn trong `ReadWritePaths` |
+| `ProtectHome=yes` | Làm `/home`, `/root`, `/run/user` **không thấy được** với dịch vụ (tương đương thư mục trống) |
 | `ReadWritePaths=` | Kết hợp với `ProtectSystem=strict`, **liệt kê rõ đường dẫn được ghi**. **Không có mục này, máy chủ đến bản lưu cũng không ghi được.** |
 
 :::warn Thêm `ProtectSystem=strict` xong dịch vụ không lên, xem đây trước
 Nguyên nhân thường gặp:
 
 1. **Quên `ReadWritePaths`**, hoặc đường dẫn viết sai (phải là đường dẫn tuyệt đối, và khớp `WorkingDirectory`).
-2. **Script sao lưu hoặc plugin cần ghi chỗ khác** (như `/var/log`、`/srv`), cần thêm vào `ReadWritePaths` cùng lúc.
+2. **Script sao lưu hoặc plugin cần ghi chỗ khác** (như `/var/log`, `/srv`), cần thêm vào `ReadWritePaths` cùng lúc.
 3. **Java cần ghi thư mục tạm**: `PrivateTmp=yes` thường đã đủ, nhưng nếu máy chủ cấu hình rõ một đường dẫn tạm cố định, phải thêm nó vào.
 
 **Cách kiểm tra**: `sudo systemctl status minecraft` và `sudo journalctl -u minecraft -n 100` sẽ chỉ thẳng đường dẫn "bị từ chối quyền".
@@ -404,7 +404,7 @@ Gia cố không phải hành động một lần. Các kiểm tra dưới đây 
 | **Tài khoản UID 0** | `awk -F: '$3 == 0 {print $1}' /etc/passwd` | Chỉ có `root` |
 | **Tài khoản đăng nhập được** | `awk -F: '$7 !~ /(nologin\|false)$/ {print $1, $7}' /etc/passwd` | Chỉ có người bạn biết |
 | **Quyền sudo** | `getent group sudo` / `getent group wheel` | Không có tài khoản đã nghỉ hoặc tạm thời |
-| **Tác vụ định kỳ** | `sudo crontab -l`、`ls -l /etc/cron.*`、`systemctl list-timers --all` | Không có tác vụ bạn không tạo |
+| **Tác vụ định kỳ** | `sudo crontab -l`, `ls -l /etc/cron.*`, `systemctl list-timers --all` | Không có tác vụ bạn không tạo |
 | **Unit systemd** | `systemctl list-units --type=service --state=running` | Không có dịch vụ lạ |
 | **Gói phần mềm không dùng** | `sudo apt autoremove --dry-run` / `sudo dnf autoremove` | Xác nhận thứ sắp xóa thật sự không dùng |
 | **Điểm sandbox dịch vụ** | `systemd-analyze security minecraft.service` | Điểm càng thấp càng tốt, xem gợi ý từng mục |
@@ -429,9 +429,9 @@ Gia cố không phải hành động một lần. Các kiểm tra dưới đây 
 - [ ] Chủ sở hữu thư mục máy chủ đúng, **không có 777**
 - [ ] Quyền tệp chứa mật khẩu là **600**, và không ở thư mục web, không ở kho Git
 - [ ] Cập nhật bảo mật tự động đã bật và **xác nhận đang chạy**; **không** bật khởi động lại tự động vô điều kiện
-- [ ] Unit systemd đã đặt `User=`、`WorkingDirectory=`、`Restart=`
+- [ ] Unit systemd đã đặt `User=`, `WorkingDirectory=`, `Restart=`
 - [ ] Đã cấu hình `LimitNOFILE`, và `MemoryMax` **lớn hơn rõ rệt** `-Xmx`
-- [ ] Đã bật `NoNewPrivileges`、`PrivateTmp`、`ProtectSystem`、`ReadWritePaths` theo nhu cầu
+- [ ] Đã bật `NoNewPrivileges`, `PrivateTmp`, `ProtectSystem`, `ReadWritePaths` theo nhu cầu
 - [ ] Đã khởi động lại máy một lần, xác nhận **dịch vụ tự khởi động khi boot**
 - [ ] Có sao lưu **ngoại tuyến / khác vị trí**, và tài khoản dịch vụ **không ghi được** thư mục sao lưu
 - [ ] Đã đưa các lệnh kiểm toán trên vào lịch rà soát định kỳ

@@ -67,7 +67,7 @@ Nếu lưu trữ ngoài vị trí dùng cùng một bộ thông tin xác thực,
 ```text
 save-all        chuyển dữ liệu xuống đĩa trước
 save-off        tắt tự động lưu (tránh tiếp tục ghi trong lúc sao lưu)
-（lúc này thực hiện copy/đóng gói）
+(lúc này thực hiện copy/đóng gói)
 save-on         sao lưu xong bật lại tự động lưu
 ```
 
@@ -75,8 +75,8 @@ save-on         sao lưu xong bật lại tự động lưu
 
 ```text
 stop            tắt máy chủ an toàn
-（copy/đóng gói toàn bộ thư mục）
-（khởi động lại）
+(copy/đóng gói toàn bộ thư mục)
+(khởi động lại)
 ```
 
 Cách A cần **gửi lệnh tới console máy chủ**. Nếu dùng systemd quản lý và cách khởi động nhận được nhập từ console, có thể chèn qua `screen`/`tmux`, hoặc bật RCON rồi gửi lệnh từ xa (**cách cấu hình RCON khác nhau theo lõi và phiên bản, lấy tài liệu chính thức làm chuẩn**).

@@ -159,7 +159,7 @@ Manh mối phán đoán:
 
 | Hiện tượng | Ý nghĩa |
 | --- | --- |
-| IP WAN rơi vào `10.0.0.0/8`、`172.16.0.0/12`、`192.168.0.0/16` | Địa chỉ nội bộ của nhà mạng, NAT nhiều lớp điển hình |
+| IP WAN rơi vào `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16` | Địa chỉ nội bộ của nhà mạng, NAT nhiều lớp điển hình |
 | IP WAN rơi vào `100.64.0.0/10` | **Dải địa chỉ dành riêng CGNAT (RFC 6598)**, gần như chắc chắn không có IPv4 công cộng |
 | Vài chặng đầu `traceroute` đều là địa chỉ riêng | Ở giữa còn NAT cấp nhà mạng |
 | IP WAN là địa chỉ công cộng, nhưng bên ngoài vẫn không kết nối được | Có thể nhà mạng chặn cổng vào, cũng có thể chuyển tiếp/tường lửa của bạn chưa cấu hình đúng, cần kiểm chứng từng bước |
@@ -215,7 +215,7 @@ uci commit firewall
 
 **Vấn đề prefix** là cái bẫy phổ biến nhất khi mở máy chủ bằng IPv6:
 
-- Băng thông rộng gia đình thường nhận một prefix từ ISP qua **DHCPv6-PD (ủy quyền prefix)** (thường là `/56`、`/60` hoặc `/64`, tùy ISP), rồi router chia cho mạng nội bộ;
+- Băng thông rộng gia đình thường nhận một prefix từ ISP qua **DHCPv6-PD (ủy quyền prefix)** (thường là `/56`, `/60` hoặc `/64`, tùy ISP), rồi router chia cho mạng nội bộ;
 - **Prefix của nhiều ISP không cố định**, quay số lại, khởi động lại modem quang, nhà mạng điều chỉnh đều có thể đổi prefix;
 - Prefix đổi một cái là `dest_ip` trong quy tắc trên mất hiệu lực, người chơi cũng không kết nối được;
 - Hướng xử lý: xin ISP **prefix tĩnh** (không nhất thiết được cấp); hoặc cho máy dùng **định danh cổng ổn định** (ví dụ cố định hậu tố trong SLAAC/DHCPv6), rồi dùng script trong `hotplug.d/iface` hoặc tác vụ định kỳ **tự cập nhật quy tắc tường lửa**; cũng có thể dùng prefix định tuyến do nhà cung cấp tunnel cấp (thuộc phương án bên thứ ba, phải tự đánh giá độ ổn định).
@@ -234,7 +234,7 @@ Mỗi quy tắc chuyển tiếp cổng là một cánh cửa bạn mở trên m�
 1. **Chỉ chuyển tiếp cổng bắt buộc**. Minecraft chỉ cần `TCP 25565` (Bedrock Edition `UDP 19132`).
 2. **Tuyệt đối không chuyển tiếp những cổng này** (đây là cửa vào xâm nhập phổ biến nhất):
    - `TCP 25575` RCON (giao thức tự nó không mã hóa, bằng cách giao console ra ngoài);
-   - `TCP 3306` MySQL/MariaDB、`TCP 5432` PostgreSQL、`TCP 6379` Redis、`TCP 27017` MongoDB、`TCP 9200` Elasticsearch;
+   - `TCP 3306` MySQL/MariaDB, `TCP 5432` PostgreSQL, `TCP 6379` Redis, `TCP 27017` MongoDB, `TCP 9200` Elasticsearch;
    - `TCP 2375` / `2376` Docker API;
    - `TCP 445` SMB;
    - `UDP 623` IPMI (xem [Máy chủ dạng rack, switch, tường lửa phần cứng và UPS](/tutorials/ops/hardware-rack));

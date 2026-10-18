@@ -34,12 +34,12 @@ Khâu dễ hỏng nhất của di chuyển không phải `rsync`, mà là **"tr�
 
 | Mục kiểm tra | Tra thế nào | Tiêu chuẩn đạt |
 | --- | --- | --- |
-| Máy này chạy những dịch vụ nào | `systemctl list-units --type=service --state=running`、`ss -tlnp`、`docker ps`、`crontab -l` | Mỗi mục nói ra được công dụng, và biết có phải bê theo không |
+| Máy này chạy những dịch vụ nào | `systemctl list-units --type=service --state=running`, `ss -tlnp`, `docker ps`, `crontab -l` | Mỗi mục nói ra được công dụng, và biết có phải bê theo không |
 | Phiên bản game và lõi | Nhật ký khởi động máy chủ, `/version`, tên tệp lõi | Ghi lại "phiên bản game + tên lõi + số bản dựng lõi" |
-| Danh sách phiên bản plugin / mod | Danh sách thư mục `plugins/`、`mods/` | Có tệp danh sách (số phiên bản tái lập được), không chỉ bản thân thư mục |
+| Danh sách phiên bản plugin / mod | Danh sách thư mục `plugins/`, `mods/` | Có tệp danh sách (số phiên bản tái lập được), không chỉ bản thân thư mục |
 | Phiên bản Java | `java -version` | Máy cũ và máy mới giống nhau; **nâng Java là việc khác, đừng làm cùng lúc với di chuyển** |
-| Hệ điều hành và kernel | `cat /etc/os-release`、`uname -a` | Biết khác biệt (bản phân phối, glibc, hệ thống tệp) |
-| Bản ghi DNS và TTL | `dig +noall +answer example.com`、`dig _minecraft._tcp.example.com SRV` | Loại bản ghi (A / AAAA / SRV) và TTL hiện tại đều có ghi lại |
+| Hệ điều hành và kernel | `cat /etc/os-release`, `uname -a` | Biết khác biệt (bản phân phối, glibc, hệ thống tệp) |
+| Bản ghi DNS và TTL | `dig +noall +answer example.com`, `dig _minecraft._tcp.example.com SRV` | Loại bản ghi (A / AAAA / SRV) và TTL hiện tại đều có ghi lại |
 | Ai có quyền truy cập | Khóa công khai SSH, tài khoản bảng điều khiển, tài khoản nhà cung cấp, danh sách đồng quản trị | Sau khi di chuyển **đối chiếu từng mục**, cái cần xóa thì xóa |
 | Bản sao lưu có khôi phục được không | Thực sự làm một lần diễn tập khôi phục | Không phải "có tệp sao lưu", mà là "**đã khôi phục, lên được**" |
 | Phụ thuộc bên ngoài | Cơ sở dữ liệu, lưu trữ đối tượng, API Key, Webhook, giám sát | Trên máy mới kết nối được, thông tin xác thực còn hiệu lực |
@@ -54,21 +54,21 @@ Mỗi dòng trong bảng dưới đây đều là thứ từng bị bỏ sót tr
 
 | Mục | Vị trí (ví dụ `/opt/mcserver`) | Hậu quả nếu bỏ sót |
 | --- | --- | --- |
-| Bản lưu thế giới | `world/`、`world_nether/`、`world_the_end/` (tên lấy theo `level-name` trong `server.properties`) | **Nghiêm trọng nhất**: công trình, túi đồ, tiến trình của người chơi mất hết |
-| Bản thân plugin / mod | `plugins/`、`mods/` | Vào máy chủ thiếu chức năng, hoặc client người chơi không vào được vì mod không khớp |
-| Cấu hình plugin / mod | `plugins/<tên plugin>/`、`config/` | Quyền, kinh tế, lãnh thổ, điểm dịch chuyển, bể quay thưởng đều về mặc định |
+| Bản lưu thế giới | `world/`, `world_nether/`, `world_the_end/` (tên lấy theo `level-name` trong `server.properties`) | **Nghiêm trọng nhất**: công trình, túi đồ, tiến trình của người chơi mất hết |
+| Bản thân plugin / mod | `plugins/`, `mods/` | Vào máy chủ thiếu chức năng, hoặc client người chơi không vào được vì mod không khớp |
+| Cấu hình plugin / mod | `plugins/<tên plugin>/`, `config/` | Quyền, kinh tế, lãnh thổ, điểm dịch chuyển, bể quay thưởng đều về mặc định |
 | Cấu hình lõi | `server.properties` | Cổng, độ khó, xác minh bản quyền, khoảng cách nhìn, công tắc danh sách trắng đều về mặc định |
-| Cấu hình của chính lõi | `bukkit.yml`、`spigot.yml`、`paper-*.yml`、`purpur.yml` | Tham số tối ưu, giá trị mặc định thế giới mất, hiệu năng có thể thay đổi rõ rệt |
-| Tệp danh sách | `ops.json`、`whitelist.json`、`banned-players.json`、`banned-ips.json` | Mất quyền quản trị, hoặc cấm mất hiệu lực, danh sách trắng thành vô dụng |
+| Cấu hình của chính lõi | `bukkit.yml`, `spigot.yml`, `paper-*.yml`, `purpur.yml` | Tham số tối ưu, giá trị mặc định thế giới mất, hiệu năng có thể thay đổi rõ rệt |
+| Tệp danh sách | `ops.json`, `whitelist.json`, `banned-players.json`, `banned-ips.json` | Mất quyền quản trị, hoặc cấm mất hiệu lực, danh sách trắng thành vô dụng |
 | Bộ nhớ đệm tên người chơi | `usercache.json` | Thường xây lại được, nhưng ánh xạ UUID và tên hiển thị ở chế độ ngoại tuyến sẽ rối tạm thời |
-| Script khởi động | `start.sh`、`启动.bat`、tham số Java | **Mục bị bỏ sót phổ biến nhất**: dịch vụ không lên, hoặc tham số sai khiến bộ nhớ/hiệu năng bất thường |
+| Script khởi động | `start.sh`, `启动.bat`, tham số Java | **Mục bị bỏ sót phổ biến nhất**: dịch vụ không lên, hoặc tham số sai khiến bộ nhớ/hiệu năng bất thường |
 | systemd unit | `/etc/systemd/system/minecraft.service` | Không tự khởi động khi boot, sập không tự khởi động lại; `WorkingDirectory` viết sai còn tạo ra một thế giới trống |
-| Tác vụ định kỳ | `crontab -l`、`/etc/cron.d/`、systemd timer | Tác vụ sao lưu, khởi động lại, dọn dẹp mất hết, và **rất lâu sau mới phát hiện** |
-| Quy tắc tường lửa | `ufw status`、`firewall-cmd --list-all`、nhóm bảo mật cloud | Cổng không thông, người chơi không kết nối được; hoặc thiếu quy tắc cũ dẫn đến lộ ngoài ý muốn |
-| Chứng chỉ TLS | `/etc/letsencrypt/`、`/etc/ssl/` | Dịch vụ HTTPS như bảng điều khiển, bản đồ, gói tài nguyên bị gián đoạn hoặc cảnh báo chứng chỉ |
-| Dữ liệu MCDR | `config.yml`、`permission.yml`、`plugins/` trong thư mục chạy MCDR | Quyền của bot, bí danh lệnh, trạng thái plugin mất (tên tệp và cấu trúc cụ thể lấy tài liệu chính thức MCDR làm chuẩn) |
+| Tác vụ định kỳ | `crontab -l`, `/etc/cron.d/`, systemd timer | Tác vụ sao lưu, khởi động lại, dọn dẹp mất hết, và **rất lâu sau mới phát hiện** |
+| Quy tắc tường lửa | `ufw status`, `firewall-cmd --list-all`, nhóm bảo mật cloud | Cổng không thông, người chơi không kết nối được; hoặc thiếu quy tắc cũ dẫn đến lộ ngoài ý muốn |
+| Chứng chỉ TLS | `/etc/letsencrypt/`, `/etc/ssl/` | Dịch vụ HTTPS như bảng điều khiển, bản đồ, gói tài nguyên bị gián đoạn hoặc cảnh báo chứng chỉ |
+| Dữ liệu MCDR | `config.yml`, `permission.yml`, `plugins/` trong thư mục chạy MCDR | Quyền của bot, bí danh lệnh, trạng thái plugin mất (tên tệp và cấu trúc cụ thể lấy tài liệu chính thức MCDR làm chuẩn) |
 | Dữ liệu bảng điều khiển | Cấu hình và thư mục định nghĩa instance của bảng điều khiển | Tệp máy chủ còn đó, nhưng trong bảng điều khiển "không còn gì"; chi tiết xem [Bảng điều khiển máy chủ](/tutorials/ops/panels) |
-| Tệp thông tin xác thực | `.env`、`rcon.password`、mật khẩu cơ sở dữ liệu, khóa lưu trữ cloud | Dịch vụ không lên, hoặc lên rồi không kết nối được phụ thuộc |
+| Tệp thông tin xác thực | `.env`, `rcon.password`, mật khẩu cơ sở dữ liệu, khóa lưu trữ cloud | Dịch vụ không lên, hoặc lên rồi không kết nối được phụ thuộc |
 | Cấu hình reverse proxy | Tệp site và đường dẫn chứng chỉ của Nginx / Caddy | Truy cập tên miền báo 502, và dễ bị hiểu nhầm là "máy chủ không lên" |
 | Giám sát và cảnh báo | Probe, Agent, quy tắc cảnh báo | Có vấn đề mà **không ai nhận được thông báo**, đây là kiểu "thất bại im lặng" nguy hiểm nhất |
 
@@ -76,8 +76,8 @@ Mỗi dòng trong bảng dưới đây đều là thứ từng bị bỏ sót tr
 
 | Mục | Lý do |
 | --- | --- |
-| `logs/`、`crash-reports/` | Dung lượng lớn; khi cần tra vấn đề cũ thì lấy riêng |
-| `cache/`、`libraries/`、`versions/` | Tự xây lại khi khởi động |
+| `logs/`, `crash-reports/` | Dung lượng lớn; khi cần tra vấn đề cũ thì lấy riêng |
+| `cache/`, `libraries/`, `versions/` | Tự xây lại khi khởi động |
 | `world/session.lock` | Tệp khóa lúc chạy, phía đích nên xóa, máy chủ sẽ tự tạo lại |
 | Gói tạm trên máy cũ, `*.tar.gz` | Dễ đồng bộ luôn vài trăm GB tệp tạm sang |
 
@@ -306,14 +306,14 @@ Cấm IP vốn không phù hợp dùng lâu dài (IP băng thông rộng gia đ�
 | Mục kiểm chứng | Kiểm thế nào | Tiêu chuẩn đạt |
 | --- | --- | --- |
 | Người chơi vào được | Dùng client thật (gồm cả Bedrock Edition, nếu có bật chơi chéo) vào mỗi loại một lần | Vào được, chat được, di chuyển và tương tác bình thường |
-| TPS / MSPT bình thường | `/tps`、`/spark tps` hoặc lệnh có sẵn của lõi | Cùng mức với máy cũ, không tụt tick liên tục |
-| Plugin / mod nạp đủ | Tìm `Enabling`、`Loaded`, từ khóa báo lỗi trong nhật ký khởi động | Không có `Could not load`, không có không tương thích phiên bản |
+| TPS / MSPT bình thường | `/tps`, `/spark tps` hoặc lệnh có sẵn của lõi | Cùng mức với máy cũ, không tụt tick liên tục |
+| Plugin / mod nạp đủ | Tìm `Enabling`, `Loaded`, từ khóa báo lỗi trong nhật ký khởi động | Không có `Could not load`, không có không tương thích phiên bản |
 | Cấu hình có hiệu lực | Kiểm tra mẫu quyền, kinh tế, lãnh thổ, điểm dịch chuyển | Giống trước khi di chuyển |
-| Danh sách đúng | `/whitelist list`、lệnh liên quan `/op` hoặc xem thẳng tệp danh sách | Quản trị viên và danh sách trắng giống máy chủ cũ |
+| Danh sách đúng | `/whitelist list`, lệnh liên quan `/op` hoặc xem thẳng tệp danh sách | Quản trị viên và danh sách trắng giống máy chủ cũ |
 | Sao lưu chạy trên máy mới | Chạy tay script sao lưu một lần | Gói lưu được tạo, kích thước hợp lý, **và thật sự giải ra được** |
 | Giám sát đã cập nhật | Xem bảng giám sát | IP mới có nhịp tim, cảnh báo IP cũ đã tắt |
-| Tác vụ định kỳ | `crontab -l`、`systemctl list-timers` | Tác vụ sao lưu, khởi động lại, dọn dẹp đều có, thời gian đúng |
-| Hiệu năng và đĩa | `df -h`、`iostat`, mức chiếm bộ nhớ | Đĩa còn dư, không có điểm nghẽn IO rõ rệt |
+| Tác vụ định kỳ | `crontab -l`, `systemctl list-timers` | Tác vụ sao lưu, khởi động lại, dọn dẹp đều có, thời gian đúng |
+| Hiệu năng và đĩa | `df -h`, `iostat`, mức chiếm bộ nhớ | Đĩa còn dư, không có điểm nghẽn IO rõ rệt |
 | Máy cũ xuống sóng | Xem bên dưới | **Chỉ sau khi khung quay lui kết thúc** mới trả máy hoặc cài lại |
 
 ## 9. Phương án quay lui

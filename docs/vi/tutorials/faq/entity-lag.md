@@ -253,11 +253,11 @@ Cùng một khóa có giá trị mặc định khác nhau ở lõi khác nhau, p
 
 ### 3.3 Xử lý
 
-**（1）Phạm vi kích hoạt thực thể**: xem mục 1.5. Đây là mức hiệu quả nhất cũng dễ làm hỏng máy móc nhất, trước khi sửa hãy sao lưu cấu hình, sửa xong chạy lại kiểm tra nông trại.
+**(1) Phạm vi kích hoạt thực thể**: xem mục 1.5. Đây là mức hiệu quả nhất cũng dễ làm hỏng máy móc nhất, trước khi sửa hãy sao lưu cấu hình, sửa xong chạy lại kiểm tra nông trại.
 
-**（2）Phạm vi sinh quái `mob-spawn-range`**: đơn vị là chunk, kiểm soát quanh người chơi xa bao nhiêu thì có thể sinh quái. Tài liệu chính thức Paper hiện ghi `8`, wiki Spigot ghi `6` —— **lại là một giá trị mặc định thay đổi theo phiên bản**, hãy lấy tệp cục bộ làm chuẩn. Giảm nhỏ có thể giảm tổng số sinh vật sinh ra, nhưng có thể khiến một số tháp sinh quái giảm hiệu suất.
+**(2) Phạm vi sinh quái `mob-spawn-range`**: đơn vị là chunk, kiểm soát quanh người chơi xa bao nhiêu thì có thể sinh quái. Tài liệu chính thức Paper hiện ghi `8`, wiki Spigot ghi `6` —— **lại là một giá trị mặc định thay đổi theo phiên bản**, hãy lấy tệp cục bộ làm chuẩn. Giảm nhỏ có thể giảm tổng số sinh vật sinh ra, nhưng có thể khiến một số tháp sinh quái giảm hiệu suất.
 
-**（3）Giới hạn sinh quái mỗi thế giới**: `spawn-limits` trong `bukkit.yml`, giá trị mặc định tài liệu chính thức Paper hiện liệt kê là:
+**(3) Giới hạn sinh quái mỗi thế giới**: `spawn-limits` trong `bukkit.yml`, giá trị mặc định tài liệu chính thức Paper hiện liệt kê là:
 
 ```yaml
 # bukkit.yml
@@ -273,7 +273,7 @@ spawn-limits:
 
 Paper còn cho phép ghi đè cùng bộ giới hạn này theo thế giới trong `paper-world-defaults.yml` (`entities.spawning.spawn-limits`, hiện mặc định toàn bộ là `-1`, tức là dùng giá trị của `bukkit.yml`). Ngoài ra `entities.spawning.per-player-mob-spawns` (hiện mặc định `true`) quyết định giới hạn sinh quái tính riêng theo từng người chơi hay chia sẻ toàn cục.
 
-**（4）Luật chơi**: có sẵn của bản gốc, hiệu quả nhanh nhất.
+**(4) Luật chơi**: có sẵn của bản gốc, hiệu quả nhanh nhất.
 
 ```bash
 # Tắt sinh quái tự nhiên (bản gốc mặc định true) —— chú ý điều này sẽ làm tháp sinh quái mất hiệu lực
@@ -290,7 +290,7 @@ Paper còn cho phép ghi đè cùng bộ giới hạn này theo thế giới tro
 Sau khi tắt `doMobSpawning`, `doMobLoot`, **mọi cách chơi phụ thuộc nó đều mất hiệu lực cùng** (tháp sinh quái, nông trại kinh nghiệm, thu đầu lâu wither skeleton v.v.). Nó phù hợp cho máy chủ sự kiện hoặc chữa cháy tạm thời, không phù hợp bật lâu dài làm biện pháp tối ưu.
 :::
 
-**（5）Liên quan lồng sinh quái**:
+**(5) Liên quan lồng sinh quái**:
 
 ```yaml
 # spigot.yml → world-settings.default
@@ -299,13 +299,13 @@ nerf-spawner-mobs: false
 
 Giải thích của tài liệu Paper về `nerf-spawner-mobs` là "vô hiệu hóa phần lớn AI của sinh vật do lồng sinh quái sinh ra" (hiện mặc định `false`). Đặt `true` tiết kiệm được chi phí AI đáng kể, nhưng hành vi sinh vật do lồng sinh ra sẽ khác rõ rệt. Paper còn có `tick-rates.mob-spawner` (hiện mặc định `1`) kiểm soát tần suất lồng sinh quái tính vùng có thể sinh và sinh thực thể.
 
-**（6）Plugin kiểm soát lồng sinh quái**: không ít plugin có thể giới hạn khoảng cách kích hoạt của lồng, số lượng sinh mỗi phút hoặc yêu cầu có người chơi tại chỗ. Khi chọn cũng phải xác nhận tương thích với lõi, phiên bản, và ưu tiên phương án "có thể quay lui, có thể danh sách trắng".
+**(6) Plugin kiểm soát lồng sinh quái**: không ít plugin có thể giới hạn khoảng cách kích hoạt của lồng, số lượng sinh mỗi phút hoặc yêu cầu có người chơi tại chỗ. Khi chọn cũng phải xác nhận tương thích với lõi, phiên bản, và ưu tiên phương án "có thể quay lui, có thể danh sách trắng".
 
-**（7）Thiết kế nông trại**: phòng giết + vòng khép kín thu + biến mất kịp thời, là cách giải ổn hơn mọi cấu hình. Vật rơi không rơi xuống đất thì số thực thể không mất kiểm soát.
+**(7) Thiết kế nông trại**: phòng giết + vòng khép kín thu + biến mất kịp thời, là cách giải ổn hơn mọi cấu hình. Vật rơi không rơi xuống đất thì số thực thể không mất kiểm soát.
 
-**（8）Thực thể trang trí**: giá để giáp, marker đều là thực thể. `entities.armor-stands.tick` của Paper (hiện mặc định `true`, giải thích chính thức là "tắt đi có thể ngăn giá để giáp tick, khi có nhiều giá để giáp thì tăng hiệu năng") và `entities.markers.tick` (hiện mặc định `true`, chính thức lưu ý có thể ảnh hưởng hành vi khi chúng là người ngồi của thực thể khác) có thể tắt theo nhu cầu.
+**(8) Thực thể trang trí**: giá để giáp, marker đều là thực thể. `entities.armor-stands.tick` của Paper (hiện mặc định `true`, giải thích chính thức là "tắt đi có thể ngăn giá để giáp tick, khi có nhiều giá để giáp thì tăng hiệu năng") và `entities.markers.tick` (hiện mặc định `true`, chính thức lưu ý có thể ảnh hưởng hành vi khi chúng là người ngồi của thực thể khác) có thể tắt theo nhu cầu.
 
-**（9）Cưỡng chế biến mất**: `entities.spawning.despawn-time.<entity-type>` của Paper (hiện mặc định `disabled`) có thể đặt thời gian biến mất cưỡng chế cho loại thực thể chỉ định; `entities.spawning.despawn-ranges` kiểm soát khoảng cách biến mất ngẫu nhiên (mặc định `default`, tức là dùng quy tắc bản gốc). Hai mục này đều thay đổi hành vi bản gốc, nghĩ rõ trước khi động.
+**(9) Cưỡng chế biến mất**: `entities.spawning.despawn-time.<entity-type>` của Paper (hiện mặc định `disabled`) có thể đặt thời gian biến mất cưỡng chế cho loại thực thể chỉ định; `entities.spawning.despawn-ranges` kiểm soát khoảng cách biến mất ngẫu nhiên (mặc định `default`, tức là dùng quy tắc bản gốc). Hai mục này đều thay đổi hành vi bản gốc, nghĩ rõ trước khi động.
 
 ## 4. Thực thể khối và phễu
 
