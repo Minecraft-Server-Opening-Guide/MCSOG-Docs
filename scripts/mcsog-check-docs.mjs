@@ -35,10 +35,12 @@ const enSet = new Set()
 
 for (const file of files) {
   const rel = relative(ROOT, file).split('\\').join('/')
-  const lang = rel.startsWith('docs/zh/') ? 'zh' : (rel.startsWith('docs/en/') ? 'en' : null)
-  if (!lang) {
-    problems.push(rel + ': 只能放在 docs/zh 或 docs/en 下')
+  const langMatch = rel.match(/^docs\/([A-Za-z]{2,3}(?:-[A-Za-z]{2,4})?)\//)
+  if (!langMatch) {
+    problems.push(rel + ': 只能放在 docs/<语言码>/ 下')
     continue
+  }
+  const lang = langMatch[1]
   }
 
   const raw = readFileSync(file)
