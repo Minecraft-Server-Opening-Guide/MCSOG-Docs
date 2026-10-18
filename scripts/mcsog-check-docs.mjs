@@ -41,7 +41,6 @@ for (const file of files) {
     continue
   }
   const lang = langMatch[1]
-  }
 
   const raw = readFileSync(file)
   if (raw[0] === 0xEF && raw[1] === 0xBB && raw[2] === 0xBF) problems.push(rel + ': 含 UTF-8 BOM，请去掉')
