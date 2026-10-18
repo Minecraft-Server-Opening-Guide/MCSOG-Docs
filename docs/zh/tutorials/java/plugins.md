@@ -53,7 +53,7 @@ plugins          （简写 pl）
 
 ## 四、配置文件与 YAML
 
-插件配置基本都在 `plugins/插件名/` 下，常见 `config.yml`。写 YAML 时最容易踩的坑：
+插件配置基本都在 `plugins/<plugin-name>/` 下，常见 `config.yml`。写 YAML 时最容易踩的坑：
 
 - **缩进只能用空格，不能用 Tab**（这是 YAML 报错的第一大来源）。
 - 冒号后面要有一个空格，如 `enabled: true`。
@@ -77,7 +77,7 @@ plugins          （简写 pl）
 
 | 方式 | 说明 |
 | --- | --- |
-| `/插件名 reload` 或 `/插件缩写 reload` | 多数插件支持，**首选**（如 `/tab reload`） |
+| `/<plugin-name> reload` 或 `/插件缩写 reload` | 多数插件支持，**首选**（如 `/tab reload`） |
 | 重启服务端 | 最保险，但不支持热重载的插件只能这样 |
 | `/reload`（原版指令） | **不推荐**，容易让插件状态错乱 |
 

@@ -166,7 +166,7 @@ Máy chủ mới chưa có ai, hãy đặt `-Xmx` nhỏ một chút (ví dụ 2G
 2. Đặt vào `plugins/` ở thư mục gốc máy chủ.
 3. **Khởi động lại máy chủ**.
 4. Xem đầu ra console, xác nhận plugin được nạp, không có báo lỗi.
-5. Một số plugin sau lần nạp đầu sẽ sinh thư mục cấu hình riêng `plugins/插件名/`, sửa cấu hình xong khởi động lại một lần nữa.
+5. Một số plugin sau lần nạp đầu sẽ sinh thư mục cấu hình riêng `plugins/<plugin-name>/`, sửa cấu hình xong khởi động lại một lần nữa.
 
 Về việc nạp lại:
 

@@ -33,7 +33,7 @@ draft: false
 | `stats/<uuid>.json` | 統計 | 同樣以 UUID 命名 |
 | `datapacks/` | 世界級資料包 | 與全域資料包不同，它跟著世界走 |
 | `DIM-1/`、`DIM1/` | 地獄與末地 | 老佈局；名字來自舊版數字維度 ID（-1 與 1） |
-| `dimensions/<命名空间>/<路径>/` | 自定義維度 | 1.16 起支援；26.1 起三個預設維度也搬到這裡 |
+| `dimensions/<namespace>/<path>/` | 自定義維度 | 1.16 起支援；26.1 起三個預設維度也搬到這裡 |
 | `resources.zip` | 世界自帶資源包 | 26.1 起移入 `resourcepacks/` 子目錄 |
 
 :::note 沒有 `DIM-1/` 不代表存檔有問題
@@ -48,13 +48,13 @@ draft: false
 | --- | --- | --- | --- | --- |
 | 1.2.1 – 1.13（Anvil 起） | 存檔根目錄（`region/`、`data/` 等） | `DIM-1/` | `DIM1/` | 不支援 |
 | 1.14 – 1.15 | 同上，多出 `poi/` | `DIM-1/` | `DIM1/` | 不支援 |
-| 1.16 – 26.0 | 同上，1.17 起多出 `entities/` | `DIM-1/` | `DIM1/` | `dimensions/<命名空间>/<路径>/` |
-| 26.1（快照 6）及以後 | `dimensions/minecraft/overworld/` | `dimensions/minecraft/the_nether/` | `dimensions/minecraft/the_end/` | `dimensions/<命名空间>/<路径>/` |
+| 1.16 – 26.0 | 同上，1.17 起多出 `entities/` | `DIM-1/` | `DIM1/` | `dimensions/<namespace>/<path>/` |
+| 26.1（快照 6）及以後 | `dimensions/minecraft/overworld/` | `dimensions/minecraft/the_nether/` | `dimensions/minecraft/the_end/` | `dimensions/<namespace>/<path>/` |
 
 要點：
 
 - **老佈局（1.16 – 26.0 及更早）**：兩個預設維度用固定的目錄名 `DIM-1`（地獄，維度 ID `-1`）和 `DIM1`（末地，維度 ID `1`）。它們直接放在**存檔根目錄下**，與 `region/` 平級。
-- **`dimensions/` 佈局**：1.16 引入自定義維度後，非預設維度按**資源位置**存放，即 `dimensions/<命名空间>/<路径>/`，例如 `dimensions/mydatapack/skylands/`。26.1 快照 6 重構後，**三個預設維度也改用這套佈局**，`DIM-1`/`DIM1` 不再使用。
+- **`dimensions/` 佈局**：1.16 引入自定義維度後，非預設維度按**資源位置**存放，即 `dimensions/<namespace>/<path>/`，例如 `dimensions/mydatapack/skylands/`。26.1 快照 6 重構後，**三個預設維度也改用這套佈局**，`DIM-1`/`DIM1` 不再使用。
 - 同一個 26.1 存檔裡，玩家資料也從存檔根目錄移到了 `players/` 下：`players/data/<uuid>.dat`、`players/advancements/<uuid>.json`、`players/stats/<uuid>.json`。
 
 ## 3. 服務端到底期待什麼目錄
@@ -68,7 +68,7 @@ draft: false
 | 存檔根內容：`level.dat`、`region/`、`entities/`、`poi/`、`data/`、`playerdata/`、`advancements/`、`stats/`、`datapacks/` | `world/` | 主世界，也就是 `level-name` 指向的目錄 |
 | `DIM-1/` | `world_nether/` | 地獄 |
 | `DIM1/` | `world_the_end/` | 末地 |
-| `dimensions/<命名空间>/<路径>/` | 對應維度的目錄 | 只有服務端也裝了同一個資料包/模組時才有意義 |
+| `dimensions/<namespace>/<path>/` | 對應維度的目錄 | 只有服務端也裝了同一個資料包/模組時才有意義 |
 | `session.lock` | 不復制 | 服務端啟動時自己重建 |
 | `level.dat_old` | 隨 `level.dat` 一起進 `world/` | 只是上一份 `level.dat` 的備份，留著無害 |
 
@@ -239,9 +239,9 @@ java -Xms2G -Xmx2G -jar server.jar --nogui
 ## 7. 資料包（`datapacks/`）
 
 - 世界級資料包放在世界目錄下的 `datapacks/`（單機是 `saves/<世界名>/datapacks/`，服務端是 `world/datapacks/`），它跟著世界一起走，複製世界時會一起搬過去。
-- **已啟用/已停用的列表記錄在 `level.dat` 裡**，所以搬過去之後一般無需重新啟用；用 `/datapack list` 確認，需要時用 `/datapack enable <名称>` / `/datapack disable <名称>`，改動後用 `/reload` 生效。
+- **已啟用/已停用的列表記錄在 `level.dat` 裡**，所以搬過去之後一般無需重新啟用；用 `/datapack list` 確認，需要時用 `/datapack enable <name>` / `/datapack disable <name>`，改動後用 `/reload` 生效。
 - **版本要匹配**：資料包聲明了目標 `pack_format`，服務端版本不對時會被拒絕載入或給出警告。
-- **新增維度的資料包要特別注意**：這類世界會有 `dimensions/<命名空间>/<路径>/` 目錄，只有服務端也裝了同一個資料包，那些維度才載入得出來。資料不會因此被刪除，但玩家會進不去。
+- **新增維度的資料包要特別注意**：這類世界會有 `dimensions/<namespace>/<path>/` 目錄，只有服務端也裝了同一個資料包，那些維度才載入得出來。資料不會因此被刪除，但玩家會進不去。
 - 世界自帶的資源包（老版本是 `resources.zip`，26.1 起在 `resourcepacks/` 下）不會自動發給玩家；要讓玩家看到自定義材質，需要在 `server.properties` 裡配置 `resource-pack`。
 
 ## 8. 模組存檔、跨版本與基岩版

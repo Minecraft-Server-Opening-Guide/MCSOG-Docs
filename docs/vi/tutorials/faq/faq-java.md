@@ -49,7 +49,7 @@ draft: false
 | Trong `/plugins` **đến màu đỏ cũng không có** | Máy chủ **hoàn toàn không nhận ra** nó là plugin | Kiểm tra xem có đặt vào `plugins/` không, đuôi có phải `.jar` không, có tải nhầm loại lõi không | [Nhập môn plugin](/tutorials/java/plugins) |
 | Plugin báo lỗi YAML | **Dùng Tab để thụt lề** (YAML chỉ cho phép dấu cách) | Đổi sang thụt lề bằng dấu cách | [Nhập môn plugin](/tutorials/java/plugins) |
 | Tiếng Trung trong cấu hình thành ký tự lỗi | Mã hóa tệp không phải UTF-8 | Dùng VS Code lưu thành **UTF-8** | [Nhập môn plugin](/tutorials/java/plugins) |
-| Sửa cấu hình xong không có hiệu lực | Cần nạp lại | `/插件名 reload`; cái không hỗ trợ thì chỉ có thể khởi động lại (**đừng dùng `/reload` bản gốc**) | [Nhập môn plugin](/tutorials/java/plugins) |
+| Sửa cấu hình xong không có hiệu lực | Cần nạp lại | `/<plugin-name> reload`; cái không hỗ trợ thì chỉ có thể khởi động lại (**đừng dùng `/reload` bản gốc**) | [Nhập môn plugin](/tutorials/java/plugins) |
 | Máy chủ đột nhiên lag/báo lỗi kỳ lạ | Plugin mới cài | **Tắt plugin mới cài gần nhất trước** rồi bật lần lượt để định vị | [Nhập môn plugin](/tutorials/java/plugins) |
 
 ## Năm, Kỹ thuật redstone và cơ chế

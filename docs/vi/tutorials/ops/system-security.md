@@ -90,7 +90,7 @@ sudo grep -rHv '^#\|^$' /etc/sudoers /etc/sudoers.d/
 ```
 
 :::warn Rà soát định kỳ, đừng cấu hình xong là quên
-**Quản trị viên đã nghỉ, người bạn giúp tạm thời, tài khoản thêm lúc thử nghiệm ban đầu**, đều sẽ nằm trong nhóm sudo lâu dài. Khuyến nghị định kỳ rà soát một lần, gỡ những người không còn cần (`sudo deluser 用户名 sudo` hoặc `sudo gpasswd -d 用户名 wheel`).
+**Quản trị viên đã nghỉ, người bạn giúp tạm thời, tài khoản thêm lúc thử nghiệm ban đầu**, đều sẽ nằm trong nhóm sudo lâu dài. Khuyến nghị định kỳ rà soát một lần, gỡ những người không còn cần (`sudo deluser USERNAME sudo` hoặc `sudo gpasswd -d USERNAME wheel`).
 :::
 
 ### 1.4 Vô hiệu hóa tài khoản không cần
@@ -104,8 +104,8 @@ awk -F: '$7 !~ /(nologin|false)$/ {print $1, $3, $7}' /etc/passwd
 - **Khóa tài khoản không còn cần**:
 
 ```bash
-sudo usermod -L 用户名          # Khóa mật khẩu
-sudo usermod -s /usr/sbin/nologin 用户名   # Đồng thời cấm đăng nhập
+sudo usermod -L USERNAME          # Khóa mật khẩu
+sudo usermod -s /usr/sbin/nologin USERNAME   # Đồng thời cấm đăng nhập
 ```
 
 - **Trọng tâm rà soát**: tài khoản có UID là `0` trong `/etc/passwd` **chỉ được có một cái là `root`**. Cái dư ra là cửa sau:
@@ -421,7 +421,7 @@ Gia cố không phải hành động một lần. Các kiểm tra dưới đây 
 
 - **Đừng cài môi trường desktop**. Cài desktop trên máy chủ cloud mang theo rất nhiều dịch vụ và cổng không cần thiết (xem [Chọn hệ điều hành](/tutorials/java/os)).
 - **Đừng cài dịch vụ không dùng**: FTP, Samba, dịch vụ in, cơ sở dữ liệu (nếu máy chủ không cần).
-- **Xác nhận trạng thái dịch vụ**: dịch vụ không cần nên `disable` và `stop`, chứ không phải "cài mà chưa khởi động" —— nó có thể bị chuỗi phụ thuộc kéo lên. Dùng `systemctl is-enabled 服务名` xem, dùng `sudo systemctl disable --now 服务名` vô hiệu hóa.
+- **Xác nhận trạng thái dịch vụ**: dịch vụ không cần nên `disable` và `stop`, chứ không phải "cài mà chưa khởi động" —— nó có thể bị chuỗi phụ thuộc kéo lên. Dùng `systemctl is-enabled <service-name>` xem, dùng `sudo systemctl disable --now <service-name>` vô hiệu hóa.
 
 ### 6.3 Tra nhanh một trang
 

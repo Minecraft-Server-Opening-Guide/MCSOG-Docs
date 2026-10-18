@@ -159,7 +159,7 @@ systemctl enable mcsm-daemon.service
 | 7 | インスタンスのコンソールで「起動」を押し、ログを観察する | 初回起動では通常「設定ファイル」で `eula.txt` を `eula=true` に変える必要がある |
 | 8 | 共同管理者用のサブアカウントを作り、必要なインスタンスだけを認可する | 「すべてのインスタンス + ファイル管理」は与えないこと |
 
-公式ドキュメントはさらに、インスタンスのデータは既定で `<Daemon インストール先>/data/InstanceData/<インスタンス ID>/`、インスタンスの設定は `<Daemon インストール先>/data/InstanceConfig/<インスタンス ID>.json`（起動コマンドなどの設定を含む）にあると説明しています。**この 2 か所は「失うと再構築が難しい」ものなので、必ずバックアップの対象に入れてください。**
+公式ドキュメントはさらに、インスタンスのデータは既定で `<Daemon インストール先>/data/InstanceData/<instance-id>/`、インスタンスの設定は `<Daemon インストール先>/data/InstanceConfig/<instance-id>.json`（起動コマンドなどの設定を含む）にあると説明しています。**この 2 か所は「失うと再構築が難しい」ものなので、必ずバックアップの対象に入れてください。**
 
 :::warn 起動コマンドのメモリ引数に欲張らない
 公式ドキュメントはとくに警告しています。**マシンのメモリをすべて JVM に割り当てないでください**。OS 自身も資源を必要とし、さもないとマシン全体が落ちることがあります。`-Xmx` はマシンの物理メモリより明らかに小さくしてください。
@@ -332,7 +332,7 @@ sudo ufw status verbose
 :::warn パスは公式ドキュメントに従ってください
 パネルごとにデータディレクトリの位置が違います。**必ず公式ドキュメントで確認してからバックアップスクリプトに書いてください**。推測でパスを書かないこと。
 
-MCSManager を例にすると、公式ドキュメントが示す位置は、Web の設定が `<Web インストール先>/data/SystemConfig/config.json`、デーモンの設定が `<Daemon インストール先>/data/Config/global.json`、インスタンスのデータが `<Daemon インストール先>/data/InstanceData/<インスタンス ID>/`、インスタンスの設定が `<Daemon インストール先>/data/InstanceConfig/<インスタンス ID>.json` です。公式の「更新とリセット」ドキュメントはさらに直接、**アップグレードの前に `web/data` と `daemon/data` の 2 つのディレクトリを別の場所へバックアップする**ことを勧めています。
+MCSManager を例にすると、公式ドキュメントが示す位置は、Web の設定が `<Web インストール先>/data/SystemConfig/config.json`、デーモンの設定が `<Daemon インストール先>/data/Config/global.json`、インスタンスのデータが `<Daemon インストール先>/data/InstanceData/<instance-id>/`、インスタンスの設定が `<Daemon インストール先>/data/InstanceConfig/<instance-id>.json` です。公式の「更新とリセット」ドキュメントはさらに直接、**アップグレードの前に `web/data` と `daemon/data` の 2 つのディレクトリを別の場所へバックアップする**ことを勧めています。
 :::
 
 バックアップの提案：

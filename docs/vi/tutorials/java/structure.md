@@ -35,7 +35,7 @@ Dưới đây lấy máy chủ plugin (các loại như Paper / Purpur) làm ví
 | --- | --- |
 | `server.properties` | **Cấu hình máy chủ cơ bản nhất** (cổng, xác thực bản quyền, khoảng cách hiển thị…) |
 | `eula.txt` | Tệp đồng ý điều khoản, phải là `eula=true` |
-| `核心名.jar` | Bản thân lõi máy chủ |
+| `<core-name>.jar` | Bản thân lõi máy chủ |
 | `ops.json` | Danh sách OP (quản trị viên) |
 | `whitelist.json` | Danh sách trắng |
 | `banned-players.json` / `banned-ips.json` | Danh sách cấm |

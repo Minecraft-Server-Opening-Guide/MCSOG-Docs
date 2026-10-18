@@ -181,7 +181,7 @@ RCON 的设计目标是本机或可信网络内的远程管理，**协议本身�
 | --- | --- | --- | --- |
 | 服务端本体配置 | `server.properties` | 服务端首次启动时生成 | 键名写错会被忽略或回落默认值，**改动需要重启生效** |
 | 服务端分支配置 | `spigot.yml`、`bukkit.yml`、`paper-world-defaults.yml` 等 | 对应分支首次启动时生成 | 影响机制与性能，**生电场景下尤其敏感** |
-| 插件配置 | `plugins/<插件名>/config.yml` 等 | 插件首次加载时生成 | 格式错误会导致插件加载失败，**原因通常写在日志里** |
+| 插件配置 | `plugins/<plugin-name>/config.yml` 等 | 插件首次加载时生成 | 格式错误会导致插件加载失败，**原因通常写在日志里** |
 
 一条实用经验：**改任何配置文件之前先复制一份**。配置文件是纯文本，体积很小，备份成本几乎为零，但改坏之后的排查成本很高。备份范围与回滚流程见 [备份与恢复](/tutorials/java/backup)。
 
@@ -319,10 +319,10 @@ Nukkit、PMMP、PNX 都**不是官方服务端**，对原版机制的还原程�
 | 磁盘健康 | `smartctl -a /dev/sdX` | 通电时间、写入量、重分配扇区等属性；命令来自 `smartmontools` |
 | 网络连接概况 | `ss -s` | 各类 socket 的总数；**连接数异常增长往往先于内存耗尽出现** |
 | 监听端口 | `ss -lntp` / `ss -lunp` | TCP / UDP 分别在听哪些端口、由哪个进程持有 |
-| 服务状态 | `systemctl status <服务名>` | 是否 active、最近几次退出、最近日志片段 |
-| 服务日志 | `journalctl -u <服务名>` | 用 `--since "1 hour ago"` 缩小范围；**取证时加 `--utc`** |
+| 服务状态 | `systemctl status <service-name>` | 是否 active、最近几次退出、最近日志片段 |
+| 服务日志 | `journalctl -u <service-name>` | 用 `--since "1 hour ago"` 缩小范围；**取证时加 `--utc`** |
 | HTTP 可用性 | `curl -s -o /dev/null -w '%{http_code}' <URL>` | 只输出状态码，适合塞进脚本做判断 |
-| UPS 状态 | `upsc <ups名>` | `ups.status` 为 `OL` 表示市电、`OB` 表示电池供电；变量名以 NUT 文档与机型为准 |
+| UPS 状态 | `upsc <ups-name>` | `ups.status` 为 `OL` 表示市电、`OB` 表示电池供电；变量名以 NUT 文档与机型为准 |
 
 :::tip 别只看单次结果
 `free -h` 和 `df -h` 是**快照**，单次结果几乎说明不了问题。真正有用的是**趋势**：磁盘是不是每周都在涨、内存是不是每天都在爬。趋势要靠定时采集，见 [监控与告警](/tutorials/ops/monitoring)。

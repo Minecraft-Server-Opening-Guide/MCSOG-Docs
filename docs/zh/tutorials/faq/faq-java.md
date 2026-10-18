@@ -49,7 +49,7 @@ draft: false
 | `/plugins` 里**连红色都没有** | 服务端**根本没识别**它是插件 | 检查是否放进 `plugins/`、后缀是否 `.jar`、是否下错核心类型 | [插件入门](/tutorials/java/plugins) |
 | 插件报 YAML 错误 | **用了 Tab 缩进**（YAML 只允许空格） | 改成空格缩进 | [插件入门](/tutorials/java/plugins) |
 | 配置里中文变乱码 | 文件编码不是 UTF-8 | 用 VS Code 另存为 **UTF-8** | [插件入门](/tutorials/java/plugins) |
-| 改完配置没生效 | 需要重载 | `/插件名 reload`；不支持的只能重启（**别用原版 `/reload`**） | [插件入门](/tutorials/java/plugins) |
+| 改完配置没生效 | 需要重载 | `/<plugin-name> reload`；不支持的只能重启（**别用原版 `/reload`**） | [插件入门](/tutorials/java/plugins) |
 | 服务器突然卡顿/报怪错 | 新装的插件 | **先禁用最近新装的插件**再逐个启用定位 | [插件入门](/tutorials/java/plugins) |
 
 ## 五、生电与机制

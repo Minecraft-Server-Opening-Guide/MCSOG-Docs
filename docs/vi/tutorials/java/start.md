@@ -39,7 +39,7 @@ java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 pause
 ```
 
-Đổi `核心名.jar` thành tên tệp thực tế của bạn (ví dụ `paper-1.21.4.jar`).
+Đổi `<core-name>.jar` thành tên tệp thực tế của bạn (ví dụ `paper-1.21.4.jar`).
 
 - `cd /d "%~dp0"` cố định thư mục làm việc là thư mục chứa script, tránh việc bấm đúp không tìm thấy tệp lõi.
 - `--nogui` nghĩa là không mở cửa sổ đồ họa sẵn có của máy chủ, toàn bộ đầu ra đi qua dòng lệnh (`nogui` là bí danh cũ của nó, hai cái tương đương).

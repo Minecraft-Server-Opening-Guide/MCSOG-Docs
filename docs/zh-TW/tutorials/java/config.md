@@ -81,7 +81,7 @@ draft: false
 1. **先停服**再改 `server.properties`（改世界相關配置時尤其要停，避免存檔寫入衝突）。
 2. 改完**先備份原檔案**，出問題能立刻還原。
 3. 重啟後看 `logs/latest.log` 確認沒有配置報錯。
-4. 插件配置在 `plugins/插件名/config.yml`，多數支援 `/插件名 reload` 熱過載——但**服務端自身的配置不支援**。
+4. 插件配置在 `plugins/<plugin-name>/config.yml`，多數支援 `/<plugin-name> reload` 熱過載——但**服務端自身的配置不支援**。
 
 ## 下一步
 

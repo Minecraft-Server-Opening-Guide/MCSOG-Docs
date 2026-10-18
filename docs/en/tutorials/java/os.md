@@ -13,8 +13,6 @@ draft: false
 
 For the same job, **both Linux and Windows can run a Minecraft server**, and they run the same server program. The difference is not whether it works, but **stability, resource usage and long-term maintenance cost**.
 
-## The Short Answer
-
 | Your situation | Recommendation |
 | --- | --- |
 | A cloud server for long-term hosting, prioritising stability and low overhead | **Linux** (Ubuntu or Debian) |

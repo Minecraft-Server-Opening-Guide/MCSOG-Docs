@@ -257,7 +257,7 @@ sudo systemctl reload nginx
 
 | | HTTP-01 | DNS-01 |
 | --- | --- | --- |
-| كيف يُثبت | وضع ملف بمحتوى محدّد في `http://النطاق/.well-known/acme-challenge/<token>` | إضافة سجل TXT بمحتوى محدّد في `_acme-challenge.النطاق` |
+| كيف يُثبت | وضع ملف بمحتوى محدّد في `http://domain/.well-known/acme-challenge/<token>` | إضافة سجل TXT بمحتوى محدّد في `_acme-challenge.domain` |
 | متطلبات الشبكة | **المنفذ 80 يجب أن يكون متاحًا من الإنترنت العام** (ويمكن متابعة التحويل) | لا يحتاج أي منفذ دخول |
 | هل يصدر شهادة شاملة | **لا** | **نعم** |
 | صعوبة الأتمتة | منخفضة (webroot / ملحق nginx يكفي) | تحتاج بيانات اعتماد API لمزوّد DNS |
@@ -340,11 +340,11 @@ sudo certbot certificates
 ```bash
 # المفتاح الخاص للمالك فقط بالقراءة؛ والدليل يُشدَّد كذلك
 sudo chmod 700 /etc/letsencrypt/archive /etc/letsencrypt/live
-sudo chmod 600 /etc/letsencrypt/archive/<النطاق>/privkey*.pem
-sudo chown root:root /etc/letsencrypt/archive/<النطاق>/privkey*.pem
+sudo chmod 600 /etc/letsencrypt/archive/<domain>/privkey*.pem
+sudo chown root:root /etc/letsencrypt/archive/<domain>/privkey*.pem
 
 # تحقّق: لا يجوز أن يكون مقروءًا للمجموعة/الآخرين
-ls -l /etc/letsencrypt/live/<النطاق>/
+ls -l /etc/letsencrypt/live/<domain>/
 ```
 
 والنقاط المهمة:
@@ -419,7 +419,7 @@ sudo openssl x509 -in /etc/letsencrypt/live/panel.example.com/fullchain.pem -noo
 | تُستخدم السلسلة الكاملة | انظر `ssl_certificate` في إعداد nginx | يشير إلى `fullchain.pem`، لا إلى `cert.pem` وحدها |
 | نسخة البروتوكول صحيحة | افحص بالمتصفّح أو بـ`openssl s_client` | التفاوض على TLS 1.2 / 1.3 |
 | HTTP يحوّل إلى HTTPS | افتح بـ`http://` مرة | تحويل 301/308، وبلا تنبيه محتوى مختلط |
-| مسار التحقّق متاح | `curl -I http://النطاق/.well-known/acme-challenge/<ملف-اختبار>` | يعيد 200 (ولا يبتلعه التحويل) |
+| مسار التحقّق متاح | `curl -I http://domain/.well-known/acme-challenge/<test-file>` | يعيد 200 (ولا يبتلعه التحويل) |
 | مهمة التجديد التلقائي تعمل | `systemctl list-timers` أو انظر `/etc/cron.d/` | مهمة تجديد واحدة فقط |
 | بروفة التجديد نجحت | `certbot renew --dry-run` | بلا أخطاء |
 | إعادة التحميل بعد التجديد | افحص خطّاف النشر | إعادة تحميل nginx فعلًا بعد نجاح التجديد |

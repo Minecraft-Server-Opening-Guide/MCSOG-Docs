@@ -56,7 +56,11 @@ Check for packages that **conflict** with the official ones (`docker.io`, `docke
 sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc podman-docker containerd runc 2>/dev/null | cut -f1)
 ```
 
-`dpkg --get-selections` lists installed packages, `cut -f1` keeps the names, `apt remove` uninstalls them. If Docker was never installed this prints "unable to locate package" for each name — **that is expected**.
+`dpkg --get-selections` lists installed packages, `cut -f1` keeps the names, `apt remove` uninstalls them.
+
+:::note If Docker was never installed
+This prints "unable to locate package" for each name — **that is expected** and can be ignored.
+:::
 
 ### 2.2 Install the prerequisites
 

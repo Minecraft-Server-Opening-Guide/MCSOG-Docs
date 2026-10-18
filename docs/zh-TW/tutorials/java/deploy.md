@@ -77,7 +77,7 @@ remote_port = 25565
 
 有網域後玩家不用記 IP：
 
-- **A 記錄**：`mc.你的域名.com` → 伺服器公網 IPv4。
+- **A 記錄**：`mc.your-domain.com` → 伺服器公網 IPv4。
 - **SRV 記錄**：想省掉玩家輸入埠，可用 SRV 把 `_minecraft._tcp` 指向你的實際埠。這樣玩家只填網域就能進。
 
 注意：**國內伺服器解析網域通常需要備案**，海外伺服器則不需要。
@@ -102,7 +102,7 @@ remote_port = 25565
 
 Minecraft 的預設埠是 `25565`。如果服務跑在別的埠，或者根本在另一台機器上，玩家就得輸入 `mc.example.com:25566` 這種帶埠的位址。**SRV 記錄就是用來省掉埠的**：它告訴客戶端「這個網域對應的 Minecraft 服務其實在哪個主機、哪個埠」，玩家只填網域就能進。
 
-Java 版的 SRV 查詢名稱是固定的 `_minecraft._tcp.<你的域名>`。寫在區域檔案裡長這樣：
+Java 版的 SRV 查詢名稱是固定的 `_minecraft._tcp.<your-domain>`。寫在區域檔案裡長這樣：
 
 ```dns
 ; 玩家輸入 mc.example.com，服務實際跑在 node1.example.com 的 25566 埠
@@ -161,11 +161,11 @@ DNS 修改不是立刻生效的，要等舊 TTL 過期。排查時可以先用 `
 
 | 現象 | 原因 | 檢查方法 |
 | --- | --- | --- |
-| 用 IP 能連，用網域連不上 | SRV 的 `target` 解析不了，或 `port` 填錯 | `dig +short SRV _minecraft._tcp.你的域名`，再 `dig +short A` 查 target |
+| 用 IP 能連，用網域連不上 | SRV 的 `target` 解析不了，或 `port` 填錯 | `dig +short SRV _minecraft._tcp.your-domain`，再 `dig +short A` 查 target |
 | 能連上，但進的是另一個伺服器 | 記錄是舊的，或改完還沒等 TTL 過期 | 對比 `dig` 結果與實際 IP / 埠；必要時先降 TTL 再改 |
 | 基岩版玩家用短位址進不來 | 基岩版不支援 SRV | 讓玩家改填 `主机:端口`，或另備一條直連網域 |
 | 記錄加了但毫無變化 | TTL 還沒過期，或改錯了區域（比如改的是 `example.com`，玩家查的卻是 `mc.example.com`） | 直接查權威伺服器；確認記錄加在正確的 zone 下 |
-| 網域解析正常但連不上 | DNS 沒問題，是防火牆或安全組沒放行 | 從外部機器用 `telnet 域名 端口` 或 `nc -vz 域名 端口` 測試 |
+| 網域解析正常但連不上 | DNS 沒問題，是防火牆或安全組沒放行 | 從外部機器用 `telnet <domain> <port>` 或 `nc -vz <domain> <port>` 測試 |
 
 ### 代理與面板的額外記錄
 

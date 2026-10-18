@@ -49,7 +49,7 @@ A roundup of the most common errors and pitfalls at every stage of running a Jav
 | **Not even red** in `/plugins` | The server **never recognized** it as a plugin | Check that it is in `plugins/`, that the extension is `.jar`, and that you did not download the build for the wrong server type | [Plugin basics](/tutorials/java/plugins) |
 | Plugin reports a YAML error | **Tab indentation** (YAML allows spaces only) | Re-indent with spaces | [Plugin basics](/tutorials/java/plugins) |
 | Non-ASCII text turns into mojibake in configs | The file is not UTF-8 encoded | Re-save as **UTF-8** in VS Code | [Plugin basics](/tutorials/java/plugins) |
-| Config changes have no effect | The plugin needs a reload | `/插件名 reload`; if the plugin doesn't support it, restart instead (do **not** use vanilla `/reload`) | [Plugin basics](/tutorials/java/plugins) |
+| Config changes have no effect | The plugin needs a reload | `/<plugin-name> reload`; if the plugin doesn't support it, restart instead (do **not** use vanilla `/reload`) | [Plugin basics](/tutorials/java/plugins) |
 | The server suddenly lags or throws odd errors | A newly installed plugin | **Disable the most recently installed plugins first**, then re-enable them one by one to isolate the culprit | [Plugin basics](/tutorials/java/plugins) |
 
 ## 5. Technical Minecraft and mechanics

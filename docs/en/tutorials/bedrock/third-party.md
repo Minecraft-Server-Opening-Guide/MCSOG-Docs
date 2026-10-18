@@ -27,7 +27,7 @@ Nukkit is "the Bukkit of Bedrock": **written in Java**, with a native plugin sys
 
 **Preparation**: the Nukkit family consists of Java programs, so **you need Java installed** (similar to Java Edition; see the Java section of "Environment Preparation (Windows and Linux)").
 
-**Getting started**: download the core jar → put it in a directory → write a startup script (`java -jar core-name.jar`) → the first launch generates the configuration files → install plugins into `plugins/`.
+**Getting started**: download the core jar → put it in a directory → write a startup script (`java -jar <core-name>.jar`) → the first launch generates the configuration files → install plugins into `plugins/`.
 
 ### Why PowerNukkitX Is Worth Choosing
 

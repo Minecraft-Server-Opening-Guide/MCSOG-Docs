@@ -166,7 +166,7 @@ A new server with no players should start with a modest `-Xmx` (2G, say) and be 
 2. Put it in the server root's `plugins/` directory.
 3. **Restart the server.**
 4. Read the console output and confirm the plugin loaded without errors.
-5. Some plugins generate their own configuration directory on first load, `plugins/<plugin name>/`; edit it and restart once more.
+5. Some plugins generate their own configuration directory on first load, `plugins/<plugin-name>/`; edit it and restart once more.
 
 On reloading:
 

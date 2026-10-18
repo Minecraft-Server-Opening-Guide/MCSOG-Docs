@@ -299,7 +299,7 @@ The four dependencies that turn up most often are **Vault, PlaceholderAPI, Proto
 ### 3.2 Procedure
 
 1. **Stop the server** (or accept the documented limits of hot reloading, see 3.5).
-2. **Back up** `plugins/<plugin name>/`, plus the database for any plugin that uses one.
+2. **Back up** `plugins/<plugin-name>/`, plus the database for any plugin that uses one.
 3. **Rename the old jar** with a version suffix so it stays on disk.
 4. **Install the new jar.**
 5. **Start the server and read the console.**
@@ -479,7 +479,7 @@ mcdreforged -V
 | Target | Before | Verify after | Rollback |
 | --- | --- | --- | --- |
 | **Server core** | Full backup (world, config, plugins); confirm the Java version the target release needs; rename the old jar with a version suffix; read the changelog | No errors in the console; `/plugins` healthy; `/version` correct; join and move around; watch for 10 to 30 minutes | Stop the server and restore the old jar; if the new version has already started once, **restore the world from backup as well** |
-| **Plugins** | Back up `plugins/<plugin name>/` and any database; confirm supported server version, Java version, and dependencies; read the changelog for breaking changes | No red entries in `/plugins`; no `NoSuchMethodError` and similar in the console; the plugin's own commands work; related features exercised | Stop the server, rename the old `.jar.bak` back, and restore the old config copy |
+| **Plugins** | Back up `plugins/<plugin-name>/` and any database; confirm supported server version, Java version, and dependencies; read the changelog for breaking changes | No red entries in `/plugins`; no `NoSuchMethodError` and similar in the console; the plugin's own commands work; related features exercised | Stop the server, rename the old `.jar.bak` back, and restore the old config copy |
 | **Mods and loader** | Back up `mods/` and `config/`; confirm the loader supports the target game version; list the target version of every mod | Startup without a crash; no mod class errors in the log; the client connects without missing-mod warnings | Restore the old loader and the old `mods/` directory; roll the client back to match |
 | **MCDR** | Record the current version (`mcdreforged -V`); back up `config.yml` and the plugin directory; read the migration guide for a major version | `mcdreforged -V` shows the new version; MCDR starts and brings the server up; MCDR plugins load | `pip install mcdreforged==<previous version>` (confirm the number on PyPI); roll the MCDR plugins back too |
 | **OS packages** | Record current versions; confirm you are outside the maintenance window; take a system snapshot if you can | The server starts by itself after a reboot; **confirm Java was not upgraded along with everything else**; ports and firewall rules unchanged | Use the distribution's version rollback or the system snapshot; hold the Java package where needed (for example `apt-mark hold`) |

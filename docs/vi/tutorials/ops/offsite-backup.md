@@ -375,7 +375,7 @@ Nguyên tắc: **"phủ được khoảng thời gian dài nhất cần để b�
 | Phương án | Dung lượng chiếm |
 | --- | --- |
 | Mỗi lần một `tar.gz` riêng, giữ `N` bản | Khoảng `N x 0.5W` |
-| Snapshot liên kết cứng `--link-dest` của rsync | Khoảng `0.5W + 变化量 x (N-1)`, **lượng thay đổi mới là mấu chốt** |
+| Snapshot liên kết cứng `--link-dest` của rsync | Khoảng `0.5W + delta x (N-1)`, **lượng thay đổi mới là mấu chốt** |
 | Snapshot khử trùng lặp của restic | Cùng bậc hoặc tiết kiệm hơn snapshot liên kết cứng, tùy độ mịn khử trùng lặp |
 
 Ví dụ: thế giới 5 GB, giữ 14 bản lưu trữ riêng, với tỷ lệ nén 0.5 cần khoảng `14 x 2.5 = 35 GB`; đổi sang snapshot `--link-dest`, nếu mỗi ngày thay đổi 100 MB thì khoảng `2.5 GB + 13 x 0.1 GB = 3.8 GB`. **Chênh lệch rất lớn, đáng để đổi sang phương án snapshot.**

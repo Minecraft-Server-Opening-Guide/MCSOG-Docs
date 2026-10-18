@@ -35,11 +35,11 @@ C:\mcserver\survival\        （Linux 下对应 /opt/mcserver/survival/）
 ```bat
 @echo off
 cd /d "%~dp0"
-java -Xms2G -Xmx2G -jar 核心名.jar --nogui
+java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 pause
 ```
 
-把 `核心名.jar` 換成你實際的檔名（例如 `paper-1.21.4.jar`）。
+把 `<core-name>.jar` 換成你實際的檔名（例如 `paper-1.21.4.jar`）。
 
 - `cd /d "%~dp0"` 讓工作目錄固定為腳本所在目錄，避免雙擊時找不到核心檔案。
 - `--nogui` 表示不開啟伺服器自帶的圖形視窗，全部輸出走命令列（`nogui` 是它的舊別名，兩者等價）。
@@ -50,7 +50,7 @@ pause
 ```bash
 #!/bin/sh
 cd "$(dirname "$0")"
-exec java -Xms2G -Xmx2G -jar 核心名.jar --nogui
+exec java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 ```
 
 賦予執行權限後執行：
@@ -109,7 +109,7 @@ Done (6.554s)! For help, type "help"
 Windows 的 `.bat` 雙擊執行時，如果伺服器崩潰，視窗會**一閃而過**，你什麼都看不到。在腳本**最後一行**加 `pause` 即可：
 
 ```bat
-java -Xms2G -Xmx2G -jar 核心名.jar --nogui
+java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 pause
 ```
 

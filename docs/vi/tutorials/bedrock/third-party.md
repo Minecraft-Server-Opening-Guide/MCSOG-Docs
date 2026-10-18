@@ -27,7 +27,7 @@ Nukkit là "Bukkit của Bedrock Edition": **viết bằng Java**, có hệ th�
 
 **Chuẩn bị**: họ Nukkit là chương trình Java, **cần cài Java** (tương tự Java Edition, xem mục Java trong "Chuẩn bị môi trường (Windows và Linux)").
 
-**Bắt đầu**: tải lõi jar → đặt vào thư mục → viết script khởi động (`java -jar 核心名.jar`) → lần chạy đầu sinh tệp cấu hình → cài plugin vào `plugins/`.
+**Bắt đầu**: tải lõi jar → đặt vào thư mục → viết script khởi động (`java -jar <core-name>.jar`) → lần chạy đầu sinh tệp cấu hình → cài plugin vào `plugins/`.
 
 ### Vì sao PowerNukkitX đáng chọn
 

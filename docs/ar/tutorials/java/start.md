@@ -35,11 +35,11 @@ C:\mcserver\survival\        (في Linux المقابل /opt/mcserver/survival/)
 ```bat
 @echo off
 cd /d "%~dp0"
-java -Xms2G -Xmx2G -jar 核心名.jar --nogui
+java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 pause
 ```
 
-استبدل `核心名.jar` باسم ملفك الفعلي (مثل `paper-1.21.4.jar`).
+استبدل `<core-name>.jar` باسم ملفك الفعلي (مثل `paper-1.21.4.jar`).
 
 - `cd /d "%~dp0"` يثبّت دليل العمل على دليل السكربت، ليجد ملف النواة عند النقر المزدوج.
 - `--nogui` يعني عدم فتح النافذة الرسومية المرفقة بالخادم، ويخرج كل شيء إلى سطر الأوامر (`nogui` اسم قديم مكافئ له).
@@ -50,7 +50,7 @@ pause
 ```bash
 #!/bin/sh
 cd "$(dirname "$0")"
-exec java -Xms2G -Xmx2G -jar 核心名.jar --nogui
+exec java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 ```
 
 امنحه صلاحية التنفيذ ثم شغّله:
@@ -109,7 +109,7 @@ Done (6.554s)! For help, type "help"
 عند تشغيل ملف `.bat` في Windows بالنقر المزدوج، إذا انهار الخادم **تمر النافذة سريعًا** فلا ترى شيئًا. أضف `pause` في **آخر سطر** من السكربت:
 
 ```bat
-java -Xms2G -Xmx2G -jar 核心名.jar --nogui
+java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
 pause
 ```
 

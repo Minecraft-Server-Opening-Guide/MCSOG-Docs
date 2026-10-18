@@ -90,7 +90,7 @@ sudo grep -rHv '^#\|^$' /etc/sudoers /etc/sudoers.d/
 ```
 
 :::warn 定期复查，而不是配完就忘
-**离职的管理、临时帮忙的朋友、早期测试时加的账号**，都会长期留在 sudo 组里。建议每隔一段时间复查一次，把不再需要的人移除（`sudo deluser 用户名 sudo` 或 `sudo gpasswd -d 用户名 wheel`）。
+**离职的管理、临时帮忙的朋友、早期测试时加的账号**，都会长期留在 sudo 组里。建议每隔一段时间复查一次，把不再需要的人移除（`sudo deluser USERNAME sudo` 或 `sudo gpasswd -d USERNAME wheel`）。
 :::
 
 ### 1.4 停用不需要的账号
@@ -104,8 +104,8 @@ awk -F: '$7 !~ /(nologin|false)$/ {print $1, $3, $7}' /etc/passwd
 - **锁定不再需要的账号**：
 
 ```bash
-sudo usermod -L 用户名          # 锁定密码
-sudo usermod -s /usr/sbin/nologin 用户名   # 同时禁止登录
+sudo usermod -L USERNAME          # 锁定密码
+sudo usermod -s /usr/sbin/nologin USERNAME   # 同时禁止登录
 ```
 
 - **重点排查**：`/etc/passwd` 里 UID 为 `0` 的账号**只能有 `root` 一个**。多出来的就是后门：
@@ -421,7 +421,7 @@ ReadWritePaths=/opt/mcserver/survival
 
 - **不装桌面环境**。云服务器上装桌面会带来大量不必要的服务与端口（见 [操作系统的选择](/tutorials/java/os)）。
 - **不装用不到的服务**：FTP、Samba、打印服务、数据库（如果服务端用不到）。
-- **确认服务状态**：不需要的服务应该 `disable` 且 `stop`，而不是"装着但没启动"——它可能被依赖链拉起来。用 `systemctl is-enabled 服务名` 查看，用 `sudo systemctl disable --now 服务名` 停用。
+- **确认服务状态**：不需要的服务应该 `disable` 且 `stop`，而不是"装着但没启动"——它可能被依赖链拉起来。用 `systemctl is-enabled <service-name>` 查看，用 `sudo systemctl disable --now <service-name>` 停用。
 
 ### 6.3 一页速查
 

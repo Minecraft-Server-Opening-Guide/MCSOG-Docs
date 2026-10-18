@@ -27,7 +27,7 @@ Nukkit 是"基岩版的 Bukkit"：**Java 编写**、有原生插件系统、配�
 
 **准备**：Nukkit 系是 Java 程序，**需要装 Java**（与 Java 版类似，见「环境准备（Windows 与 Linux）」的 Java 一节）。
 
-**上手**：下载核心 jar → 放进目录 → 写启动脚本（`java -jar 核心名.jar`）→ 首次启动生成配置文件 → 装插件到 `plugins/`。
+**上手**：下载核心 jar → 放进目录 → 写启动脚本（`java -jar <core-name>.jar`）→ 首次启动生成配置文件 → 装插件到 `plugins/`。
 
 ### PowerNukkitX 为什么值得选
 

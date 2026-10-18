@@ -399,7 +399,7 @@ whois 203.0.113.10
 **"Tôi bị tấn công rồi, xử lý nhanh đi" gần như sẽ không nhận được phản hồi hiệu quả.** Một ticket hiệu quả phải giúp đối phương trong 30 giây phán đoán được nên làm gì:
 
 ```text
-Chủ đề: [DDoS/tấn công] Instance <实例ID/IP> đang bị tấn công, yêu cầu hỗ trợ và dữ liệu lưu lượng
+Chủ đề: [DDoS/tấn công] Instance <instance-id>/<ip> đang bị tấn công, yêu cầu hỗ trợ và dữ liệu lưu lượng
 
 1. Tài sản bị ảnh hưởng
    - IP công cộng: 203.0.113.10

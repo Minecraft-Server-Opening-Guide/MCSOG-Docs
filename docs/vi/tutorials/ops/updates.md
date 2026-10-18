@@ -298,7 +298,7 @@ Mấy phụ thuộc được dùng nhiều nhất là **Vault, PlaceholderAPI, P
 ### 3.2 Quy trình
 
 1. **Dừng máy chủ** (hoặc chấp nhận rõ ràng giới hạn năng lực của hot reload, xem 3.5).
-2. **Sao lưu** thư mục `plugins/<插件名>/`; plugin có liên quan đến cơ sở dữ liệu thì sao lưu cả cơ sở dữ liệu.
+2. **Sao lưu** thư mục `plugins/<plugin-name>/`; plugin có liên quan đến cơ sở dữ liệu thì sao lưu cả cơ sở dữ liệu.
 3. **Đổi tên jar cũ để giữ lại**, thêm số phiên bản.
 4. **Đặt jar mới vào**.
 5. **Khởi động, xem console**.
@@ -478,7 +478,7 @@ mcdreforged -V
 | Đối tượng cập nhật | Trước khi cập nhật | Kiểm chứng sau khi cập nhật | Cách quay lui |
 | --- | --- | --- | --- |
 | **Lõi máy chủ** | Sao lưu đầy đủ (thế giới + cấu hình + plugin); xác nhận Java mà phiên bản đích yêu cầu; đổi tên jar cũ để giữ lại; đọc nhật ký cập nhật | Console không báo lỗi; `/plugins` bình thường; `/version` đúng; tự vào máy chủ đi một vòng; quan sát 10 đến 30 phút | Dừng máy chủ, đổi về jar cũ; nếu phiên bản mới đã khởi động thì **quay lui cả thế giới bằng bản sao lưu** |
-| **Plugin** | Sao lưu `plugins/<插件名>/` và cơ sở dữ liệu; xác nhận phiên bản máy chủ, phiên bản Java và phụ thuộc được hỗ trợ; đọc thay đổi phá vỡ tương thích trong nhật ký cập nhật | `/plugins` không có chữ đỏ; console không có ngoại lệ như `NoSuchMethodError`; lệnh của chính plugin dùng được; bấm thử các tính năng liên quan | Dừng máy chủ, đổi `.jar.bak` cũ về tên gốc; cấu hình cũng quay lui về bản sao cũ |
+| **Plugin** | Sao lưu `plugins/<plugin-name>/` và cơ sở dữ liệu; xác nhận phiên bản máy chủ, phiên bản Java và phụ thuộc được hỗ trợ; đọc thay đổi phá vỡ tương thích trong nhật ký cập nhật | `/plugins` không có chữ đỏ; console không có ngoại lệ như `NoSuchMethodError`; lệnh của chính plugin dùng được; bấm thử các tính năng liên quan | Dừng máy chủ, đổi `.jar.bak` cũ về tên gốc; cấu hình cũng quay lui về bản sao cũ |
 | **Mod và loader** | Sao lưu `mods/` và `config/`; xác nhận loader hỗ trợ phiên bản game đích; liệt kê phiên bản đích của từng mod | Khởi động không sập; nhật ký không có lỗi lớp của mod; client vào được và không báo thiếu mod | Đổi về loader cũ và thư mục `mods/` cũ; client cũng quay lui theo |
 | **MCDR** | Ghi lại phiên bản hiện tại (`mcdreforged -V`); sao lưu `config.yml` và thư mục plugin; phiên bản lớn thì đọc hướng dẫn chuyển đổi trước | `mcdreforged -V` hiện phiên bản mới; MCDR khởi động bình thường và khởi động được máy chủ; plugin MCDR tải bình thường | `pip install mcdreforged==<phiên bản cũ>` (số phiên bản lấy PyPI làm chuẩn); plugin MCDR quay lui theo |
 | **Gói phần mềm hệ điều hành** | Ghi lại phiên bản hiện tại; xác nhận không nằm trong khung bảo trì; có điều kiện thì tạo snapshot hoặc ảnh hệ thống trước | Sau khi khởi động lại máy chủ tự lên được; **xác nhận Java không bị nâng theo**; cổng và quy tắc tường lửa không đổi | Dùng tính năng hạ phiên bản của bản phân phối hoặc snapshot hệ thống; khi cần thì ghim gói Java (ví dụ `apt-mark hold`) |

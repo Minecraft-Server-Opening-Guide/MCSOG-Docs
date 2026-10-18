@@ -257,7 +257,7 @@ ACME 需要證明"你控制這個網域"。兩種主流方式：
 
 | | HTTP-01 | DNS-01 |
 | --- | --- | --- |
-| 怎麼證明 | 在 `http://域名/.well-known/acme-challenge/<token>` 放一個指定內容的檔案 | 在 `_acme-challenge.域名` 新增一條指定內容的 TXT 記錄 |
+| 怎麼證明 | 在 `http://domain/.well-known/acme-challenge/<token>` 放一個指定內容的檔案 | 在 `_acme-challenge.domain` 新增一條指定內容的 TXT 記錄 |
 | 網路要求 | **80 埠必須能從公網訪問**（可跟隨跳轉） | 不需要任何入站埠 |
 | 能否籤萬用字元 | **不能** | **能** |
 | 自動化難度 | 低（webroot / nginx 插件即可） | 需要 DNS 服務商的 API 憑據 |
@@ -340,11 +340,11 @@ sudo certbot certificates
 ```bash
 # 私钥只允许属主读取；目录同样收紧
 sudo chmod 700 /etc/letsencrypt/archive /etc/letsencrypt/live
-sudo chmod 600 /etc/letsencrypt/archive/<域名>/privkey*.pem
-sudo chown root:root /etc/letsencrypt/archive/<域名>/privkey*.pem
+sudo chmod 600 /etc/letsencrypt/archive/<domain>/privkey*.pem
+sudo chown root:root /etc/letsencrypt/archive/<domain>/privkey*.pem
 
 # 确认一下：不应该出现 group/other 可读
-ls -l /etc/letsencrypt/live/<域名>/
+ls -l /etc/letsencrypt/live/<domain>/
 ```
 
 要點：
@@ -419,7 +419,7 @@ sudo openssl x509 -in /etc/letsencrypt/live/panel.example.com/fullchain.pem -noo
 | 用的是完整鏈 | 看 nginx 配置裡的 `ssl_certificate` | 指向 `fullchain.pem`，不是單獨的 `cert.pem` |
 | 協議版本正確 | 瀏覽器或 `openssl s_client` 檢查 | 協商到 TLS 1.2 / 1.3 |
 | HTTP 跳轉到 HTTPS | 用 `http://` 訪問一次 | 301/308 跳轉，且不出現混合內容告警 |
-| 校驗路徑可用 | `curl -I http://域名/.well-known/acme-challenge/<测试文件>` | 返回 200（不要被跳轉吃掉） |
+| 校驗路徑可用 | `curl -I http://domain/.well-known/acme-challenge/<test-file>` | 返回 200（不要被跳轉吃掉） |
 | 自動續期任務在跑 | `systemctl list-timers` 或看 `/etc/cron.d/` | 有且只有一個續期任務 |
 | 續期演練通過 | `certbot renew --dry-run` | 無報錯 |
 | 續期後會過載 | 檢查 deploy hook | 續期成功後 nginx 真的過載 |

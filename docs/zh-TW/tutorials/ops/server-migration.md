@@ -56,7 +56,7 @@ draft: false
 | --- | --- | --- |
 | 世界存檔 | `world/`、`world_nether/`、`world_the_end/`（名字以 `server.properties` 的 `level-name` 為準） | **最嚴重**：玩家建築、背包、進度全丟 |
 | 插件 / 模組本體 | `plugins/`、`mods/` | 進服後功能缺失，或玩家客戶端因模組不匹配進不來 |
-| 插件 / 模組配置 | `plugins/<插件名>/`、`config/` | 權限、經濟、領地、傳送點、抽獎池全部回到預設值 |
+| 插件 / 模組配置 | `plugins/<plugin-name>/`、`config/` | 權限、經濟、領地、傳送點、抽獎池全部回到預設值 |
 | 核心配置 | `server.properties` | 埠、難度、正版驗證、視距、白名單開關全變預設 |
 | 核心自身配置 | `bukkit.yml`、`spigot.yml`、`paper-*.yml`、`purpur.yml` | 最佳化參數、世界預設值丟失，效能可能明顯變化 |
 | 名單檔案 | `ops.json`、`whitelist.json`、`banned-players.json`、`banned-ips.json` | 管理員權限丟失，或封禁失效、白名單形同虛設 |

@@ -36,7 +36,7 @@ draft: false
   pack.mcmeta                 <- 必需，标识这是一个包
   pack.png                    <- 可选，选择界面里的图标
   assets/
-    <命名空间>/
+    <namespace>/
       textures/               <- .png 贴图
       models/                 <- .json 模型
       sounds/                 <- .ogg 音效
@@ -47,7 +47,7 @@ draft: false
   pack.mcmeta                 <- 必需
   pack.png                    <- 可选
   data/
-    <命名空间>/
+    <namespace>/
       function/               <- .mcfunction 命令函数
       recipe/                 <- .json 配方
       loot_table/             <- .json 战利品表
@@ -254,7 +254,7 @@ sha1sum survival-2026-10-04.zip
 函數裡是一串**由服務端執行**的指令，因此：
 
 - **只安裝你信任來源的資料包。** 一個函式可以做任何指令能做的事：給物品、傳送、改世界、清空容器、甚至把玩家丟進虛空。
-- 安裝前**開啟 zip 看一眼**：`data/<命名空间>/function/` 裡有沒有你不想執行的指令；`pack.mcmeta` 裡的 `description` 與實際內容是否相符。
+- 安裝前**開啟 zip 看一眼**：`data/<namespace>/function/` 裡有沒有你不想執行的指令；`pack.mcmeta` 裡的 `description` 與實際內容是否相符。
 - 函式的權限等級由 `server.properties` 的 `function-permission-level` 決定（預設 2），這決定了函式能執行到多"高階"的指令。
 
 ### 每 tick 執行的函式會拖慢服務端
@@ -266,7 +266,7 @@ sha1sum survival-2026-10-04.zip
 
 ```text
 # 判断一个包有没有每 tick 的入口：看它有没有这个文件
-data/<命名空间>/tags/function/tick.json
+data/<namespace>/tags/function/tick.json
 ```
 
 ### 資源包的注意事項
@@ -285,7 +285,7 @@ data/<命名空间>/tags/function/tick.json
 | 雜湊校驗失敗、包反覆重下 | `resource-pack-sha1` 與實際檔案不符；重新打包過卻沒更新雜湊；雜湊寫成大寫或長度不對 | 用第 4 節的方法重新計算，確認下載到的是同一個檔案 |
 | 服務端控制台出現 `Invalid sha1 for resource-pack-sha1` | 該鍵的值與實際包不一致或格式不合法 | 重新計算並更新；不確定就先留空（會失去校驗） |
 | 玩家拒絕後進不去 | `require-resource-pack=true` | 改成 `false` 並重啟；或先修好下載問題再強制 |
-| 貼圖沒變化 | 包內路徑或名稱空間寫錯；`pack.mcmeta` 缺失或格式號不對；被更高優先順序的包覆蓋；玩家自己的客戶端包覆蓋了它 | 確認 `assets/<命名空间>/textures/...` 路徑正確；把包放在資源包列表最上方；用原版客戶端單獨測試 |
+| 貼圖沒變化 | 包內路徑或名稱空間寫錯；`pack.mcmeta` 缺失或格式號不對；被更高優先順序的包覆蓋；玩家自己的客戶端包覆蓋了它 | 確認 `assets/<namespace>/textures/...` 路徑正確；把包放在資源包列表最上方；用原版客戶端單獨測試 |
 | 只對部分玩家生效 | 玩家拒絕了下載，或用了自己的資源包 | 需要全服一致就開 `require-resource-pack`，並先解決託管頻寬 |
 | 資料包沒出現在 `/datapack list` 裡 | 放錯目錄（應在 `<level-name>/datapacks/`）；zip 裡多套了一層資料夾；不是 `.zip` 也不是目錄 | 確認 `pack.mcmeta` 就在包的根目錄；用 `unzip -l` 看結構 |
 | 資料包出現了但沒效果 | 未啟用；函式沒被 `tick` / `load` 標籤引用；名稱空間或路徑寫錯；屬於必須重啟才生效的內容 | `/datapack list enabled` 確認已啟用；`/reload` 後看日誌報錯；必要時重啟 |

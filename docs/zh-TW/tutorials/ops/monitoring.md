@@ -106,7 +106,7 @@ Type=oneshot
 ExecStart=/usr/local/bin/mc-notify.sh "systemd unit %i entered the failed state"
 
 # --- 以下是服务端 unit 的 [Unit] 段 ---
-# 服务进入 failed 状态时，启动模板实例 mc-alert@<本服务名>.service
+# 服务进入 failed 状态时，启动模板实例 mc-alert@<service-name>.service
 OnFailure=mc-alert@%n.service
 ```
 

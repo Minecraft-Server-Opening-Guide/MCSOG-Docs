@@ -36,7 +36,7 @@ draft: false
   pack.mcmeta                 <- 必需，标识这是一个包
   pack.png                    <- 可选，选择界面里的图标
   assets/
-    <命名空间>/
+    <namespace>/
       textures/               <- .png 贴图
       models/                 <- .json 模型
       sounds/                 <- .ogg 音效
@@ -47,7 +47,7 @@ draft: false
   pack.mcmeta                 <- 必需
   pack.png                    <- 可选
   data/
-    <命名空间>/
+    <namespace>/
       function/               <- .mcfunction 命令函数
       recipe/                 <- .json 配方
       loot_table/             <- .json 战利品表
@@ -254,7 +254,7 @@ sha1sum survival-2026-10-04.zip
 函数里是一串**由服务端执行**的命令，因此：
 
 - **只安装你信任来源的数据包。** 一个函数可以做任何命令能做的事：给物品、传送、改世界、清空容器、甚至把玩家丢进虚空。
-- 安装前**打开 zip 看一眼**：`data/<命名空间>/function/` 里有没有你不想执行的命令；`pack.mcmeta` 里的 `description` 与实际内容是否相符。
+- 安装前**打开 zip 看一眼**：`data/<namespace>/function/` 里有没有你不想执行的命令；`pack.mcmeta` 里的 `description` 与实际内容是否相符。
 - 函数的权限等级由 `server.properties` 的 `function-permission-level` 决定（默认 2），这决定了函数能执行到多"高级"的命令。
 
 ### 每 tick 执行的函数会拖慢服务端
@@ -266,7 +266,7 @@ sha1sum survival-2026-10-04.zip
 
 ```text
 # 判断一个包有没有每 tick 的入口：看它有没有这个文件
-data/<命名空间>/tags/function/tick.json
+data/<namespace>/tags/function/tick.json
 ```
 
 ### 资源包的注意事项
@@ -285,7 +285,7 @@ data/<命名空间>/tags/function/tick.json
 | 哈希校验失败、包反复重下 | `resource-pack-sha1` 与实际文件不符；重新打包过却没更新哈希；哈希写成大写或长度不对 | 用第 4 节的方法重新计算，确认下载到的是同一个文件 |
 | 服务端控制台出现 `Invalid sha1 for resource-pack-sha1` | 该键的值与实际包不一致或格式不合法 | 重新计算并更新；不确定就先留空（会失去校验） |
 | 玩家拒绝后进不去 | `require-resource-pack=true` | 改成 `false` 并重启；或先修好下载问题再强制 |
-| 贴图没变化 | 包内路径或命名空间写错；`pack.mcmeta` 缺失或格式号不对；被更高优先级的包覆盖；玩家自己的客户端包覆盖了它 | 确认 `assets/<命名空间>/textures/...` 路径正确；把包放在资源包列表最上方；用原版客户端单独测试 |
+| 贴图没变化 | 包内路径或命名空间写错；`pack.mcmeta` 缺失或格式号不对；被更高优先级的包覆盖；玩家自己的客户端包覆盖了它 | 确认 `assets/<namespace>/textures/...` 路径正确；把包放在资源包列表最上方；用原版客户端单独测试 |
 | 只对部分玩家生效 | 玩家拒绝了下载，或用了自己的资源包 | 需要全服一致就开 `require-resource-pack`，并先解决托管带宽 |
 | 数据包没出现在 `/datapack list` 里 | 放错目录（应在 `<level-name>/datapacks/`）；zip 里多套了一层文件夹；不是 `.zip` 也不是目录 | 确认 `pack.mcmeta` 就在包的根目录；用 `unzip -l` 看结构 |
 | 数据包出现了但没效果 | 未启用；函数没被 `tick` / `load` 标签引用；命名空间或路径写错；属于必须重启才生效的内容 | `/datapack list enabled` 确认已启用；`/reload` 后看日志报错；必要时重启 |

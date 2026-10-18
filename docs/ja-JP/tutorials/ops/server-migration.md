@@ -56,7 +56,7 @@ draft: false
 | --- | --- | --- |
 | ワールドデータ | `world/`、`world_nether/`、`world_the_end/`（名前は `server.properties` の `level-name` に従う） | **最も深刻**。プレイヤーの建築、インベントリ、進行度がすべて失われる |
 | プラグイン / MOD 本体 | `plugins/`、`mods/` | 入室後に機能が欠け、または MOD の不一致でプレイヤーのクライアントが入れない |
-| プラグイン / MOD の設定 | `plugins/<プラグイン名>/`、`config/` | 権限、経済、領地、テレポート地点、ガチャの抽選プールがすべて既定値に戻る |
+| プラグイン / MOD の設定 | `plugins/<plugin-name>/`、`config/` | 権限、経済、領地、テレポート地点、ガチャの抽選プールがすべて既定値に戻る |
 | コアの設定 | `server.properties` | ポート、難易度、正規アカウント認証、描画距離、ホワイトリストの有無がすべて既定値になる |
 | コア自身の設定 | `bukkit.yml`、`spigot.yml`、`paper-*.yml`、`purpur.yml` | 最適化パラメータとワールドの既定値が失われ、性能が明らかに変わり得る |
 | 名簿ファイル | `ops.json`、`whitelist.json`、`banned-players.json`、`banned-ips.json` | 管理者権限が失われる、または BAN が効かずホワイトリストが形骸化する |

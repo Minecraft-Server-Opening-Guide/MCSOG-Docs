@@ -106,7 +106,7 @@ Type=oneshot
 ExecStart=/usr/local/bin/mc-notify.sh "systemd unit %i entered the failed state"
 
 # --- Ниже — секция [Unit] unit сервера ---
-# При переходе службы в failed запускается экземпляр шаблона mc-alert@<имя службы>.service
+# При переходе службы в failed запускается экземпляр шаблона mc-alert@<service-name>.service
 OnFailure=mc-alert@%n.service
 ```
 

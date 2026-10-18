@@ -35,7 +35,7 @@ draft: false
 | --- | --- |
 | `server.properties` | **最基础的服务端配置**（端口、正版验证、视距……） |
 | `eula.txt` | 协议同意文件，必须是 `eula=true` |
-| `核心名.jar` | 服务端核心本体 |
+| `<core-name>.jar` | 服务端核心本体 |
 | `ops.json` | OP（管理员）名单 |
 | `whitelist.json` | 白名单名单 |
 | `banned-players.json` / `banned-ips.json` | 封禁名单 |

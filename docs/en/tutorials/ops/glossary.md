@@ -319,10 +319,10 @@ A term is only useful once it maps onto a command. The table below pairs the mos
 | Disk health | `smartctl -a /dev/sdX` | Power-on hours, bytes written, reallocated sectors and similar attributes; the command ships in `smartmontools` |
 | Network overview | `ss -s` | Totals per socket type; **abnormal connection growth usually appears before memory runs out** |
 | Listening ports | `ss -lntp` / `ss -lunp` | Which TCP / UDP ports are listening and which process owns them |
-| Service state | `systemctl status <unit>` | Whether it is active, recent exits, and the latest log lines |
-| Service log | `journalctl -u <unit>` | Narrow the range with `--since "1 hour ago"`; **add `--utc` during an incident** |
+| Service state | `systemctl status <service-name>` | Whether it is active, recent exits, and the latest log lines |
+| Service log | `journalctl -u <service-name>` | Narrow the range with `--since "1 hour ago"`; **add `--utc` during an incident** |
 | HTTP availability | `curl -s -o /dev/null -w '%{http_code}' <URL>` | Prints only the status code, which is what you want inside a script |
-| UPS state | `upsc <upsname>` | `ups.status` reads `OL` on mains and `OB` on battery; variable names follow the NUT documentation and your model |
+| UPS state | `upsc <ups-name>` | `ups.status` reads `OL` on mains and `OB` on battery; variable names follow the NUT documentation and your model |
 
 :::tip Never trust a single reading
 `free -h` and `df -h` are **snapshots**, and one snapshot tells you almost nothing. What matters is the **trend**: is the disk growing every week, is memory climbing every day. Trends need scheduled collection; see [Monitoring and Alerting](/tutorials/ops/monitoring).

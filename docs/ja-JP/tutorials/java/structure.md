@@ -35,7 +35,7 @@ draft: false
 | --- | --- |
 | `server.properties` | **最も基本的なサーバー設定**（ポート、正規アカウント認証、描画距離など） |
 | `eula.txt` | 規約への同意ファイル。`eula=true` が必須 |
-| `コア名.jar` | サーバーコア本体 |
+| `<core-name>.jar` | サーバーコア本体 |
 | `ops.json` | OP（管理者）のリスト |
 | `whitelist.json` | ホワイトリストのリスト |
 | `banned-players.json` / `banned-ips.json` | BAN リスト |

@@ -159,7 +159,7 @@ The official "Setup Java Edition Server" page describes roughly this flow (follo
 | 7 | Press Start on the instance console and watch the log | A first start usually also requires editing `eula.txt` to `eula=true` under Configuration Files |
 | 8 | Create sub-users for moderators, scoped to the instances they need | Never "all instances plus file management" |
 
-The documentation also states that instance data lives under `<Daemon install dir>/data/InstanceData/<instance ID>/` by default, and instance configuration under `<Daemon install dir>/data/InstanceConfig/<instance ID>.json`, which includes the startup command. **These are the things you cannot easily reconstruct, so they belong in your backups.**
+The documentation also states that instance data lives under `<Daemon install dir>/data/InstanceData/<instance-id>/` by default, and instance configuration under `<Daemon install dir>/data/InstanceConfig/<instance-id>.json`, which includes the startup command. **These are the things you cannot easily reconstruct, so they belong in your backups.**
 
 :::warn Do not get greedy with heap flags
 The official documentation warns specifically against allocating all of the machine's memory to the JVM: the operating system needs memory too, and ignoring this can crash the whole machine. Keep `-Xmx` clearly below physical RAM.
@@ -333,7 +333,7 @@ For the full picture of ports and rules, see [Network Security Fundamentals](/tu
 :::warn Paths follow the official documentation
 Data directory locations differ between panels, so **confirm them in the official documentation before writing them into a backup script.** Do not guess paths.
 
-For MCSManager the documented locations are: web config at `<Web install dir>/data/SystemConfig/config.json`, daemon config at `<Daemon install dir>/data/Config/global.json`, instance data at `<Daemon install dir>/data/InstanceData/<instance ID>/`, and instance config at `<Daemon install dir>/data/InstanceConfig/<instance ID>.json`. The official upgrade and reset page simply advises backing up the `web/data` and `daemon/data` directories elsewhere before an upgrade.
+For MCSManager the documented locations are: web config at `<Web install dir>/data/SystemConfig/config.json`, daemon config at `<Daemon install dir>/data/Config/global.json`, instance data at `<Daemon install dir>/data/InstanceData/<instance-id>/`, and instance config at `<Daemon install dir>/data/InstanceConfig/<instance-id>.json`. The official upgrade and reset page simply advises backing up the `web/data` and `daemon/data` directories elsewhere before an upgrade.
 :::
 
 Backup guidance:

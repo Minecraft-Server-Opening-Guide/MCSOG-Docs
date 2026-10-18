@@ -257,7 +257,7 @@ ACME cần chứng minh "bạn kiểm soát tên miền này". Hai cách chính:
 
 | | HTTP-01 | DNS-01 |
 | --- | --- | --- |
-| Chứng minh thế nào | Đặt một tệp có nội dung chỉ định tại `http://域名/.well-known/acme-challenge/<token>` | Thêm một bản ghi TXT có nội dung chỉ định tại `_acme-challenge.域名` |
+| Chứng minh thế nào | Đặt một tệp có nội dung chỉ định tại `http://domain/.well-known/acme-challenge/<token>` | Thêm một bản ghi TXT có nội dung chỉ định tại `_acme-challenge.domain` |
 | Yêu cầu mạng | **Cổng 80 phải truy cập được từ Internet** (có thể đi theo chuyển hướng) | Không cần bất kỳ cổng vào nào |
 | Có cấp được wildcard không | **Không** | **Có** |
 | Độ khó tự động hóa | Thấp (webroot / plugin nginx là đủ) | Cần thông tin xác thực API của nhà cung cấp DNS |
@@ -340,11 +340,11 @@ Khóa riêng tư là thứ duy nhất trong hệ thống này thực sự cần 
 ```bash
 # Khóa riêng tư chỉ cho chủ sở hữu đọc; thư mục cũng siết tương tự
 sudo chmod 700 /etc/letsencrypt/archive /etc/letsencrypt/live
-sudo chmod 600 /etc/letsencrypt/archive/<域名>/privkey*.pem
-sudo chown root:root /etc/letsencrypt/archive/<域名>/privkey*.pem
+sudo chmod 600 /etc/letsencrypt/archive/<domain>/privkey*.pem
+sudo chown root:root /etc/letsencrypt/archive/<domain>/privkey*.pem
 
 # Xác nhận một chút: không được có group/other đọc được
-ls -l /etc/letsencrypt/live/<域名>/
+ls -l /etc/letsencrypt/live/<domain>/
 ```
 
 Điểm cần chú ý:
@@ -419,7 +419,7 @@ Chỉ giám sát "chứng chỉ còn mấy ngày" là không đủ —— **nó 
 | Dùng chuỗi đầy đủ | Xem `ssl_certificate` trong cấu hình nginx | Trỏ tới `fullchain.pem`, không phải `cert.pem` riêng lẻ |
 | Phiên bản giao thức đúng | Kiểm tra bằng trình duyệt hoặc `openssl s_client` | Thương lượng được TLS 1.2 / 1.3 |
 | HTTP chuyển hướng sang HTTPS | Truy cập một lần bằng `http://` | Chuyển hướng 301/308, và không xuất hiện cảnh báo nội dung hỗn hợp |
-| Đường dẫn xác thực khả dụng | `curl -I http://域名/.well-known/acme-challenge/<测试文件>` | Trả về 200 (đừng để bị chuyển hướng nuốt mất) |
+| Đường dẫn xác thực khả dụng | `curl -I http://domain/.well-known/acme-challenge/<test-file>` | Trả về 200 (đừng để bị chuyển hướng nuốt mất) |
 | Tác vụ gia hạn tự động đang chạy | `systemctl list-timers` hoặc xem `/etc/cron.d/` | Có và chỉ có một tác vụ gia hạn |
 | Diễn tập gia hạn đã qua | `certbot renew --dry-run` | Không báo lỗi |
 | Sau gia hạn có nạp lại | Kiểm tra deploy hook | Gia hạn thành công thì nginx thực sự được nạp lại |

@@ -257,7 +257,7 @@ ACME は「あなたがこのドメインを制御している」ことを証明
 
 | | HTTP-01 | DNS-01 |
 | --- | --- | --- |
-| 証明の仕方 | `http://ドメイン/.well-known/acme-challenge/<token>` に指定の内容のファイルを置く | `_acme-challenge.ドメイン` に指定の内容の TXT レコードを追加する |
+| 証明の仕方 | `http://domain/.well-known/acme-challenge/<token>` に指定の内容のファイルを置く | `_acme-challenge.domain` に指定の内容の TXT レコードを追加する |
 | ネットワーク要件 | **80 番がインターネットから到達できる必要がある**（リダイレクトは追従可） | 内向きのポートは一切不要 |
 | ワイルドカードを発行できるか | **できない** | **できる** |
 | 自動化の難しさ | 低い（webroot / nginx プラグインで足りる） | DNS 事業者の API 資格情報が必要 |
@@ -340,11 +340,11 @@ HSTS（`Strict-Transport-Security` レスポンスヘッダ）を有効にして
 ```bash
 # 秘密鍵は所有者だけが読めるように。ディレクトリも同様に絞る
 sudo chmod 700 /etc/letsencrypt/archive /etc/letsencrypt/live
-sudo chmod 600 /etc/letsencrypt/archive/<ドメイン>/privkey*.pem
-sudo chown root:root /etc/letsencrypt/archive/<ドメイン>/privkey*.pem
+sudo chmod 600 /etc/letsencrypt/archive/<domain>/privkey*.pem
+sudo chown root:root /etc/letsencrypt/archive/<domain>/privkey*.pem
 
 # 確認：group/other が読める状態になっていないこと
-ls -l /etc/letsencrypt/live/<ドメイン>/
+ls -l /etc/letsencrypt/live/<domain>/
 ```
 
 要点：
@@ -419,7 +419,7 @@ sudo openssl x509 -in /etc/letsencrypt/live/panel.example.com/fullchain.pem -noo
 | 完全なチェーンを使っている | nginx の設定の `ssl_certificate` を見る | `fullchain.pem` を指している。単独の `cert.pem` ではない |
 | プロトコルのバージョンが正しい | ブラウザか `openssl s_client` で検査 | TLS 1.2 / 1.3 でネゴシエートされる |
 | HTTP から HTTPS へリダイレクトする | `http://` で 1 回アクセスする | 301/308 でリダイレクトし、混在コンテンツの警告が出ない |
-| 検証のパスが使える | `curl -I http://ドメイン/.well-known/acme-challenge/<テストファイル>` | 200 を返す（リダイレクトに飲み込まれない） |
+| 検証のパスが使える | `curl -I http://domain/.well-known/acme-challenge/<test-file>` | 200 を返す（リダイレクトに飲み込まれない） |
 | 自動更新のタスクが動いている | `systemctl list-timers` か `/etc/cron.d/` を見る | 更新タスクが 1 つだけ存在する |
 | 更新の演習が通った | `certbot renew --dry-run` | エラーがない |
 | 更新後に再読み込みされる | deploy hook を確認する | 更新の成功後に nginx が本当に再読み込みされる |

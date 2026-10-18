@@ -159,7 +159,7 @@ Quy trình mà tài liệu chính thức "dựng bản Java" đưa ra đại kh�
 | 7 | Bấm "khởi động" ở console instance và quan sát nhật ký | Lần khởi động đầu thường còn phải sửa `eula.txt` thành `eula=true` trong "tệp cấu hình" |
 | 8 | Tạo tài khoản con cho quản trị phụ, chỉ cấp quyền trên instance cần thiết | Đừng cho "mọi instance + quản lý tệp" |
 
-Tài liệu chính thức còn nói: dữ liệu instance mặc định nằm ở `<Daemon 安装目录>/data/InstanceData/<实例 ID>/`, cấu hình instance nằm ở `<Daemon 安装目录>/data/InstanceConfig/<实例 ID>.json` (trong đó có lệnh khởi động và các cấu hình khác). **Hai chỗ này là thứ "mất rồi rất khó dựng lại", bắt buộc phải đưa vào sao lưu.**
+Tài liệu chính thức còn nói: dữ liệu instance mặc định nằm ở `<Daemon 安装目录>/data/InstanceData/<instance-id>/`, cấu hình instance nằm ở `<Daemon 安装目录>/data/InstanceConfig/<instance-id>.json` (trong đó có lệnh khởi động và các cấu hình khác). **Hai chỗ này là thứ "mất rồi rất khó dựng lại", bắt buộc phải đưa vào sao lưu.**
 
 :::warn Tham số bộ nhớ trong lệnh khởi động đừng tham lam
 Tài liệu chính thức cảnh báo riêng: **đừng chia toàn bộ bộ nhớ của máy cho JVM**, bản thân hệ điều hành cũng cần tài nguyên, nếu không có thể cả máy sập. `-Xmx` phải nhỏ hơn rõ rệt so với bộ nhớ vật lý của máy.
@@ -332,7 +332,7 @@ Cách nghĩ đầy đủ về cổng và quy tắc xem [Cơ bản an toàn mạn
 :::warn Đường dẫn lấy tài liệu chính thức làm chuẩn
 Vị trí thư mục dữ liệu của mỗi bảng điều khiển khác nhau, **bắt buộc phải xác nhận từ tài liệu chính thức rồi mới viết vào script sao lưu**, đừng viết đường dẫn theo phỏng đoán.
 
-Lấy MCSManager làm ví dụ, vị trí liên quan mà tài liệu chính thức đưa ra là: cấu hình Web ở `<Web 安装目录>/data/SystemConfig/config.json`, cấu hình daemon ở `<Daemon 安装目录>/data/Config/global.json`, dữ liệu instance ở `<Daemon 安装目录>/data/InstanceData/<实例 ID>/`, cấu hình instance ở `<Daemon 安装目录>/data/InstanceConfig/<实例 ID>.json`. Tài liệu "cập nhật và đặt lại" chính thức thì khuyên thẳng: **trước khi nâng cấp hãy sao lưu hai thư mục `web/data` và `daemon/data` ra chỗ khác.**
+Lấy MCSManager làm ví dụ, vị trí liên quan mà tài liệu chính thức đưa ra là: cấu hình Web ở `<Web 安装目录>/data/SystemConfig/config.json`, cấu hình daemon ở `<Daemon 安装目录>/data/Config/global.json`, dữ liệu instance ở `<Daemon 安装目录>/data/InstanceData/<instance-id>/`, cấu hình instance ở `<Daemon 安装目录>/data/InstanceConfig/<instance-id>.json`. Tài liệu "cập nhật và đặt lại" chính thức thì khuyên thẳng: **trước khi nâng cấp hãy sao lưu hai thư mục `web/data` và `daemon/data` ra chỗ khác.**
 :::
 
 Đề xuất sao lưu:

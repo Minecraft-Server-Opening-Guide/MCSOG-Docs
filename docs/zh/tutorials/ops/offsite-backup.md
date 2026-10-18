@@ -375,7 +375,7 @@ sudo chown root:root /root/.config/restic/mcserver.pass
 | 方案 | 空间占用 |
 | --- | --- |
 | 每次独立 `tar.gz`，保留 `N` 份 | 约 `N x 0.5W` |
-| rsync `--link-dest` 硬链接快照 | 约 `0.5W + 变化量 x (N-1)`，**变化量才是关键** |
+| rsync `--link-dest` 硬链接快照 | 约 `0.5W + delta x (N-1)`，**变化量才是关键** |
 | restic 去重快照 | 与硬链接快照同量级或更省，取决于去重粒度 |
 
 例子：世界 5 GB，保留 14 份独立归档，按 0.5 压缩率约需 `14 x 2.5 = 35 GB`；换成 `--link-dest` 快照，若每天变化 100 MB，则约 `2.5 GB + 13 x 0.1 GB = 3.8 GB`。**差距很大，值得为此改用快照方案。**

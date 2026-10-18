@@ -90,7 +90,7 @@ sudo grep -rHv '^#\|^$' /etc/sudoers /etc/sudoers.d/
 ```
 
 :::warn 設定して終わりにせず、定期的に見直す
-**退職した管理者、一時的に手伝った友人、初期テストで追加したアカウント**は、長期間 sudo グループに残ります。定期的に見直し、不要になった人を外してください（`sudo deluser ユーザー名 sudo` または `sudo gpasswd -d ユーザー名 wheel`）。
+**退職した管理者、一時的に手伝った友人、初期テストで追加したアカウント**は、長期間 sudo グループに残ります。定期的に見直し、不要になった人を外してください（`sudo deluser USERNAME sudo` または `sudo gpasswd -d USERNAME wheel`）。
 :::
 
 ### 1.4 不要なアカウントを止める
@@ -104,8 +104,8 @@ awk -F: '$7 !~ /(nologin|false)$/ {print $1, $3, $7}' /etc/passwd
 - **不要になったアカウントをロックする**：
 
 ```bash
-sudo usermod -L ユーザー名          # パスワードをロックする
-sudo usermod -s /usr/sbin/nologin ユーザー名   # 同時にログインを禁止する
+sudo usermod -L USERNAME          # パスワードをロックする
+sudo usermod -s /usr/sbin/nologin USERNAME   # 同時にログインを禁止する
 ```
 
 - **重点的に調べる**：`/etc/passwd` で UID が `0` のアカウントは**`root` だけ**でなければなりません。余分なものはバックドアです。
@@ -421,7 +421,7 @@ ReadWritePaths=/opt/mcserver/survival
 
 - **デスクトップ環境を入れない**。クラウドサーバーにデスクトップを入れると、不要なサービスとポートが大量に付いてきます（[OS の選択](/tutorials/java/os) を参照）。
 - **使わないサービスを入れない**：FTP、Samba、印刷サービス、データベース（サーバーが使わないなら）。
-- **サービスの状態を確認する**。不要なサービスは「入っているが起動していない」ではなく `disable` かつ `stop` にすべきです。依存の連鎖で起動してくることがあります。`systemctl is-enabled サービス名` で確認し、`sudo systemctl disable --now サービス名` で停止します。
+- **サービスの状態を確認する**。不要なサービスは「入っているが起動していない」ではなく `disable` かつ `stop` にすべきです。依存の連鎖で起動してくることがあります。`systemctl is-enabled <service-name>` で確認し、`sudo systemctl disable --now <service-name>` で停止します。
 
 ### 6.3 1 ページの早見表
 

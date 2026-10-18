@@ -257,7 +257,7 @@ ACME должен доказать, что «вы управляете этим 
 
 | | HTTP-01 | DNS-01 |
 | --- | --- | --- |
-| Как доказывается | Положить файл с заданным содержимым по адресу `http://домен/.well-known/acme-challenge/<token>` | Добавить TXT-запись с заданным содержимым в `_acme-challenge.домен` |
+| Как доказывается | Положить файл с заданным содержимым по адресу `http://domain/.well-known/acme-challenge/<token>` | Добавить TXT-запись с заданным содержимым в `_acme-challenge.domain` |
 | Требования к сети | **80-й порт должен быть доступен из интернета** (можно с перенаправлением) | Входящие порты не нужны |
 | Можно ли выпустить wildcard | **Нет** | **Да** |
 | Сложность автоматизации | Низкая (webroot / плагин nginx) | Нужны API-учётные данные DNS-провайдера |
@@ -340,11 +340,11 @@ sudo certbot certificates
 ```bash
 # Приватный ключ может читать только владелец; каталоги тоже закрываем
 sudo chmod 700 /etc/letsencrypt/archive /etc/letsencrypt/live
-sudo chmod 600 /etc/letsencrypt/archive/<домен>/privkey*.pem
-sudo chown root:root /etc/letsencrypt/archive/<домен>/privkey*.pem
+sudo chmod 600 /etc/letsencrypt/archive/<domain>/privkey*.pem
+sudo chown root:root /etc/letsencrypt/archive/<domain>/privkey*.pem
 
 # Проверка: не должно быть доступа на чтение для group/other
-ls -l /etc/letsencrypt/live/<домен>/
+ls -l /etc/letsencrypt/live/<domain>/
 ```
 
 Важно:
@@ -419,7 +419,7 @@ sudo openssl x509 -in /etc/letsencrypt/live/panel.example.com/fullchain.pem -noo
 | Используется полная цепочка | Посмотреть `ssl_certificate` в конфигурации nginx | Указывает на `fullchain.pem`, а не на отдельный `cert.pem` |
 | Версия протокола верная | Проверка браузером или `openssl s_client` | Согласуется TLS 1.2 / 1.3 |
 | HTTP перенаправляется на HTTPS | Открыть один раз по `http://` | Переход 301/308 без предупреждений о смешанном содержимом |
-| Путь проверки работает | `curl -I http://домен/.well-known/acme-challenge/<тестовый файл>` | Возвращает 200 (а не перенаправление) |
+| Путь проверки работает | `curl -I http://domain/.well-known/acme-challenge/<test-file>` | Возвращает 200 (а не перенаправление) |
 | Задача автопродления работает | `systemctl list-timers` или `/etc/cron.d/` | Задача продления есть и только одна |
 | Учения по продлению пройдены | `certbot renew --dry-run` | Без ошибок |
 | После продления будет перезагрузка | Проверить deploy hook | После успешного продления nginx действительно перезагружается |

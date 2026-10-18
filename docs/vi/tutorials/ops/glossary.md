@@ -181,7 +181,7 @@ Nguồn hỗn loạn phổ biến nhất của người mới là coi các tệp
 | --- | --- | --- | --- |
 | Cấu hình bản thân máy chủ | `server.properties` | Máy chủ tạo khi khởi động lần đầu | Tên khóa viết sai sẽ bị bỏ qua hoặc lùi về mặc định, **thay đổi cần khởi động lại mới có hiệu lực** |
 | Cấu hình nhánh máy chủ | `spigot.yml`, `bukkit.yml`, `paper-world-defaults.yml`, v.v. | Nhánh tương ứng tạo khi khởi động lần đầu | Ảnh hưởng cơ chế và hiệu năng, **đặc biệt nhạy trong tình huống kỹ thuật redstone** |
-| Cấu hình plugin | `plugins/<插件名>/config.yml`, v.v. | Plugin tạo khi tải lần đầu | Định dạng sai khiến plugin tải thất bại, **nguyên nhân thường được ghi trong nhật ký** |
+| Cấu hình plugin | `plugins/<plugin-name>/config.yml`, v.v. | Plugin tạo khi tải lần đầu | Định dạng sai khiến plugin tải thất bại, **nguyên nhân thường được ghi trong nhật ký** |
 
 Một kinh nghiệm thực dụng: **trước khi sửa bất kỳ tệp cấu hình nào hãy copy một bản**. Tệp cấu hình là văn bản thuần, dung lượng rất nhỏ, chi phí sao lưu gần như bằng không, nhưng chi phí truy nguyên sau khi sửa hỏng thì rất cao. Phạm vi sao lưu và quy trình quay lui xem [Sao lưu và khôi phục](/tutorials/java/backup).
 
@@ -319,10 +319,10 @@ Thuật ngữ chỉ có ích khi gắn được vào lệnh cụ thể. Bảng d
 | Sức khỏe ổ đĩa | `smartctl -a /dev/sdX` | Thời gian cắm điện, lượng ghi, sector được ánh xạ lại và các thuộc tính khác; lệnh đến từ `smartmontools` |
 | Tổng quan kết nối mạng | `ss -s` | Tổng số các loại socket; **số kết nối tăng bất thường thường xuất hiện trước khi bộ nhớ cạn** |
 | Cổng đang lắng nghe | `ss -lntp` / `ss -lunp` | TCP / UDP đang nghe những cổng nào, do tiến trình nào giữ |
-| Trạng thái dịch vụ | `systemctl status <服务名>` | Có active không, các lần thoát gần nhất, đoạn nhật ký gần nhất |
-| Nhật ký dịch vụ | `journalctl -u <服务名>` | Dùng `--since "1 hour ago"` để thu hẹp phạm vi; **khi điều tra chứng cứ thêm `--utc`** |
+| Trạng thái dịch vụ | `systemctl status <service-name>` | Có active không, các lần thoát gần nhất, đoạn nhật ký gần nhất |
+| Nhật ký dịch vụ | `journalctl -u <service-name>` | Dùng `--since "1 hour ago"` để thu hẹp phạm vi; **khi điều tra chứng cứ thêm `--utc`** |
 | Khả dụng HTTP | `curl -s -o /dev/null -w '%{http_code}' <URL>` | Chỉ xuất mã trạng thái, phù hợp nhét vào script để phán đoán |
-| Trạng thái UPS | `upsc <ups名>` | `ups.status` là `OL` nghĩa là điện lưới, `OB` nghĩa là chạy bằng ắc quy; tên biến lấy tài liệu NUT và model làm chuẩn |
+| Trạng thái UPS | `upsc <ups-name>` | `ups.status` là `OL` nghĩa là điện lưới, `OB` nghĩa là chạy bằng ắc quy; tên biến lấy tài liệu NUT và model làm chuẩn |
 
 :::tip Đừng chỉ xem một lần kết quả
 `free -h` và `df -h` là **ảnh chụp**, một lần kết quả gần như không nói được gì. Thứ thực sự hữu ích là **xu hướng**: đĩa có tăng mỗi tuần không, bộ nhớ có leo mỗi ngày không. Xu hướng phải nhờ thu thập định giờ, xem [Giám sát và cảnh báo](/tutorials/ops/monitoring).

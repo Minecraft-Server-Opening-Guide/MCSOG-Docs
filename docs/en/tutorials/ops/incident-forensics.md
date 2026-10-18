@@ -410,7 +410,7 @@ whois 203.0.113.10
 **"I am being attacked, please fix it" almost never gets an effective response.** A good ticket lets the reader decide what to do within 30 seconds:
 
 ```text
-Subject: [DDoS/attack] Instance <instance ID/IP> under attack - requesting assistance and traffic data
+Subject: [DDoS/attack] Instance <instance-id>/<ip> under attack - requesting assistance and traffic data
 
 1. Affected assets
    - Public IP: 203.0.113.10
