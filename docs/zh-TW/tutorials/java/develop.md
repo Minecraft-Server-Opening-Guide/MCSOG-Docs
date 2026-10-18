@@ -110,8 +110,8 @@ world/
 - 較新的版本支援**函式宏**：用 `$(名称)` 佔位，再用 `function <函数> with <数据源>` 傳入參數。宏是版本相關特性，用之前先確認你的版本支援。
 
 ```text
-# 给 16 格内的玩家一点视觉效果
-# 注意：一定要加过滤条件，不要无过滤地遍历所有实体
+# 給 16 格內的玩家一點視覺效果
+# 注意：一定要加過濾條件，不要無過濾地遍歷所有實體
 execute as @a[distance=..16] at @s run particle minecraft:flame ~ ~1 ~ 0 0 0 0 1
 ```
 
@@ -407,16 +407,16 @@ getLogger().log(java.util.logging.Level.WARNING, "Failed to save data", exceptio
 ### 3.8 構建與部署
 
 ```bash
-mvn -q package          # Maven，产物在 target/
-gradle build            # Gradle，产物在 build/libs/
+mvn -q package          # Maven，產物在 target/
+gradle build            # Gradle，產物在 build/libs/
 ```
 
 部署步驟：
 
 ```bash
-stop                                              # 在测试服控制台执行
+stop                                              # 在測試服控制臺執行
 cp target/myplugin-1.0.0.jar /path/to/testserver/plugins/
-java -Xms2G -Xmx2G -jar paper.jar --nogui         # 重启后看 onEnable 日志与 /plugins 状态
+java -Xms2G -Xmx2G -jar paper.jar --nogui         # 重啟後看 onEnable 日志與 /plugins 狀態
 ```
 
 注意兩點：

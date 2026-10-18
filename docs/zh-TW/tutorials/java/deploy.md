@@ -49,15 +49,15 @@ IPv4 位址稀缺，**很多家庭寬頻拿到的是運營商大內網位址**�
 原理：你在**有公網 IP 的機器**（frps 服務端）上開一個埠，把流量轉發回你家內網機器（frpc 客戶端）。常見做法是租一台最便宜的雲伺服器當 frps。
 
 ```ini
-# frps.ini（放在有公网的服务器上）
+# frps.ini（放在有公網的伺服器上）
 [common]
 bind_port = 7000
 ```
 
 ```ini
-# frpc.ini（放在你家内网机器上）
+# frpc.ini（放在你家內網機器上）
 [common]
-server_addr = 你的公网服务器IP
+server_addr = 你的公網伺服器IP
 server_port = 7000
 
 [minecraft]
@@ -105,7 +105,7 @@ Minecraft 的預設埠是 `25565`。如果服務跑在別的埠，或者根本�
 Java 版的 SRV 查詢名稱是固定的 `_minecraft._tcp.<你的域名>`。寫在區域檔案裡長這樣：
 
 ```dns
-; 玩家输入 mc.example.com，服务实际跑在 node1.example.com 的 25566 端口
+; 玩家輸入 mc.example.com，服務實際跑在 node1.example.com 的 25566 埠
 _minecraft._tcp.example.com.  3600  IN  SRV  10 5 25566 node1.example.com.
 node1.example.com.            3600  IN  A    203.0.113.10
 ```
@@ -141,13 +141,13 @@ node1.example.com.            3600  IN  A    203.0.113.10
 ### 怎麼驗證記錄真的生效了
 
 ```bash
-# 查 SRV 记录（Linux / macOS）
+# 查 SRV 記錄（Linux / macOS）
 dig +short SRV _minecraft._tcp.example.com
 
-# 查 SRV 记录（Windows 或没装 dig 的机器）
+# 查 SRV 記錄（Windows 或沒裝 dig 的機器）
 nslookup -type=SRV _minecraft._tcp.example.com
 
-# 查 A 记录
+# 查 A 記錄
 dig +short A example.com
 ```
 

@@ -78,8 +78,8 @@ draft: false
 判斷順序建議：
 
 ```
-先定玩法（要哪些模组） → 查这些模组支持的加载器与游戏版本
-  → 取交集最大的那个加载器 + 游戏版本 → 再装服务端
+先定玩法（要哪些模組） → 查這些模組支援的載入器與遊戲版本
+  → 取交集最大的那個載入器 + 遊戲版本 → 再裝服務端
 ```
 
 ## 3. 在服務端安裝載入器
@@ -115,10 +115,10 @@ Java 裝錯版本是最常見的"安裝器打不開/服務端起不來"原因，
 - 絕大多數 Fabric 模組需要 **Fabric API**，它也是一個模組，放進 `mods/`。
 
 ```bash
-# 官方页面会给出类似这样的下载与启动命令，请以页面实际显示为准
-# 1) 下载服务端启动器
-# 2) 首次启动
-java -jar <服务端启动器文件名> nogui
+# 官方頁面會給出類似這樣的下載與啟動指令，請以頁面實際顯示為準
+# 1) 下載服務端啟動器
+# 2) 首次啟動
+java -jar <服務端啟動器檔名> nogui
 ```
 
 ### 3.4 NeoForge
@@ -126,13 +126,13 @@ java -jar <服务端启动器文件名> nogui
 NeoForge 官方文件給出的流程（以 21.x 系列為例）：
 
 ```bash
-# 1) 下载安装器（版本号以官网为准）
+# 1) 下載安裝器（版本號以官網為準）
 wget https://maven.neoforged.net/releases/net/neoforged/neoforge/<版本>/neoforge-<版本>-installer.jar
 
-# 2) 安装服务端
+# 2) 安裝服務端
 java -jar neoforge-<版本>-installer.jar --installServer
 
-# 3) 首次启动（会因 EULA 退出）
+# 3) 首次啟動（會因 EULA 退出）
 ./run.sh        # Windows 用 run.bat
 ```
 
@@ -305,8 +305,8 @@ java -jar forge-<版本>-installer.jar --installServer
 - 參數只解決記憶體/GC 層面問題，**救不了單核瓶頸**，也救不了寫得很差的模組。
 
 ```bash
-# 示意：把内存参数写在启动脚本或 user_jvm_args.txt 中
-# 具体数值按你的模组规模与玩家数调整
+# 示意：把記憶體引數寫在啟動指令碼或 user_jvm_args.txt 中
+# 具體數值按你的模組規模與玩家數調整
 -Xms4G
 -Xmx8G
 ```

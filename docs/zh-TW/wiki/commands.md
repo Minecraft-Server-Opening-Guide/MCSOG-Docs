@@ -150,7 +150,7 @@ BDS 的配置裡有一項與指令直接相關：`server.properties` 中的 `all
 ```text
 save hold
 save query
-# 按 query 输出的清单复制文件（worlds/ 要整体拷走）
+# 按 query 輸出的清單復制檔案（worlds/ 要整體拷走）
 save resume
 ```
 
@@ -246,10 +246,10 @@ MCDR 的子指令與縮寫形式在版本之間會調整（`!!MCDR reload config
 維護前的標準流程（Java 版）：
 
 ```text
-say 服务器将在 5 分钟后进入维护
+say 伺服器將在 5 分鍾後進入維護
 save-all
 save-off
-# 此时在外部打包世界目录与插件目录
+# 此時在外部打包世界目錄與插件目錄
 stop
 ```
 
@@ -266,7 +266,7 @@ whitelist list
 ```text
 save hold
 save query
-# 复制 query 列出的文件，worlds/ 整体拷走
+# 復制 query 列出的檔案，worlds/ 整體拷走
 save resume
 ```
 

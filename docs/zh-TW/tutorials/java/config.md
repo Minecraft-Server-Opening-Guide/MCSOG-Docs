@@ -69,9 +69,9 @@ draft: false
 
 ```
 /gamerule keepInventory true        死亡不掉落
-/gamerule doDaylightCycle false     关闭昼夜更替
-/gamerule mobGriefing false         苦力怕不破坏方块
-/gamerule announceAdvancements false 不公告进度达成
+/gamerule doDaylightCycle false     關閉晝夜更替
+/gamerule mobGriefing false         苦力怕不破壞方塊
+/gamerule announceAdvancements false 不公告進度達成
 ```
 
 在控制台或遊戲內（需 OP）執行即可，**立即生效且會被儲存**。

@@ -192,7 +192,7 @@ Linux 上把使用者加入 `docker` 組後可以免 `sudo`：
 
 ```bash
 sudo usermod -aG docker $USER
-# 需要重新登录（或 newgrp docker）才生效
+# 需要重新登入（或 newgrp docker）才生效
 ```
 
 :::warn 這等價於給該使用者宿主機 root 權限
@@ -308,18 +308,18 @@ docker compose config
 驗證方法（**建議實際做一遍，印象最深**）：
 
 ```bash
-# 1. 先明确拒绝该端口
+# 1. 先明確拒絕該埠
 sudo ufw deny 25565/tcp
 
-# 2. 确认规则已生效
+# 2. 確認規則已生效
 sudo ufw status numbered
 
-# 3. 启动一个映射了该端口的容器
+# 3. 啟動一個對映了該埠的容器
 docker run -d --name test-web -p 25565:80 nginx
 
-# 4. 从另一台机器访问
-#    telnet 你的公网IP 25565
-#    → 会成功。ufw 的 deny 被完全绕过。
+# 4. 從另一臺機器訪問
+#    telnet 你的公網IP 25565
+#    → 會成功。ufw 的 deny 被完全繞過。
 ```
 
 ### 5.2 正確的四種做法
@@ -336,7 +336,7 @@ services:
 加了 `127.0.0.1:` 字首後，宿主機只會在**迴環網路卡**上監聽這個埠，公網**根本無法直連**。要對外提供訪問，再由宿主機上的反向代理轉發：
 
 ```nginx
-# /etc/nginx/nginx.conf（stream 模块，四层转发）
+# /etc/nginx/nginx.conf（stream 模組，四層轉發）
 stream {
     upstream mc_backend {
         server 127.0.0.1:25565;
@@ -356,10 +356,10 @@ stream {
 `DOCKER-USER` 是 Docker 官方預留、且**不會被 Docker 自己覆蓋**的鏈，適合做來源限制：
 
 ```bash
-# 只允许指定来源访问 25565，其余丢弃
+# 只允許指定來源訪問 25565，其餘丟棄
 sudo iptables -I DOCKER-USER -p tcp --dport 25565 ! -s 203.0.113.0/24 -j DROP
 
-# 查看规则
+# 檢視規則
 sudo iptables -L DOCKER-USER -n --line-numbers
 ```
 
@@ -389,8 +389,8 @@ sudo ufw-docker install
 裝完檢查一下：
 
 ```bash
-ufw-docker check     # 检查规则是否已写入
-ufw-docker status    # 查看当前放行的转发规则
+ufw-docker check     # 檢查規則是否已寫入
+ufw-docker status    # 檢視當前放行的轉發規則
 ```
 
 :::warn 裝完請重啟一次伺服器
@@ -400,20 +400,20 @@ ufw-docker status    # 查看当前放行的转发规则
 **日常用法**（以 Java 版 25565 為例）：
 
 ```bash
-# 允许外部访问容器端口 25565（注意：填【容器端口】，不是宿主端口）
+# 允許外部訪問容器埠 25565（注意：填【容器埠】，不是宿主埠）
 sudo ufw route allow proto tcp from any to any port 25565
 
-# 不再允许（撤销）
+# 不再允許（撤銷）
 sudo ufw route delete allow proto tcp from any to any port 25565
 
-# 只看某个容器的规则
+# 只看某個容器的規則
 ufw-docker list mc
 
-# 直接按容器名放行（脚本提供的便捷写法）
+# 直接按容器名放行（指令碼提供的便捷寫法）
 sudo ufw-docker allow mc 25565
 sudo ufw-docker allow mc 25565/tcp
 
-# 收回某个容器的规则
+# 收回某個容器的規則
 sudo ufw-docker delete allow mc 25565
 ```
 
@@ -442,17 +442,17 @@ sudo ufw-docker reload
 預設只信任標準私網段（`10.0.0.0/8`、`172.16.0.0/12`、`192.168.0.0/16`）。若你的內網是別的網段：
 
 ```bash
-# 自动识别所有 Docker 网络的网段（增删网络后要重新执行）
+# 自動識別所有 Docker 網路的網段（增刪網路後要重新執行）
 sudo ufw-docker install --docker-subnets
 
-# 或显式指定
+# 或顯式指定
 sudo ufw-docker install --docker-subnets 192.168.207.0/24 10.207.0.0/16
 ```
 
 **不用了怎麼解除安裝**：
 
 ```bash
-sudo ufw-docker uninstall   # 还原 UFW 配置并删除安装的文件
+sudo ufw-docker uninstall   # 還原 UFW 配置並刪除安裝的檔案
 ```
 
 **這個方案的好處與代價**：
@@ -504,7 +504,7 @@ sudo ufw-docker uninstall   # 还原 UFW 配置并删除安装的文件
 | `none` | 無網路 | 完全隔離 | 容器不能聯網 | 純離線計算任務 |
 
 ```yaml
-# host 模式示例（注意：此时 ports 段无意义）
+# host 模式示例（注意：此時 ports 段無意義）
 services:
   mc:
     network_mode: host
@@ -546,9 +546,9 @@ docker network inspect bridge --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}
 
 ```bash
 sudo systemctl restart docker
-# 已有的自定义网络不会自动改，需要删除重建
+# 已有的自定義網路不會自動改，需要刪除重建
 docker network ls
-docker network rm <网络名>
+docker network rm <網路名>
 ```
 
 選擇位址池的原則：**避開你所有內網網段**（常見要避開 `10.0.0.0/8`、`172.16.0.0/12`、`192.168.0.0/16` 中你實際在用的部分）。若內網已佔用 `10.x`，可改用 `100.64.0.0/16` 這類運營商級 NAT 段。
@@ -564,8 +564,8 @@ services:
   backup:
     networks: [mcnet]
     environment:
-      TARGET: "mc:25565"     # 正确：服务名
-      # TARGET: "127.0.0.1:25565"  # 错误：那是 backup 容器自己
+      TARGET: "mc:25565"     # 正確：服務名
+      # TARGET: "127.0.0.1:25565"  # 錯誤：那是 backup 容器自己
 networks:
   mcnet:
     driver: bridge

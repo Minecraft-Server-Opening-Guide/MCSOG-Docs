@@ -116,14 +116,14 @@ sudo ss -tlnp | grep 25565
 
 ```
 mcserver/
-├── survival/          # 单个服务端的全部文件
-│   ├── server.jar     # 服务端核心
-│   ├── eula.txt       # 必须同意才会启动
+├── survival/          # 單個服務端的全部檔案
+│   ├── server.jar     # 服務端核心
+│   ├── eula.txt       # 必須同意才會啟動
 │   ├── server.properties
-│   ├── world/         # 世界数据（务必单独备份）
+│   ├── world/         # 世界資料（務必單獨備份）
 │   ├── plugins/       # Paper / Purpur / Spigot
 │   └── mods/          # Fabric / Forge
-└── backups/           # 备份目录，与运行目录分开更安全
+└── backups/           # 備份目錄，與執行目錄分開更安全
 ```
 
 **Windows**：
@@ -156,7 +156,7 @@ sudo -iu mcserver
 裝完**新開一個** PowerShell 驗證：
 
 ```powershell
-java -version        # 应输出 openjdk version "21.x.x" ...
+java -version        # 應輸出 openjdk version "21.x.x" ...
 ```
 
 ### Linux：安裝
@@ -166,7 +166,7 @@ java -version        # 应输出 openjdk version "21.x.x" ...
 sudo apt update
 sudo apt install -y openjdk-21-jdk-headless
 
-# 需要 Java 17 时
+# 需要 Java 17 時
 sudo apt install -y openjdk-17-jdk-headless
 ```
 
@@ -217,7 +217,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 ```powershell
 echo $env:JAVA_HOME      # cmd：echo %JAVA_HOME%
 java -version
-where.exe java           # 应指向 %JAVA_HOME%\bin\java.exe
+where.exe java           # 應指向 %JAVA_HOME%\bin\java.exe
 ```
 
 ```bash

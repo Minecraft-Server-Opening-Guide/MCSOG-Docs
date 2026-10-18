@@ -43,11 +43,11 @@ draft: false
 ### 白名單
 
 ```
-whitelist on                  开启白名单
-whitelist add <玩家>          添加
+whitelist on                  開啟白名單
+whitelist add <玩家>          新增
 whitelist remove <玩家>       移除
-whitelist list                查看名单
-whitelist reload              从 whitelist.json 重新读取
+whitelist list                檢視名單
+whitelist reload              從 whitelist.json 重新讀取
 ```
 
 用指令改完後名單會寫入 `whitelist.json`；如果你**直接編輯了這個檔案**，記得執行 `whitelist reload` 讓它生效。
