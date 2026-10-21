@@ -1,7 +1,7 @@
 ---
 title: "Minecraft 版本时间线（Java 版与基岩版）"
 slug: "versions-timeline"
-updated: "2026-10-21"
+updated: "2026-10-22"
 tags: ["wiki", "version", "timeline"]
 auto: true
 ---
