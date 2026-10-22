@@ -1,7 +1,7 @@
 ---
 title: "Minecraft version timeline (Java and Bedrock)"
 slug: "versions-timeline"
-updated: "2026-10-22"
+updated: "2026-10-23"
 tags: ["wiki", "version", "timeline"]
 auto: true
 ---
