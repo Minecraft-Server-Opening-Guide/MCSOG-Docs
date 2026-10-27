@@ -1,7 +1,7 @@
 ---
 title: "Minecraft version timeline (Java and Bedrock)"
 slug: "versions-timeline"
-updated: "2026-10-27"
+updated: "2026-10-28"
 tags: ["wiki", "version", "timeline"]
 auto: true
 ---
@@ -10,7 +10,7 @@ auto: true
 
 > This page is generated automatically by the site crawler and refreshed on every crawl. Java data comes from the [official Mojang version manifest](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json); Bedrock data comes from the version history table maintained on this site.
 >
-> Coverage: **920** Java entries (**103** releases) and **283** Bedrock entries.
+> Coverage: **921** Java entries (**103** releases) and **283** Bedrock entries.
 
 ## Java releases (newest first)
 
@@ -124,6 +124,7 @@ auto: true
 
 | Version | Type | Released |
 |----|----|----|
+| 26.4-snapshot-6 | Snapshot | 2026-10-27 |
 | 26.4-snapshot-5 | Snapshot | 2026-10-20 |
 | 26.4-snapshot-4 | Snapshot | 2026-10-13 |
 | 26.4-snapshot-3 | Snapshot | 2026-10-06 |

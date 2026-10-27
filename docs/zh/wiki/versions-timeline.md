@@ -1,7 +1,7 @@
 ---
 title: "Minecraft 版本时间线（Java 版与基岩版）"
 slug: "versions-timeline"
-updated: "2026-10-27"
+updated: "2026-10-28"
 tags: ["wiki", "version", "timeline"]
 auto: true
 ---
@@ -10,7 +10,7 @@ auto: true
 
 > 本页由站点爬虫自动生成并随每次爬取刷新。Java 版数据来自 [Mojang 官方版本清单](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json)；基岩版数据来自站点维护的版本历史表。
 >
-> 收录范围：Java 版 **920** 条（正式版 **103** 条），基岩版 **283** 条。
+> 收录范围：Java 版 **921** 条（正式版 **103** 条），基岩版 **283** 条。
 
 ## Java 版正式版（最新在前）
 
@@ -124,6 +124,7 @@ auto: true
 
 | 版本 | 类型 | 发布日期 |
 |----|----|----|
+| 26.4-snapshot-6 | 快照 | 2026-10-27 |
 | 26.4-snapshot-5 | 快照 | 2026-10-20 |
 | 26.4-snapshot-4 | 快照 | 2026-10-13 |
 | 26.4-snapshot-3 | 快照 | 2026-10-06 |
