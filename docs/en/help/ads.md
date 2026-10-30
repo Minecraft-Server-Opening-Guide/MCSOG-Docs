@@ -15,9 +15,7 @@ MCSOG offers advertising placements for servers, tools and community projects. E
 ADS is the site's advertising system. It currently supports top banners, in-article ads and other placements. Each ad can configure:
 
 - The ad image and click-through URL;
-- Main title, subtitle, ad description and their colors;
-- Ad badge, badge colors, team name and verification prefix;
-- Hover bubble text and colors.
+- Main title, subtitle and their colors.
 
 Ad content must be accurate, clear and consistent with the landing page.
 
@@ -64,19 +62,7 @@ After ticking the remote ad option, the feature must pass review before it can b
     "mainTitle": "",
     "mainTitleColor": "",
     "subTitle": "",
-    "subTitleColor": "",
-    "adDescription": "",
-    "announcementBackgroundColor": "",
-    "announcementTextColor": "",
-    "adBadge": "",
-    "adBadgeBackgroundColor": "",
-    "adBadgeTextColor": "",
-    "bubbleText": "",
-    "teamName": "",
-    "verificationPrefix": "",
-    "bubbleBackgroundColor": "",
-    "bubbleTextColor": "",
-    "bubbleBorderColor": ""
+    "subTitleColor": ""
   }
 }
 ```
@@ -91,18 +77,6 @@ After ticking the remote ad option, the feature must pass review before it can b
 | `mainTitleColor` | Main title color | Hex color |
 | `subTitle` | Subtitle | Plain text, up to 120 characters recommended |
 | `subTitleColor` | Subtitle color | Hex color |
-| `adDescription` | Ad description | Plain text, up to 160 characters recommended |
-| `announcementBackgroundColor` | Description background | Hex color |
-| `announcementTextColor` | Description text color | Hex color |
-| `adBadge` | Ad badge | Text; `不显示`, `none`, `off` or `hidden` hides it |
-| `adBadgeBackgroundColor` | Badge background | Hex color |
-| `adBadgeTextColor` | Badge text color | Hex color |
-| `bubbleText` | Bubble text | Plain text |
-| `teamName` | Team name | Plain text, up to 80 characters recommended |
-| `verificationPrefix` | Verification prefix | Plain text, for example "Verified" |
-| `bubbleBackgroundColor` | Bubble background | Hex color |
-| `bubbleTextColor` | Bubble text color | Hex color |
-| `bubbleBorderColor` | Bubble border color | Hex color |
 
 Colors support `#RGB`, `#RGBA`, `#RRGGBB` and `#RRGGBBAA`. Empty or invalid colors use the default color.
 
@@ -110,9 +84,7 @@ Colors support `#RGB`, `#RGBA`, `#RRGGBB` and `#RRGGBBAA`. Empty or invalid colo
 
 - Empty `imageUrl`: fall back to the saved local image; if there is none, the ad is not rendered;
 - Empty `clickUrl`: no link is generated;
-- Empty title, subtitle or description: that element is hidden;
-- Empty or hidden `adBadge`: no badge is shown;
-- Empty bubble text and team name: no bubble is shown;
+- Empty title or subtitle: that element is hidden;
 - Non-200 HTTP status, invalid JSON, missing `settings`, CORS failure, timeout or network error: fall back to local content.
 
 ### Server example
@@ -136,19 +108,7 @@ echo json_encode([
         'mainTitle' => 'Welcome to MCSOG',
         'mainTitleColor' => '#FFFFFF',
         'subTitle' => 'Community: 1083430859',
-        'subTitleColor' => '#FFFFFF',
-        'adDescription' => 'Official event',
-        'announcementBackgroundColor' => '#112233',
-        'announcementTextColor' => '#FFFFFF',
-        'adBadge' => 'Official',
-        'adBadgeBackgroundColor' => '#C8EB21',
-        'adBadgeTextColor' => '#121212',
-        'bubbleText' => 'Click for details',
-        'teamName' => 'MCSOG Team',
-        'verificationPrefix' => 'Verified',
-        'bubbleBackgroundColor' => '#111827',
-        'bubbleTextColor' => '#FFFFFF',
-        'bubbleBorderColor' => '#FFFFFF'
+        'subTitleColor' => '#FFFFFF'
     ]
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ```

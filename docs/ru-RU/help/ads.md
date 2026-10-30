@@ -15,9 +15,7 @@ MCSOG предоставляет рекламные места для серве
 ADS — рекламная система сайта. Сейчас поддерживаются верхние баннеры, реклама внутри статей и другие места. Для каждой рекламы можно настроить:
 
 - изображение и ссылку перехода;
-- основной заголовок, подзаголовок, описание и их цвета;
-- значок рекламы, его цвета, название команды и префикс подтверждения;
-- текст и цвета всплывающей подсказки.
+- основной заголовок, подзаголовок и их цвета.
 
 Содержание рекламы должно быть достоверным, понятным и соответствовать странице перехода.
 
@@ -63,19 +61,7 @@ RADS (Remote Advertising Services, служба удалённой реклам�
     "mainTitle": "",
     "mainTitleColor": "",
     "subTitle": "",
-    "subTitleColor": "",
-    "adDescription": "",
-    "announcementBackgroundColor": "",
-    "announcementTextColor": "",
-    "adBadge": "",
-    "adBadgeBackgroundColor": "",
-    "adBadgeTextColor": "",
-    "bubbleText": "",
-    "teamName": "",
-    "verificationPrefix": "",
-    "bubbleBackgroundColor": "",
-    "bubbleTextColor": "",
-    "bubbleBorderColor": ""
+    "subTitleColor": ""
   }
 }
 ```
@@ -90,18 +76,6 @@ RADS (Remote Advertising Services, служба удалённой реклам�
 | `mainTitleColor` | Цвет заголовка | HEX-цвет |
 | `subTitle` | Подзаголовок | Текст, желательно до 120 символов |
 | `subTitleColor` | Цвет подзаголовка | HEX-цвет |
-| `adDescription` | Описание рекламы | Текст, желательно до 160 символов |
-| `announcementBackgroundColor` | Фон описания | HEX-цвет |
-| `announcementTextColor` | Цвет текста описания | HEX-цвет |
-| `adBadge` | Значок рекламы | Текст; `不显示`, `none`, `off`, `hidden` скрывает |
-| `adBadgeBackgroundColor` | Фон значка | HEX-цвет |
-| `adBadgeTextColor` | Цвет текста значка | HEX-цвет |
-| `bubbleText` | Текст подсказки | Текст |
-| `teamName` | Название команды | Текст, желательно до 80 символов |
-| `verificationPrefix` | Префикс подтверждения | Например, «Подтверждено» |
-| `bubbleBackgroundColor` | Фон подсказки | HEX-цвет |
-| `bubbleTextColor` | Цвет текста подсказки | HEX-цвет |
-| `bubbleBorderColor` | Цвет рамки подсказки | HEX-цвет |
 
 Поддерживаются цвета `#RGB`, `#RGBA`, `#RRGGBB`, `#RRGGBBAA`. Пустой или неверный цвет заменяется цветом по умолчанию.
 
@@ -109,9 +83,7 @@ RADS (Remote Advertising Services, служба удалённой реклам�
 
 - Пустой `imageUrl`: используется сохранённое локальное изображение; если его нет, реклама не показывается;
 - Пустой `clickUrl`: ссылка не создаётся;
-- Пустые заголовок, подзаголовок или описание: элемент скрывается;
-- Пустой или скрытый `adBadge`: значок не показывается;
-- Пустые текст подсказки и название команды: подсказка не показывается;
+- Пустые заголовок или подзаголовок: элемент скрывается;
 - HTTP не 200, неверный JSON, отсутствие `settings`, ошибка CORS, таймаут или сеть: откат к локальному содержимому.
 
 ### Пример сервера
@@ -134,15 +106,7 @@ echo json_encode([
         'mainTitle' => 'Добро пожаловать в MCSOG',
         'mainTitleColor' => '#FFFFFF',
         'subTitle' => 'QQ-группа: 1083430859',
-        'subTitleColor' => '#FFFFFF',
-        'adDescription' => 'Официальное событие',
-        'announcementBackgroundColor' => '#112233',
-        'announcementTextColor' => '#FFFFFF',
-        'adBadge' => 'Официально',
-        'adBadgeBackgroundColor' => '#C8EB21',
-        'adBadgeTextColor' => '#121212',
-        'teamName' => 'MCSOG Team',
-        'verificationPrefix' => 'Подтверждено'
+        'subTitleColor' => '#FFFFFF'
     ]
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ```

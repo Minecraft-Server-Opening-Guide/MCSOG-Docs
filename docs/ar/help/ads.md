@@ -15,9 +15,7 @@ draft: false
 ADS هو نظام المساحات الإعلانية في الموقع. يدعم حالياً اللافتات العلوية والإعلانات داخل المقالات ومواضع أخرى. يمكن ضبط كل إعلان بما يلي:
 
 - صورة الإعلان ورابط النقر؛
-- العنوان الرئيسي والعنوان الفرعي ووصف الإعلان وألوانها؛
-- شارة الإعلان وألوانها واسم الفريق وبادئة التحقق؛
-- نص الفقاعة وألوانها عند المرور بالمؤشر.
+- العنوان الرئيسي والعنوان الفرعي وألوانهما.
 
 يجب أن يكون محتوى الإعلان صحيحاً وواضحاً ومطابقاً لصفحة الوصول.
 
@@ -63,19 +61,7 @@ ADS هو نظام المساحات الإعلانية في الموقع. يدع�
     "mainTitle": "",
     "mainTitleColor": "",
     "subTitle": "",
-    "subTitleColor": "",
-    "adDescription": "",
-    "announcementBackgroundColor": "",
-    "announcementTextColor": "",
-    "adBadge": "",
-    "adBadgeBackgroundColor": "",
-    "adBadgeTextColor": "",
-    "bubbleText": "",
-    "teamName": "",
-    "verificationPrefix": "",
-    "bubbleBackgroundColor": "",
-    "bubbleTextColor": "",
-    "bubbleBorderColor": ""
+    "subTitleColor": ""
   }
 }
 ```
@@ -90,18 +76,6 @@ ADS هو نظام المساحات الإعلانية في الموقع. يدع�
 | `mainTitleColor` | لون العنوان الرئيسي | لون HEX |
 | `subTitle` | العنوان الفرعي | نص عادي، يُفضل ألا يتجاوز 120 حرفاً |
 | `subTitleColor` | لون العنوان الفرعي | لون HEX |
-| `adDescription` | وصف الإعلان | نص عادي، يُفضل ألا يتجاوز 160 حرفاً |
-| `announcementBackgroundColor` | خلفية الوصف | لون HEX |
-| `announcementTextColor` | لون نص الوصف | لون HEX |
-| `adBadge` | شارة الإعلان | نص؛ `不显示` أو `none` أو `off` أو `hidden` يخفيها |
-| `adBadgeBackgroundColor` | خلفية الشارة | لون HEX |
-| `adBadgeTextColor` | لون نص الشارة | لون HEX |
-| `bubbleText` | نص الفقاعة | نص عادي |
-| `teamName` | اسم الفريق | نص عادي، يُفضل ألا يتجاوز 80 حرفاً |
-| `verificationPrefix` | بادئة التحقق | مثل «تم التحقق» |
-| `bubbleBackgroundColor` | خلفية الفقاعة | لون HEX |
-| `bubbleTextColor` | لون نص الفقاعة | لون HEX |
-| `bubbleBorderColor` | لون إطار الفقاعة | لون HEX |
 
 الألوان المدعومة: `#RGB` و`#RGBA` و`#RRGGBB` و`#RRGGBBAA`. اللون الفارغ أو غير الصالح يستخدم اللون الافتراضي.
 
@@ -109,9 +83,7 @@ ADS هو نظام المساحات الإعلانية في الموقع. يدع�
 
 - `imageUrl` فارغ: يُستخدم ملف الصورة المحلي المحفوظ؛ وإذا لم يوجد لا يُعرض الإعلان؛
 - `clickUrl` فارغ: لا يُنشأ رابط؛
-- العنوان أو العنوان الفرعي أو الوصف فارغ: يُخفى العنصر؛
-- `adBadge` فارغ أو مخفي: لا تُعرض الشارة؛
-- نص الفقاعة واسم الفريق فارغان: لا تُعرض الفقاعة؛
+- العنوان أو العنوان الفرعي فارغ: يُخفى العنصر؛
 - HTTP غير 200 أو JSON غير صالح أو غياب `settings` أو فشل CORS أو المهلة أو خطأ الشبكة: الرجوع إلى المحتوى المحلي.
 
 ### مثال الخادم
@@ -134,15 +106,7 @@ echo json_encode([
         'mainTitle' => 'مرحباً بك في MCSOG',
         'mainTitleColor' => '#FFFFFF',
         'subTitle' => 'مجموعة QQ: 1083430859',
-        'subTitleColor' => '#FFFFFF',
-        'adDescription' => 'فعالية رسمية',
-        'announcementBackgroundColor' => '#112233',
-        'announcementTextColor' => '#FFFFFF',
-        'adBadge' => 'رسمي',
-        'adBadgeBackgroundColor' => '#C8EB21',
-        'adBadgeTextColor' => '#121212',
-        'teamName' => 'MCSOG Team',
-        'verificationPrefix' => 'تم التحقق'
+        'subTitleColor' => '#FFFFFF'
     ]
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ```

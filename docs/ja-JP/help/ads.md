@@ -15,9 +15,7 @@ MCSOG はサーバー、ツール、コミュニティプロジェクト向け�
 ADS は当サイトの広告枠システムです。現在、トップバナーや記事内広告などの枠に対応しています。広告ごとに次を設定できます。
 
 - 広告画像とクリック先 URL；
-- メインタイトル、サブタイトル、広告説明と各色；
-- 広告バッジ、バッジ色、チーム名、認証プレフィックス；
-- ホバー時のバブルテキストと色。
+- メインタイトル、サブタイトルと各色。
 
 広告内容は正確かつ明確で、リンク先ページと一致している必要があります。
 
@@ -63,19 +61,7 @@ RADS（Remote Advertising Services、リモート広告サービス）は、広�
     "mainTitle": "",
     "mainTitleColor": "",
     "subTitle": "",
-    "subTitleColor": "",
-    "adDescription": "",
-    "announcementBackgroundColor": "",
-    "announcementTextColor": "",
-    "adBadge": "",
-    "adBadgeBackgroundColor": "",
-    "adBadgeTextColor": "",
-    "bubbleText": "",
-    "teamName": "",
-    "verificationPrefix": "",
-    "bubbleBackgroundColor": "",
-    "bubbleTextColor": "",
-    "bubbleBorderColor": ""
+    "subTitleColor": ""
   }
 }
 ```
@@ -90,18 +76,6 @@ RADS（Remote Advertising Services、リモート広告サービス）は、広�
 | `mainTitleColor` | メインタイトル色 | 16 進カラー |
 | `subTitle` | サブタイトル | プレーンテキスト、120 文字以内推奨 |
 | `subTitleColor` | サブタイトル色 | 16 進カラー |
-| `adDescription` | 広告説明 | プレーンテキスト、160 文字以内推奨 |
-| `announcementBackgroundColor` | 説明背景色 | 16 進カラー |
-| `announcementTextColor` | 説明文字色 | 16 進カラー |
-| `adBadge` | 広告バッジ | テキスト。`不显示`、`none`、`off`、`hidden` で非表示 |
-| `adBadgeBackgroundColor` | バッジ背景色 | 16 進カラー |
-| `adBadgeTextColor` | バッジ文字色 | 16 進カラー |
-| `bubbleText` | バブル説明 | プレーンテキスト |
-| `teamName` | チーム名 | プレーンテキスト、80 文字以内推奨 |
-| `verificationPrefix` | 認証プレフィックス | 「認証済み」など |
-| `bubbleBackgroundColor` | バブル背景色 | 16 進カラー |
-| `bubbleTextColor` | バブル文字色 | 16 進カラー |
-| `bubbleBorderColor` | バブル枠色 | 16 進カラー |
 
 色は `#RGB`、`#RGBA`、`#RRGGBB`、`#RRGGBBAA` に対応します。空または不正な色は既定色になります。
 
@@ -109,9 +83,7 @@ RADS（Remote Advertising Services、リモート広告サービス）は、広�
 
 - `imageUrl` が空：保存済みローカル画像を使用。なければ表示しません；
 - `clickUrl` が空：リンクを生成しません；
-- タイトル、サブタイトル、説明が空：該当要素を表示しません；
-- `adBadge` が空または非表示値：バッジを表示しません；
-- バブルテキストとチーム名が両方空：バブルを表示しません；
+- タイトル、サブタイトルが空：該当要素を表示しません；
 - HTTP 非 200、不正 JSON、`settings` 欠落、CORS 失敗、タイムアウト、通信エラー：ローカル内容にフォールバックします。
 
 ### サーバー例
@@ -134,15 +106,7 @@ echo json_encode([
         'mainTitle' => 'MCSOG へようこそ',
         'mainTitleColor' => '#FFFFFF',
         'subTitle' => 'QQ グループ：1083430859',
-        'subTitleColor' => '#FFFFFF',
-        'adDescription' => '公式イベント',
-        'announcementBackgroundColor' => '#112233',
-        'announcementTextColor' => '#FFFFFF',
-        'adBadge' => '公式',
-        'adBadgeBackgroundColor' => '#C8EB21',
-        'adBadgeTextColor' => '#121212',
-        'teamName' => 'MCSOG Team',
-        'verificationPrefix' => '認証済み'
+        'subTitleColor' => '#FFFFFF'
     ]
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ```

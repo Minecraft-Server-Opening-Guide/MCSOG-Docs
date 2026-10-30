@@ -15,9 +15,7 @@ MCSOG cung cấp vị trí quảng cáo cho máy chủ, công cụ và dự án 
 ADS là hệ thống vị trí quảng cáo của trang. Hiện hỗ trợ banner đầu trang, quảng cáo trong bài viết và các vị trí khác. Mỗi quảng cáo có thể cấu hình:
 
 - Ảnh quảng cáo và liên kết nhấp;
-- Tiêu đề chính, tiêu đề phụ, mô tả quảng cáo và màu tương ứng;
-- Nhãn quảng cáo, màu nhãn, tên nhóm và tiền tố xác minh;
-- Nội dung và màu bong bóng khi rê chuột.
+- Tiêu đề chính, tiêu đề phụ và màu tương ứng.
 
 Nội dung quảng cáo phải chính xác, rõ ràng và khớp với trang đích.
 
@@ -63,19 +61,7 @@ Sau khi đánh dấu quảng cáo từ xa, tính năng phải được duyệt t
     "mainTitle": "",
     "mainTitleColor": "",
     "subTitle": "",
-    "subTitleColor": "",
-    "adDescription": "",
-    "announcementBackgroundColor": "",
-    "announcementTextColor": "",
-    "adBadge": "",
-    "adBadgeBackgroundColor": "",
-    "adBadgeTextColor": "",
-    "bubbleText": "",
-    "teamName": "",
-    "verificationPrefix": "",
-    "bubbleBackgroundColor": "",
-    "bubbleTextColor": "",
-    "bubbleBorderColor": ""
+    "subTitleColor": ""
   }
 }
 ```
@@ -90,18 +76,6 @@ Sau khi đánh dấu quảng cáo từ xa, tính năng phải được duyệt t
 | `mainTitleColor` | Màu tiêu đề chính | Màu HEX |
 | `subTitle` | Tiêu đề phụ | Văn bản, nên tối đa 120 ký tự |
 | `subTitleColor` | Màu tiêu đề phụ | Màu HEX |
-| `adDescription` | Mô tả quảng cáo | Văn bản, nên tối đa 160 ký tự |
-| `announcementBackgroundColor` | Nền mô tả | Màu HEX |
-| `announcementTextColor` | Màu chữ mô tả | Màu HEX |
-| `adBadge` | Nhãn quảng cáo | Văn bản; `不显示`, `none`, `off`, `hidden` sẽ ẩn |
-| `adBadgeBackgroundColor` | Nền nhãn | Màu HEX |
-| `adBadgeTextColor` | Màu chữ nhãn | Màu HEX |
-| `bubbleText` | Nội dung bong bóng | Văn bản |
-| `teamName` | Tên nhóm | Văn bản, nên tối đa 80 ký tự |
-| `verificationPrefix` | Tiền tố xác minh | Ví dụ "Đã xác minh" |
-| `bubbleBackgroundColor` | Nền bong bóng | Màu HEX |
-| `bubbleTextColor` | Màu chữ bong bóng | Màu HEX |
-| `bubbleBorderColor` | Màu viền bong bóng | Màu HEX |
 
 Màu hỗ trợ `#RGB`, `#RGBA`, `#RRGGBB`, `#RRGGBBAA`. Màu trống hoặc sai định dạng sẽ dùng màu mặc định.
 
@@ -109,9 +83,7 @@ Màu hỗ trợ `#RGB`, `#RGBA`, `#RRGGBB`, `#RRGGBBAA`. Màu trống hoặc sai
 
 - `imageUrl` trống: dùng ảnh cục bộ đã lưu; nếu không có thì không hiển thị quảng cáo;
 - `clickUrl` trống: không tạo liên kết;
-- Tiêu đề, tiêu đề phụ hoặc mô tả trống: ẩn phần đó;
-- `adBadge` trống hoặc là giá trị ẩn: không hiển thị nhãn;
-- Nội dung bong bóng và tên nhóm đều trống: không hiển thị bong bóng;
+- Tiêu đề, tiêu đề phụ trống: ẩn phần đó;
 - HTTP khác 200, JSON không hợp lệ, thiếu `settings`, lỗi CORS, quá thời gian hoặc lỗi mạng: dùng nội dung cục bộ.
 
 ### Ví dụ máy chủ
@@ -134,15 +106,7 @@ echo json_encode([
         'mainTitle' => 'Chào mừng đến với MCSOG',
         'mainTitleColor' => '#FFFFFF',
         'subTitle' => 'Nhóm QQ: 1083430859',
-        'subTitleColor' => '#FFFFFF',
-        'adDescription' => 'Sự kiện chính thức',
-        'announcementBackgroundColor' => '#112233',
-        'announcementTextColor' => '#FFFFFF',
-        'adBadge' => 'Chính thức',
-        'adBadgeBackgroundColor' => '#C8EB21',
-        'adBadgeTextColor' => '#121212',
-        'teamName' => 'MCSOG Team',
-        'verificationPrefix' => 'Đã xác minh'
+        'subTitleColor' => '#FFFFFF'
     ]
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ```
