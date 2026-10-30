@@ -15,7 +15,8 @@ MCSOG cung cấp vị trí quảng cáo cho máy chủ, công cụ và dự án 
 ADS là hệ thống vị trí quảng cáo của trang. Hiện hỗ trợ banner đầu trang, quảng cáo trong bài viết và các vị trí khác. Mỗi quảng cáo có thể cấu hình:
 
 - Ảnh quảng cáo và liên kết nhấp;
-- Tiêu đề chính, tiêu đề phụ và màu tương ứng.
+- Tiêu đề chính, tiêu đề phụ và màu tương ứng;
+- Thông báo quảng cáo kèm màu nền và màu chữ.
 
 Nội dung quảng cáo phải chính xác, rõ ràng và khớp với trang đích.
 
@@ -61,7 +62,10 @@ Sau khi đánh dấu quảng cáo từ xa, tính năng phải được duyệt t
     "mainTitle": "",
     "mainTitleColor": "",
     "subTitle": "",
-    "subTitleColor": ""
+    "subTitleColor": "",
+    "adDescription": "",
+    "announcementBackgroundColor": "",
+    "announcementTextColor": ""
   }
 }
 ```
@@ -76,6 +80,9 @@ Sau khi đánh dấu quảng cáo từ xa, tính năng phải được duyệt t
 | `mainTitleColor` | Màu tiêu đề chính | Màu HEX |
 | `subTitle` | Tiêu đề phụ | Văn bản, nên tối đa 120 ký tự |
 | `subTitleColor` | Màu tiêu đề phụ | Màu HEX |
+| `adDescription` | Thông báo quảng cáo | Văn bản, nên tối đa 160 ký tự |
+| `announcementBackgroundColor` | Màu nền thông báo | Màu HEX |
+| `announcementTextColor` | Màu chữ thông báo | Màu HEX |
 
 Màu hỗ trợ `#RGB`, `#RGBA`, `#RRGGBB`, `#RRGGBBAA`. Màu trống hoặc sai định dạng sẽ dùng màu mặc định.
 
@@ -83,7 +90,7 @@ Màu hỗ trợ `#RGB`, `#RGBA`, `#RRGGBB`, `#RRGGBBAA`. Màu trống hoặc sai
 
 - `imageUrl` trống: dùng ảnh cục bộ đã lưu; nếu không có thì không hiển thị quảng cáo;
 - `clickUrl` trống: không tạo liên kết;
-- Tiêu đề, tiêu đề phụ trống: ẩn phần đó;
+- Tiêu đề, tiêu đề phụ hoặc thông báo trống: ẩn phần đó;
 - HTTP khác 200, JSON không hợp lệ, thiếu `settings`, lỗi CORS, quá thời gian hoặc lỗi mạng: dùng nội dung cục bộ.
 
 ### Ví dụ máy chủ
@@ -106,7 +113,10 @@ echo json_encode([
         'mainTitle' => 'Chào mừng đến với MCSOG',
         'mainTitleColor' => '#FFFFFF',
         'subTitle' => 'Nhóm QQ: 1083430859',
-        'subTitleColor' => '#FFFFFF'
+        'subTitleColor' => '#FFFFFF',
+        'adDescription' => 'Sự kiện chính thức',
+        'announcementBackgroundColor' => '#112233',
+        'announcementTextColor' => '#FFFFFF'
     ]
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ```

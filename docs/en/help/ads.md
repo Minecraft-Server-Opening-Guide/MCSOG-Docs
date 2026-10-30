@@ -15,7 +15,8 @@ MCSOG offers advertising placements for servers, tools and community projects. E
 ADS is the site's advertising system. It currently supports top banners, in-article ads and other placements. Each ad can configure:
 
 - The ad image and click-through URL;
-- Main title, subtitle and their colors.
+- Main title, subtitle and their colors;
+- The ad announcement with its background and text colors.
 
 Ad content must be accurate, clear and consistent with the landing page.
 
@@ -62,7 +63,10 @@ After ticking the remote ad option, the feature must pass review before it can b
     "mainTitle": "",
     "mainTitleColor": "",
     "subTitle": "",
-    "subTitleColor": ""
+    "subTitleColor": "",
+    "adDescription": "",
+    "announcementBackgroundColor": "",
+    "announcementTextColor": ""
   }
 }
 ```
@@ -77,6 +81,9 @@ After ticking the remote ad option, the feature must pass review before it can b
 | `mainTitleColor` | Main title color | Hex color |
 | `subTitle` | Subtitle | Plain text, up to 120 characters recommended |
 | `subTitleColor` | Subtitle color | Hex color |
+| `adDescription` | Ad announcement | Plain text, up to 160 characters recommended |
+| `announcementBackgroundColor` | Announcement background | Hex color |
+| `announcementTextColor` | Announcement text color | Hex color |
 
 Colors support `#RGB`, `#RGBA`, `#RRGGBB` and `#RRGGBBAA`. Empty or invalid colors use the default color.
 
@@ -84,7 +91,7 @@ Colors support `#RGB`, `#RGBA`, `#RRGGBB` and `#RRGGBBAA`. Empty or invalid colo
 
 - Empty `imageUrl`: fall back to the saved local image; if there is none, the ad is not rendered;
 - Empty `clickUrl`: no link is generated;
-- Empty title or subtitle: that element is hidden;
+- Empty title, subtitle or announcement: that element is hidden;
 - Non-200 HTTP status, invalid JSON, missing `settings`, CORS failure, timeout or network error: fall back to local content.
 
 ### Server example
@@ -108,7 +115,10 @@ echo json_encode([
         'mainTitle' => 'Welcome to MCSOG',
         'mainTitleColor' => '#FFFFFF',
         'subTitle' => 'Community: 1083430859',
-        'subTitleColor' => '#FFFFFF'
+        'subTitleColor' => '#FFFFFF',
+        'adDescription' => 'Official event',
+        'announcementBackgroundColor' => '#112233',
+        'announcementTextColor' => '#FFFFFF'
     ]
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ```

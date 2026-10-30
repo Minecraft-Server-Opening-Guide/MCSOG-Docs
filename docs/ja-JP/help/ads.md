@@ -15,7 +15,8 @@ MCSOG はサーバー、ツール、コミュニティプロジェクト向け�
 ADS は当サイトの広告枠システムです。現在、トップバナーや記事内広告などの枠に対応しています。広告ごとに次を設定できます。
 
 - 広告画像とクリック先 URL；
-- メインタイトル、サブタイトルと各色。
+- メインタイトル、サブタイトルと各色；
+- 広告のお知らせと、その背景色・文字色。
 
 広告内容は正確かつ明確で、リンク先ページと一致している必要があります。
 
@@ -61,7 +62,10 @@ RADS（Remote Advertising Services、リモート広告サービス）は、広�
     "mainTitle": "",
     "mainTitleColor": "",
     "subTitle": "",
-    "subTitleColor": ""
+    "subTitleColor": "",
+    "adDescription": "",
+    "announcementBackgroundColor": "",
+    "announcementTextColor": ""
   }
 }
 ```
@@ -76,6 +80,9 @@ RADS（Remote Advertising Services、リモート広告サービス）は、広�
 | `mainTitleColor` | メインタイトル色 | 16 進カラー |
 | `subTitle` | サブタイトル | プレーンテキスト、120 文字以内推奨 |
 | `subTitleColor` | サブタイトル色 | 16 進カラー |
+| `adDescription` | 広告のお知らせ | プレーンテキスト、160 文字以内推奨 |
+| `announcementBackgroundColor` | お知らせ背景色 | 16 進カラー |
+| `announcementTextColor` | お知らせ文字色 | 16 進カラー |
 
 色は `#RGB`、`#RGBA`、`#RRGGBB`、`#RRGGBBAA` に対応します。空または不正な色は既定色になります。
 
@@ -83,7 +90,7 @@ RADS（Remote Advertising Services、リモート広告サービス）は、広�
 
 - `imageUrl` が空：保存済みローカル画像を使用。なければ表示しません；
 - `clickUrl` が空：リンクを生成しません；
-- タイトル、サブタイトルが空：該当要素を表示しません；
+- タイトル、サブタイトル、お知らせが空：該当要素を表示しません；
 - HTTP 非 200、不正 JSON、`settings` 欠落、CORS 失敗、タイムアウト、通信エラー：ローカル内容にフォールバックします。
 
 ### サーバー例
@@ -106,7 +113,10 @@ echo json_encode([
         'mainTitle' => 'MCSOG へようこそ',
         'mainTitleColor' => '#FFFFFF',
         'subTitle' => 'QQ グループ：1083430859',
-        'subTitleColor' => '#FFFFFF'
+        'subTitleColor' => '#FFFFFF',
+        'adDescription' => '公式イベント',
+        'announcementBackgroundColor' => '#112233',
+        'announcementTextColor' => '#FFFFFF'
     ]
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ```

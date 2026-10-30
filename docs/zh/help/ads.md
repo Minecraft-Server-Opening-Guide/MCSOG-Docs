@@ -15,7 +15,8 @@ MCSOG 为服务器、工具和社区项目提供广告展示位。所有广告�
 ADS 是本站的广告系统，目前支持顶部横幅、文章内嵌广告等位置。每条广告可以配置：
 
 - 广告图片与点击跳转链接；
-- 主标题、副标题及各自颜色。
+- 主标题、副标题及各自颜色；
+- 广告公告及背景、文字颜色。
 
 广告内容应当真实、清晰，并与落地页保持一致。
 
@@ -62,7 +63,10 @@ RADS（Remote Advertising Services，远程广告服务）允许广告主自行�
     "mainTitle": "",
     "mainTitleColor": "",
     "subTitle": "",
-    "subTitleColor": ""
+    "subTitleColor": "",
+    "adDescription": "",
+    "announcementBackgroundColor": "",
+    "announcementTextColor": ""
   }
 }
 ```
@@ -77,6 +81,9 @@ RADS（Remote Advertising Services，远程广告服务）允许广告主自行�
 | `mainTitleColor` | 主标题颜色 | 十六进制色值 |
 | `subTitle` | 副标题 | 纯文本，建议不超过 120 字 |
 | `subTitleColor` | 副标题颜色 | 十六进制色值 |
+| `adDescription` | 广告公告 | 纯文本，建议不超过 160 字 |
+| `announcementBackgroundColor` | 公告背景色 | 十六进制色值 |
+| `announcementTextColor` | 公告文字色 | 十六进制色值 |
 
 颜色支持 `#RGB`、`#RGBA`、`#RRGGBB`、`#RRGGBBAA`。颜色为空或格式错误时使用默认颜色。
 
@@ -84,7 +91,7 @@ RADS（Remote Advertising Services，远程广告服务）允许广告主自行�
 
 - `imageUrl` 为空：回退本地已保存图片；没有图片则不展示；
 - `clickUrl` 为空：不生成跳转链接；
-- 标题、副标题为空：对应内容不显示；
+- 标题、副标题、公告为空：对应内容不显示；
 - HTTP 非 200、JSON 非法、缺少 `settings`、跨域失败、超时或网络错误：回退本地内容。
 
 ### 服务端示例
@@ -108,7 +115,10 @@ echo json_encode([
         'mainTitle' => '欢迎来到 MCSOG',
         'mainTitleColor' => '#FFFFFF',
         'subTitle' => 'QQ交流群：1083430859',
-        'subTitleColor' => '#FFFFFF'
+        'subTitleColor' => '#FFFFFF',
+        'adDescription' => '官方活动',
+        'announcementBackgroundColor' => '#112233',
+        'announcementTextColor' => '#FFFFFF'
     ]
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ```
