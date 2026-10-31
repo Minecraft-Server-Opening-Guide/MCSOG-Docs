@@ -1,3 +1,9 @@
+# MCSOG-Docs
+
+中文(./README.md) | English
+
+---
+
 ## English
 
 The **public documentation repository** for the MCSOG Minecraft server-hosting guide. Community contributions are welcome.
