@@ -15,6 +15,7 @@ Live site: <https://mcsog.ndpreforged.com>
 ```
 MCSOG-Docs/
 ├── README.md              this file
+├── README_EN.md           English README
 └── docs/
     ├── zh/                Simplified Chinese (source of truth)
     │   ├── tutorials/     tutorials
@@ -23,10 +24,17 @@ MCSOG-Docs/
     │   │   ├── ops/       operations and security
     │   │   └── faq/       frequently asked questions
     │   ├── wiki/          wiki (version timeline, core comparison, commands)
-    └── en/                English (mirrors the zh tree one to one)
-        ├── tutorials/
-        └── wiki/
+    │   ├── help/          help and policies
+    │   └── news/          announcements and changelog
+    ├── en/                English (mirrors the zh tree one to one)
+    ├── zh-TW/             Traditional Chinese
+    ├── ja-JP/             Japanese
+    ├── ru-RU/             Russian
+    ├── ar/                Arabic
+    └── vi/                Vietnamese
 ```
+
+All locales other than `zh` use the same `tutorials/`, `wiki/`, `help/`, and `news/` layout as `zh`.
 
 ### Path conventions
 
@@ -35,6 +43,7 @@ MCSOG-Docs/
 | `docs/zh/tutorials/<category>/<slug>.md` | Chinese tutorial, category is `java` / `bedrock` / `ops` / `faq` |
 | `docs/en/tutorials/<category>/<slug>.md` | English tutorial, mirrors the Chinese path exactly |
 | `docs/zh/wiki/<name>.md` | Chinese wiki entry |
+| `docs/<locale>/...` | Same tree for `en` / `zh-TW` / `ja-JP` / `ru-RU` / `ar` / `vi` |
 
 ### Writing rules
 
@@ -111,7 +120,7 @@ If the main repository changed the same file at the same time, an administrator 
 ### Contributing
 
 1. Fork this repository
-2. Create a branch and edit `docs/zh/**` or `docs/en/**`
+2. Create a branch and edit `docs/<locale>/**` (`zh` / `en` / `zh-TW` / `ja-JP` / `ru-RU` / `ar` / `vi`)
 3. Open a pull request explaining **what** changed and **why**
 4. After the maintainers merge it into `main`, it takes effect automatically:
    - synced into the main repository **within 30 minutes**

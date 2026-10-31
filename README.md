@@ -15,18 +15,26 @@ MCSOG 开服教程站的**公开文档仓库**，用于接收社区贡献。
 ```
 MCSOG-Docs/
 ├── README.md              本文件
+├── README_EN.md           英文说明
 └── docs/
-    ├── zh/                简体中文文档（内容源文）
+    ├── zh/                简体中文（内容源文）
     │   ├── tutorials/     开服教程正文
     │   │   ├── java/      Java 版开服
     │   │   ├── bedrock/   基岩版开服
     │   │   ├── ops/       运维与安全
     │   │   └── faq/       常见问题
     │   ├── wiki/          版本百科（版本时间线、核心对比、指令等）
-    └── en/                英文文档（目录结构与 zh 一一对应）
-        ├── tutorials/
-        └── wiki/
+    │   ├── help/          帮助与规范
+    │   └── news/          公告与更新日志
+    ├── en/                英文（与 zh 一一对应）
+    ├── zh-TW/             繁體中文
+    ├── ja-JP/             日本語
+    ├── ru-RU/             Русский
+    ├── ar/                العربية
+    └── vi/                Tiếng Việt
 ```
+
+除 `zh` 外，其余语言目录均采用与 `zh` 相同的 `tutorials/`、`wiki/`、`help/`、`news/` 结构。
 
 ### 路径约定
 
@@ -35,6 +43,7 @@ MCSOG-Docs/
 | `docs/zh/tutorials/<分类>/<slug>.md` | 中文教程正文，分类为 `java` / `bedrock` / `ops` / `faq` |
 | `docs/en/tutorials/<分类>/<slug>.md` | 英文教程正文，路径与中文**一一对应** |
 | `docs/zh/wiki/<名称>.md` | 中文百科条目 |
+| `docs/<locale>/...` | 其他语言同构目录：`en` / `zh-TW` / `ja-JP` / `ru-RU` / `ar` / `vi` |
 
 ### 写作规范
 
@@ -110,7 +119,7 @@ html.csp=[example.com,*.example.org].L=640.H=360.(<div>...</div>)
 ### 贡献流程
 
 1. Fork 本仓库
-2. 新建分支，修改 `docs/zh/**` 或 `docs/en/**`
+2. 新建分支，修改 `docs/<locale>/**`（`zh` / `en` / `zh-TW` / `ja-JP` / `ru-RU` / `ar` / `vi`）
 3. 提交 Pull Request，说明**改了什么**与**为什么改**
 4. 维护者合并进 `main` 后自动生效：
    - **30 分钟内**同步进主仓库
