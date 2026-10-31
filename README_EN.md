@@ -8,6 +8,8 @@
 
 The **public documentation repository** for the MCSOG Minecraft server-hosting guide. Community contributions are welcome.
 
+*Online sites pull from the repository every 10 minutes.
+
 Live site: <https://mcsog.ndpreforged.com>
 
 ### Repository layout
