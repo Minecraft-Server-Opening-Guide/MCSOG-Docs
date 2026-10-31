@@ -66,6 +66,24 @@ draft: false
 
 其余支持标准 Markdown：标题（自动生成右侧目录）、列表、表格、任务列表、行内代码、带语言标注的代码围栏。
 
+## HTML 嵌入扩展
+
+`html.()` 用于在 Markdown 中嵌入原始 HTML，并保留 HTML/JS 执行能力。内容默认放入 Shadow DOM，避免内部 CSS 影响网站排版、布局和颜色。
+除 `html.()` 外，普通 HTML 标签会被转义成文本，不会执行。
+
+完整示例：
+
+```text
+html.csp=[example.com,*.example.org].L=640.H=360(<div>...</div>)
+```
+
+参数：
+
+- `csp=[...]`：允许加载的域名列表，支持 `*.example.com` 通配符；填写后会使用带 CSP 的隔离 iframe，不填则使用 Shadow DOM。
+- `L` / `H`：宽度 / 高度，单位 px；必须同时出现，只填一个视为无效，自动适应。
+- 参数名不区分大小写。
+- `html.()` 内的 JS 会执行；只应嵌入可信内容。
+
 ## 提交方式
 
 :::step 在仓库新建分支

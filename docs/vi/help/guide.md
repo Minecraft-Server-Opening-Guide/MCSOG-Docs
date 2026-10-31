@@ -66,6 +66,24 @@ Bắt đầu bằng `:::step tiêu đề`, kết thúc bằng một dòng `:::` 
 
 Ngoài ra hỗ trợ Markdown chuẩn: tiêu đề (tự tạo mục lục bên phải), danh sách, bảng, danh sách công việc, mã trong dòng, khối mã có ghi ngôn ngữ.
 
+## Tiện ích nhúng HTML
+
+`html.()` cho phép nhúng HTML thô trong Markdown và vẫn giữ khả năng thực thi HTML/JS. Nội dung mặc định được cô lập trong Shadow DOM để CSS bên trong không ảnh hưởng đến bố cục, khoảng cách hay màu sắc của trang.
+Ngoài `html.()`, các thẻ HTML thường sẽ được thoát thành văn bản và không thực thi.
+
+Ví dụ đầy đủ:
+
+```text
+html.csp=[example.com,*.example.org].L=640.H=360(<div>...</div>)
+```
+
+Tham số:
+
+- `csp=[...]`: danh sách tên miền được phép, hỗ trợ ký tự đại diện `*.example.com`. Khi có, nội dung chạy trong iframe cô lập kèm CSP; nếu không có, dùng Shadow DOM.
+- `L` / `H`: chiều rộng / chiều cao tính bằng px. Phải có cả hai; chỉ một tham số sẽ bị bỏ qua và kích thước tự động.
+- Tên tham số không phân biệt chữ hoa chữ thường.
+- JS bên trong `html.()` sẽ thực thi; chỉ nhúng nội dung đáng tin cậy.
+
 ## Cách gửi
 
 :::step Tạo nhánh trong kho

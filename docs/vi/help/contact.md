@@ -1,7 +1,7 @@
 ---
 title: Liên hệ với chúng tôi
 slug: contact
-updated: 2026-10-03
+updated: 2026-10-31
 ---
 
 Khi gặp sự cố, phát hiện lỗi, hoặc muốn gửi tài nguyên và hướng dẫn, bạn đều có thể liên hệ với chúng tôi qua các kênh dưới đây.
@@ -31,6 +31,15 @@ Trang này là trang phi chính thức do cộng đồng người chơi duy trì
 | Sửa lỗi nội dung | Trong 7 ngày làm việc |
 | Liên kết bạn bè và bài gửi | Trong 7 ngày làm việc |
 
+## Kênh chính thức
+
+- **GitHub**: [Minecraft-Server-Opening-Guide](https://github.com/Minecraft-Server-Opening-Guide) — kho mã nguồn của trang, rất hoan nghênh Issue
+- **Bilibili (kênh chính thức)**: [MCSOG](https://space.bilibili.com/3747571038161099) — video hướng dẫn và thông tin cập nhật
+- **Email**: [mcsog@ndpreforged.com](mailto:mcsog@ndpreforged.com) — hợp tác, liên kết bạn bè và vấn đề bản quyền
+- **Báo sự cố**: [kênh xử lý nhanh](mailto:mcsog@ndpreforged.com?subject=%E6%95%85%E9%9A%9C%E5%8F%8D%E9%A6%88) — khi trang không mở được hoặc báo lỗi; tiêu đề email đã được điền sẵn
+
+Các kênh này trùng khớp với biểu tượng ở chân trang; ngoài chúng và nhóm QQ chính thức bên dưới, không có kênh liên hệ nào khác.
+
 ## Nhóm giao lưu chính thức
 
 **Nhóm giao lưu chính thức duy nhất** của trang này là nhóm QQ, số nhóm [1083430859](https://qm.qq.com/q/nRsqCiwHMm), bấm vào số nhóm là có thể tham gia.
@@ -39,6 +48,6 @@ Ngoài nhóm đó không có nhóm WeChat, Discord, Telegram hay bất kỳ nhó
 
 Trước khi vào nhóm nên xem trước "Quy định cộng đồng"; khi đặt câu hỏi vui lòng kèm lõi máy chủ và phiên bản, cách khởi động cùng nhật ký đầy đủ, như vậy dễ nhận được câu trả lời hữu ích hơn.
 
-:::warn
-Email liên hệ sẽ được công bố sau khi trang chính thức vận hành; hiện tại nếu cần liên hệ chính thức (vi phạm bản quyền, hợp tác, liên kết bạn bè), vui lòng ưu tiên nêu rõ mục đích trong nhóm.
+:::note
+Email liên hệ mcsog@ndpreforged.com đã được kích hoạt; việc liên hệ chính thức (vi phạm bản quyền, hợp tác, liên kết bạn bè) vui lòng gửi email, còn sự cố trang web hãy dùng kênh xử lý nhanh phía trên.
 :::

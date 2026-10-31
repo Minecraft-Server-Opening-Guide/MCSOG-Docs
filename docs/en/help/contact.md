@@ -1,7 +1,7 @@
 ---
 title: Contact Us
 slug: contact
-updated: 2026-10-03
+updated: 2026-10-31
 ---
 
 If you have a problem, have spotted a mistake, or want to submit a resource or a guide, reach us through the channels below.
@@ -31,6 +31,15 @@ This site is an unofficial site maintained by the player community. It does not 
 | Corrections | Within 7 working days |
 | Friend links and submissions | Within 7 working days |
 
+## Official channels
+
+- **GitHub**: [Minecraft-Server-Opening-Guide](https://github.com/Minecraft-Server-Opening-Guide) — the site's source repositories; issues are welcome
+- **Bilibili (official account)**: [MCSOG](https://space.bilibili.com/3747571038161099) — video guides and update news
+- **Email**: [mcsog@ndpreforged.com](mailto:mcsog@ndpreforged.com) — partnerships, friend links and infringement matters
+- **Bug reports**: [fast-track entry](mailto:mcsog@ndpreforged.com?subject=%E6%95%85%E9%9A%9C%E5%8F%8D%E9%A6%88) — for site outages and broken pages; the email subject is pre-filled for you
+
+These are exactly the channels linked from the icons in the site footer; apart from them and the official QQ group below, we have no other contact points.
+
 ## Official community group
 
 The **only official community group** for this site is the QQ group [1083430859](https://qm.qq.com/q/nRsqCiwHMm); click the group number to join.
@@ -39,6 +48,6 @@ There is no WeChat group, Discord, Telegram or any other group. Anyone who invit
 
 Before you join, have a look at the "Community Rules"; when you ask a question, include your server core and version, how you start the server and the complete log, which makes a useful answer much more likely.
 
-:::warn
-The contact mailbox will be announced once the site is officially running; until then, for anything formal (infringement, partnerships, friend links), state what you need in the group first.
+:::note
+The contact mailbox mcsog@ndpreforged.com is now live; for formal matters (infringement, partnerships, friend links) please email us, and for site outages use the fast-track entry above.
 :::

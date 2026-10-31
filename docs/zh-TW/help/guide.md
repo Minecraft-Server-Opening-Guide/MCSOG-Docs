@@ -66,6 +66,23 @@ draft: false
 
 其餘支援標準 Markdown：標題（自動生成右側目錄）、列表、表格、任務列表、行內程式碼、帶語言標註的程式碼圍欄。
 
+## HTML 嵌入擴充
+
+`html.()` 用於在 Markdown 中嵌入原始 HTML，並保留 HTML/JS 執行能力。內容預設放入 Shadow DOM，避免內部 CSS 影響網站排版、佈局和顏色。
+
+完整範例：
+
+```text
+html.csp=[example.com,*.example.org].L=640.H=360(<div>...</div>)
+```
+
+參數：
+
+- `csp=[...]`：允許載入的網域清單，支援 `*.example.com` 萬用字元；填寫後會使用帶 CSP 的隔離 iframe，不填則使用 Shadow DOM。
+- `L` / `H`：寬度 / 高度，單位 px；必須同時出現，只填一個視為無效，自動適應。
+- 參數名稱不分大小寫。
+- `html.()` 內的 JS 會執行；只應嵌入可信內容。
+
 ## 提交方式
 
 :::step 在倉庫新建分支
@@ -81,3 +98,5 @@ Fork [MCSOG-Docs](https://github.com/Minecraft-Server-Opening-Guide/MCSOG-Docs) 
 :::
 
 寫作與引用規範見[貢獻與規範](/help/contribute)。
+
+除 `html.()` 外，普通 HTML 標籤會被轉義成文字，不會執行。

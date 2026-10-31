@@ -1,7 +1,7 @@
 ---
 title: 聯絡我們
 slug: contact
-updated: 2026-10-03
+updated: 2026-10-31
 ---
 
 遇到問題、發現錯誤，或想提交資源與教學，都可以通過下面的渠道聯絡我們。
@@ -31,6 +31,15 @@ updated: 2026-10-03
 | 內容糾錯 | 7 個工作日內 |
 | 友鏈與投稿 | 7 個工作日內 |
 
+## 官方渠道
+
+- **GitHub**：[Minecraft-Server-Opening-Guide](https://github.com/Minecraft-Server-Opening-Guide) —— 網站原始碼倉庫，歡迎提 Issue
+- **B 站官號**：[MCSOG 官方號](https://space.bilibili.com/3747571038161099) —— 影片教學與更新動態
+- **信箱**：[mcsog@ndpreforged.com](mailto:mcsog@ndpreforged.com) —— 合作、友鏈與侵權事務
+- **故障回報**：[快速處理通道入口](mailto:mcsog@ndpreforged.com?subject=%E6%95%85%E9%9A%9C%E5%8F%8D%E9%A6%88) —— 網站打不開、頁面報錯等問題，點開即已填好郵件主旨
+
+以上渠道與本站頁腳的圖示一一對應；除這些與下面的官方 QQ 群外，沒有其他聯絡方式。
+
 ## 官方交流群
 
 本站**唯一的官方交流群**是 QQ 群，群號 [1083430859](https://qm.qq.com/q/nRsqCiwHMm)，點選群號即可加入。
@@ -39,6 +48,6 @@ updated: 2026-10-03
 
 進群前建議先看「社群規範」；提問時請附上服務端核心與版本、啟動方式和完整日誌，這樣更容易得到有效回答。
 
-:::warn
-聯絡信箱將在網站正式運營後公佈；當前如需正式聯絡（侵權、合作、友鏈），請優先在群裡說明來意。
+:::note
+聯絡信箱 mcsog@ndpreforged.com 已啟用；正式聯絡（侵權、合作、友鏈）請寄信，故障類問題請走上面的快速處理通道。
 :::
