@@ -75,6 +75,23 @@ MCSOG-Docs/
 
 其余为标准 Markdown：标题（自动生成右侧目录）、列表、表格、任务列表、行内代码、带语言标注的代码围栏。
 
+### HTML 嵌入扩展
+
+`html.()` 用于在 Markdown 中嵌入原始 HTML，并保留 HTML/JS 执行能力。内容默认放入 Shadow DOM，避免内部 CSS 影响网站排版、布局和颜色。
+
+完整示例：
+
+```text
+html.csp=[example.com,*.example.org].L=640.H=360.(<div>...</div>)
+```
+
+参数：
+
+- `csp=[...]`：允许加载的域名列表，支持 `*.example.com` 通配符；填写后会使用带 CSP 的隔离 iframe，不填则使用 Shadow DOM。
+- `L` / `H`：宽度 / 高度，单位 px；必须同时出现，只填一个视为无效，自动适应。
+- 参数名不区分大小写。
+- `html.()` 内的 JS 会执行；只应嵌入可信内容。
+
 ### 同步规则
 
 本仓库与主仓库之间每 30 分钟自动双向同步一次，规则如下：
@@ -102,105 +119,3 @@ MCSOG-Docs/
 ### 许可证
 
 文档内容采用 **CC BY-SA 4.0**，其中的代码示例采用 **MIT**。
-
----
-
-## English
-
-The **public documentation repository** for the MCSOG Minecraft server-hosting guide. Community contributions are welcome.
-
-Live site: <https://mcsog.ndpreforged.com>
-
-### Repository layout
-
-```
-MCSOG-Docs/
-├── README.md              this file
-└── docs/
-    ├── zh/                Simplified Chinese (source of truth)
-    │   ├── tutorials/     tutorials
-    │   │   ├── java/      Java Edition
-    │   │   ├── bedrock/   Bedrock Edition
-    │   │   ├── ops/       operations and security
-    │   │   └── faq/       frequently asked questions
-    │   ├── wiki/          wiki (version timeline, core comparison, commands)
-    └── en/                English (mirrors the zh tree one to one)
-        ├── tutorials/
-        └── wiki/
-```
-
-### Path conventions
-
-| Path | Content |
-| --- | --- |
-| `docs/zh/tutorials/<category>/<slug>.md` | Chinese tutorial, category is `java` / `bedrock` / `ops` / `faq` |
-| `docs/en/tutorials/<category>/<slug>.md` | English tutorial, mirrors the Chinese path exactly |
-| `docs/zh/wiki/<name>.md` | Chinese wiki entry |
-
-### Writing rules
-
-- **Markdown**; UTF-8 without BOM; **LF** line endings; exactly **one** trailing newline
-- Start headings at `##` (`#` is reserved for the page title); section anchors are generated
-  by the site as `mcsog-h-<heading>`
-- Use **absolute** internal links (for example `/wiki/compare`); add an anchor to target a
-  section (for example `/wiki/compare#mcsog-h-基岩版核心对比`)
-- Keep Chinese and English **in sync**: when you edit `docs/zh/...`, update `docs/en/...` too
-- Version numbers, commands and download URLs must match **official sources**, with a link to check
-- When quoting third-party material, credit the source and its licence
-
-### Content extensions
-
-Besides standard Markdown, the site supports four custom blocks for steps and callouts. They are rendered as styled components:
-
-| Syntax | Purpose |
-| --- | --- |
-| `:::step Title` ... `:::` | Step block. Consecutive blocks merge into a numbered step list |
-| `:::note` ... `:::` | Note box, for side notes |
-| `:::warn` ... `:::` | Warning box, for common pitfalls |
-| `:::danger` ... `:::` | Danger box, for irreversible operations |
-
-Example:
-
-````markdown
-:::step Install the runtime
-Run `apt install openjdk-21-jre-headless`.
-:::
-
-:::step Start the service
-Put the jar in `/opt/mc` and run the start script.
-:::
-
-:::warn
-Do not run the server as root.
-:::
-````
-
-Everything else is standard Markdown: headings (which build the table of contents), lists, tables, task lists, inline code and fenced code blocks with a language tag.
-
-### Sync rules
-
-This repository and the main repository sync both ways every 30 minutes:
-
-| Case | Result |
-| --- | --- |
-| Only one side changed a file | The change is copied to the other side |
-| **Both sides changed the same file** | Treated as a conflict. Neither side is overwritten; the other version is stored in `docs/_conflicts/` in the main repository for an administrator to resolve |
-| A file was added on one side | Copied to the other side |
-| A file was deleted on one side | Deleted on the other side too (a copy is kept in `docs/_deleted/` first) |
-| `docs/ad/`, `help/`, `news/` | **Not synced** |
-
-So changes you make here reach the live site, and files you delete are really deleted.
-If the main repository changed the same file at the same time, an administrator gets a conflict record in the site and resolves it; nothing is silently lost.
-
-### Contributing
-
-1. Fork this repository
-2. Create a branch and edit `docs/zh/**` or `docs/en/**`
-3. Open a pull request explaining **what** changed and **why**
-4. After the maintainers merge it into `main`, it takes effect automatically:
-   - synced into the main repository **within 30 minutes**
-   - deployed to the live site **within 2 hours**
-
-### Licence
-
-Documentation is licensed under **CC BY-SA 4.0**; code samples are under **MIT**.
