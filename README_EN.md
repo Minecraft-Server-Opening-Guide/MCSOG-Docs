@@ -76,6 +76,23 @@ Do not run the server as root.
 
 Everything else is standard Markdown: headings (which build the table of contents), lists, tables, task lists, inline code and fenced code blocks with a language tag.
 
+### HTML embed extension
+
+`html.()` embeds raw HTML in Markdown while keeping HTML/JS execution. Content is isolated in Shadow DOM by default so its CSS cannot affect the site layout, spacing, or colors.
+
+Full example:
+
+```text
+html.csp=[example.com,*.example.org].L=640.H=360.(<div>...</div>)
+```
+
+Parameters:
+
+- `csp=[...]`: allowed domains, with `*.example.com` wildcard support. When present, content runs in an isolated iframe with a CSP; otherwise Shadow DOM is used.
+- `L` / `H`: width / height in px. Both must be present; a single value is ignored and the size becomes automatic.
+- Parameter names are case-insensitive.
+- JavaScript inside `html.()` runs; only embed trusted content
+
 ### Sync rules
 
 This repository and the main repository sync both ways every 30 minutes:
