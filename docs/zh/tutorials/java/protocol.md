@@ -8,7 +8,7 @@ order: 1
 mc: [1.21.x, 1.20.4, 1.19.4, 1.18.2, 1.16.5]
 tags: [java, 协议, eula, 配置, 硬件, 内存]
 draft: false
-updated: 2026-09-24
+updated: 2026-11-01
 ---
 
 冲突测试标记 8：2026-11-01
@@ -93,5 +93,3 @@ Java 版服务端启动时必须同意 [Minecraft 最终用户许可协议（EUL
 :::note 小结
 协议同意到位、**单核频率优先于核心数与内存**、SSD 与上行带宽达标——满足这三点，这台机器就能稳定开服。
 :::
-
-html.(<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117505523718890&bvid=BV1ybn96yETW&cid=43062726176&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>)
