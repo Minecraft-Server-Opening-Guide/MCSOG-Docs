@@ -27,7 +27,6 @@ MCSOG-Docs/
     │   │   └── faq/       frequently asked questions
     │   ├── wiki/          wiki (version timeline, core comparison, commands)
     │   ├── help/          help and policies
-    │   └── news/          announcements and changelog
     ├── en/                English (mirrors the zh tree one to one)
     ├── zh-TW/             Traditional Chinese
     ├── ja-JP/             Japanese
@@ -36,7 +35,7 @@ MCSOG-Docs/
     └── vi/                Vietnamese
 ```
 
-All locales other than `zh` use the same `tutorials/`, `wiki/`, `help/`, and `news/` layout as `zh`.
+All locales other than `zh` use the same `tutorials/`, `wiki/`, and `help/` layout as `zh`.
 
 ### Path conventions
 
@@ -106,26 +105,27 @@ Parameters:
 
 ### Sync rules
 
-This repository and the main repository sync both ways every 30 minutes:
+This repository is the public source. The private main repository receives it one way:
 
-| Case | Result |
-| --- | --- |
-| Only one side changed a file | The change is copied to the other side |
-| **Both sides changed the same file** | Treated as a conflict. Neither side is overwritten; the other version is stored in `docs/_conflicts/` in the main repository for an administrator to resolve |
-| A file was added on one side | Copied to the other side |
-| A file was deleted on one side | Deleted on the other side too (a copy is kept in `docs/_deleted/` first) |
-| `docs/ad/`, `help/`, `news/` | **Not synced** |
+```text
+MCSOG-Docs/docs + docslist.js
+        ↓ every 10 minutes
+private main repository docs/ + docslist.js
+        ↓
+site release
+```
 
-So changes you make here reach the live site, and files you delete are really deleted.
-If the main repository changed the same file at the same time, an administrator gets a conflict record in the site and resolves it; nothing is silently lost.
-
+- Added/modified/deleted public documents are mirrored into the private repository.
+- `docs/*/news/` is not maintained here and is never deleted from the private repository by this mirror.
+- `docs/ad/` is not synced.
+- Destructive mirrors are guarded: more than five deletions abort the sync.
 ### Contributing
 
 1. Fork this repository
 2. Create a branch and edit `docs/<locale>/**` (`zh` / `en` / `zh-TW` / `ja-JP` / `ru-RU` / `ar` / `vi`)
 3. Open a pull request explaining **what** changed and **why**
 4. After the maintainers merge it into `main`, it takes effect automatically:
-   - synced into the main repository **within 30 minutes**
+   - synced into the main repository **within 10 minutes**
    - deployed to the live site **within 2 hours**
 
 ### Licence

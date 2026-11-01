@@ -18,6 +18,7 @@ MCSOG 开服教程站的**公开文档仓库**，用于接收社区贡献。
 MCSOG-Docs/
 ├── README.md              本文件
 ├── README_EN.md           英文说明
+├── docslist.js            文档层级清单（PR 新增页面必须更新）
 └── docs/
     ├── zh/                简体中文（内容源文）
     │   ├── tutorials/     开服教程正文
@@ -26,8 +27,7 @@ MCSOG-Docs/
     │   │   ├── ops/       运维与安全
     │   │   └── faq/       常见问题
     │   ├── wiki/          版本百科（版本时间线、核心对比、指令等）
-    │   ├── help/          帮助与规范
-    │   └── news/          公告与更新日志
+    │   └── help/          帮助与规范
     ├── en/                英文（与 zh 一一对应）
     ├── zh-TW/             繁體中文
     ├── ja-JP/             日本語
@@ -36,7 +36,43 @@ MCSOG-Docs/
     └── vi/                Tiếng Việt
 ```
 
-除 `zh` 外，其余语言目录均采用与 `zh` 相同的 `tutorials/`、`wiki/`、`help/`、`news/` 结构。
+除 `zh` 外，其余语言目录均采用与 `zh` 相同的 `tutorials/`、`wiki/`、`help/` 结构。
+
+### docslist.js 层级
+
+`docslist.js` 是公开文档的机器可读清单，层级固定为：
+
+```text
+类型 type
+└── 子分类 category（help/wiki 使用 general，tutorials 使用 java/bedrock/ops/faq）
+    └── 语言 locale
+        └── 文档文件
+```
+
+示例：
+
+```js
+module.exports = {
+  version: 1,
+  help: {
+    general: {
+      zh: [{ path: 'docs/zh/help/quickstart.md', slug: 'quickstart' }]
+    }
+  },
+  tutorials: {
+    java: {
+      zh: [{ path: 'docs/zh/tutorials/java/protocol.md', slug: 'protocol' }]
+    }
+  },
+  wiki: {
+    general: {
+      zh: [{ path: 'docs/zh/wiki/cores.md', slug: 'cores' }]
+    }
+  }
+}
+```
+
+新增/删除/重命名文档时，必须同步修改 `docslist.js`；CI 会校验清单和文件是否一致。
 
 ### 路径约定
 
@@ -105,18 +141,20 @@ html.csp=[example.com,*.example.org].L=640.H=360.(<div>...</div>)
 
 ### 同步规则
 
-本仓库与主仓库之间每 30 分钟自动双向同步一次，规则如下：
+本仓库是公开文档源，主仓库只做单向接收：
 
-| 情况 | 结果 |
-| --- | --- |
-| 只有一边改了文件 | 改动会同步到另一边 |
-| **两边都改了同一个文件** | 判为冲突，不覆盖任何一方，另一方的版本会存进主仓库的 `docs/_conflicts/` 等管理员处理 |
-| 一边新增了文件 | 复制到另一边 |
-| 一边删除了文件 | 同步删除另一边（删除前会先备份到 `docs/_deleted/`） |
-| `docs/ad/`、`help/`、`news/` | **不参与同步** |
+```text
+MCSOG-Docs/docs + docslist.js
+        ↓ 每 10 分钟
+私有主仓库 docs/ + docslist.js
+        ↓
+站点 release
+```
 
-也就是说：你在这里改的内容会进入正式站点；你删除的文件也会被真正删除。
-如果同一个文件在你改的同时主仓库也改了，管理员会收到冲突记录并在站内处理，不会静默丢掉任何一方。
+- 公开仓新增/修改/删除文档，会同步到私有仓库
+- `docs/*/news/` 不在公开仓维护，也不会被公开仓删除私有仓 news
+- `docs/ad/` 不参与同步
+- 批量删除有保护：默认一次最多允许删除 5 个文件，超过会中止并告警
 
 ### 贡献流程
 
@@ -124,7 +162,7 @@ html.csp=[example.com,*.example.org].L=640.H=360.(<div>...</div>)
 2. 新建分支，修改 `docs/<locale>/**`（`zh` / `en` / `zh-TW` / `ja-JP` / `ru-RU` / `ar` / `vi`）
 3. 提交 Pull Request，说明**改了什么**与**为什么改**
 4. 维护者合并进 `main` 后自动生效：
-   - **30 分钟内**同步进主仓库
+   - **10 分钟内**同步进主仓库
    - **2 小时内**部署到线上站点
 
 ### 许可证

@@ -1,13 +1,11 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { join, relative, basename } from 'node:path'
-import { createRequire } from 'node:module'
 
 const ROOT = process.cwd()
 const DOCS = join(ROOT, 'docs')
 const MANIFEST = join(ROOT, 'docslist.js')
-const require = createRequire(import.meta.url)
-const SUPPORTED_LANGS = new Set(['zh', 'en', 'zh-TW', 'ja-JP', 'ru-RU', 'ar', 'vi'])
-const SUPPORTED_TYPES = new Set(['help', 'tutorials', 'wiki'])
+const LANGS = ['zh', 'en', 'zh-TW', 'ja-JP', 'ru-RU', 'ar', 'vi']
+const TYPES = ['help', 'tutorials', 'wiki']
 const problems = []
 const warnings = []
 
@@ -21,7 +19,6 @@ const walk = (dir, out = []) => {
 }
 
 const unquote = (value) => String(value == null ? '' : value).trim().replace(/^["']/, '').replace(/["']$/, '')
-
 const frontMatter = (text) => {
   if (!text.startsWith('---\n')) return null
   const end = text.indexOf('\n---', 3)
@@ -36,16 +33,25 @@ const frontMatter = (text) => {
 
 let manifest = null
 try {
-  manifest = require(MANIFEST)
+  const source = readFileSync(MANIFEST, 'utf8').replace(/^\s*module\.exports\s*=\s*/, '').replace(/;\s*$/, '')
+  manifest = JSON.parse(source)
 } catch (error) {
-  problems.push('docslist.js: 无法加载（应为 CommonJS module.exports 对象）: ' + String(error.message || error))
+  problems.push('docslist.js: 无法解析（应为 module.exports = { ... }）: ' + String(error.message || error))
 }
 
 const listed = new Map()
-if (manifest && Array.isArray(manifest.docs)) {
-  for (const entry of manifest.docs) {
+const addList = (type, cat, lang, entries) => {
+  if (!LANGS.includes(lang)) {
+    problems.push('docslist.js: 不支持的语言 ' + lang)
+    return
+  }
+  if (!Array.isArray(entries)) {
+    problems.push('docslist.js: ' + type + '/' + cat + '/' + lang + ' 必须是数组')
+    return
+  }
+  for (const entry of entries) {
     if (!entry || typeof entry !== 'object') {
-      problems.push('docslist.js: docs 中存在非对象条目')
+      problems.push('docslist.js: ' + type + '/' + cat + '/' + lang + ' 存在非对象条目')
       continue
     }
     const rel = String(entry.path || '').replace(/\\/g, '/').replace(/^\/+/, '')
@@ -54,26 +60,41 @@ if (manifest && Array.isArray(manifest.docs)) {
       problems.push('docslist.js: 非法路径 ' + rel)
       continue
     }
-    const lang = parts[1]
-    const type = parts[2]
-    if (!SUPPORTED_LANGS.has(lang)) problems.push('docslist.js: 不支持的语言 ' + lang + '（' + rel + '）')
-    if (!SUPPORTED_TYPES.has(type)) problems.push('docslist.js: 只允许 help/tutorials/wiki，发现 ' + type + '（' + rel + '）')
+    if (parts[1] !== lang) problems.push('docslist.js: 语言层级与路径不一致: ' + rel)
+    if (parts[2] !== type) problems.push('docslist.js: 类型层级与路径不一致: ' + rel)
     if (type === 'tutorials') {
-      if (parts.length !== 5) problems.push('docslist.js: 教程路径应为 docs/<lang>/tutorials/<cat>/<slug>.md: ' + rel)
-      else if (String(entry.cat || '') !== parts[3]) problems.push('docslist.js: cat 与路径不一致: ' + rel)
+      if (parts.length !== 5 || parts[3] !== cat) problems.push('docslist.js: 教程子分类层级与路径不一致: ' + rel)
     } else if (parts.length !== 4) {
       problems.push('docslist.js: 非教程路径应为 docs/<lang>/<type>/<slug>.md: ' + rel)
     }
-    if (String(entry.lang || '') !== lang) problems.push('docslist.js: lang 与路径不一致: ' + rel)
-    if (String(entry.type || '') !== type) problems.push('docslist.js: type 与路径不一致: ' + rel)
     if (String(entry.slug || '') !== basename(rel, '.md')) problems.push('docslist.js: slug 与文件名不一致: ' + rel)
-    const file = join(ROOT, rel)
-    if (!statSync(file, { throwIfNoEntry: false })?.isFile()) problems.push('docslist.js: 文件不存在 ' + rel)
+    if (!statSync(join(ROOT, rel), { throwIfNoEntry: false })?.isFile()) problems.push('docslist.js: 文件不存在 ' + rel)
     if (listed.has(rel)) problems.push('docslist.js: 重复条目 ' + rel)
-    listed.set(rel, entry)
+    listed.set(rel, { type, cat: type === 'tutorials' ? cat : '', lang, slug: basename(rel, '.md') })
   }
-} else if (manifest) {
-  problems.push('docslist.js: 缺少 docs 数组')
+}
+
+if (manifest) {
+  if (manifest.version !== 1) problems.push('docslist.js: version 必须为 1')
+  for (const type of TYPES) {
+    const groups = manifest[type]
+    if (!groups || typeof groups !== 'object' || Array.isArray(groups)) {
+      problems.push('docslist.js: 缺少 ' + type + ' 分类')
+      continue
+    }
+    for (const [cat, langs] of Object.entries(groups)) {
+      if (type !== 'tutorials' && cat !== 'general') problems.push('docslist.js: ' + type + ' 只允许 general 子分类，发现 ' + cat)
+      if (type === 'tutorials' && cat === 'general') problems.push('docslist.js: tutorials 必须使用实际子分类，不能使用 general')
+      if (!langs || typeof langs !== 'object' || Array.isArray(langs)) {
+        problems.push('docslist.js: ' + type + '/' + cat + ' 必须是语言映射')
+        continue
+      }
+      for (const [lang, entries] of Object.entries(langs)) addList(type, cat, lang, entries)
+    }
+  }
+  for (const key of Object.keys(manifest)) {
+    if (key !== 'version' && !TYPES.includes(key)) problems.push('docslist.js: 未知顶层分类 ' + key)
+  }
 }
 
 const files = walk(DOCS)
@@ -89,8 +110,8 @@ for (const file of files) {
   }
   const lang = parts[1]
   const type = parts[2]
-  if (!SUPPORTED_LANGS.has(lang)) problems.push(rel + ': 不支持的语言目录 ' + lang)
-  if (!SUPPORTED_TYPES.has(type)) {
+  if (!LANGS.includes(lang)) problems.push(rel + ': 不支持的语言目录 ' + lang)
+  if (!TYPES.includes(type)) {
     problems.push(rel + ': 公开仓只允许 help/tutorials/wiki，发现 ' + type)
     continue
   }
@@ -127,7 +148,6 @@ for (const file of files) {
 
   const slug = basename(file, '.md')
   if (fm.slug && fm.slug !== slug) problems.push(rel + ': slug「' + fm.slug + '」与文件名「' + slug + '」不一致')
-
   if (type === 'tutorials') {
     if (!fm.cat) problems.push(rel + ': 教程缺少 cat')
     else if (fm.cat !== parts[3]) problems.push(rel + ': cat「' + fm.cat + '」与目录「' + parts[3] + '」不一致')
@@ -142,7 +162,6 @@ for (const rel of listed.keys()) {
     problems.push('docslist.js: 指向不存在的文件 ' + rel)
   }
 }
-
 for (const p of zhSet) if (!enSet.has(p)) warnings.push('缺少英文版本: docs/en/' + p)
 for (const p of enSet) if (!zhSet.has(p)) warnings.push('缺少中文版本: docs/zh/' + p)
 
