@@ -72,7 +72,7 @@ module.exports = {
 }
 ```
 
-每个条目包含 `path`、`slug`、`title`、`cat`、`level`、`minutes`、`order`、`mc`、`tags`、`draft`、`updated` 等文档说明字段。新增/删除/重命名文档时，必须同步修改 `docslist.json`；CI 会校验清单和文件是否一致。
+每个条目包含 `path`、`slug`、`title`、`cat`、`level`、`minutes`、`order`、`mc`、`tags`、`draft`、`updated` 等文档说明字段。新增/删除/重命名文档时，必须同步修改 `docslist.json`；CI 会校验清单和文件是否一致。网站会读取 `docslist.json` 动态解析 `help`、`tutorials`、`wiki` 页面，新增页面只需要同时提交 Markdown 文件和对应的 docslist 条目，不需要修改前端页面注册表。
 
 ### 路径约定
 
