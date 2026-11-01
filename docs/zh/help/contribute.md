@@ -71,4 +71,4 @@ QxMO
 
 校队:
 
-文档贡献:[点击此处查看](../contribute)
+文档贡献:[点击此处查看](./contribute)
