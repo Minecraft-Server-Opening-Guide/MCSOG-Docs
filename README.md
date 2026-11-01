@@ -72,7 +72,7 @@ module.exports = {
 }
 ```
 
-新增/删除/重命名文档时，必须同步修改 `docslist.json`；CI 会校验清单和文件是否一致。
+每个条目包含 `path`、`slug`、`title`、`cat`、`level`、`minutes`、`order`、`mc`、`tags`、`draft`、`updated` 等文档说明字段。新增/删除/重命名文档时，必须同步修改 `docslist.json`；CI 会校验清单和文件是否一致。
 
 ### 路径约定
 

@@ -1,4 +1,4 @@
-import { readdirSync, statSync, writeFileSync } from 'node:fs'
+import { readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs'
 import { join, relative } from 'node:path'
 
 const ROOT = process.cwd()
@@ -16,6 +16,23 @@ const walk = (dir, out = []) => {
 }
 
 const out = { version: 1, help: {}, tutorials: {}, wiki: {} }
+const metaOf = (file) => {
+  const text = readFileSync(file, 'utf8')
+  const end = text.startsWith('---') ? text.indexOf('\n---', 3) : -1
+  if (end < 0) return {}
+  const out = {}
+  for (const line of text.slice(4, end).split('\n')) {
+    const m = line.match(/^([A-Za-z_][A-Za-z0-9_]*):\s*(.*)$/)
+    if (!m) continue
+    let value = m[2].trim()
+    if (value.startsWith('[') && value.endsWith(']')) value = value.slice(1, -1).split(',').map((x) => x.trim().replace(/^['"]|['"]$/g, '')).filter(Boolean)
+    else if (value === 'true' || value === 'false') value = value === 'true'
+    else if (/^\d+$/.test(value)) value = Number(value)
+    else value = value.replace(/^['"]|['"]$/g, '')
+    out[m[1]] = value
+  }
+  return out
+}
 for (const file of walk(DOCS).sort()) {
   const parts = relative(ROOT, file).split('\\').join('/').split('/')
   if (parts.length < 4) continue
@@ -34,7 +51,10 @@ for (const file of walk(DOCS).sort()) {
   }
   if (!out[type][cat]) out[type][cat] = {}
   if (!out[type][cat][lang]) out[type][cat][lang] = []
-  out[type][cat][lang].push({ path: parts.join('/'), slug })
+  const meta = metaOf(file)
+  const item = { path: parts.join('/'), slug, title: meta.title || '', cat: cat === 'general' ? '' : cat }
+  for (const key of ['level','minutes','order','mc','tags','draft','updated']) if (meta[key] !== undefined) item[key] = meta[key]
+  out[type][cat][lang].push(item)
 }
 
 for (const type of TYPES) {
