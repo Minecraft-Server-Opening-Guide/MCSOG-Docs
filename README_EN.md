@@ -18,6 +18,7 @@ Live site: <https://mcsog.ndpreforged.com>
 MCSOG-Docs/
 ├── README.md              this file
 ├── README_EN.md           English README
+├── docslist.json          page manifest (required for new pages)
 └── docs/
     ├── zh/                Simplified Chinese (source of truth)
     │   ├── tutorials/     tutorials
@@ -36,6 +37,19 @@ MCSOG-Docs/
 ```
 
 All locales other than `zh` use the same `tutorials/`, `wiki/`, and `help/` layout as `zh`.
+
+### docslist.json hierarchy
+
+`docslist.json` in the repository root is the page manifest. Its hierarchy is:
+
+```text
+type
+└── category (help/wiki use general; tutorials use java/bedrock/ops/faq)
+    └── language
+        └── document
+```
+
+Every entry includes `path`, `slug`, `title`, `cat`, `level`, `minutes`, `order`, `mc`, `tags`, `draft`, and `updated` metadata. Add, delete, or rename a document together with its manifest entry. CI verifies the manifest and files stay in sync. The website reads `docslist.json` to load `help`, `tutorials`, and `wiki` pages dynamically; a new page needs its Markdown file and manifest entry, but no frontend route registration.
 
 ### Path conventions
 

@@ -51,22 +51,22 @@ MCSOG-Docs/
 
 示例：
 
-```js
-module.exports = {
-  version: 1,
-  help: {
-    general: {
-      zh: [{ path: 'docs/zh/help/quickstart.md', slug: 'quickstart' }]
+```json
+{
+  "version": 1,
+  "help": {
+    "general": {
+      "zh": [{ "path": "docs/zh/help/quickstart.md", "slug": "quickstart" }]
     }
   },
-  tutorials: {
-    java: {
-      zh: [{ path: 'docs/zh/tutorials/java/protocol.md', slug: 'protocol' }]
+  "tutorials": {
+    "java": {
+      "zh": [{ "path": "docs/zh/tutorials/java/protocol.md", "slug": "protocol" }]
     }
   },
-  wiki: {
-    general: {
-      zh: [{ path: 'docs/zh/wiki/cores.md', slug: 'cores' }]
+  "wiki": {
+    "general": {
+      "zh": [{ "path": "docs/zh/wiki/cores.md", "slug": "cores" }]
     }
   }
 }
