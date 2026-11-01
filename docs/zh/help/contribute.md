@@ -1,7 +1,7 @@
 ---
 title: 贡献与规范
 slug: contribute
-updated: 2026-10-18
+updated: 2026-11-01
 ---
 
 本站由玩家社区维护，欢迎补充教程、修正错误、完善翻译。所有内容都在公开仓库 [MCSOG-Docs](https://github.com/Minecraft-Server-Opening-Guide/MCSOG-Docs) 里。
@@ -71,5 +71,4 @@ QxMO
 
 校队:
 
-文档贡献:
-EXE_autumnwind DeepseekAI 
+文档贡献:[点击此处查看](../contribute)
