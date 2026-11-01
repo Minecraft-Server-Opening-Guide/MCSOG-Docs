@@ -18,7 +18,7 @@ MCSOG 开服教程站的**公开文档仓库**，用于接收社区贡献。
 MCSOG-Docs/
 ├── README.md              本文件
 ├── README_EN.md           英文说明
-├── docslist.js            文档层级清单（PR 新增页面必须更新）
+├── docslist.json            文档层级清单（PR 新增页面必须更新）
 └── docs/
     ├── zh/                简体中文（内容源文）
     │   ├── tutorials/     开服教程正文
@@ -38,9 +38,9 @@ MCSOG-Docs/
 
 除 `zh` 外，其余语言目录均采用与 `zh` 相同的 `tutorials/`、`wiki/`、`help/` 结构。
 
-### docslist.js 层级
+### docslist.json 层级
 
-`docslist.js` 是公开文档的机器可读清单，层级固定为：
+`docslist.json` 是公开文档的机器可读清单，层级固定为：
 
 ```text
 类型 type
@@ -72,7 +72,7 @@ module.exports = {
 }
 ```
 
-新增/删除/重命名文档时，必须同步修改 `docslist.js`；CI 会校验清单和文件是否一致。
+新增/删除/重命名文档时，必须同步修改 `docslist.json`；CI 会校验清单和文件是否一致。
 
 ### 路径约定
 
@@ -144,9 +144,9 @@ html.csp=[example.com,*.example.org].L=640.H=360.(<div>...</div>)
 本仓库是公开文档源，主仓库只做单向接收：
 
 ```text
-MCSOG-Docs/docs + docslist.js
+MCSOG-Docs/docs + docslist.json
         ↓ 每 10 分钟
-私有主仓库 docs/ + docslist.js
+私有主仓库 docs/ + docslist.json
         ↓
 站点 release
 ```

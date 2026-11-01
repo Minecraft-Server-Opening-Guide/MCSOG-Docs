@@ -108,9 +108,9 @@ Parameters:
 This repository is the public source. The private main repository receives it one way:
 
 ```text
-MCSOG-Docs/docs + docslist.js
+MCSOG-Docs/docs + docslist.json
         ↓ every 10 minutes
-private main repository docs/ + docslist.js
+private main repository docs/ + docslist.json
         ↓
 site release
 ```

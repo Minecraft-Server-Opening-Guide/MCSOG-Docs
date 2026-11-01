@@ -49,5 +49,5 @@ for (const type of TYPES) {
   out[type] = ordered
 }
 
-writeFileSync(join(ROOT, 'docslist.js'), 'module.exports = ' + JSON.stringify(out, null, 2) + '\n', 'utf8')
-console.log('docslist.js written')
+writeFileSync(join(ROOT, 'docslist.json'), JSON.stringify(out, null, 2) + '\n', 'utf8')
+console.log('docslist.json written')

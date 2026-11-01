@@ -1,9 +1,10 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
 import { join, relative, basename } from 'node:path'
 
 const ROOT = process.cwd()
 const DOCS = join(ROOT, 'docs')
-const MANIFEST = join(ROOT, 'docslist.js')
+const MANIFEST = join(ROOT, 'docslist.json')
 const LANGS = ['zh', 'en', 'zh-TW', 'ja-JP', 'ru-RU', 'ar', 'vi']
 const TYPES = ['help', 'tutorials', 'wiki']
 const problems = []
@@ -33,67 +34,86 @@ const frontMatter = (text) => {
 
 let manifest = null
 try {
-  const source = readFileSync(MANIFEST, 'utf8').replace(/^\s*module\.exports\s*=\s*/, '').replace(/;\s*$/, '')
-  manifest = JSON.parse(source)
+  manifest = JSON.parse(readFileSync(MANIFEST, 'utf8'))
 } catch (error) {
-  problems.push('docslist.js: 无法解析（应为 module.exports = { ... }）: ' + String(error.message || error))
+  problems.push('docslist.json: 无法解析为 JSON: ' + String(error.message || error))
 }
 
 const listed = new Map()
 const addList = (type, cat, lang, entries) => {
   if (!LANGS.includes(lang)) {
-    problems.push('docslist.js: 不支持的语言 ' + lang)
+    problems.push('docslist.json: 不支持的语言 ' + lang)
     return
   }
   if (!Array.isArray(entries)) {
-    problems.push('docslist.js: ' + type + '/' + cat + '/' + lang + ' 必须是数组')
+    problems.push('docslist.json: ' + type + '/' + cat + '/' + lang + ' 必须是数组')
     return
   }
   for (const entry of entries) {
     if (!entry || typeof entry !== 'object') {
-      problems.push('docslist.js: ' + type + '/' + cat + '/' + lang + ' 存在非对象条目')
+      problems.push('docslist.json: ' + type + '/' + cat + '/' + lang + ' 存在非对象条目')
       continue
     }
     const rel = String(entry.path || '').replace(/\\/g, '/').replace(/^\/+/, '')
     const parts = rel.split('/')
     if (parts.length < 4 || parts[0] !== 'docs') {
-      problems.push('docslist.js: 非法路径 ' + rel)
+      problems.push('docslist.json: 非法路径 ' + rel)
       continue
     }
-    if (parts[1] !== lang) problems.push('docslist.js: 语言层级与路径不一致: ' + rel)
-    if (parts[2] !== type) problems.push('docslist.js: 类型层级与路径不一致: ' + rel)
+    if (parts[1] !== lang) problems.push('docslist.json: 语言层级与路径不一致: ' + rel)
+    if (parts[2] !== type) problems.push('docslist.json: 类型层级与路径不一致: ' + rel)
     if (type === 'tutorials') {
-      if (parts.length !== 5 || parts[3] !== cat) problems.push('docslist.js: 教程子分类层级与路径不一致: ' + rel)
+      if (parts.length !== 5 || parts[3] !== cat) problems.push('docslist.json: 教程子分类层级与路径不一致: ' + rel)
     } else if (parts.length !== 4) {
-      problems.push('docslist.js: 非教程路径应为 docs/<lang>/<type>/<slug>.md: ' + rel)
+      problems.push('docslist.json: 非教程路径应为 docs/<lang>/<type>/<slug>.md: ' + rel)
     }
-    if (String(entry.slug || '') !== basename(rel, '.md')) problems.push('docslist.js: slug 与文件名不一致: ' + rel)
-    if (!statSync(join(ROOT, rel), { throwIfNoEntry: false })?.isFile()) problems.push('docslist.js: 文件不存在 ' + rel)
-    if (listed.has(rel)) problems.push('docslist.js: 重复条目 ' + rel)
+    if (String(entry.slug || '') !== basename(rel, '.md')) problems.push('docslist.json: slug 与文件名不一致: ' + rel)
+    if (!statSync(join(ROOT, rel), { throwIfNoEntry: false })?.isFile()) problems.push('docslist.json: 文件不存在 ' + rel)
+    if (listed.has(rel)) problems.push('docslist.json: 重复条目 ' + rel)
     listed.set(rel, { type, cat: type === 'tutorials' ? cat : '', lang, slug: basename(rel, '.md') })
   }
 }
 
 if (manifest) {
-  if (manifest.version !== 1) problems.push('docslist.js: version 必须为 1')
+  if (manifest.version !== 1) problems.push('docslist.json: version 必须为 1')
   for (const type of TYPES) {
     const groups = manifest[type]
     if (!groups || typeof groups !== 'object' || Array.isArray(groups)) {
-      problems.push('docslist.js: 缺少 ' + type + ' 分类')
+      problems.push('docslist.json: 缺少 ' + type + ' 分类')
       continue
     }
     for (const [cat, langs] of Object.entries(groups)) {
-      if (type !== 'tutorials' && cat !== 'general') problems.push('docslist.js: ' + type + ' 只允许 general 子分类，发现 ' + cat)
-      if (type === 'tutorials' && cat === 'general') problems.push('docslist.js: tutorials 必须使用实际子分类，不能使用 general')
+      if (type !== 'tutorials' && cat !== 'general') problems.push('docslist.json: ' + type + ' 只允许 general 子分类，发现 ' + cat)
+      if (type === 'tutorials' && cat === 'general') problems.push('docslist.json: tutorials 必须使用实际子分类，不能使用 general')
       if (!langs || typeof langs !== 'object' || Array.isArray(langs)) {
-        problems.push('docslist.js: ' + type + '/' + cat + ' 必须是语言映射')
+        problems.push('docslist.json: ' + type + '/' + cat + ' 必须是语言映射')
         continue
       }
       for (const [lang, entries] of Object.entries(langs)) addList(type, cat, lang, entries)
     }
   }
   for (const key of Object.keys(manifest)) {
-    if (key !== 'version' && !TYPES.includes(key)) problems.push('docslist.js: 未知顶层分类 ' + key)
+    if (key !== 'version' && !TYPES.includes(key)) problems.push('docslist.json: 未知顶层分类 ' + key)
+  }
+}
+
+const changedDocs = new Map()
+const baseRef = String(process.env.GITHUB_BASE_REF || '').trim()
+if (baseRef !== '') {
+  try {
+    const diff = execFileSync('git', ['diff', '--name-status', 'origin/' + baseRef + '...HEAD', '--', 'docs'], { cwd: ROOT, encoding: 'utf8' })
+    for (const line of diff.split('\n')) {
+      const bits = line.trim().split(/\s+/)
+      if (bits.length < 2) continue
+      if (bits[0].startsWith('R') && bits.length >= 3) {
+        changedDocs.set(bits[1], 'D')
+        changedDocs.set(bits[2], 'A')
+      } else {
+        changedDocs.set(bits[1], bits[0].charAt(0))
+      }
+    }
+  } catch (error) {
+    warnings.push('无法读取 PR 基线 diff，按完整 docslist 校验: ' + String(error.message || error).split('\n')[0])
   }
 }
 
@@ -115,7 +135,7 @@ for (const file of files) {
     problems.push(rel + ': 公开仓只允许 help/tutorials/wiki，发现 ' + type)
     continue
   }
-  if (!listed.has(rel)) problems.push('docslist.js: 缺少条目 ' + rel)
+  if (!listed.has(rel)) problems.push('docslist.json: 缺少条目 ' + rel)
 
   const raw = readFileSync(file)
   if (raw[0] === 0xEF && raw[1] === 0xBB && raw[2] === 0xBF) problems.push(rel + ': 含 UTF-8 BOM，请去掉')
@@ -159,13 +179,17 @@ for (const file of files) {
 
 for (const rel of listed.keys()) {
   if (!files.some((file) => relative(ROOT, file).split('\\').join('/') === rel)) {
-    problems.push('docslist.js: 指向不存在的文件 ' + rel)
+    problems.push('docslist.json: 指向不存在的文件 ' + rel)
   }
+}
+for (const [rel, status] of changedDocs) {
+  if (status === 'A' && !listed.has(rel)) problems.push('docslist.json: 新增文档必须加入清单 ' + rel)
+  if (status === 'D' && listed.has(rel)) problems.push('docslist.json: 删除文档后必须移除清单条目 ' + rel)
 }
 for (const p of zhSet) if (!enSet.has(p)) warnings.push('缺少英文版本: docs/en/' + p)
 for (const p of enSet) if (!zhSet.has(p)) warnings.push('缺少中文版本: docs/zh/' + p)
 
-console.log('检查了 ' + files.length + ' 个文档，docslist.js ' + listed.size + ' 条')
+console.log('检查了 ' + files.length + ' 个文档，docslist.json ' + listed.size + ' 条')
 if (problems.length) {
   console.log('')
   console.log('错误:')
