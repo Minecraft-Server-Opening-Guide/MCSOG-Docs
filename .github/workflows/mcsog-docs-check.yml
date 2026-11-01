@@ -2,11 +2,6 @@ name: Docs check
 
 on:
   pull_request:
-    paths:
-      - 'docs/**'
-      - 'docslist.json'
-      - 'scripts/**'
-      - '.github/workflows/**'
   push:
     branches: [main]
 
