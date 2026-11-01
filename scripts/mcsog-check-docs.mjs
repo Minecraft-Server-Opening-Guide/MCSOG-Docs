@@ -1,8 +1,13 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { join, relative, basename } from 'node:path'
+import { createRequire } from 'node:module'
 
 const ROOT = process.cwd()
 const DOCS = join(ROOT, 'docs')
+const MANIFEST = join(ROOT, 'docslist.js')
+const require = createRequire(import.meta.url)
+const SUPPORTED_LANGS = new Set(['zh', 'en', 'zh-TW', 'ja-JP', 'ru-RU', 'ar', 'vi'])
+const SUPPORTED_TYPES = new Set(['help', 'tutorials', 'wiki'])
 const problems = []
 const warnings = []
 
@@ -29,18 +34,67 @@ const frontMatter = (text) => {
   return map
 }
 
+let manifest = null
+try {
+  manifest = require(MANIFEST)
+} catch (error) {
+  problems.push('docslist.js: 无法加载（应为 CommonJS module.exports 对象）: ' + String(error.message || error))
+}
+
+const listed = new Map()
+if (manifest && Array.isArray(manifest.docs)) {
+  for (const entry of manifest.docs) {
+    if (!entry || typeof entry !== 'object') {
+      problems.push('docslist.js: docs 中存在非对象条目')
+      continue
+    }
+    const rel = String(entry.path || '').replace(/\\/g, '/').replace(/^\/+/, '')
+    const parts = rel.split('/')
+    if (parts.length < 4 || parts[0] !== 'docs') {
+      problems.push('docslist.js: 非法路径 ' + rel)
+      continue
+    }
+    const lang = parts[1]
+    const type = parts[2]
+    if (!SUPPORTED_LANGS.has(lang)) problems.push('docslist.js: 不支持的语言 ' + lang + '（' + rel + '）')
+    if (!SUPPORTED_TYPES.has(type)) problems.push('docslist.js: 只允许 help/tutorials/wiki，发现 ' + type + '（' + rel + '）')
+    if (type === 'tutorials') {
+      if (parts.length !== 5) problems.push('docslist.js: 教程路径应为 docs/<lang>/tutorials/<cat>/<slug>.md: ' + rel)
+      else if (String(entry.cat || '') !== parts[3]) problems.push('docslist.js: cat 与路径不一致: ' + rel)
+    } else if (parts.length !== 4) {
+      problems.push('docslist.js: 非教程路径应为 docs/<lang>/<type>/<slug>.md: ' + rel)
+    }
+    if (String(entry.lang || '') !== lang) problems.push('docslist.js: lang 与路径不一致: ' + rel)
+    if (String(entry.type || '') !== type) problems.push('docslist.js: type 与路径不一致: ' + rel)
+    if (String(entry.slug || '') !== basename(rel, '.md')) problems.push('docslist.js: slug 与文件名不一致: ' + rel)
+    const file = join(ROOT, rel)
+    if (!statSync(file, { throwIfNoEntry: false })?.isFile()) problems.push('docslist.js: 文件不存在 ' + rel)
+    if (listed.has(rel)) problems.push('docslist.js: 重复条目 ' + rel)
+    listed.set(rel, entry)
+  }
+} else if (manifest) {
+  problems.push('docslist.js: 缺少 docs 数组')
+}
+
 const files = walk(DOCS)
 const zhSet = new Set()
 const enSet = new Set()
 
 for (const file of files) {
   const rel = relative(ROOT, file).split('\\').join('/')
-  const langMatch = rel.match(/^docs\/([A-Za-z]{2,3}(?:-[A-Za-z]{2,4})?)\//)
-  if (!langMatch) {
-    problems.push(rel + ': 只能放在 docs/<语言码>/ 下')
+  const parts = rel.split('/')
+  if (parts.length < 4 || parts[0] !== 'docs') {
+    problems.push(rel + ': 只能放在 docs/<语言码>/<类型>/ 下')
     continue
   }
-  const lang = langMatch[1]
+  const lang = parts[1]
+  const type = parts[2]
+  if (!SUPPORTED_LANGS.has(lang)) problems.push(rel + ': 不支持的语言目录 ' + lang)
+  if (!SUPPORTED_TYPES.has(type)) {
+    problems.push(rel + ': 公开仓只允许 help/tutorials/wiki，发现 ' + type)
+    continue
+  }
+  if (!listed.has(rel)) problems.push('docslist.js: 缺少条目 ' + rel)
 
   const raw = readFileSync(file)
   if (raw[0] === 0xEF && raw[1] === 0xBB && raw[2] === 0xBF) problems.push(rel + ': 含 UTF-8 BOM，请去掉')
@@ -74,20 +128,25 @@ for (const file of files) {
   const slug = basename(file, '.md')
   if (fm.slug && fm.slug !== slug) problems.push(rel + ': slug「' + fm.slug + '」与文件名「' + slug + '」不一致')
 
-  const parts = rel.split('/')
-  if (parts[1] === 'tutorials') {
+  if (type === 'tutorials') {
     if (!fm.cat) problems.push(rel + ': 教程缺少 cat')
-    else if (fm.cat !== parts[2]) problems.push(rel + ': cat「' + fm.cat + '」与目录「' + parts[2] + '」不一致')
+    else if (fm.cat !== parts[3]) problems.push(rel + ': cat「' + fm.cat + '」与目录「' + parts[3] + '」不一致')
   }
 
   if (lang === 'zh') zhSet.add(rel.replace('docs/zh/', ''))
   else if (lang === 'en') enSet.add(rel.replace('docs/en/', ''))
 }
 
+for (const rel of listed.keys()) {
+  if (!files.some((file) => relative(ROOT, file).split('\\').join('/') === rel)) {
+    problems.push('docslist.js: 指向不存在的文件 ' + rel)
+  }
+}
+
 for (const p of zhSet) if (!enSet.has(p)) warnings.push('缺少英文版本: docs/en/' + p)
 for (const p of enSet) if (!zhSet.has(p)) warnings.push('缺少中文版本: docs/zh/' + p)
 
-console.log('检查了 ' + files.length + ' 个文档')
+console.log('检查了 ' + files.length + ' 个文档，docslist.js ' + listed.size + ' 条')
 if (problems.length) {
   console.log('')
   console.log('错误:')
