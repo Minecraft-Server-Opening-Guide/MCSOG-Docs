@@ -1,7 +1,7 @@
 ---
 title: Hướng dẫn biên tập
 slug: guide
-updated: 2026-10-06
+updated: 2026-11-01
 ---
 
 Nội dung của trang này được lưu dưới dạng Markdown, toàn bộ nằm trong kho công khai [MCSOG-Docs](https://github.com/Minecraft-Server-Opening-Guide/MCSOG-Docs), bất kỳ ai cũng có thể gửi chỉnh sửa.
@@ -12,8 +12,31 @@ Nội dung của trang này được lưu dưới dạng Markdown, toàn bộ n�
 | --- | --- |
 | Hướng dẫn | `docs/zh/tutorials/<phân loại>/<slug>.md`, phân loại là `java` / `bedrock` / `ops` / `faq` |
 | Bách khoa | `docs/zh/wiki/<tên>.md` |
-| Thông báo | `docs/zh/news/<tên>.md` |
+| Thông báo | Kho riêng tư `docs/vi/news/<tên>.md` (không có trong kho công khai) |
 | Trợ giúp | `docs/zh/help/<tên>.md` |
+
+## docslist.json và trang mới
+
+`docslist.json` ở thư mục gốc là danh mục trang. Cấu trúc:
+
+```text
+loại → danh mục → ngôn ngữ → mục
+```
+
+Mỗi mục có ít nhất:
+
+```json
+{ "path": "docs/vi/tutorials/java/example.md", "slug": "example" }
+```
+
+Khi thêm trang, phải gửi cả hai:
+
+1. tệp Markdown;
+2. mục trong `docslist.json` đúng loại, danh mục và ngôn ngữ.
+
+Khi xóa hoặc đổi tên tài liệu, hãy xóa hoặc cập nhật mục tương ứng. CI kiểm tra danh mục và các tệp thực tế có khớp nhau. Trang web đọc `docslist.json` để tải động các trang `help`, `tutorials`, `wiki`; không cần đăng ký tuyến đường ở frontend.
+
+Tin tức chỉ được quản lý trong kho riêng tư; không thêm `news` vào kho công khai.
 
 Tệp tiếng Anh và tiếng Trung **tương ứng một một về đường dẫn**, chỉ đổi `zh` thành `en`.
 `<slug>` dùng chữ thường tiếng Anh và dấu gạch nối, sẽ trở thành đoạn cuối của URL trang; tên tệp và `slug` phải giống nhau.

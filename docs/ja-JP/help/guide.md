@@ -1,7 +1,7 @@
 ---
 title: 編集ガイド
 slug: guide
-updated: 2026-10-06
+updated: 2026-11-01
 ---
 
 当サイトのコンテンツはすべて Markdown 形式で保存されており、公開リポジトリ [MCSOG-Docs](https://github.com/Minecraft-Server-Opening-Guide/MCSOG-Docs) に置かれています。どなたでも修正を提案できます。
@@ -12,8 +12,31 @@ updated: 2026-10-06
 | --- | --- |
 | チュートリアル | `docs/zh/tutorials/<分類>/<slug>.md`、分類は `java` / `bedrock` / `ops` / `faq` |
 | 百科 | `docs/zh/wiki/<name>.md` |
-| お知らせ | `docs/zh/news/<name>.md` |
+| お知らせ | プライベートリポジトリ `docs/ja-JP/news/<name>.md`（公開リポジトリには置かない） |
 | ヘルプ | `docs/zh/help/<name>.md` |
+
+## docslist.json と新しいページ
+
+リポジトリ直下の `docslist.json` はページ一覧です。階層は次のとおりです。
+
+```text
+種類 → カテゴリ → 言語 → 項目
+```
+
+各項目には最低限次を含めます。
+
+```json
+{ "path": "docs/ja-JP/tutorials/java/example.md", "slug": "example" }
+```
+
+ページを追加するときは、次の両方を提出してください。
+
+1. Markdown ファイル；
+2. `docslist.json` の正しい種類・カテゴリ・言語の項目。
+
+文書の削除・名前変更時は項目も削除・更新してください。CI が一覧と実ファイルの一致を検査します。サイトは `docslist.json` を読み取り、`help`・`tutorials`・`wiki` ページを動的に表示するため、フロントエンドのルート登録は不要です。
+
+お知らせはプライベートリポジトリのみで管理します。公開リポジトリに `news` を追加しないでください。
 
 英語版のファイルは中国語版と**パスが一対一で対応**しており、`zh` を `en` に置き換えるだけです。
 `<slug>` は小文字の英字とハイフンで指定し、ページ URL の最後のセグメントになります。ファイル名と `slug` は必ず一致させてください。

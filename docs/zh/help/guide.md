@@ -1,7 +1,7 @@
 ---
 title: 编辑指南
 slug: guide
-updated: 2026-10-06
+updated: 2026-11-01
 ---
 
 本站内容以 Markdown 形式存储，全部放在公开仓库 [MCSOG-Docs](https://github.com/Minecraft-Server-Opening-Guide/MCSOG-Docs) 里，任何人都可以提交修改。
@@ -12,8 +12,31 @@ updated: 2026-10-06
 | --- | --- |
 | 教程 | `docs/zh/tutorials/<category>/<slug>.md`，分类为 `java` / `bedrock` / `ops` / `faq` |
 | 百科 | `docs/zh/wiki/<name>.md` |
-| 公告 | `docs/zh/news/<name>.md` |
+| 公告 | 私有仓 `docs/zh/news/<name>.md`（公开仓不维护） |
 | 帮助 | `docs/zh/help/<name>.md` |
+
+## docslist.json 与新增页面
+
+公开仓根目录的 `docslist.json` 是页面清单，层级固定为：
+
+```text
+类型 → 分类 → 语言 → 条目
+```
+
+每个条目至少包含：
+
+```json
+{ "path": "docs/zh/tutorials/java/example.md", "slug": "example" }
+```
+
+新增页面时必须同时提交：
+
+1. 对应的 Markdown 文件；
+2. `docslist.json` 中对应类型、分类、语言的条目。
+
+删除或重命名文档时，也要同步删除或更新条目。CI 会检查清单与实际文件是否一致。网站会读取 `docslist.json` 动态加载 `help`、`tutorials`、`wiki` 页面，不需要修改前端路由。
+
+公告只在私有仓维护，公开仓不要新增 `news`。
 
 英文文件与中文**路径一一对应**，只把 `zh` 换成 `en`。
 `<slug>` 用小写英文与连字符，会成为页面 URL 的最后一段；文件名与 `slug` 必须一致。

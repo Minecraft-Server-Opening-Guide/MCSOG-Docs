@@ -1,7 +1,7 @@
 ---
 title: Editing Guide
 slug: guide
-updated: 2026-10-06
+updated: 2026-11-01
 ---
 
 All content lives as plain Markdown in the public repository [MCSOG-Docs](https://github.com/Minecraft-Server-Opening-Guide/MCSOG-Docs), so anyone can propose a change.
@@ -12,8 +12,31 @@ All content lives as plain Markdown in the public repository [MCSOG-Docs](https:
 | --- | --- |
 | Tutorial | `docs/en/tutorials/<category>/<slug>.md`, category is `java` / `bedrock` / `ops` / `faq` |
 | Wiki | `docs/en/wiki/<name>.md` |
-| News | `docs/en/news/<name>.md` |
+| News | Private repo `docs/en/news/<name>.md` (not in public repo) |
 | Help | `docs/en/help/<name>.md` |
+
+## docslist.json and new pages
+
+`docslist.json` in the repository root is the page manifest. Its hierarchy is:
+
+```text
+type → category → language → entries
+```
+
+Each entry contains at least:
+
+```json
+{ "path": "docs/en/tutorials/java/example.md", "slug": "example" }
+```
+
+When adding a page, submit both:
+
+1. the Markdown file;
+2. the matching entry under the correct type, category, and language in `docslist.json`.
+
+When deleting or renaming a document, remove or update the entry as well. CI verifies that the manifest and the actual files stay in sync. The website reads `docslist.json` to load `help`, `tutorials`, and `wiki` pages dynamically; no frontend route registration is required.
+
+News is maintained in the private repository only; do not add `news` to the public repository.
 
 The English file **mirrors the Chinese path exactly**, with `zh` replaced by `en`.
 Use lowercase ASCII with hyphens for `<slug>`: it becomes the last URL segment, and the file name must match the `slug` field.
