@@ -1,12 +1,12 @@
 ---
 title: 新手入门
 slug: quickstart
-updated: 2026-10-31
+updated: 2026-11-02
 ---
 
 ## 网站介绍
 
-html.(<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117505523718890&bvid=BV1ybn96yETW&cid=43062726176&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>)
+html.csp=[*.bilibili.com].(<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117505523718890&bvid=BV1ybn96yETW&cid=43062726176&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>)
 
 ## 先确定你的版本
 
