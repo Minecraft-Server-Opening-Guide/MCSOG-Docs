@@ -38,41 +38,48 @@ MCSOG-Docs/
 
 除 `zh` 外，其余语言目录均采用与 `zh` 相同的 `tutorials/`、`wiki/`、`help/` 结构。
 
-### docslist.json 层级
+### docslist.json 结构
 
-`docslist.json` 是公开文档的机器可读清单，层级固定为：
+`docslist.json` 只管理开服教程：顶层只有 `nav` 和 `docs`，不再使用旧的 `type → category → language` 结构。
 
-```text
-类型 type
-└── 子分类 category（help/wiki 使用 general，tutorials 使用 java/bedrock/ops/faq）
-    └── 语言 locale
-        └── 文档文件
-```
-
-示例：
+- `nav`：与站点侧栏一致的教程导航项（教程总览、Java 版开服、基岩版开服、运维与安全、常见问题）
+- `docs`：教程文档索引，分类固定为 `java`、`be`、`ops`、`faq`（`be` 对应磁盘上的 `bedrock` 目录）
 
 ```json
 {
-  "version": 1,
-  "help": {
-    "general": {
-      "zh": [{ "path": "docs/zh/help/quickstart.md", "slug": "quickstart" }]
+  "nav": [
+    {
+      "key": "tutorials",
+      "icon": "book-open",
+      "path": "/tutorials",
+      "label": { "zh": "教程总览", "en": "Overview" },
+      "sub": { "zh": "OVERVIEW", "en": "OVERVIEW" }
     }
-  },
-  "tutorials": {
+  ],
+  "docs": {
     "java": {
-      "zh": [{ "path": "docs/zh/tutorials/java/protocol.md", "slug": "protocol" }]
-    }
-  },
-  "wiki": {
-    "general": {
-      "zh": [{ "path": "docs/zh/wiki/cores.md", "slug": "cores" }]
+      "zh": [
+        {
+          "path": "/zh/tutorials/java/example",
+          "title": "示例教程",
+          "slug": "example",
+          "cat": "java",
+          "updated": "2026-11-03",
+          "level": 1,
+          "minute": 10,
+          "order": 1
+        }
+      ]
     }
   }
 }
 ```
 
-每个条目包含 `path`、`slug`、`title`、`cat`、`level`、`minutes`、`order`、`mc`、`tags`、`draft`、`updated` 等文档说明字段。新增/删除/重命名文档时，必须同步修改 `docslist.json`；CI 会校验清单和文件是否一致。网站会读取 `docslist.json` 动态解析 `help`、`tutorials`、`wiki` 页面，新增页面只需要同时提交 Markdown 文件和对应的 docslist 条目，不需要修改前端页面注册表。
+每个文档条目必须包含 `path`、`slug`、`title`、`cat`、`updated`、`level`、`minute`、`order`；可选 `mc`、`tags`、`draft` 等字段。`order` 小的条目排在前面。
+
+新增、删除或重命名教程时，必须同步修改 `docslist.json`。网站会读取该文件；`help`、`wiki`、`news` 由文件系统扫描加载，不写入此文件。旧的完整 `docslist.json` 格式已不再支持。
+
+站点每 10 分钟从本仓库同步文档和 `docslist.json`；如果私有仓库与公开仓库同时修改了 `docslist.json`，同步会保留本地版本，并将冲突交给站点内置的冲突管理处理，不会静默覆盖。
 
 ### 路径约定
 

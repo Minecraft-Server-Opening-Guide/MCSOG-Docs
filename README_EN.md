@@ -38,18 +38,48 @@ MCSOG-Docs/
 
 All locales other than `zh` use the same `tutorials/`, `wiki/`, and `help/` layout as `zh`.
 
-### docslist.json hierarchy
+### docslist.json structure
 
-`docslist.json` in the repository root is the page manifest. Its hierarchy is:
+`docslist.json` manages tutorial content only. Its top level contains only `nav` and `docs`; the old `type → category → language` manifest format is no longer supported.
 
-```text
-type
-└── category (help/wiki use general; tutorials use java/bedrock/ops/faq)
-    └── language
-        └── document
+- `nav`: tutorial navigation entries matching the site sidebar (Overview, Java Server, Bedrock Server, Ops & Security, FAQ)
+- `docs`: tutorial document index with exactly four categories: `java`, `be`, `ops`, `faq` (`be` maps to the on-disk `bedrock` directory)
+
+```json
+{
+  "nav": [
+    {
+      "key": "tutorials",
+      "icon": "book-open",
+      "path": "/tutorials",
+      "label": { "zh": "教程总览", "en": "Overview" },
+      "sub": { "zh": "OVERVIEW", "en": "OVERVIEW" }
+    }
+  ],
+  "docs": {
+    "java": {
+      "en": [
+        {
+          "path": "/en/tutorials/java/example",
+          "title": "Example tutorial",
+          "slug": "example",
+          "cat": "java",
+          "updated": "2026-11-03",
+          "level": 1,
+          "minute": 10,
+          "order": 1
+        }
+      ]
+    }
+  }
+}
 ```
 
-Every entry includes `path`, `slug`, `title`, `cat`, `level`, `minutes`, `order`, `mc`, `tags`, `draft`, and `updated` metadata. Add, delete, or rename a document together with its manifest entry. CI verifies the manifest and files stay in sync. The website reads `docslist.json` to load `help`, `tutorials`, and `wiki` pages dynamically; a new page needs its Markdown file and manifest entry, but no frontend route registration.
+Every document entry requires `path`, `slug`, `title`, `cat`, `updated`, `level`, `minute`, and `order`; optional fields include `mc`, `tags`, and `draft`. Entries are ordered by ascending `order`.
+
+Add, delete, or rename a tutorial together with its `docslist.json` entry. The site reads this file; `help`, `wiki`, and `news` are loaded by filesystem scan and are not written here. Legacy full-manifest format is no longer supported.
+
+The site syncs documents and `docslist.json` from this repository every 10 minutes. If both the private repository and the public repository changed `docslist.json`, the local version is kept and the conflict is handed to the site's built-in conflict manager instead of being silently overwritten.
 
 ### Path conventions
 
