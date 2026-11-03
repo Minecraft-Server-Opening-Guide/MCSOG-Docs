@@ -27,7 +27,7 @@ updated: 2026-11-01
   "docs": {
     "java": {
       "zh": [
-        { "path": "/zh/tutorials/java/example", "title": "示例教程", "slug": "example", "cat": "java", "updated": "2026-11-03", "level": 1, "minute": 10 }
+        { "path": "/zh/tutorials/java/example", "title": "示例教程", "slug": "example", "cat": "java", "updated": "2026-11-03", "level": 1, "minute": 10, "order": 1 }
       ]
     }
   }

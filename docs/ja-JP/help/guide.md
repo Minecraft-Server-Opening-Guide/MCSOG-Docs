@@ -27,7 +27,7 @@ updated: 2026-11-01
   "docs": {
     "java": {
       "ja-JP": [
-        { "path": "/ja-JP/tutorials/java/example", "title": "サンプルチュートリアル", "slug": "example", "cat": "java", "updated": "2026-11-03", "level": 1, "minute": 10 }
+        { "path": "/ja-JP/tutorials/java/example", "title": "サンプルチュートリアル", "slug": "example", "cat": "java", "updated": "2026-11-03", "level": 1, "minute": 10, "order": 1 }
       ]
     }
   }

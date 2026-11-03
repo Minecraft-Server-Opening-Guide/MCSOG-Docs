@@ -27,7 +27,7 @@ updated: 2026-11-01
   "docs": {
     "java": {
       "ru-RU": [
-        { "path": "/ru-RU/tutorials/java/example", "title": "Пример руководства", "slug": "example", "cat": "java", "updated": "2026-11-03", "level": 1, "minute": 10 }
+        { "path": "/ru-RU/tutorials/java/example", "title": "Пример руководства", "slug": "example", "cat": "java", "updated": "2026-11-03", "level": 1, "minute": 10, "order": 1 }
       ]
     }
   }

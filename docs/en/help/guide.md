@@ -27,7 +27,7 @@ All content lives as plain Markdown in the public repository [MCSOG-Docs](https:
   "docs": {
     "java": {
       "en": [
-        { "path": "/en/tutorials/java/example", "title": "Example tutorial", "slug": "example", "cat": "java", "updated": "2026-11-03", "level": 1, "minute": 10 }
+        { "path": "/en/tutorials/java/example", "title": "Example tutorial", "slug": "example", "cat": "java", "updated": "2026-11-03", "level": 1, "minute": 10, "order": 1 }
       ]
     }
   }

@@ -27,7 +27,7 @@ Nội dung của trang này được lưu dưới dạng Markdown, toàn bộ n�
   "docs": {
     "java": {
       "vi": [
-        { "path": "/vi/tutorials/java/example", "title": "Hướng dẫn mẫu", "slug": "example", "cat": "java", "updated": "2026-11-03", "level": 1, "minute": 10 }
+        { "path": "/vi/tutorials/java/example", "title": "Hướng dẫn mẫu", "slug": "example", "cat": "java", "updated": "2026-11-03", "level": 1, "minute": 10, "order": 1 }
       ]
     }
   }
