@@ -4,7 +4,7 @@ import { join, relative } from 'node:path'
 const ROOT = process.cwd()
 const DOCS = join(ROOT, 'docs')
 const MANIFEST = join(ROOT, 'docslist.json')
-const LANGS = ['zh', 'en', 'zh-TW', 'ja-JP', 'ru-RU', 'ar', 'vi']
+const LANGS = ['zh', 'en', 'zh-TW', 'ja-JP', 'ru-RU', 'vi', 'ar']
 const CATEGORIES = ['java', 'be', 'ops', 'faq']
 const FOLDERS = { java: 'java', be: 'bedrock', ops: 'ops', faq: 'faq' }
 
