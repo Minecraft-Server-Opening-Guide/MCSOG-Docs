@@ -15,28 +15,26 @@ All content lives as plain Markdown in the public repository [MCSOG-Docs](https:
 | News | Private repo `docs/en/news/<name>.md` (not in public repo) |
 | Help | `docs/en/help/<name>.md` |
 
-## docslist.json and new pages
+## docslist.json and tutorial documents
 
-`docslist.json` in the repository root is the page manifest. Its hierarchy is:
-
-```text
-type → category → language → entries
-```
-
-Each entry contains at least:
+`docslist.json` manages tutorial content only. `nav` is the sidebar tutorial navigation (Overview, Java Server, Bedrock Server, Ops & Security, FAQ); `docs` is the tutorial document index with exactly four categories: `java`, `be`, `ops`, and `faq` (`be` maps to the on-disk `bedrock` directory). `help`, `wiki`, and `news` must not be written here.
 
 ```json
-{ "path": "docs/en/tutorials/java/example.md", "slug": "example" }
+{
+  "nav": [
+    { "key": "tutorials", "icon": "book-open", "path": "/tutorials", "label": { "zh": "教程总览", "en": "Overview" }, "sub": { "zh": "OVERVIEW", "en": "OVERVIEW" } }
+  ],
+  "docs": {
+    "java": {
+      "en": [
+        { "path": "/en/tutorials/java/example", "title": "Example tutorial", "slug": "example", "cat": "java", "updated": "2026-11-03", "level": 1, "minute": 10 }
+      ]
+    }
+  }
+}
 ```
 
-When adding a page, submit both:
-
-1. the Markdown file;
-2. the matching entry under the correct type, category, and language in `docslist.json`.
-
-When deleting or renaming a document, remove or update the entry as well. CI verifies that the manifest and the actual files stay in sync. The website reads `docslist.json` to load `help`, `tutorials`, and `wiki` pages dynamically; no frontend route registration is required.
-
-News is maintained in the private repository only; do not add `news` to the public repository.
+`path` is the in-site tutorial path; `slug` must match the Markdown file name. Add the Markdown file and register the entry under the matching category and language when adding a tutorial.
 
 The English file **mirrors the Chinese path exactly**, with `zh` replaced by `en`.
 Use lowercase ASCII with hyphens for `<slug>`: it becomes the last URL segment, and the file name must match the `slug` field.

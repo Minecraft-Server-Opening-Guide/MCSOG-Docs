@@ -15,28 +15,26 @@ Nội dung của trang này được lưu dưới dạng Markdown, toàn bộ n�
 | Thông báo | Kho riêng tư `docs/vi/news/<tên>.md` (không có trong kho công khai) |
 | Trợ giúp | `docs/zh/help/<tên>.md` |
 
-## docslist.json và trang mới
+## docslist.json và tài liệu hướng dẫn
 
-`docslist.json` ở thư mục gốc là danh mục trang. Cấu trúc:
-
-```text
-loại → danh mục → ngôn ngữ → mục
-```
-
-Mỗi mục có ít nhất:
+`docslist.json` chỉ quản lý nội dung hướng dẫn. `nav` là điều hướng hướng dẫn ở thanh bên (tổng quan, máy chủ Java, máy chủ Bedrock, vận hành & bảo mật, FAQ); `docs` là chỉ mục hướng dẫn với bốn danh mục `java`, `be`, `ops`, `faq` (`be` tương ứng thư mục `bedrock`). Không ghi `help`, `wiki`, `news` vào đây.
 
 ```json
-{ "path": "docs/vi/tutorials/java/example.md", "slug": "example" }
+{
+  "nav": [
+    { "key": "tutorials", "icon": "book-open", "path": "/tutorials", "label": { "zh": "教程总览", "en": "Overview" }, "sub": { "zh": "OVERVIEW", "en": "OVERVIEW" } }
+  ],
+  "docs": {
+    "java": {
+      "vi": [
+        { "path": "/vi/tutorials/java/example", "title": "Hướng dẫn mẫu", "slug": "example", "cat": "java", "updated": "2026-11-03", "level": 1, "minute": 10 }
+      ]
+    }
+  }
+}
 ```
 
-Khi thêm trang, phải gửi cả hai:
-
-1. tệp Markdown;
-2. mục trong `docslist.json` đúng loại, danh mục và ngôn ngữ.
-
-Khi xóa hoặc đổi tên tài liệu, hãy xóa hoặc cập nhật mục tương ứng. CI kiểm tra danh mục và các tệp thực tế có khớp nhau. Trang web đọc `docslist.json` để tải động các trang `help`, `tutorials`, `wiki`; không cần đăng ký tuyến đường ở frontend.
-
-Tin tức chỉ được quản lý trong kho riêng tư; không thêm `news` vào kho công khai.
+`path` là đường dẫn hướng dẫn trong site; `slug` phải khớp tên tệp Markdown. Khi thêm hướng dẫn, gửi tệp Markdown và đăng ký mục dưới đúng danh mục và ngôn ngữ.
 
 Tệp tiếng Anh và tiếng Trung **tương ứng một một về đường dẫn**, chỉ đổi `zh` thành `en`.
 `<slug>` dùng chữ thường tiếng Anh và dấu gạch nối, sẽ trở thành đoạn cuối của URL trang; tên tệp và `slug` phải giống nhau.

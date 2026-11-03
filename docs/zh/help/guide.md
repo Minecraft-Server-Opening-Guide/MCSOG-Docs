@@ -15,28 +15,26 @@ updated: 2026-11-01
 | 公告 | 私有仓 `docs/zh/news/<name>.md`（公开仓不维护） |
 | 帮助 | `docs/zh/help/<name>.md` |
 
-## docslist.json 与新增页面
+## docslist.json 与教程文档
 
-公开仓根目录的 `docslist.json` 是页面清单，层级固定为：
-
-```text
-类型 → 分类 → 语言 → 条目
-```
-
-每个条目至少包含：
+`docslist.json` 只管理开服教程：`nav` 是侧栏教程导航项（教程总览、Java 版开服、基岩版开服、运维与安全、常见问题），`docs` 是教程文档索引，分类固定为 `java`、`be`、`ops`、`faq`（`be` 对应磁盘上的 `bedrock` 目录）。`help`、`wiki`、`news` 不写入此文件。
 
 ```json
-{ "path": "docs/zh/tutorials/java/example.md", "slug": "example" }
+{
+  "nav": [
+    { "key": "tutorials", "icon": "book-open", "path": "/tutorials", "label": { "zh": "教程总览", "en": "Overview" }, "sub": { "zh": "OVERVIEW", "en": "OVERVIEW" } }
+  ],
+  "docs": {
+    "java": {
+      "zh": [
+        { "path": "/zh/tutorials/java/example", "title": "示例教程", "slug": "example", "cat": "java", "updated": "2026-11-03", "level": 1, "minute": 10 }
+      ]
+    }
+  }
+}
 ```
 
-新增页面时必须同时提交：
-
-1. 对应的 Markdown 文件；
-2. `docslist.json` 中对应类型、分类、语言的条目。
-
-删除或重命名文档时，也要同步删除或更新条目。CI 会检查清单与实际文件是否一致。网站会读取 `docslist.json` 动态加载 `help`、`tutorials`、`wiki` 页面，不需要修改前端路由。
-
-公告只在私有仓维护，公开仓不要新增 `news`。
+`path` 是教程页面的站内路径；`slug` 必须与 Markdown 文件名一致。新增教程时提交 Markdown 文件，并在对应分类和语言下登记条目。
 
 英文文件与中文**路径一一对应**，只把 `zh` 换成 `en`。
 `<slug>` 用小写英文与连字符，会成为页面 URL 的最后一段；文件名与 `slug` 必须一致。

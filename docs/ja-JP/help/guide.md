@@ -15,28 +15,26 @@ updated: 2026-11-01
 | お知らせ | プライベートリポジトリ `docs/ja-JP/news/<name>.md`（公開リポジトリには置かない） |
 | ヘルプ | `docs/zh/help/<name>.md` |
 
-## docslist.json と新しいページ
+## docslist.json とチュートリアル文書
 
-リポジトリ直下の `docslist.json` はページ一覧です。階層は次のとおりです。
-
-```text
-種類 → カテゴリ → 言語 → 項目
-```
-
-各項目には最低限次を含めます。
+`docslist.json` はチュートリアルだけを管理します。`nav` はサイドバーのチュートリアルナビゲーション（概要、Java サーバー、Bedrock サーバー、運用とセキュリティ、FAQ）、`docs` はチュートリアル索引で、分類は `java`、`be`、`ops`、`faq` に固定されています（`be` は `bedrock` ディレクトリに対応）。`help`、`wiki`、`news` はここに書きません。
 
 ```json
-{ "path": "docs/ja-JP/tutorials/java/example.md", "slug": "example" }
+{
+  "nav": [
+    { "key": "tutorials", "icon": "book-open", "path": "/tutorials", "label": { "zh": "教程总览", "en": "Overview" }, "sub": { "zh": "OVERVIEW", "en": "OVERVIEW" } }
+  ],
+  "docs": {
+    "java": {
+      "ja-JP": [
+        { "path": "/ja-JP/tutorials/java/example", "title": "サンプルチュートリアル", "slug": "example", "cat": "java", "updated": "2026-11-03", "level": 1, "minute": 10 }
+      ]
+    }
+  }
+}
 ```
 
-ページを追加するときは、次の両方を提出してください。
-
-1. Markdown ファイル；
-2. `docslist.json` の正しい種類・カテゴリ・言語の項目。
-
-文書の削除・名前変更時は項目も削除・更新してください。CI が一覧と実ファイルの一致を検査します。サイトは `docslist.json` を読み取り、`help`・`tutorials`・`wiki` ページを動的に表示するため、フロントエンドのルート登録は不要です。
-
-お知らせはプライベートリポジトリのみで管理します。公開リポジトリに `news` を追加しないでください。
+`path` はサイト内のチュートリアルパス、`slug` は Markdown のファイル名と一致させます。追加時は Markdown を提出し、対応する分類と言語に項目を登録してください。
 
 英語版のファイルは中国語版と**パスが一対一で対応**しており、`zh` を `en` に置き換えるだけです。
 `<slug>` は小文字の英字とハイフンで指定し、ページ URL の最後のセグメントになります。ファイル名と `slug` は必ず一致させてください。
