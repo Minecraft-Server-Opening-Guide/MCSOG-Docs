@@ -19,6 +19,7 @@ Provide the resource name, official homepage, version and licence details; for a
 :::step Infringement and reporting
 Provide proof of rights and the exact links; we will act once we have verified them.
 
+:::
 :::note
 This site is an unofficial site maintained by the player community. It does not offer official Minecraft support and cannot handle official matters such as account bans or ownership verification.
 :::

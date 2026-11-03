@@ -19,6 +19,7 @@ Cung cấp tên tài nguyên, trang chủ chính thức, phiên bản và thông
 :::step Vi phạm bản quyền và báo cáo
 Vui lòng cung cấp bằng chứng về quyền và đường dẫn cụ thể, chúng tôi sẽ xử lý sau khi xác minh.
 
+:::
 :::note
 Trang này là trang phi chính thức do cộng đồng người chơi duy trì, không cung cấp dịch vụ khách hàng chính thức của Minecraft, cũng không thể xử lý các việc chính thức như khóa tài khoản hay xác thực bản quyền.
 :::
