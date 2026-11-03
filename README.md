@@ -18,7 +18,7 @@ MCSOG 开服教程站的**公开文档仓库**，用于接收社区修订。
 MCSOG-Docs/
 ├── README.md              本文件
 ├── README_EN.md           英文说明
-├── docslist.json            文档记录(用于网站识别仓库内文档)
+├── docslist.json            教程导航 + 文档索引（仅教程）
 └── docs/
     ├── zh/                简体中文（内容源文）
     │   ├── tutorials/     开服教程正文

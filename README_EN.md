@@ -18,7 +18,7 @@ Live site: <https://mcsog.ndpreforged.com>
 MCSOG-Docs/
 ├── README.md              this file
 ├── README_EN.md           English README
-├── docslist.json          page manifest (required for new pages)
+├── docslist.json          tutorial nav + document index (tutorials only)
 └── docs/
     ├── zh/                Simplified Chinese (source of truth)
     │   ├── tutorials/     tutorials
