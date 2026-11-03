@@ -79,7 +79,7 @@ Every document entry requires `path`, `slug`, `title`, `cat`, `updated`, `level`
 
 Add, delete, or rename a tutorial together with its `docslist.json` entry. The site reads this file; `help`, `wiki`, and `news` are loaded by filesystem scan and are not written here. Legacy full-manifest format is no longer supported.
 
-The site syncs documents and `docslist.json` from this repository every 10 minutes. If both the private repository and the public repository changed `docslist.json`, the local version is kept and the conflict is handed to the site's built-in conflict manager instead of being silently overwritten.
+The site syncs documents and `docslist.json` from this repository every 10 minutes. If both the private repository and the public repository changed `docslist.json`, the local version is kept and the conflict is handed to the site's built-in conflict manager instead of being silently overwritten. New tutorials created in the web editor write both Markdown and `docslist.json`; Git pushes run through the background queue, and docslist conflicts in that queue use the same built-in conflict manager without blocking the save request.
 
 ### Path conventions
 
