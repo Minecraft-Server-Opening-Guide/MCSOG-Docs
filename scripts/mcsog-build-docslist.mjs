@@ -3,8 +3,10 @@ import { join, relative } from 'node:path'
 
 const ROOT = process.cwd()
 const DOCS = join(ROOT, 'docs')
-const TYPES = ['help', 'tutorials', 'wiki']
+const MANIFEST = join(ROOT, 'docslist.json')
 const LANGS = ['zh', 'en', 'zh-TW', 'ja-JP', 'ru-RU', 'ar', 'vi']
+const CATEGORIES = ['java', 'be', 'ops', 'faq']
+const FOLDERS = { java: 'java', be: 'bedrock', ops: 'ops', faq: 'faq' }
 
 const walk = (dir, out = []) => {
   for (const name of readdirSync(dir)) {
@@ -14,8 +16,6 @@ const walk = (dir, out = []) => {
   }
   return out
 }
-
-const out = { version: 1, help: {}, tutorials: {}, wiki: {} }
 const metaOf = (file) => {
   const text = readFileSync(file, 'utf8')
   const end = text.startsWith('---') ? text.indexOf('\n---', 3) : -1
@@ -33,41 +33,44 @@ const metaOf = (file) => {
   }
   return out
 }
+
+let nav = []
+try {
+  const current = JSON.parse(readFileSync(MANIFEST, 'utf8'))
+  if (Array.isArray(current.nav)) nav = current.nav
+} catch {}
+
+const out = { nav, docs: Object.fromEntries(CATEGORIES.map((cat) => [cat, {}])) }
 for (const file of walk(DOCS).sort()) {
   const parts = relative(ROOT, file).split('\\').join('/').split('/')
-  if (parts.length < 4) continue
+  if (parts.length !== 5 || parts[2] !== 'tutorials') continue
   const lang = parts[1]
-  const type = parts[2]
-  if (!TYPES.includes(type) || !LANGS.includes(lang)) continue
-  let cat = 'general'
-  let slug = ''
-  if (type === 'tutorials') {
-    if (parts.length !== 5) continue
-    cat = parts[3]
-    slug = parts[4].replace(/\.md$/, '')
-  } else {
-    if (parts.length !== 4) continue
-    slug = parts[3].replace(/\.md$/, '')
-  }
-  if (!out[type][cat]) out[type][cat] = {}
-  if (!out[type][cat][lang]) out[type][cat][lang] = []
+  const folder = parts[3]
+  const cat = Object.keys(FOLDERS).find((key) => FOLDERS[key] === folder)
+  if (!cat || !LANGS.includes(lang)) continue
+  const slug = parts[4].replace(/\.md$/, '')
   const meta = metaOf(file)
-  const item = { path: parts.join('/'), slug, title: meta.title || '', cat: cat === 'general' ? '' : cat }
-  for (const key of ['level','minutes','order','mc','tags','draft','updated']) if (meta[key] !== undefined) item[key] = meta[key]
-  out[type][cat][lang].push(item)
-}
-
-for (const type of TYPES) {
-  const groups = out[type]
-  const ordered = {}
-  for (const cat of Object.keys(groups).sort((a, b) => (a === 'general' ? -1 : b === 'general' ? 1 : a.localeCompare(b)))) {
-    ordered[cat] = {}
-    for (const lang of LANGS) {
-      if (groups[cat][lang]?.length) ordered[cat][lang] = groups[cat][lang]
-    }
+  const item = {
+    path: '/' + lang + '/tutorials/' + folder + '/' + slug,
+    title: meta.title || '',
+    slug,
+    cat,
+    updated: meta.updated || '',
+    level: Number(meta.level || 1),
+    minute: Number(meta.minutes || meta.minute || 0),
   }
-  out[type] = ordered
+  for (const key of ['order', 'mc', 'tags', 'draft']) if (meta[key] !== undefined) item[key] = meta[key]
+  if (!out.docs[cat][lang]) out.docs[cat][lang] = []
+  out.docs[cat][lang].push(item)
 }
-
-writeFileSync(join(ROOT, 'docslist.json'), JSON.stringify(out, null, 2) + '\n', 'utf8')
-console.log('docslist.json written')
+for (const cat of CATEGORIES) {
+  const ordered = {}
+  for (const lang of LANGS) {
+    if (!out.docs[cat][lang]?.length) continue
+    out.docs[cat][lang].sort((a, b) => Number(a.order || Number.MAX_SAFE_INTEGER) - Number(b.order || Number.MAX_SAFE_INTEGER))
+    ordered[lang] = out.docs[cat][lang]
+  }
+  out.docs[cat] = ordered
+}
+writeFileSync(MANIFEST, JSON.stringify(out, null, 2) + '\n', 'utf8')
+console.log('docslist.json written (nav + tutorial docs only)')
