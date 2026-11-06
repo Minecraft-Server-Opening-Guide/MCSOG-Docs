@@ -981,7 +981,7 @@
           "title": "[生电篇]为什么不推荐反作弊",
           "slug": "sd-anticheat",
           "cat": "java",
-          "updated": "2026-10-08",
+          "updated": "2026-11-06",
           "level": 3,
           "minute": 12,
           "order": 36,
@@ -999,7 +999,7 @@
             "白名单",
             "备份"
           ],
-          "draft": false
+          "draft": "false"
         }
       ],
       "en": [
