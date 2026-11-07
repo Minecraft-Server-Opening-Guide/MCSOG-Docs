@@ -1000,16 +1000,6 @@
             "备份"
           ],
           "draft": "false"
-        },
-        {
-          "path": "/zh/tutorials/java/audit-public-sync",
-          "title": "公开仓同步测试",
-          "slug": "audit-public-sync",
-          "cat": "java",
-          "updated": "2026-11-07",
-          "level": 1,
-          "minute": 3,
-          "order": 37
         }
       ],
       "en": [
