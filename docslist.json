@@ -1000,16 +1000,6 @@
             "备份"
           ],
           "draft": "false"
-        },
-        {
-          "path": "/zh/tutorials/java/audit-scope-tut",
-          "title": "范围教程",
-          "slug": "audit-scope-tut",
-          "cat": "java",
-          "updated": "2026-11-08",
-          "level": 1,
-          "minute": 3,
-          "order": 37
         }
       ],
       "en": [
