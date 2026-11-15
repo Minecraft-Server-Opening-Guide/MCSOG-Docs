@@ -1,13 +1,13 @@
 ---
-title: "NDPReforged 联合封禁系统"
+title: NDPReforged 联合封禁系统
 slug: ndpr
 cat: ops
 level: 3
-order: 26
 minutes: 16
+order: 26
 tags: [联合封禁, NDPR, 反作弊, 插件, 配置, 运维]
-updated: 2026-10-04
 draft: false
+updated: 2026-11-15
 ---
 
 **NDPReforged（NDPR）** 是一套跨平台的 **Minecraft 服务器联合封禁系统**：多台服务器共用同一份封禁数据库，做到**统一封禁、实时同步**。它基于 RESTful API 构建，官方文档在 <https://ndpreforged.com/wiki.php>，官网与服主后台在 <https://ndpreforged.com/>。
@@ -253,4 +253,4 @@ freeze_interval = 1
 
 ---
 
-> 本篇内容与配置项默认值取自 NDPReforged 官方文档（<https://ndpreforged.com/wiki.php>，版本 2.1.0）；官方更新后请以官方文档为准。
+> 本篇内容与配置项默认值取自 [NDPReforged官方文档](https://ndpreforged.com/wiki.php)，版本 2.1.0）；官方更新后请以官方文档为准。
