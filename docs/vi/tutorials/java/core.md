@@ -40,6 +40,24 @@ Trong ba loại này, máy chủ kỹ thuật redstone đi theo con đường **
 
 **Luồng chính của Minecraft là đơn luồng.** Thực thể, chunk, redstone, logic plugin gần như đều dồn lên **một nhân** —— nên nhiều nhân không có nghĩa là nhanh, **xung nhịp đơn nhân mới là then chốt**.
 
+Phân loại theo hiệu năng một nhân trước:
+
+```flow
+st=>start: Máy của bạn
+q1=>condition: Một nhân mạnh (4-8 nhân, 3.5GHz+)?
+a1=>operation: Paper / Purpur / Leaf
+q2=>condition: Nhiều nhân, xung thấp (16+ nhân, <2.5GHz)?
+a2=>operation: Folia
+a3=>operation: Paper
+e=>end: Mở hướng dẫn tương ứng
+
+st->q1
+q1(yes)->a1->e
+q1(no)->q2
+q2(yes)->a2->e
+q2(no)->a3->e
+```
+
 | Máy của bạn | Khuyến nghị | Lý do |
 | --- | --- | --- |
 | **Hiệu năng đơn nhân mạnh** (4~8 nhân, xung nhịp 3.5GHz+) | **Paper / Purpur / Leaf** | Các lõi này đã làm hết mức tối ưu đơn luồng có thể, đơn nhân càng mạnh lợi ích càng lớn |

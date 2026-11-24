@@ -12,6 +12,20 @@ auto: true
 >
 > Coverage: **921** Java entries (**103** releases) and **283** Bedrock entries.
 
+
+The cadence is easier to read from a chart:
+
+```echarts
+{
+  "title": { "text": "Java edition releases per year", "left": "center", "textStyle": { "fontSize": 14 } },
+  "grid": { "left": 48, "right": 24, "top": 56, "bottom": 40 },
+  "tooltip": { "trigger": "axis" },
+  "xAxis": { "type": "category", "name": "Year", "data": ["2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "axisLabel": { "rotate": 45 } },
+  "yAxis": { "type": "value", "name": "Releases" },
+  "series": [{ "type": "bar", "data": [1, 13, 8, 8, 8, 11, 3, 3, 7, 6, 5, 5, 6, 7, 7, 5], "itemStyle": { "color": "#8ec91d" } }]
+}
+```
+
 ## Java releases (newest first)
 
 | Version | Released |

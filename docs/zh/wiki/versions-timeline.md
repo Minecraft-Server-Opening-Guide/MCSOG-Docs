@@ -12,6 +12,20 @@ auto: true
 >
 > 收录范围：Java 版 **921** 条（正式版 **103** 条），基岩版 **283** 条。
 
+
+看这张图能直接读出节奏变化：
+
+```echarts
+{
+  "title": { "text": "每年 Java 版正式版发布数量", "left": "center", "textStyle": { "fontSize": 14 } },
+  "grid": { "left": 48, "right": 24, "top": 56, "bottom": 40 },
+  "tooltip": { "trigger": "axis" },
+  "xAxis": { "type": "category", "name": "年份", "data": ["2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "axisLabel": { "rotate": 45 } },
+  "yAxis": { "type": "value", "name": "发布数" },
+  "series": [{ "type": "bar", "data": [1, 13, 8, 8, 8, 11, 3, 3, 7, 6, 5, 5, 6, 7, 7, 5], "itemStyle": { "color": "#8ec91d" } }]
+}
+```
+
 ## Java 版正式版（最新在前）
 
 | 版本 | 发布日期 |

@@ -39,6 +39,33 @@ updated: 2026-10-04
 
 ## كيف تختار
 
+اتبع هذه الفروع الثلاثة أولًا، ويكفي ذلك في معظم الحالات:
+
+```flow
+st=>start: ابدأ الاختيار
+qmod=>condition: هل تحتاج مودات؟
+amod=>operation: Fabric / NeoForge / Forge
+qsd=>condition: لعب تقني (سلوك الفانيلا)؟
+asd=>operation: Fabric / Leaves
+qmulti=>condition: أنوية كثيرة بتردد منخفض؟
+amulti=>operation: Folia
+qtog=>condition: خيارات لعب كثيرة؟
+atog=>operation: Purpur
+apaper=>operation: Paper
+e=>end: اتبع الدليل
+
+st->qmod
+qmod(yes)->amod->e
+qmod(no)->qsd
+qsd(yes)->asd->e
+qsd(no)->qmulti
+qmulti(yes)->amulti->e
+qmulti(no)->qtog
+qtog(yes)->atog->e
+qtog(no)->apaper->e
+```
+
+
 ### الاختيار حسب العتاد (أكثر نقطة يخطئ فيها الناس)
 
 الخيط الرئيسي في Minecraft **أحادي الخيط**: الكائنات والقطع والريدستون ومنطق الملحقات كلها على **نواة واحدة**، لذلك **كثرة الأنوية لا تعني السرعة**.

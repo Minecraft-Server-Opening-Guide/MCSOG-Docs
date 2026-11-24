@@ -39,6 +39,33 @@ updated: 2026-10-04
 
 ## Chọn như thế nào
 
+Đi qua ba nhánh này trước, phần lớn trường hợp là đủ để quyết:
+
+```flow
+st=>start: Bắt đầu chọn
+qmod=>condition: Cần mod?
+amod=>operation: Fabric / NeoForge / Forge
+qsd=>condition: Chơi kỹ thuật (giữ nguyên vanilla)?
+asd=>operation: Fabric / Leaves
+qmulti=>condition: Nhiều nhân, xung thấp?
+amulti=>operation: Folia
+qtog=>condition: Cần nhiều tùy chọn lối chơi?
+atog=>operation: Purpur
+apaper=>operation: Paper
+e=>end: Theo hướng dẫn
+
+st->qmod
+qmod(yes)->amod->e
+qmod(no)->qsd
+qsd(yes)->asd->e
+qsd(no)->qmulti
+qmulti(yes)->amulti->e
+qmulti(no)->qtog
+qtog(yes)->atog->e
+qtog(no)->apaper->e
+```
+
+
 ### Chọn theo phần cứng (điểm dễ chọn sai nhất)
 
 Luồng chính của Minecraft là **đơn luồng**: thực thể, chunk, redstone và logic plugin đều dồn lên **một nhân**, nên **nhiều nhân không có nghĩa là nhanh**.

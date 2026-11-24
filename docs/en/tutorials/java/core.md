@@ -40,6 +40,24 @@ Of the three categories, a technical server takes the **modded (Fabric)** route.
 
 **Minecraft's main thread is single-threaded.** Entities, chunks, redstone and plugin logic almost all land on **one core** — so more cores does not mean faster; **single-core clock speed is what counts**.
 
+Sort by single-core first:
+
+```flow
+st=>start: Your machine
+q1=>condition: Strong single core (4-8 cores, 3.5GHz+)?
+a1=>operation: Paper / Purpur / Leaf
+q2=>condition: Many cores, low clock (16+ cores, <2.5GHz)?
+a2=>operation: Folia
+a3=>operation: Paper
+e=>end: Open that guide
+
+st->q1
+q1(yes)->a1->e
+q1(no)->q2
+q2(yes)->a2->e
+q2(no)->a3->e
+```
+
 | Your machine | Recommendation | Why |
 | --- | --- | --- |
 | **Strong single-core performance** (4–8 cores, 3.5GHz+) | **Paper / Purpur / Leaf** | These builds squeeze everything they can out of a single thread, so the stronger the core, the bigger the gain |

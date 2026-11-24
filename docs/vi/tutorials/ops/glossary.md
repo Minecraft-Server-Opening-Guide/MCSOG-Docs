@@ -332,6 +332,43 @@ Thuật ngữ chỉ có ích khi gắn được vào lệnh cụ thể. Bảng d
 
 Học thuộc các danh từ rời rạc thì vô ích, **nối chúng thành vài chuỗi nhân quả** mới có ích:
 
+Một sơ đồ là đủ để thấy các thuật ngữ móc nối ra sao:
+
+```mindmap
+mindmap
+  Thuật ngữ
+    Có lag không
+      tick
+      TPS
+      MSPT
+      ngân sách 50ms
+    Chọn lõi
+      plugin
+      mod
+      chơi kỹ thuật
+      proxy
+    Cấu hình plugin
+      YAML
+      phụ thuộc
+      API
+      api-version
+    Quản lý người chơi
+      online-mode
+      UUID
+      danh sách trắng
+      OP
+    Giữ dữ liệu
+      sao lưu
+      ngoại vi
+      3-2-1
+      UPS
+    Vận hành lâu dài
+      bảng điều khiển
+      daemon
+      DDoS
+      giám sát
+```
+
 | Việc bạn muốn làm | Thuật ngữ cần hiểu trước | Vì sao |
 | --- | --- | --- |
 | Phán đoán máy chủ có lag không | tick, TPS, MSPT, ngân sách 50 ms | Chỉ khi dịch được "lag" thành chỉ số mới bắt đầu truy nguyên được |

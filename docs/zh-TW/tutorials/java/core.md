@@ -40,6 +40,24 @@ draft: false
 
 **Minecraft 的主執行緒是單執行緒的。** 實體、區塊、紅石、插件邏輯幾乎都壓在**一個核心**上——所以核心多不等於快，**單核頻率才是關鍵**。
 
+先按機器的單核表現分一次流：
+
+```flow
+st=>start: 你的機器
+q1=>condition: 單核強（4~8 核，3.5GHz+）？
+a1=>operation: Paper / Purpur / Leaf
+q2=>condition: 核心多、主頻低（16 核+，<2.5GHz）？
+a2=>operation: Folia
+a3=>operation: Paper
+e=>end: 進入對應教學
+
+st->q1
+q1(yes)->a1->e
+q1(no)->q2
+q2(yes)->a2->e
+q2(no)->a3->e
+```
+
 | 你的機器 | 推薦 | 原因 |
 | --- | --- | --- |
 | **單核效能強**（4~8 核，主頻 3.5GHz+） | **Paper / Purpur / Leaf** | 這幾個端把單執行緒能做的最佳化都做滿了，單核越強收益越大 |

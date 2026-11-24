@@ -39,6 +39,33 @@ updated: 2026-10-04
 
 ## Как выбрать
 
+Пройдите три развилки — в большинстве случаев этого достаточно:
+
+```flow
+st=>start: Начало выбора
+qmod=>condition: Нужны моды?
+amod=>operation: Fabric / NeoForge / Forge
+qsd=>condition: Техническая игра (ванильное поведение)?
+asd=>operation: Fabric / Leaves
+qmulti=>condition: Много ядер, низкая частота?
+amulti=>operation: Folia
+qtog=>condition: Много игровых настроек?
+atog=>operation: Purpur
+apaper=>operation: Paper
+e=>end: По инструкции
+
+st->qmod
+qmod(yes)->amod->e
+qmod(no)->qsd
+qsd(yes)->asd->e
+qsd(no)->qmulti
+qmulti(yes)->amulti->e
+qmulti(no)->qtog
+qtog(yes)->atog->e
+qtog(no)->apaper->e
+```
+
+
 ### По железу (самое частое место ошибки)
 
 Главный поток Minecraft **однопоточный**: сущности, чанки, редстоун и логика плагинов давятся на **одно ядро**, поэтому **много ядер не значит быстро**.

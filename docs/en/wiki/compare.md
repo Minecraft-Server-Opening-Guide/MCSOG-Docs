@@ -39,6 +39,33 @@ A side-by-side look at the performance, ecosystem and best-fit scenarios of the 
 
 ## How to choose
 
+Walk these three forks first; most people can decide by the end:
+
+```flow
+st=>start: Start
+qmod=>condition: Need mods?
+amod=>operation: Fabric / NeoForge / Forge
+qsd=>condition: Technical play (vanilla behaviour)?
+asd=>operation: Fabric / Leaves
+qmulti=>condition: Many cores, low clock?
+amulti=>operation: Folia
+qtog=>condition: Many gameplay toggles?
+atog=>operation: Purpur
+apaper=>operation: Paper
+e=>end: Follow the guide
+
+st->qmod
+qmod(yes)->amod->e
+qmod(no)->qsd
+qsd(yes)->asd->e
+qsd(no)->qmulti
+qmulti(yes)->amulti->e
+qmulti(no)->qtog
+qtog(yes)->atog->e
+qtog(no)->apaper->e
+```
+
+
 ### Choose by hardware (the easiest thing to get wrong)
 
 The Minecraft main thread is **single-threaded**: entities, chunks, redstone and plugin logic all sit on **one core**, so **more cores does not mean faster**.

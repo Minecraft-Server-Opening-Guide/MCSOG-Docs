@@ -39,6 +39,33 @@ updated: 2026-10-04
 
 ## 怎麼選
 
+先把三條岔路走一遍，多數人到這裡就能定下來：
+
+```flow
+st=>start: 開始選核心
+qmod=>condition: 要裝模組嗎？
+amod=>operation: Fabric / NeoForge / Forge
+qsd=>condition: 要生電（原版機制一致）？
+asd=>operation: Fabric / Leaves
+qmulti=>condition: 核心多、主頻低？
+amulti=>operation: Folia
+qtog=>condition: 要大量玩法開關？
+atog=>operation: Purpur
+apaper=>operation: Paper
+e=>end: 按教學部署
+
+st->qmod
+qmod(yes)->amod->e
+qmod(no)->qsd
+qsd(yes)->asd->e
+qsd(no)->qmulti
+qmulti(yes)->amulti->e
+qmulti(no)->qtog
+qtog(yes)->atog->e
+qtog(no)->apaper->e
+```
+
+
 ### 按硬體選（最容易選錯的一點）
 
 Minecraft 主執行緒是**單執行緒**的：實體、區塊、紅石與插件邏輯都壓在**一個核心**上，所以**核心多不等於快**。

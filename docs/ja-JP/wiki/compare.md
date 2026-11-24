@@ -39,6 +39,33 @@ updated: 2026-10-04
 
 ## 選び方
 
+まず 3 つの分岐をたどってください。多くの場合はここで決まります：
+
+```flow
+st=>start: コア選び開始
+qmod=>condition: MOD を入れますか？
+amod=>operation: Fabric / NeoForge / Forge
+qsd=>condition: テクニカル（バニラ挙動を保つ）？
+asd=>operation: Fabric / Leaves
+qmulti=>condition: コア数が多く低クロック？
+amulti=>operation: Folia
+qtog=>condition: 細かい設定を多く使う？
+atog=>operation: Purpur
+apaper=>operation: Paper
+e=>end: 手順に沿って導入
+
+st->qmod
+qmod(yes)->amod->e
+qmod(no)->qsd
+qsd(yes)->asd->e
+qsd(no)->qmulti
+qmulti(yes)->amulti->e
+qmulti(no)->qtog
+qtog(yes)->atog->e
+qtog(no)->apaper->e
+```
+
+
 ### ハードウェアで選ぶ（最も間違えやすい点）
 
 Minecraft のメインスレッドは**シングルスレッド**です。エンティティ、チャンク、レッドストーン、プラグインのロジックはすべて**1 つのコア**に集中するため、**コア数が多い＝速い、ではありません**。

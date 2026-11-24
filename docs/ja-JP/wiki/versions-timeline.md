@@ -12,6 +12,20 @@ auto: true
 >
 > 収録範囲：Java 版 **919** 件（正式版 **103** 件）、統合版 **283** 件。
 
+
+年間のペースは図のほうが読み取れます：
+
+```echarts
+{
+  "title": { "text": "Java 版正式版の年間リリース数", "left": "center", "textStyle": { "fontSize": 14 } },
+  "grid": { "left": 48, "right": 24, "top": 56, "bottom": 40 },
+  "tooltip": { "trigger": "axis" },
+  "xAxis": { "type": "category", "name": "年", "data": ["2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "axisLabel": { "rotate": 45 } },
+  "yAxis": { "type": "value", "name": "リリース数" },
+  "series": [{ "type": "bar", "data": [1, 13, 8, 8, 8, 11, 3, 3, 7, 6, 5, 5, 6, 7, 7, 5], "itemStyle": { "color": "#8ec91d" } }]
+}
+```
+
 ## Java 版の正式版（新しい順）
 
 | バージョン | リリース日 |

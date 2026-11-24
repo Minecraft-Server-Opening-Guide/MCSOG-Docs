@@ -40,6 +40,24 @@ draft: false
 
 **Minecraft 的主线程是单线程的。** 实体、区块、红石、插件逻辑几乎都压在**一个核心**上——所以核心多不等于快，**单核频率才是关键**。
 
+先按机器的单核表现分一次流：
+
+```flow
+st=>start: 你的机器
+q1=>condition: 单核强（4~8 核，3.5GHz+）？
+a1=>operation: Paper / Purpur / Leaf
+q2=>condition: 核心多、主频低（16 核+，<2.5GHz）？
+a2=>operation: Folia
+a3=>operation: Paper
+e=>end: 进入对应教程
+
+st->q1
+q1(yes)->a1->e
+q1(no)->q2
+q2(yes)->a2->e
+q2(no)->a3->e
+```
+
 | 你的机器 | 推荐 | 原因 |
 | --- | --- | --- |
 | **单核性能强**（4~8 核，主频 3.5GHz+） | **Paper / Purpur / Leaf** | 这几个端把单线程能做的优化都做满了，单核越强收益越大 |

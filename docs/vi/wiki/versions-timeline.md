@@ -12,6 +12,20 @@ auto: true
 >
 > Phạm vi thu thập: Java Edition **919** mục (bản chính thức **103** mục), Bedrock Edition **283** mục.
 
+
+Nhịp phát hành dễ đọc hơn qua biểu đồ:
+
+```echarts
+{
+  "title": { "text": "Số bản phát hành Java chính thức mỗi năm", "left": "center", "textStyle": { "fontSize": 14 } },
+  "grid": { "left": 48, "right": 24, "top": 56, "bottom": 40 },
+  "tooltip": { "trigger": "axis" },
+  "xAxis": { "type": "category", "name": "Năm", "data": ["2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "axisLabel": { "rotate": 45 } },
+  "yAxis": { "type": "value", "name": "Số bản" },
+  "series": [{ "type": "bar", "data": [1, 13, 8, 8, 8, 11, 3, 3, 7, 6, 5, 5, 6, 7, 7, 5], "itemStyle": { "color": "#8ec91d" } }]
+}
+```
+
 ## Bản chính thức của Java Edition (mới nhất trước)
 
 | Phiên bản | Ngày phát hành |

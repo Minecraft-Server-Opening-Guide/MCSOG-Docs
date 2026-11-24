@@ -39,6 +39,33 @@ updated: 2026-10-04
 
 ## 怎么选
 
+先把三条岔路走一遍，多数人到这里就能定下来：
+
+```flow
+st=>start: 开始选核心
+qmod=>condition: 要装模组吗？
+amod=>operation: Fabric / NeoForge / Forge
+qsd=>condition: 要生电（原版机制一致）？
+asd=>operation: Fabric / Leaves
+qmulti=>condition: 核心多、主频低？
+amulti=>operation: Folia
+qtog=>condition: 要大量玩法开关？
+atog=>operation: Purpur
+apaper=>operation: Paper
+e=>end: 按教程部署
+
+st->qmod
+qmod(yes)->amod->e
+qmod(no)->qsd
+qsd(yes)->asd->e
+qsd(no)->qmulti
+qmulti(yes)->amulti->e
+qmulti(no)->qtog
+qtog(yes)->atog->e
+qtog(no)->apaper->e
+```
+
+
 ### 按硬件选（最容易选错的一点）
 
 Minecraft 主线程是**单线程**的：实体、区块、红石与插件逻辑都压在**一个核心**上，所以**核心多不等于快**。

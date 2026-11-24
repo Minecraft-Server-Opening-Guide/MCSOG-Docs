@@ -332,6 +332,43 @@ A term is only useful once it maps onto a command. The table below pairs the mos
 
 Memorising isolated words is useless. **Chaining them into a few causal lines** is what pays off:
 
+One picture covers how these terms hang together:
+
+```mindmap
+mindmap
+  Terms
+    Is it lagging
+      tick
+      TPS
+      MSPT
+      50ms budget
+    Pick a core
+      plugins
+      mods
+      technical play
+      proxy
+    Configure plugins
+      YAML
+      dependency
+      API
+      api-version
+    Manage players
+      online-mode
+      UUID
+      whitelist
+      OP
+    Keep data
+      backup
+      off-site
+      3-2-1
+      UPS
+    Long-term upkeep
+      panel
+      daemon
+      DDoS
+      monitoring
+```
+
 | What you want to do | Terms to understand first | Why |
 | --- | --- | --- |
 | Decide whether the server is lagging | tick, TPS, MSPT, 50 ms budget | Only a metric can turn "lag" into something you can investigate |

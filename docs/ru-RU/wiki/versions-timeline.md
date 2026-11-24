@@ -12,6 +12,20 @@ auto: true
 >
 > Охват: Java Edition — **919** записей (**103** релиза), Bedrock Edition — **283** записи.
 
+
+Темп проще читать по графику:
+
+```echarts
+{
+  "title": { "text": "Релизы Java-издания по годам", "left": "center", "textStyle": { "fontSize": 14 } },
+  "grid": { "left": 48, "right": 24, "top": 56, "bottom": 40 },
+  "tooltip": { "trigger": "axis" },
+  "xAxis": { "type": "category", "name": "Год", "data": ["2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "axisLabel": { "rotate": 45 } },
+  "yAxis": { "type": "value", "name": "Релизов" },
+  "series": [{ "type": "bar", "data": [1, 13, 8, 8, 8, 11, 3, 3, 7, 6, 5, 5, 6, 7, 7, 5], "itemStyle": { "color": "#8ec91d" } }]
+}
+```
+
 ## Релизы Java Edition (новые сверху)
 
 | Версия | Дата выпуска |
