@@ -5,7 +5,7 @@ updated: 2026-11-01
 ---
 
 本站内容以 Markdown 形式存储，全部放在公开仓库 [MCSOG-Docs](https://github.com/Minecraft-Server-Opening-Guide/MCSOG-Docs) 里，任何人都可以提交修改。
-1112
+
 ## 目录与命名
 
 | 类型 | 路径 |
