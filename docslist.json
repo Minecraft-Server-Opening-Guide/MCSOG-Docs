@@ -1000,6 +1000,16 @@
             "备份"
           ],
           "draft": "false"
+        },
+        {
+          "path": "/zh/tutorials/java/e2e-merge-probe",
+          "title": "E2E 合并探针",
+          "slug": "e2e-merge-probe",
+          "cat": "java",
+          "updated": "2026-11-24",
+          "level": 1,
+          "minute": 1,
+          "order": 37
         }
       ],
       "en": [
