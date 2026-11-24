@@ -1000,6 +1000,16 @@
             "备份"
           ],
           "draft": "false"
+        },
+        {
+          "path": "/zh/tutorials/java/final-sync-check",
+          "title": "同步校验",
+          "slug": "final-sync-check",
+          "cat": "java",
+          "updated": "2026-11-24",
+          "level": 1,
+          "minute": 1,
+          "order": 37
         }
       ],
       "en": [
