@@ -44,5 +44,3 @@ updated: 2026-11-24
 ```yaml
 
 SYNC-PROBE-MARKER
-
-MARKER5
