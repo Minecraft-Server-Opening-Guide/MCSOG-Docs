@@ -103,18 +103,107 @@ The site syncs documents and `docslist.json` from this repository every 10 minut
 
 ### Content extensions
 
-Besides standard Markdown, the site supports four custom blocks for steps and callouts. They are rendered as styled components:
+Besides standard Markdown, the site supports a set of body enhancements. Everything available is listed below, by category.
 
-| Syntax | Purpose |
+#### Basics
+
+| Syntax | Result |
 | --- | --- |
-| `:::step Title` ... `:::` | Step block. Consecutive blocks merge into a numbered step list |
-| `:::note` ... `:::` | Note box, for side notes |
-| `:::warn` ... `:::` | Warning box, for common pitfalls |
-| `:::danger` ... `:::` | Danger box, for irreversible operations |
+| `# Heading` | Levels 1-6, feeding the table of contents |
+| `**bold**` / `*italic*` / `~~struck~~` | Inline styles |
+| `` `code` `` | Inline code |
+| `[text](url)` | Link |
+| `![alt](image)` | Image |
+| `---` | Horizontal rule |
+| `\| table \|` | Table, second row is the divider |
+| ```` ```lang ```` | Fenced code block with a language label and a copy button |
 
-Example:
+#### Lists
 
-````markdown
+Dashes, asterisks and plus signs all start an unordered list, and they nest. A number followed by a dot or a closing bracket starts an ordered list.
+
+```markdown
+- Dashed item
+  - Nested item
+    - Third level
+
+* Asterisk item
+
++ Plus item
+
+1. First ordered item
+   1. Nested ordered item
+```
+
+A GFM task list uses `- [ ]` for open and `- [x]` or `- [X]` for done:
+
+```markdown
+- [ ] Not done yet
+- [x] Done
+- [X] Capital X also works
+```
+
+#### Highlight
+
+Wrap text in `==...==` to mark it, which renders as a yellow highlight:
+
+```markdown
+This is ==the important part==, the rest is ordinary text.
+```
+
+#### Image size and alignment
+
+Append `#size=` or `#align=` to the image URL. The two can be combined.
+
+| Syntax | Result |
+| --- | --- |
+| `![alt](a.png)` | Natural size, never wider than the column |
+| `![alt](a.png#size=320x180)` | Fixed 320x180 pixels |
+| `![alt](a.png#size=50%)` | 50% of the column width |
+| `![alt](a.png#align=center)` | Centred |
+| `![alt](a.png#align=right)` | Right aligned |
+| `![alt](a.png#align=left)` | Left aligned |
+| `![alt](a.png#size=50%#align=center)` | Both together |
+
+#### Audio and video
+
+`![=audio](url)` embeds an audio player and `![=video](url)` a video player. A video accepts `.h=height.w=width` after the URL to set its size.
+
+```markdown
+![=audio](/assets/media/example.mp3)
+
+![=video](/assets/media/example.mp4).h=270.w=480
+```
+
+#### Note blocks
+
+Open with `:::note Title` and close with a line containing only `:::`. `:::tip`, `:::warn`, `:::danger` and `:::step` work the same way.
+
+```markdown
+:::note Note
+This is a note block.
+:::
+
+:::warn
+Do not run the server as root.
+:::
+```
+
+A quote works too: one letter after `>` picks the kind, and a space after the letter is allowed.
+
+| Syntax | Kind | Colour |
+| --- | --- | --- |
+| `> text` | Plain quote | Grey |
+| `> i text` or `>i text` | Info | Blue |
+| `> d text` or `>d text` | Danger | Red |
+| `> w text` or `>w text` | Warning | Amber |
+| `> s text` or `>s text` | Success | Green |
+
+#### Step list
+
+Consecutive `:::step` blocks merge into a numbered sequence.
+
+```markdown
 :::step Install the runtime
 Run `apt install openjdk-21-jre-headless`.
 :::
@@ -122,13 +211,103 @@ Run `apt install openjdk-21-jre-headless`.
 :::step Start the service
 Put the jar in `/opt/mc` and run the start script.
 :::
+```
 
-:::warn
-Do not run the server as root.
-:::
+#### Maths
+
+Wrap inline maths in single dollar signs and a display formula in double dollar signs. The full KaTeX language is available.
+
+```markdown
+Inline: $E = mc^2$
+
+Display:
+
+$$
+\int_{0}^{1} x^{2}\,dx = \frac{1}{3}
+$$
+```
+
+#### Flowchart
+
+A `flow` block takes flowchart.js syntax:
+
+````markdown
+```flow
+st=>start: Start
+op=>operation: Work
+cond=>condition: Pass?
+e=>end: Done
+
+st->op->cond
+cond(yes)->e
+cond(no)->op
+```
 ````
 
-Everything else is standard Markdown: headings (which build the table of contents), lists, tables, task lists, inline code and fenced code blocks with a language tag.
+#### Sequence diagram
+
+A `seq` block takes js-sequence-diagrams syntax: `->` is solid, `-->` is dashed:
+
+````markdown
+```seq
+Client->Server: request
+Server-->Client: response
+```
+````
+
+#### Mermaid
+
+A `mermaid` block takes Mermaid syntax directly: flowcharts, sequence diagrams, class diagrams, state diagrams, pie charts and more:
+
+````markdown
+```mermaid
+graph LR
+A[Input] --> B{Check}
+B -->|yes| C[Output]
+```
+````
+
+#### Mind map
+
+A `mindmap` block starts with the word `mindmap`, and indentation sets the hierarchy. The result can be dragged and zoomed with the wheel.
+
+````markdown
+```mindmap
+mindmap
+  root((Topic))
+    Branch
+      Leaf
+```
+````
+
+#### Timeline
+
+A `timeline` block takes one entry per line as `date: text`:
+
+````markdown
+```timeline
+2026-09-01: Site launch
+2026-11-24: New renderer
+```
+````
+
+#### Charts
+
+An `echarts` block takes an ECharts option object as JSON:
+
+````markdown
+```echarts
+{
+  "xAxis": { "type": "category", "data": ["A", "B", "C"] },
+  "yAxis": { "type": "value" },
+  "series": [{ "type": "bar", "data": [10, 20, 15] }]
+}
+```
+````
+
+#### HTML entities
+
+Standard HTML entities are supported and render as the character they name, for example `&copy;` &copy;, `&times;` &times;, `&frac34;` &frac34;, `18&ordm;C` 18&ordm;C. Decimal and hexadecimal forms work as well, such as `&#169;`. An `&` that does not form an entity is escaped automatically.
 
 ### HTML embed extension
 
@@ -142,10 +321,10 @@ html.csp=[example.com,*.example.org].L=640.H=360.(<div>...</div>)
 
 Parameters:
 
-- `csp=[...]`: allowed domains, with `*.example.com` wildcard support. When present, content runs in an isolated iframe with a CSP; otherwise Shadow DOM is used.
-- `L` / `H`: width / height in px. Both must be present; a single value is ignored and the size becomes automatic.
+- `csp=[...]`: domains the block may load from, `*.example.com` wildcards allowed. With it the block runs in an isolated iframe under a CSP; without it, a Shadow DOM.
+- `L` / `H`: width / height in pixels. Both or neither; one alone is ignored.
 - Parameter names are case-insensitive.
-- JavaScript inside `html.()` runs; only embed trusted content
+- JS inside `html.()` does run, so only embed content you trust.
 
 ### Sync rules
 
