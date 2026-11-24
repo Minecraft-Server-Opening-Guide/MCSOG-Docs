@@ -67,25 +67,354 @@ draft: false
 | `updated` | `YYYY-MM-DD`, danh sách sắp xếp theo trường này |
 | `draft` | Đặt là `true` thì trang không lên trực tuyến |
 
-## Mở rộng phần thân
+## Mở rộng nội dung
 
-:::step Khối bước
-Bắt đầu bằng `:::step tiêu đề`, kết thúc bằng một dòng `:::` riêng. Nhiều khối bước liên tiếp sẽ tự động gộp thành thanh bước có đánh số.
+Trình kết xuất Markdown hỗ trợ Markdown chuẩn, các phần mở rộng GFM và một loạt cú pháp mở rộng cho nội dung. Dưới đây liệt kê toàn bộ theo từng nhóm.
+
+### Cú pháp cơ bản
+
+| Cú pháp | Kết quả | Ví dụ |
+| --- | --- | --- |
+| `# Tiêu đề` | Tiêu đề cấp 1-6, tự động vào mục lục bên phải | `## Cài đặt` |
+| `**in đậm**` | In đậm | **in đậm** |
+| `*in nghiêng*` | In nghiêng | *in nghiêng* |
+| `~~gạch ngang~~` | Gạch ngang | ~~gạch ngang~~ |
+| `` `mã` `` | Mã trong dòng | `npm install` |
+| `[chữ](liên kết)` | Liên kết | [Trang chủ](/) |
+| `![mô tả](ảnh)` | Hình ảnh | xem mục hình ảnh bên dưới |
+| `---` | Đường kẻ ngang | |
+| `| bảng |` | Bảng, dòng thứ hai là dòng phân cách | xem bảng trên |
+| ```` ```lang ```` | Khối mã có nhãn ngôn ngữ và nút sao chép | xem bên dưới |
+
+### Danh sách
+
+Dấu gạch ngang, dấu sao và dấu cộng đều tạo danh sách không thứ tự và lồng nhau được. Số kèm dấu chấm hoặc dấu ngoặc tạo danh sách có thứ tự.
+
+```markdown
+- Mục gạch ngang
+- Mục thứ hai
+  - Mục lồng nhau
+    - Cấp thứ ba
+
+* Mục dấu sao
+* Mục thứ hai
+
++ Mục dấu cộng
++ Mục thứ hai
+
+1. Mục thứ nhất
+2. Mục thứ hai
+   1. Mục lồng nhau
+3. Mục thứ ba
+```
+
+Danh sách việc cần làm GFM dùng `- [ ]` cho chưa xong, `- [x]` hoặc `- [X]` cho đã xong:
+
+```markdown
+- [ ] Chưa xong
+- [x] Đã xong
+- [X] Chữ X hoa cũng được
+```
+
+Hiển thị:
+
+- [ ] Chưa xong
+- [x] Đã xong
+- [X] Chữ X hoa cũng được
+
+### Đánh dấu
+
+Bọc văn bản trong `==...==` để tô sáng màu vàng:
+
+```markdown
+Đây là ==phần quan trọng==, phần còn lại là văn bản thường.
+```
+
+Hiển thị:
+
+Đây là ==phần quan trọng==, phần còn lại là văn bản thường.
+
+### Kích thước và căn lề hình ảnh
+
+Thêm `#size=` hoặc `#align=` vào sau địa chỉ hình ảnh. Có thể dùng cả hai cùng lúc.
+
+| Cú pháp | Kết quả |
+| --- | --- |
+| `![mô tả](a.png)` | Kích thước gốc, không vượt quá chiều rộng cột |
+| `![mô tả](a.png#size=320x180)` | Cố định 320×180 pixel |
+| `![mô tả](a.png#size=50%)` | 50% chiều rộng cột |
+| `![mô tả](a.png#align=center)` | Căn giữa |
+| `![mô tả](a.png#align=right)` | Căn phải |
+| `![mô tả](a.png#align=left)` | Căn trái |
+| `![mô tả](a.png#size=50%#align=center)` | Kết hợp cả hai |
+
+```markdown
+![Hình căn giữa](/assets/img/example.png#size=50%#align=center)
+```
+
+### Âm thanh và video
+
+`![=audio](địa chỉ)` nhúng trình phát âm thanh, `![=video](địa chỉ)` nhúng trình phát video. Video có thể thêm `.h=cao.w=rộng` sau địa chỉ để đặt kích thước.
+
+```markdown
+![=audio](/assets/media/example.mp3)
+
+![=video](/assets/media/example.mp4)
+
+![=video](/assets/media/example.mp4).h=270.w=480
+```
+
+### Khối ghi chú
+
+:::note Ghi chú
+Mở bằng `:::note Tiêu đề` và đóng bằng một dòng chỉ có `:::`. `:::tip`, `:::warn` và `:::danger` dùng tương tự.
 :::
 
-:::note
-`:::note` hộp ghi chú, phù hợp để bổ sung giải thích.
+```markdown
+:::note Ghi chú
+Đây là khối note.
 :::
 
-:::warn
-`:::warn` hộp cảnh báo, phù hợp cho những chỗ dễ mắc lỗi.
+:::tip Mẹo
+Đây là khối tip.
 :::
 
-:::danger
-`:::danger` hộp nguy hiểm, phù hợp cho thao tác không thể đảo ngược (xóa dữ liệu, ghi đè cấu hình…).
+:::warn Cảnh báo
+Đây là khối warn.
 :::
 
-Ngoài ra hỗ trợ Markdown chuẩn: tiêu đề (tự tạo mục lục bên phải), danh sách, bảng, danh sách công việc, mã trong dòng, khối mã có ghi ngôn ngữ.
+:::danger Nguy hiểm
+Đây là khối danger.
+:::
+```
+
+Cũng có thể dùng cú pháp trích dẫn: một chữ cái sau `>` chọn loại, có thể có dấu cách sau chữ cái.
+
+| Cú pháp | Loại | Màu |
+| --- | --- | --- |
+| `> văn bản` | Trích dẫn thường | Xám |
+| `> i văn bản` hoặc `>i văn bản` | Thông tin | Xanh dương |
+| `> d văn bản` hoặc `>d văn bản` | Nguy hiểm | Đỏ |
+| `> w văn bản` hoặc `>w văn bản` | Cảnh báo | Cam |
+| `> s văn bản` hoặc `>s văn bản` | Thành công | Xanh lá |
+
+> Đây là trích dẫn thường.
+
+> i Đây là khối thông tin.
+
+> d Đây là khối nguy hiểm.
+
+> w Đây là khối cảnh báo.
+
+> s Đây là khối thành công.
+
+### Các bước
+
+:::step Ghi chú
+Mở bằng `:::step Tiêu đề` và đóng bằng một dòng chỉ có `:::`. Các khối bước liền nhau sẽ gộp thành chuỗi bước có đánh số.
+:::
+
+```markdown
+:::step Bước một
+Tải máy chủ về.
+:::
+
+:::step Bước hai
+Sửa tệp server.properties.
+:::
+```
+
+### Công thức toán
+
+Công thức trong dòng đặt giữa hai dấu đô-la đơn, công thức riêng dòng đặt giữa hai cặp dấu đô-la.
+
+```markdown
+$E=mc^2$
+
+$$
+\int_{0}^{1} x^{2}\,dx = \frac{1}{3}
+$$
+```
+
+Hỗ trợ đầy đủ cú pháp KaTeX, gồm ma trận, hệ phương trình, tổng và tích phân:
+
+$$
+\begin{pmatrix} a & b \\ c & d \end{pmatrix}
+\begin{pmatrix} x \\ y \end{pmatrix}
+=
+\begin{pmatrix} ax+by \\ cx+dy \end{pmatrix}
+$$
+
+### Lưu đồ
+
+Khối `flow` nhận cú pháp flowchart.js:
+
+````markdown
+```flow
+st=>start: Start
+op=>operation: Work
+cond=>condition: Pass?
+e=>end: Done
+
+st->op->cond
+cond(yes)->e
+cond(no)->op
+```
+````
+
+```flow
+st=>start: Start
+op=>operation: Work
+cond=>condition: Pass?
+e=>end: Done
+
+st->op->cond
+cond(yes)->e
+cond(no)->op
+```
+
+### Biểu đồ tuần tự
+
+Khối `seq` nhận cú pháp js-sequence-diagrams: `->` là nét liền, `-->` là nét đứt:
+
+````markdown
+```seq
+Client->Server: request
+Server-->Client: response
+```
+````
+
+```seq
+Client->Server: request
+Server-->Client: response
+```
+
+### Mermaid
+
+Khối `mermaid` nhận trực tiếp cú pháp Mermaid: lưu đồ, biểu đồ tuần tự, biểu đồ lớp, biểu đồ trạng thái và nhiều loại khác:
+
+````markdown
+```mermaid
+graph LR
+A[Input] --> B{Check}
+B -->|yes| C[Output]
+```
+````
+
+```mermaid
+graph LR
+A[Input] --> B{Check}
+B -->|yes| C[Output]
+```
+
+### Sơ đồ tư duy
+
+Dùng khối `mindmap`, dòng đầu ghi `mindmap`, thụt đầu dòng thể hiện cấp bậc:
+
+````markdown
+```mindmap
+mindmap
+  root((Topic))
+    Branch
+      Leaf
+```
+````
+
+```mindmap
+mindmap
+  root((MCSOG))
+    Tutorials
+      Java
+      Bedrock
+    Resources
+      Mods
+      Plugins
+```
+
+### Dòng thời gian
+
+Dùng khối `timeline`, mỗi dòng một mục theo dạng `ngày: nội dung`:
+
+````markdown
+```timeline
+2026-09-01: Site launch
+2026-11-24: New renderer
+```
+````
+
+```timeline
+2026-09-01: Site launch
+2026-11-14: Notifications
+2026-11-24: Renderer extended
+```
+
+### Biểu đồ số liệu
+
+Khối `echarts` nhận đối tượng cấu hình ECharts dạng JSON:
+
+````markdown
+```echarts
+{
+  "xAxis": { "type": "category", "data": ["A", "B", "C"] },
+  "yAxis": { "type": "value" },
+  "series": [{ "type": "bar", "data": [10, 20, 15] }]
+}
+```
+````
+
+```echarts
+{
+  "xAxis": { "type": "category", "data": ["A", "B", "C"] },
+  "yAxis": { "type": "value" },
+  "series": [{ "type": "bar", "data": [10, 20, 15], "itemStyle": { "color": "#8ec91d" } }]
+}
+```
+
+### Thực thể HTML
+
+Hỗ trợ thực thể HTML chuẩn và hiển thị đúng ký tự tương ứng:
+
+| Entity | Renders | Entity | Renders |
+| --- | --- | --- | --- |
+| `&copy;` | &copy; | `&reg;` | &reg; |
+| `&trade;` | &trade; | `&uml;` | &uml; |
+| `&iexcl;` | &iexcl; | `&pound;` | &pound; |
+| `&yen;` | &yen; | `&euro;` | &euro; |
+| `&plusmn;` | &plusmn; | `&para;` | &para; |
+| `&sect;` | &sect; | `&brvbar;` | &brvbar; |
+| `&macr;` | &macr; | `&laquo;` | &laquo; |
+| `&raquo;` | &raquo; | `&middot;` | &middot; |
+| `&sup2;` | &sup2; | `&sup3;` | &sup3; |
+| `&frac34;` | &frac34; | `&frac14;` | &frac14; |
+| `&times;` | &times; | `&divide;` | &divide; |
+| `&ordm;` | &ordm; | `&quot;` | &quot; |
+| `&apos;` | &apos; | `&amp;` | &amp; |
+| `&lt;` | &lt; | `&gt;` | &gt; |
+
+Cũng dùng được dạng số: `&#169;` hiển thị &#169;.
+
+Dấu `&` không tạo thành thực thể sẽ được tự động thoát, nên không thể làm hỏng trang.
+
+## Chi phí kết xuất
+
+Việc kết xuất diễn ra trên máy chủ. Trang chỉ tải những thư viện cần thiết (KaTeX, Mermaid, ECharts) theo cú pháp thực sự dùng; bài viết thường không tải thư viện bên thứ ba nào.
+
+## Nhúng HTML
+
+`html.()` nhúng HTML thô vào Markdown và giữ khả năng thực thi HTML/JS. Nội dung được đặt trong Shadow DOM để CSS bên trong không ảnh hưởng bố cục trang. Mọi thẻ HTML khác đều bị thoát thành văn bản và không thực thi.
+
+Ví dụ đầy đủ:
+
+```text
+html.csp=[example.com,*.example.org].L=640.H=360(<div>...</div>)
+```
+
+Tham số:
+
+- `csp=[...]`: danh sách tên miền được phép tải, hỗ trợ ký tự đại diện `*.example.com`. Có tham số này thì khối chạy trong iframe cách ly kèm CSP; không có thì dùng Shadow DOM.
+- `L` / `H`: chiều rộng / chiều cao tính bằng pixel. Phải có cả hai; chỉ một cái sẽ bị bỏ qua.
+- Tên tham số không phân biệt chữ hoa chữ thường.
+- JS trong `html.()` có thực thi, nên chỉ nhúng nội dung bạn tin cậy.
 
 ## Tiện ích nhúng HTML
 
