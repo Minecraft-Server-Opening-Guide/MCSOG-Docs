@@ -3,15 +3,13 @@ title: 开启服务端
 slug: start
 cat: java
 level: 1
-order: 5
 minutes: 14
-mc: ["26.1+", "1.21.x", "1.20.4", "1.18.2", "1.16.5"]
+order: 5
+mc: ["26.1+", 1.21.x, 1.20.4, 1.18.2, 1.16.5]
 tags: [java, 启动脚本, bat, sh, eula, 自动重启, 通配符]
-updated: 2026-10-04
 draft: false
+updated: 2026-11-26
 ---
-
-前置条件已经就绪：**Java 装好了、端口放行了、目录建好了、核心也选好并下载了**。这一篇把服务器真正跑起来。
 
 :::note 新版 Forge 与 NeoForge 可以跳过这一篇
 新版 **Forge** 与 **NeoForge** 用官方**安装器**安装后，会在服务端目录**自动生成启动脚本**（`run.bat` / `run.sh`）。用它们的话直接运行那个脚本即可，不需要手写启动脚本。
@@ -23,25 +21,27 @@ draft: false
 
 ```
 C:\mcserver\survival\        （Linux 下对应 /opt/mcserver/survival/）
-├── paper-1.21.4.jar         ← 你下载的核心
-└── （其余文件首次启动后自动生成）
+├── paper-1.21.4.jar         ← 服务端核心
+└── ...
 ```
 
 ### Windows：`start.bat`
 
-1. 在这个目录里新建一个**文本文档**，把文件名改成 `start.bat`（扩展名从 `.txt` 改成 `.bat`）。
+1. 在服务器核心目录下新建一个**文本文档**，把文件重命名为 `start.bat`（扩展名从 `.txt` 改成 `.bat`）。
+
+:::note 开启拓展名显示
+如果危险时拓展名请在
+文件资源管理器上方操作栏→显示 勾选显示文件拓展名(该步骤可能在部分版本略有不同)
+
 2. 右键 → 用文本编辑器打开，写入下面内容并保存：
 
 ```bat
-@echo off
-cd /d "%~dp0"
-java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
+java -Xms2G -Xmx2G -jar <core>.jar --nogui
 pause
 ```
 
-把 `<core-name>.jar` 换成你实际的文件名（例如 `paper-1.21.4.jar`）。
+把 `<core>.jar` 换成你实际的文件名（例如 `paper-1.21.4.jar`）。
 
-- `cd /d "%~dp0"` 让工作目录固定为脚本所在目录，避免双击时找不到核心文件。
 - `--nogui` 表示不打开服务器自带的图形窗口，全部输出走命令行（`nogui` 是它的旧别名，两者等价）。
 - `pause` 让窗口在服务器退出后**不要立刻关闭**，方便看报错，详见下文「拓展」。
 
@@ -50,7 +50,7 @@ pause
 ```bash
 #!/bin/sh
 cd "$(dirname "$0")"
-exec java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
+exec java -Xms2G -Xmx2G -jar <core>.jar --nogui
 ```
 
 赋予执行权限后运行：
@@ -60,9 +60,9 @@ chmod +x start.sh
 ./start.sh
 ```
 
-## 二、第一次启动：等它下载，然后同意 EULA
+## 二、第一次启动：下载服务端文件/同一许可
 
-**首次启动会先下载运行所需文件**，命令行里会出现类似 `Downloading mojang_x.x.x.jar` 的输出——这是正常的，**耐心等它下载完**即可（国内网络如果一直卡住，需要自备网络加速手段）。
+**首次启动会先下载运行所需文件**，命令行里会出现类似 `Downloading mojang_x.x.x.jar` 的输出——这是正常的，**耐心等它下载完**即可（大陆网络下如果一直卡住，请使用魔法）。
 
 下载完成后，服务器**不会直接启动**，而是提示：
 
@@ -84,8 +84,8 @@ eula=true
 
 保存后**重新运行启动脚本**。这个操作表示你已阅读并同意 [Minecraft EULA](https://aka.ms/MinecraftEULA)。
 
-:::warn 不改就起不来
-`eula=false` 时服务器会**启动后立刻退出**，这是最常见的新手卡点。
+:::warn 未同意许可无法启动服务端
+`eula=false` 时服务器会**启动后立刻退出**。
 :::
 
 ## 三、怎么算启动成功
@@ -100,16 +100,16 @@ Done (6.554s)! For help, type "help"
 
 - 在**本机**可用 `localhost:25565` 进入；
 - 别人用**你的公网 IP**（或域名）加默认端口 `25565` 进入；
-- 在控制台输入 `stop` 可以**安全关闭**服务器（**不要直接叉掉窗口**，容易损坏存档）。
+- 在控制台输入 `stop` 可以**安全关闭**服务器（**不要直接叉掉窗口**，可能损坏存档）。
 
-## 四、拓展：三个实用技巧
+## 四、拓展
 
 ### 1. 加 `pause`，崩溃时能看到日志
 
 Windows 的 `.bat` 双击运行时，如果服务器崩溃，窗口会**一闪而过**，你什么都看不到。在脚本**最后一行**加 `pause` 即可：
 
 ```bat
-java -Xms2G -Xmx2G -jar <core-name>.jar --nogui
+java -Xms2G -Xmx2G -jar <core>.jar --nogui
 pause
 ```
 
@@ -170,12 +170,12 @@ while true; do
 done
 ```
 
-:::warn 自动重启前先想清楚
+:::warn 什么情况下使用自动重启
 自动重启适合**无人值守的长期服**。但如果服务器是因为**配置错误**（比如 Java 版本不对、端口被占用）而启动失败，它会**每 3 秒重启一次并刷屏**，反而掩盖真正的错误。**第一次调试时不要用自动重启**，先手动跑通再说。
 :::
 
-:::tip Linux 长期开服更推荐 systemd
-上面的 `while` 循环在 SSH 断开后会被杀掉。想让服务器**开机自启、崩溃自动重启、退出 SSH 也不停**，用 systemd 托管更合适——见「环境准备（Windows 与 Linux）」第五步。
+:::tip 长期开服更推荐管理面板
+在服务器需要长期开启且需要多管理维护时，建议使用管理面板(如MCSManager)，方便权限管理。
 :::
 
 ## 五、下一步
