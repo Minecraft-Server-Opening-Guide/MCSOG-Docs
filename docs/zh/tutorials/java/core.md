@@ -3,12 +3,12 @@ title: 服务端选择
 slug: core
 cat: java
 level: 1
-order: 4
 minutes: 12
-mc: ["1.21.x", "1.20.4", "1.19.4", "1.18.2", "1.16.5"]
+order: 4
+mc: [1.21.x, 1.20.4, 1.19.4, 1.18.2, 1.16.5]
 tags: [java, 核心, paper, purpur, folia, leaves, fabric, 生电, 多核]
-updated: 2026-10-04
 draft: false
+updated: 2026-11-26
 ---
 
 环境准备好之后，下一个决定就是**用哪个服务端核心**。核心决定了三件事：**性能上限**、**能不能装插件或模组**、以及**红石等原版行为是否一致**。
@@ -139,3 +139,5 @@ Paper 系为了性能改动了部分原版行为（红石时序、TNT 复制、�
 - **[资源下载 · 服务端核心](/downloads/core)** —— 13 个核心（Vanilla、Paper、Folia、Velocity、Purpur、Leaf、Leaves、Fabric、NeoForge、Forge、Spigot、BungeeCord、基岩版 BDS）的全部构建版本。
 - **[资源下载 · 模组](/downloads/mods)** —— Modrinth 模组条目，可按加载器（Fabric / Forge / NeoForge / Quilt）与游戏版本筛选；模组服路线见 [模组服完整上手](/tutorials/java/modded)。
 - **[资源下载 · 插件](/downloads/plugins)** —— 服务端插件，支持 Java 版（Paper / Spigot / Folia / Purpur / Bukkit 筛选）与基岩版，另含 MCDR 插件；插件服路线见 [插件入门](/tutorials/java/plugins)。
+
+> 部分内容由AI生成，如有错误请反馈
