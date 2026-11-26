@@ -3,12 +3,12 @@ title: 操作系统选择
 slug: os
 cat: java
 level: 1
-order: 2
 minutes: 8
-mc: ["1.21.x", "1.20.4", "1.19.4", "1.18.2", "1.16.5"]
+order: 2
+mc: [1.21.x, 1.20.4, 1.19.4, 1.18.2, 1.16.5]
 tags: [java, linux, windows, 系统, 选型, 服务器]
-updated: 2026-10-04
 draft: false
+updated: 2026-11-26
 ---
 
 同样是开服，**Linux 和 Windows 都能跑**，而且跑的是同一个服务端程序。区别不在"能不能"，而在**稳定性、资源占用与后续维护成本**。
@@ -52,3 +52,5 @@ draft: false
 ## 下一步
 
 系统定了就装环境：见 [环境准备（Windows 与 Linux）](/tutorials/java/environment)。
+
+> 部分内容由AI生成，如有错误请反馈
