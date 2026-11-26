@@ -1,14 +1,14 @@
 ---
-title: 环境准备（Windows 与 Linux）
+title: "环境准备（Windows 与 Linux）"
 slug: environment
 cat: java
 level: 1
-order: 3
 minutes: 20
-mc: ["1.21.x", "1.20.4", "1.19.4", "1.18.2", "1.16.5"]
+order: 3
+mc: [1.21.x, 1.20.4, 1.19.4, 1.18.2, 1.16.5]
 tags: [java, windows, linux, 环境, java版本, 端口, 权限]
-updated: 2026-10-04
 draft: false
+updated: 2026-11-26
 ---
 
 这篇把 Windows 与 Linux 放在一起写。两边要做的是**同样四件事**：**确认 Java 版本 → 放行端口 → 建目录 → 装对 Java 并配好环境**。
@@ -79,8 +79,8 @@ sudo firewall-cmd --reload
 sudo firewall-cmd --list-ports
 ```
 
-:::warn 用 Docker 部署时，系统防火墙管不住容器
-如果你打算用 **Docker / Docker Compose** 部署服务端（见 [用 Docker 部署 Java 版](/tutorials/java/docker)），那么 **`ufw` 与 `firewalld` 对本节这些端口都不起作用**。
+:::warn 用 Docker 部署时，系统防火墙无法管控容器
+如果你打算用 **Docker / Docker Compose** 部署服务端（见 [用 Docker 部署 Java 版](/tutorials/java/docker)），此时 **`ufw` 与 `firewalld` 对本节这些端口都不起作用**。
 
 原因：Docker 启动时会自己往 `iptables` 写转发与 NAT 规则，并且把这些规则插在系统防火墙规则**之前**。所以即使你执行了 `sudo ufw deny 25565`，外部**照样能连上容器映射出来的端口**。这不是配置写错了，是 Docker 的既定行为。
 
@@ -312,3 +312,5 @@ sudo systemctl status minecraft
 **开机前再确认两件事**：Java 版本与目标 MC 版本匹配、25565 已在安全组与系统防火墙上都放行。
 
 环境与核心都定好之后，写启动脚本把服务器跑起来：见 [开启服务端](/tutorials/java/start)。
+
+> 部分内容由AI生成，如有错误请反馈
