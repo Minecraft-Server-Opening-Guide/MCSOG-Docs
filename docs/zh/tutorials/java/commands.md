@@ -15,6 +15,7 @@ updated: 2026-11-27
 
 :::tip 指令生成器
 常用指令可在[指令生成器](https://mcsog.ndpreforged.com/tools/commands)生成
+:::
 
 ## 一、开关与保存
 
