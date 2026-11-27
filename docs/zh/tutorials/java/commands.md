@@ -1,17 +1,20 @@
 ---
-title: 常用服务端指令
+title: 指令
 slug: commands
 cat: java
 level: 1
-order: 9
 minutes: 12
-mc: ["1.21.x", "1.20.4", "1.18.2", "1.16.5"]
+order: 9
+mc: [1.21.x, 1.20.4, 1.18.2, 1.16.5]
 tags: [java, 指令, 命令, op, ban, whitelist, 控制台]
-updated: 2026-10-04
 draft: false
+updated: 2026-11-27
 ---
 
-日常管理服务器，来来回回就是这些指令。**在服务端控制台里执行不需要加 `/`**，在游戏内聊天框里执行要加 `/`。
+常用指令
+
+:::tips 指令生成器
+常用指令可在[指令生成器](https://mcsog.ndpreforged.com/tools/commands)生成
 
 ## 一、开关与保存
 

@@ -332,10 +332,10 @@
         },
         {
           "path": "/zh/tutorials/java/commands",
-          "title": "常用服务端指令",
+          "title": "指令",
           "slug": "commands",
           "cat": "java",
-          "updated": "2026-10-04",
+          "updated": "2026-11-27",
           "level": 1,
           "minute": 12,
           "order": 9,
