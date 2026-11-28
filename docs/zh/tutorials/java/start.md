@@ -8,7 +8,7 @@ order: 5
 mc: ["26.1+", 1.21.x, 1.20.4, 1.18.2, 1.16.5]
 tags: [java, 启动脚本, bat, sh, eula, 自动重启, 通配符]
 draft: false
-updated: 2026-11-26
+updated: 2026-11-28
 ---
 
 :::note 新版 Forge 与 NeoForge 可以跳过这一篇
@@ -32,6 +32,7 @@ C:\mcserver\survival\        （Linux 下对应 /opt/mcserver/survival/）
 :::note 开启拓展名显示
 如果危险时拓展名请在
 文件资源管理器上方操作栏→显示 勾选显示文件拓展名(该步骤可能在部分版本略有不同)
+:::
 
 2. 右键 → 用文本编辑器打开，写入下面内容并保存：
 
